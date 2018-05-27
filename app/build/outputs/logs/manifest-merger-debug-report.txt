@@ -1,0 +1,348 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:1-107:12
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:1-107:12
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:1-107:12
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:1-107:12
+MERGED from [com.android.databinding:adapters:3.1.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\adapters-3.1.2.aar\544b2f0468841905e24a2fff5d22499d\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.databinding:library:3.1.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\library-3.1.2.aar\abc86f0152cc5b27c2dc3ee202659b1b\AndroidManifest.xml:17:1-24:12
+MERGED from [:js-android] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\js-android.aar\55879b077dd2cee0a2db419214ed2edb\AndroidManifest.xml:2:1-12:12
+MERGED from [:kids-cademy] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\kids-cademy.aar\ad75b78b3abfb450a298207f092b6ee9\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\ab11b7c843b97c75411c97f592c37734\AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.android:facebook-android-sdk:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.33.0.aar\6ba4737abf96feb8b3da37310d11c3b2\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-login:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-login-4.33.0.aar\859e14b273fbd670f621afe065c40ce4\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-share:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-share-4.33.0.aar\24b278e2b6494bd4f4ef63c3cf1f2a94\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:21:1-36:12
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\b2020d6bf2e0e481bfc2720404fd7a03\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\69598d6363e5f2c80572d9866657db0c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:gridlayout-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-27.0.2.aar\64124e14d49f58d6b37d7960b304099d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\f7571d094706596126d51ee986a8cfeb\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.0.2.aar\5e60eaa217860aba32579322cee5a64b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7b77a13b44ac9bf094d6ba188878523e\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\75c2b0388000d2d5c8fd0c0c4cf2ced6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\d2d9977d5e188cd120143a19924c32cc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\eb29ec49b18434ed0e39bf720a00ae91\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\a50e4d987b79ce1315d61ead0a9d6b4e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\9273af245033397c93b90d3f86713b74\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\transition-27.0.2.aar\39aee85515345b49919c74071bd36763\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customtabs:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\customtabs-27.0.2.aar\1382b7c04eaaab484555a53300c93d16\AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.android:facebook-places:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-places-4.33.0.aar\756d9e75c1abb6dafc59250beaf120ff\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-applinks:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-applinks-4.33.0.aar\15ccbc2e8ce35430185a23c37404d5ec\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-messenger:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-messenger-4.33.0.aar\09d1b37ecc951ab519f71e97d3552133\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:21:1-53:12
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\0fd25c0186de70ee90130f631420a7ca\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\b50d73e7319f1343cb57a1c55ff1e34d\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\4a395b325b1d02f77e53360f6eeda71d\AndroidManifest.xml:17:1-24:12
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:1-107:12
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:1-107:12
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:1-107:12
+	package
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:3:5-46
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:6:5-38
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:5:5-28
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+	android:installLocation
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:4:5-35
+uses-sdk
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:8:5-10:41
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:8:5-10:41
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.databinding:adapters:3.1.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\adapters-3.1.2.aar\544b2f0468841905e24a2fff5d22499d\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:adapters:3.1.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\adapters-3.1.2.aar\544b2f0468841905e24a2fff5d22499d\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.1.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\library-3.1.2.aar\abc86f0152cc5b27c2dc3ee202659b1b\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.1.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\library-3.1.2.aar\abc86f0152cc5b27c2dc3ee202659b1b\AndroidManifest.xml:22:5-44
+MERGED from [:js-android] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\js-android.aar\55879b077dd2cee0a2db419214ed2edb\AndroidManifest.xml:8:5-10:41
+MERGED from [:js-android] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\js-android.aar\55879b077dd2cee0a2db419214ed2edb\AndroidManifest.xml:8:5-10:41
+MERGED from [:kids-cademy] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\kids-cademy.aar\ad75b78b3abfb450a298207f092b6ee9\AndroidManifest.xml:7:5-9:41
+MERGED from [:kids-cademy] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\kids-cademy.aar\ad75b78b3abfb450a298207f092b6ee9\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\ab11b7c843b97c75411c97f592c37734\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\ab11b7c843b97c75411c97f592c37734\AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.android:facebook-android-sdk:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.33.0.aar\6ba4737abf96feb8b3da37310d11c3b2\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.33.0.aar\6ba4737abf96feb8b3da37310d11c3b2\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-login-4.33.0.aar\859e14b273fbd670f621afe065c40ce4\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-login-4.33.0.aar\859e14b273fbd670f621afe065c40ce4\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-share-4.33.0.aar\24b278e2b6494bd4f4ef63c3cf1f2a94\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-share-4.33.0.aar\24b278e2b6494bd4f4ef63c3cf1f2a94\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\b2020d6bf2e0e481bfc2720404fd7a03\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\b2020d6bf2e0e481bfc2720404fd7a03\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\69598d6363e5f2c80572d9866657db0c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\69598d6363e5f2c80572d9866657db0c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:gridlayout-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-27.0.2.aar\64124e14d49f58d6b37d7960b304099d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:gridlayout-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-27.0.2.aar\64124e14d49f58d6b37d7960b304099d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\f7571d094706596126d51ee986a8cfeb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\f7571d094706596126d51ee986a8cfeb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.0.2.aar\5e60eaa217860aba32579322cee5a64b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.0.2.aar\5e60eaa217860aba32579322cee5a64b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7b77a13b44ac9bf094d6ba188878523e\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7b77a13b44ac9bf094d6ba188878523e\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\75c2b0388000d2d5c8fd0c0c4cf2ced6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\75c2b0388000d2d5c8fd0c0c4cf2ced6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\d2d9977d5e188cd120143a19924c32cc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\d2d9977d5e188cd120143a19924c32cc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\eb29ec49b18434ed0e39bf720a00ae91\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\eb29ec49b18434ed0e39bf720a00ae91\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\a50e4d987b79ce1315d61ead0a9d6b4e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\a50e4d987b79ce1315d61ead0a9d6b4e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\9273af245033397c93b90d3f86713b74\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\9273af245033397c93b90d3f86713b74\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\transition-27.0.2.aar\39aee85515345b49919c74071bd36763\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\transition-27.0.2.aar\39aee85515345b49919c74071bd36763\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customtabs:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\customtabs-27.0.2.aar\1382b7c04eaaab484555a53300c93d16\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customtabs:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\customtabs-27.0.2.aar\1382b7c04eaaab484555a53300c93d16\AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.android:facebook-places:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-places-4.33.0.aar\756d9e75c1abb6dafc59250beaf120ff\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-places:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-places-4.33.0.aar\756d9e75c1abb6dafc59250beaf120ff\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-applinks-4.33.0.aar\15ccbc2e8ce35430185a23c37404d5ec\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-applinks-4.33.0.aar\15ccbc2e8ce35430185a23c37404d5ec\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-messenger-4.33.0.aar\09d1b37ecc951ab519f71e97d3552133\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-messenger-4.33.0.aar\09d1b37ecc951ab519f71e97d3552133\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\0fd25c0186de70ee90130f631420a7ca\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\0fd25c0186de70ee90130f631420a7ca\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\b50d73e7319f1343cb57a1c55ff1e34d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\b50d73e7319f1343cb57a1c55ff1e34d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\4a395b325b1d02f77e53360f6eeda71d\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\4a395b325b1d02f77e53360f6eeda71d\AndroidManifest.xml:20:5-22:41
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:8:5-10:41
+INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:8:5-10:41
+	android:targetSdkVersion
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:10:9-38
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:9:9-35
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+		INJECTED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:12:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:13:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:14:5-79
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:14:22-76
+uses-permission#android.permission.VIBRATE
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:15:5-66
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:15:22-63
+application
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:17:5-105:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.33.0.aar\6ba4737abf96feb8b3da37310d11c3b2\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.33.0.aar\6ba4737abf96feb8b3da37310d11c3b2\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-login-4.33.0.aar\859e14b273fbd670f621afe065c40ce4\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-login-4.33.0.aar\859e14b273fbd670f621afe065c40ce4\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-share-4.33.0.aar\24b278e2b6494bd4f4ef63c3cf1f2a94\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-share-4.33.0.aar\24b278e2b6494bd4f4ef63c3cf1f2a94\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:28:5-34:19
+MERGED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:28:5-34:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7b77a13b44ac9bf094d6ba188878523e\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7b77a13b44ac9bf094d6ba188878523e\AndroidManifest.xml:9:5-20
+MERGED from [com.facebook.android:facebook-places:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-places-4.33.0.aar\756d9e75c1abb6dafc59250beaf120ff\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-places:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-places-4.33.0.aar\756d9e75c1abb6dafc59250beaf120ff\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-applinks-4.33.0.aar\15ccbc2e8ce35430185a23c37404d5ec\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-applinks-4.33.0.aar\15ccbc2e8ce35430185a23c37404d5ec\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-messenger-4.33.0.aar\09d1b37ecc951ab519f71e97d3552133\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-messenger-4.33.0.aar\09d1b37ecc951ab519f71e97d3552133\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:28:5-51:19
+MERGED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:28:5-51:19
+	android:supportsRtl
+		ADDED from [com.facebook.android:facebook-android-sdk:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.33.0.aar\6ba4737abf96feb8b3da37310d11c3b2\AndroidManifest.xml:28:18-44
+	android:label
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:21:9-44
+	android:icon
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:20:9-42
+	android:allowBackup
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:19:9-36
+	android:theme
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:22:9-59
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:18:9-28
+activity#com.kidscademy.instruments.quiz.LauncherActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:23:9-29:20
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:23:19-51
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:24:13-28:29
+action#android.intent.action.MAIN
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:25:17-69
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:25:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:27:17-77
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:27:27-74
+activity#com.kidscademy.instruments.quiz.MainActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:30:9-32:47
+	android:launchMode
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:32:13-44
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:31:13-41
+activity#com.kidscademy.instruments.quiz.GameActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:33:9-50
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:33:19-47
+activity#com.kidscademy.instruments.quiz.QuizActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:34:9-50
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:34:19-47
+activity#com.kidscademy.instruments.quiz.LevelsActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:35:9-52
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:35:19-49
+activity#com.kidscademy.instruments.quiz.LevelInstrumentsActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:36:9-39:40
+	android:label
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:38:13-57
+	android:noHistory
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:37:13-53
+activity#com.kidscademy.instruments.quiz.BalanceActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:40:9-42:40
+	android:noHistory
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:42:13-37
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:41:13-44
+activity#com.kidscademy.instruments.quiz.QuizStartActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:43:9-45:89
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:45:13-86
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:44:13-46
+activity#com.kidscademy.instruments.quiz.GameOverActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:46:9-48:89
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:48:13-86
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:47:13-45
+activity#com.kidscademy.instruments.quiz.ShareActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:49:9-51:89
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:51:13-86
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:50:13-42
+activity#com.kidscademy.instruments.quiz.RecommendedActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:52:9-54:89
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:54:13-86
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:53:13-48
+activity#com.kidscademy.instruments.quiz.AboutActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:55:9-57:89
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:57:13-86
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:56:13-42
+activity#com.kidscademy.instruments.quiz.NoAdsActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:58:9-60:89
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:60:13-86
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:59:13-42
+activity#com.kidscademy.instruments.quiz.FeaturesActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:61:9-63:89
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:63:13-86
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:62:13-45
+activity#com.kidscademy.app.PreferencesActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:66:9-69:54
+	android:parentActivityName
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:68:13-86
+	android:theme
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:69:13-51
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:67:13-66
+activity#com.kidscademy.app.ErrorActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:70:9-74:40
+	android:excludeFromRecents
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:72:13-46
+	android:launchMode
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:73:13-44
+	android:noHistory
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:74:13-37
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:71:13-60
+activity#com.facebook.FacebookActivity
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:77:9-80:51
+MERGED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:29:9-32:66
+	android:label
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:80:13-48
+	android:configChanges
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:79:13-96
+	android:theme
+		ADDED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:32:13-63
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:78:13-57
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:83:9-85:55
+	android:value
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:85:13-52
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:84:13-58
+meta-data#com.facebook.sdk.ApplicationName
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:87:9-89:48
+	android:value
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:89:13-45
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:88:13-60
+provider#com.facebook.FacebookContentProvider
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:93:9-96:39
+	android:authorities
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:95:13-90
+	android:exported
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:96:13-36
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:94:13-64
+service#com.kidscademy.app.SyncService
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:99:9-101:38
+	android:enabled
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:101:13-35
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:100:13-58
+service#com.kidscademy.app.LoadService
+ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:102:9-104:38
+	android:enabled
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:104:13-35
+	android:name
+		ADDED from D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\src\main\AndroidManifest.xml:103:13-58
+activity#com.facebook.CustomTabMainActivity
+ADDED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:33:9-71
+	android:name
+		ADDED from [com.facebook.android:facebook-common:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-common-4.33.0.aar\123f149d03d2babc0f7e76a1f56381de\AndroidManifest.xml:33:19-68
+provider#com.facebook.internal.FacebookInitProvider
+ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:39:9-42:40
+	android:authorities
+		ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:41:13-72
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:42:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:40:13-70
+receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
+ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:44:9-50:20
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:46:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:45:13-86
+intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:47:13-49:29
+action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:48:17-95
+	android:name
+		ADDED from [com.facebook.android:facebook-core:4.33.0] C:\Users\DEV\.gradle\caches\transforms-1\files-1.1\facebook-core-4.33.0.aar\ab40d4d7a78c2d24a5c512b149a2b87c\AndroidManifest.xml:48:25-92

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz_complete"
+    class="com.kidscademy.instruments.quiz.QuizActivity$QuizCompleteDialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        style="@style/page_background"
+        android:src="@drawable/page_bg1" />
+
+    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:text="Quiz complete"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="28dp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/quiz_start_icons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:foregroundGravity="center_horizontal">
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            app:backgroundColor="#80ff8080" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="56dp"
+            app:backgroundColor="#8040b5ff"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginLeft="200dp"
+            app:backgroundColor="#803358be"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="114dp"
+            app:backgroundColor="#8020e8ca"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="170dp"
+            app:backgroundColor="@color/cyan_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="228dp"
+            app:backgroundColor="@color/blue_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/quiz_complete_credits"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="56dp"
+            android:gravity="center"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textSize="48sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="+199" />
+    </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/quiz_complete_response_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average response time"
+            android:textColor="@color/blue_200"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/quiz_complete_response_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="1234"
+            android:textColor="@color/blue_200"
+            android:textSize="48sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/quiz_complete_response_time_value"
+            android:layout_marginLeft="6dp"
+            android:layout_toEndOf="@+id/quiz_complete_response_time_value"
+            android:text="ms"
+            android:textColor="@color/blue_200"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <com.kidscademy.instruments.quiz.view.RandomColorFAB style="@style/fab_dialog_close" />
+
+</view>

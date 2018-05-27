@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="AnimatedIcon">
+        <attr name="iconAnimation" format="reference" />
+    </declare-styleable>
+</resources>

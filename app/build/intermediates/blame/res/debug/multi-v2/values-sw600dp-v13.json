@@ -1,0 +1,246 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+            "map": [
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\kids_game.xml",
+                    "from": {
+                        "startLines": "4,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "115,59",
+                        "endColumns": "52,54",
+                        "endOffsets": "163,109"
+                    },
+                    "to": {
+                        "startLines": "40,41",
+                        "startColumns": "4,4",
+                        "startOffsets": "2426,2479",
+                        "endColumns": "52,54",
+                        "endOffsets": "2474,2529"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\score.xml",
+                    "from": {
+                        "startLines": "5,3,4,6,8,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "161,59,110,211,308,259",
+                        "endColumns": "48,49,49,46,48,47",
+                        "endOffsets": "205,104,155,253,352,302"
+                    },
+                    "to": {
+                        "startLines": "58,59,60,61,62,63",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "3341,3390,3440,3490,3537,3586",
+                        "endColumns": "48,49,49,46,48,47",
+                        "endOffsets": "3385,3435,3485,3532,3581,3629"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\kids-cademy.aar\\ad75b78b3abfb450a298207f092b6ee9\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,13,20",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,108,159,213,262,607,969",
+                        "endLines": "2,3,4,5,12,19,28",
+                        "endColumns": "52,50,53,48,12,12,12",
+                        "endOffsets": "103,154,208,257,602,964,1373"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,51,82,89,96",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "1766,1819,1870,3006,4549,4894,5256",
+                        "endLines": "29,30,31,51,88,95,104",
+                        "endColumns": "52,50,53,48,12,12,12",
+                        "endOffsets": "1814,1865,1919,3050,4889,5251,5660"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\slides.xml",
+                    "from": {
+                        "startLines": "10,14,13,16,17,15,11,12,7,8,3",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "311,517,461,631,692,571,363,412,202,254,59",
+                        "endLines": "10,14,13,16,17,15,11,12,7,8,5",
+                        "endColumns": "50,52,54,59,60,58,47,47,50,49,12",
+                        "endOffsets": "357,565,511,686,748,625,406,455,248,299,190"
+                    },
+                    "to": {
+                        "startLines": "64,65,66,67,68,69,70,71,73,74,79",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3634,3685,3738,3793,3853,3914,3973,4021,4132,4183,4415",
+                        "endLines": "64,65,66,67,68,69,70,71,73,74,81",
+                        "endColumns": "50,52,54,59,60,58,47,47,50,49,12",
+                        "endOffsets": "3680,3733,3788,3848,3909,3968,4016,4064,4178,4228,4544"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\quiz.xml",
+                    "from": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "59,109,156",
+                        "endColumns": "48,45,47",
+                        "endOffsets": "103,150,199"
+                    },
+                    "to": {
+                        "startLines": "55,56,57",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "3198,3247,3293",
+                        "endColumns": "48,45,47",
+                        "endOffsets": "3242,3288,3336"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.0.2.aar\\ab11b7c843b97c75411c97f592c37734\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,115,185,256,328,386,444,550,614,677",
+                        "endLines": "2,3,4,5,6,7,8,9,10,14",
+                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "110,180,251,323,381,439,545,609,672,854"
+                    },
+                    "to": {
+                        "startLines": "21,22,23,24,25,26,27,28,72,75",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1207,1267,1337,1408,1480,1538,1596,1702,4069,4233",
+                        "endLines": "21,22,23,24,25,26,27,28,72,78",
+                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "1262,1332,1403,1475,1533,1591,1697,1761,4127,4410"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\69598d6363e5f2c80572d9866657db0c\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,124,193,263,337,413,472,543",
+                        "endColumns": "68,68,69,73,75,58,70,67",
+                        "endOffsets": "119,188,258,332,408,467,538,606"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\letter.xml",
+                    "from": {
+                        "startLines": "4,3,5,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "103,59,152,201",
+                        "endColumns": "47,42,47,47",
+                        "endOffsets": "146,97,195,244"
+                    },
+                    "to": {
+                        "startLines": "47,48,49,50",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "2819,2867,2910,2958",
+                        "endColumns": "47,42,47,47",
+                        "endOffsets": "2862,2905,2953,3001"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\game.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endColumns": "53",
+                        "endOffsets": "108"
+                    },
+                    "to": {
+                        "startLines": "32",
+                        "startColumns": "4",
+                        "startOffsets": "1924",
+                        "endColumns": "53",
+                        "endOffsets": "1973"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\launcher.xml",
+                    "from": {
+                        "startLines": "5,4,3,6,7",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "181,121,59,233,294",
+                        "endColumns": "50,58,60,59,53",
+                        "endOffsets": "227,175,115,288,343"
+                    },
+                    "to": {
+                        "startLines": "42,43,44,45,46",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "2534,2585,2644,2705,2765",
+                        "endColumns": "50,58,60,59,53",
+                        "endOffsets": "2580,2639,2700,2760,2814"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\js-android.aar\\55879b077dd2cee0a2db419214ed2edb\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,117",
+                        "endColumns": "61,65",
+                        "endOffsets": "112,178"
+                    },
+                    "to": {
+                        "startLines": "33,34",
+                        "startColumns": "4,4",
+                        "startOffsets": "1978,2040",
+                        "endColumns": "61,65",
+                        "endOffsets": "2035,2101"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\kids_correct_answer.xml",
+                    "from": {
+                        "startLines": "6,5,7,4,3",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "250,186,316,122,59",
+                        "endColumns": "64,62,66,62,61",
+                        "endOffsets": "310,244,378,180,116"
+                    },
+                    "to": {
+                        "startLines": "35,36,37,38,39",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "2106,2171,2234,2301,2364",
+                        "endColumns": "64,62,66,62,61",
+                        "endOffsets": "2166,2229,2296,2359,2421"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\main.xml",
+                    "from": {
+                        "startLines": "4,3,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "111,59,158",
+                        "endColumns": "45,50,45",
+                        "endOffsets": "152,105,199"
+                    },
+                    "to": {
+                        "startLines": "52,53,54",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "3055,3101,3152",
+                        "endColumns": "45,50,45",
+                        "endOffsets": "3096,3147,3193"
+                    }
+                },
+                {
+                    "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\catalog.xml",
+                    "from": {
+                        "startLines": "4,11,5,8,7,6,14,10,9,13,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "119,510,176,354,289,229,672,460,406,616,563",
+                        "endColumns": "55,51,51,50,63,58,52,48,52,54,51",
+                        "endOffsets": "170,557,223,400,348,283,720,504,454,666,610"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "611,667,719,771,822,886,945,998,1047,1100,1155",
+                        "endColumns": "55,51,51,50,63,58,52,48,52,54,51",
+                        "endOffsets": "662,714,766,817,881,940,993,1042,1095,1150,1202"
+                    }
+                }
+            ]
+        }
+    ]
+}

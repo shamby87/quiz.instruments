@@ -1,0 +1,26 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        style="@style/page_background"
+        android:src="@drawable/page_bg1" />
+
+    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recommended_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_recommended" />
+
+    <com.kidscademy.instruments.quiz.view.RandomColorFAB
+        style="@style/fab_back_autohide"
+        app:layout_anchor="@id/recommended_list" />
+
+</android.support.design.widget.CoordinatorLayout>

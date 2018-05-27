@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="MovingDotsBackground">
+        <attr name="movingDotsMaskColor" format="color" />
+        <attr name="movingDotsSize" format="dimension" />
+        <attr name="movingDotsTailColor" format="color" />
+        <attr name="movingDotsTailLength" format="dimension" />
+        <attr name="movingDotsTailWidth" format="dimension" />
+    </declare-styleable>
+</resources>

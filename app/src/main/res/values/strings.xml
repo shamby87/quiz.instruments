@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- application name and description -->
+    <string name="app_name">Instruments Quiz</string>
+    <string name="app_caption">Instruments Quiz</string>
+    <string name="app_logotype">Trivia game about musical instruments</string>
+    <string name="app_description">Instruments Quiz is a trivia game that challenges you to recognize musical instruments existing all over the world, from well know guitar or piano to esoteric didgeridoo.</string>
+
+    <!-- global string values -->
+    <string-array name="level_names">
+        <item>LEVEL 1</item>
+        <item>LEVEL 2</item>
+        <item>LEVEL 3</item>
+        <item>LEVEL 4</item>
+        <item>LEVEL 5</item>
+        <item>LEVEL 6</item>
+        <item>LEVEL 7</item>
+        <item>LEVEL 8</item>
+        <item>LEVEL 9</item>
+        <item>LEVEL 10</item>
+        <item>LEVEL 11</item>
+        <item>LEVEL 12</item>
+        <item>LEVEL 13</item>
+        <item>LEVEL 14</item>
+        <item>LEVEL 15</item>
+        <item>LEVEL 16</item>
+        <item>LEVEL 17</item>
+        <item>LEVEL 18</item>
+        <item>LEVEL 19</item>
+        <item>LEVEL 20</item>
+    </string-array>
+
+    <!--  quiz start activity -->
+    <string name="quiz_start_message">Take a quiz to earn credits. Use credits to reveal game hints.</string>
+    <string name="quiz_start_warning">Response speed maters. Start when ready.</string>
+
+    <!-- card level component -->
+    <string name="card_level_score">score</string>
+    <string name="card_level_total">total</string>
+    <string name="card_level_done">done</string>
+
+    <!-- no credit dialog -->
+    <string name="no_credit_quiz">Take a quiz to earn credits.</string>
+    <string name="no_credit_hints">Use credits to reveal game hints.</string>
+
+    <!-- trade hints dialog -->
+    <string name="trade_hints_title">Trade quiz credits for instrument name hints. You currently have %d credits.</string>
+    <string name="trade_hints_reveal_label">Reveal Letter</string>
+    <string name="trade_hints_reveal_description">Reveal first missing letter from instrument name</string>
+    <string name="trade_hints_verify_label">Verify Input</string>
+    <string name="trade_hints_verify_description">Verify existing letters from instrument name</string>
+    <string name="trade_hints_hide_label">Hide Letters</string>
+    <string name="trade_hints_hide_description">Hide unused letters from keyboard</string>
+    <string name="trade_hints_play_label">Play Sample</string>
+    <string name="trade_hints_play_description">Play instrument sample. This enable play button from action bar.</string>
+
+    <!-- about activity -->
+    <string name="about_message1">@string/app_description</string>
+    <string name="about_message2">Instruments Quiz is completely free. Free of annoying ads, no misleading in-app payment, no spy-ware.</string>
+    <string name="about_message3">Development effort is donated. It is a humble way to show gratitude to Internet community that gives us all so much.</string>
+
+    <!-- no ads manifesto -->
+    <string name="no_ads_title">No Ads Manifesto</string>
+    <string name="no_ads_p1">Arguable Internet did change the world and we all agree on that. But aggressive advertisement campaigns lead to myriad of sites specialized on content farming and applications created only for advertisement. Digital space becomes an immense advertising machine with poor quality and multiplicate content.</string>
+    <string name="no_ads_p2">Digital space started to resemble old days media. In fact is worse. At least there we are not forced to support advertisement all the time; there is 30 minutes pause.</string>
+    <string name="no_ads_p3">And advertisement quality is critical. Most ads are not so appealing, some of them being downright ugly. And in most cases destroy beautifully crafted sites and applications and ruin user experience.</string>
+    <string name="no_ads_p4">We strongly believe there should be more elegant ways to sustain a business.</string>
+    <string name="no_ads_p5">That being said, we do not believe advertisement is evil per se. Au contraire. Good ads can help deciding and can be fun to watch. The only problem is we do not want to see ads all the time and want them separated by content.</string>
+    <string name="no_ads_conclusion">The good news is it may be a solution. Create separated space dedicated for advertisement. This way user can enjoy content and when in need for new services or products, or maybe for some fun, can willingly access advertisement.</string>
+    <string name="no_ads_disagree">Disagree</string>
+    <string name="no_ads_agree">Agree</string>
+
+</resources>

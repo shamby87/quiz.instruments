@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_level"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card:cardBackgroundColor="@color/grey_100"
+    card:cardCornerRadius="4dp"
+    card:cardElevation="12dp"
+    card:cardUseCompatPadding="true">
+
+    <!-- set card:cardBackgroundColor to the same color as page background; otherwise a strange border appear -->
+    <!-- need to add card:cardUseCompatPadding="true" to show shadow on lollipop -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:id="@+id/card_level_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/level_bg1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.4"
+                android:background="@color/black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="20dp">
+
+                <com.kidscademy.instruments.quiz.view.HexaIcon
+                    android:id="@+id/card_level_action"
+                    style="@style/card_level.action" />
+
+                <TextView
+                    android:id="@+id/card_level_name"
+                    style="@style/card_level.name"
+                    android:layout_toRightOf="@+id/card_level_action"
+                    tools:text="@string/sample_level_name" />
+
+                <GridLayout
+                    android:id="@+id/card_level_synopsis"
+                    style="@style/card_level.grid"
+                    android:layout_alignLeft="@+id/card_level_name"
+                    android:layout_below="@+id/card_level_name">
+
+                    <TextView
+                        style="@style/card_level.label"
+                        android:text="@string/card_level_total" />
+
+                    <TextView
+                        style="@style/card_level.separator"
+                        android:text="@string/balance_separator" />
+
+                    <TextView
+                        android:id="@+id/card_level_total"
+                        style="@style/card_level.value"
+                        tools:text="10" />
+
+                    <TextView
+                        style="@style/card_level.label"
+                        android:text="@string/card_level_done" />
+
+                    <TextView
+                        style="@style/card_level.separator"
+                        android:text="@string/balance_separator" />
+
+                    <TextView
+                        android:id="@+id/card_level_done"
+                        style="@style/card_level.value"
+                        tools:text="4" />
+
+                    <TextView
+                        style="@style/card_level.label"
+                        android:text="@string/card_level_score"
+                        android:textColor="@color/yellow_500" />
+
+                    <TextView
+                        style="@style/card_level.separator"
+                        android:text="@string/balance_separator"
+                        android:textColor="@color/yellow_500" />
+
+                    <TextView
+                        android:id="@+id/card_level_score"
+                        style="@style/card_level.value"
+                        android:textColor="@color/yellow_500"
+                        tools:text="20" />
+                </GridLayout>
+            </RelativeLayout>
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/card_level_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="2dp"
+            android:minHeight="24dp"
+            android:progress="75"
+            android:progressDrawable="@drawable/level_progress_amber" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

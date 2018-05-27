@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_sharing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/list_item_padding">
+
+    <ImageView
+        android:id="@+id/item_sharing_icon"
+        style="@style/icon_view"
+        tools:src="@drawable/app_icon" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_sharing_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/cyan_300"
+            tools:text="Application Name" />
+
+        <TextView
+            android:id="@+id/item_sharing_package"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/list_item_text_top"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            tools:text="com.kidscademy.package" />
+
+        <TextView
+            android:id="@+id/item_sharing_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            tools:text="1.2.3" />
+    </LinearLayout>
+
+</LinearLayout>

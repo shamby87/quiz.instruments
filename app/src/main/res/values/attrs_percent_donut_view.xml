@@ -1,0 +1,10 @@
+<resources>
+    <declare-styleable name="PercentDonutView">
+        <attr name="donutPercent" format="float" />
+        <attr name="donutBackgroundColor" format="color" />
+        <attr name="donutStrokeColor" format="color" />
+        <attr name="donutStrokeWidth" format="dimension" />
+        <attr name="donutTextColor" format="color" />
+        <attr name="donutTextSize" format="dimension" />
+    </declare-styleable>
+</resources>

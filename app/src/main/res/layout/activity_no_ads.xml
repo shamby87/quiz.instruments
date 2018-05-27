@@ -1,0 +1,79 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        style="@style/page_background"
+        android:src="@drawable/page_bg1" />
+
+    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout style="@style/page_header">
+
+        <TextView
+            style="@style/header_title"
+            android:text="@string/no_ads_title" />
+
+        <js.view.NoAdsIconView style="@style/header_icon" />
+    </FrameLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/no_ads_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="140dp">
+
+            <TextView
+                style="@style/paragraph.accent"
+                android:text="@string/no_ads_p1" />
+
+            <TextView
+                style="@style/paragraph"
+                android:text="@string/no_ads_p2" />
+
+            <TextView
+                style="@style/paragraph"
+                android:text="@string/no_ads_p3" />
+
+            <TextView
+                style="@style/paragraph"
+                android:text="@string/no_ads_p4" />
+
+            <TextView
+                style="@style/paragraph"
+                android:text="@string/no_ads_p5" />
+
+            <TextView
+                style="@style/paragraph.emphasized"
+                android:text="@string/no_ads_conclusion" />
+
+            <LinearLayout
+                style="@style/buttons_section"
+                android:layout_marginTop="@dimen/no_ads_buttons_margin">
+
+                <Button
+                    android:id="@+id/no_ads_disagree_button"
+                    style="@style/button.first"
+                    android:text="@string/no_ads_disagree" />
+
+                <Button
+                    android:id="@+id/no_ads_agree_button"
+                    style="@style/button"
+                    android:text="@string/no_ads_agree" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.kidscademy.instruments.quiz.view.RandomColorFAB
+        style="@style/fab_back_autohide"
+        app:layout_anchor="@id/no_ads_scroll" />
+</android.support.design.widget.CoordinatorLayout>

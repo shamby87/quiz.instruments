@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="quiz_start"></style>
+
+    <style name="quiz_start.message">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:layout_marginTop">50px</item>
+        <item name="android:layout_marginLeft">40px</item>
+        <item name="android:layout_marginRight">40px</item>
+    </style>
+
+    <style name="quiz_start.warning" parent="quiz_start.message">
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:layout_marginTop">160px</item>
+        <item name="android:textColor">@color/cyan_300</item>
+    </style>
+
+    <style name="quiz_start.hexa_icon">
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">160dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="backgroundColor">@color/cyan_300</item>
+    </style>
+
+</resources>

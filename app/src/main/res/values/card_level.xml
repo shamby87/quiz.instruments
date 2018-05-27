@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <dimen name="card_level_row_space">0dp</dimen>
+
+    <color name="card_level_text_color">@color/white</color>
+
+</resources>

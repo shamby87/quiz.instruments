@@ -1,0 +1,219 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/balance"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kidscademy.instruments.quiz.BalanceActivity">
+
+    <ImageView
+        style="@style/page_background"
+        tools:src="@drawable/page_bg1" />
+
+    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Levels"
+                android:textAllCaps="true"
+                android:textColor="@color/blue_300" />
+
+            <TextView
+                android:id="@+id/balance_total_levels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/white"
+                android:textSize="40dp"
+                tools:text="20" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/thin_right_border"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Unlocked"
+                android:textAllCaps="true"
+                android:textColor="@color/green_300" />
+
+            <TextView
+                android:id="@+id/balance_unlocked_levels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="40dp"
+                tools:text="10" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/thin_right_border"
+            android:paddingLeft="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Complete"
+                android:textAllCaps="true"
+                android:textColor="@color/cyan_300" />
+
+            <TextView
+                android:id="@+id/balance_completed_levels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="40dp"
+                tools:text="4" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/balance_response_time_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Best response time"
+            android:textColor="@color/blue_200"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/balance_response_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/blue_200"
+            android:textSize="48sp"
+            tools:text="1234" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/balance_response_time"
+            android:layout_marginLeft="6dp"
+            android:layout_toEndOf="@+id/balance_response_time"
+            android:text="ms"
+            android:textColor="@color/blue_200"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <com.kidscademy.instruments.quiz.view.PercentDonutView
+            android:id="@+id/balance_complete_percent"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            app:donutBackgroundColor="#8064b5f6"
+            app:donutStrokeColor="#C04caf50"
+            app:donutStrokeWidth="16dp"
+            app:donutTextColor="@color/white"
+            app:donutTextSize="40dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_cyan">
+
+                <TextView
+                    android:id="@+id/balance_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:text="+1024" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="14dp"
+                    android:text="Points"
+                    android:textAllCaps="true"
+                    android:textColor="@color/cyan_100" />
+            </FrameLayout>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_amber">
+
+                <TextView
+                    android:id="@+id/balance_credits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:text="+2345" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="14dp"
+                    android:text="Credits"
+                    android:textAllCaps="true"
+                    android:textColor="@color/amber_100" />
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.kidscademy.instruments.quiz.view.RandomColorFAB style="@style/fab_back" />
+
+</FrameLayout>

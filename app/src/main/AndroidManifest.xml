@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kidscademy.instruments.quiz"
+    android:installLocation="auto"
+    android:versionCode="4"
+    android:versionName="1.0.4-DEBUG">
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_caption"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".LauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".GameActivity" />
+        <activity android:name=".QuizActivity" />
+        <activity android:name=".LevelsActivity" />
+        <activity
+            android:name=".LevelInstrumentsActivity"
+            android:label="@string/level_brands_caption"
+            android:noHistory="true" />
+        <activity
+            android:name=".BalanceActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".QuizStartActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+        <activity
+            android:name=".GameOverActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+        <activity
+            android:name=".ShareActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+        <activity
+            android:name=".RecommendedActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+        <activity
+            android:name=".AboutActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+        <activity
+            android:name=".NoAdsActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+        <activity
+            android:name=".FeaturesActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+
+        <!-- Activities inherited from core application library -->
+        <activity
+            android:name="com.kidscademy.app.PreferencesActivity"
+            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name="com.kidscademy.app.ErrorActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:noHistory="true" />
+
+        <!-- Facebook support -->
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_caption" />
+
+        <!-- get application id from Facebook Developer / Application /Settings / App ID -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_apikey" />
+        <!-- post is rejected if application name is not that declared into Facebook Developer / Application /Settings / Display Name -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationName"
+            android:value="@string/app_name" />
+
+        <!-- provider class name is suffixed with apikey -->
+        <!-- TODO: replace apikey placeholder with real facebook apikey otherwise apk deploy will fail -->
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider592040027662527"
+            android:exported="true" />
+
+        <!-- Application Services -->
+        <service
+            android:name="com.kidscademy.app.SyncService"
+            android:enabled="true" />
+        <service
+            android:name="com.kidscademy.app.LoadService"
+            android:enabled="true" />
+    </application>
+
+</manifest>

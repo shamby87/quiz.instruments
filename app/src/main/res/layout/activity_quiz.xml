@@ -1,0 +1,136 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kidscademy.instruments.quiz.QuizActivity">
+
+    <ImageView
+        style="@style/page_background"
+        tools:src="@drawable/page_bg1" />
+
+    <View style="@style/page_background_mask" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/quiz_timeout"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="8000"
+            android:progress="2000"
+            android:progressDrawable="@drawable/level_progress_blue" />
+
+        <LinearLayout
+            style="@style/quiz.toolbar"
+            android:background="@color/black_TA0">
+
+            <TextView
+                android:id="@+id/quiz_credits"
+                style="@style/quiz.label" />
+
+            <TextView
+                style="@style/quiz.label.separator"
+                android:text="/" />
+
+            <TextView
+                android:id="@+id/quiz_level_credits"
+                style="@style/quiz.label" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <RatingBar
+                    android:id="@+id/quiz_left_tries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:numStars="3"
+                    android:rating="3"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
+                    android:stepSize="1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/quiz_solved"
+                style="@style/quiz.label" />
+
+            <TextView
+                style="@style/quiz.label.separator"
+                android:text="/" />
+
+            <TextView
+                android:id="@+id/quiz_count"
+                style="@style/quiz.label" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/quiz_logo"
+            style="@style/quiz.logo"
+            android:background="@color/black_TA0" />
+
+        <TextView
+            android:id="@+id/quiz_name"
+            style="@style/quiz.name" />
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/quiz_options"
+            style="@style/quiz.options_section">
+
+            <Button
+                style="@style/quiz.option"
+                android:tag="KEY" />
+
+            <Button
+                style="@style/quiz.option"
+                android:tag="KEY" />
+
+            <Button
+                style="@style/quiz.option"
+                android:tag="KEY" />
+
+            <Button
+                style="@style/quiz.option"
+                android:tag="KEY" />
+
+            <Button
+                style="@style/quiz.option"
+                android:tag="KEY" />
+
+            <Button
+                style="@style/quiz.option"
+                android:tag="KEY" />
+        </android.support.v7.widget.GridLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="64dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.kidscademy.instruments.quiz.view.RandomColorFAB
+            style="@style/fab_close"
+            android:layout_margin="0dp" />
+    </LinearLayout>
+
+    <js.view.DialogOverlay
+        android:id="@+id/quiz_dialog_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:closeButtonId="@id/fab_dialog_close" />
+
+</FrameLayout>

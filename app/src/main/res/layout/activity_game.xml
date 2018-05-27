@@ -1,0 +1,209 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kidscademy.instruments.quiz.GameActivity">
+
+    <ImageView
+        style="@style/page_background"
+        tools:src="@drawable/page_bg1" />
+
+    <View style="@style/page_background_mask" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="36dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/game_score"
+                style="@style/game.label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                tools:text="1234" />
+
+            <TextView
+                android:id="@+id/game_score_separator"
+                style="@style/game.label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_toRightOf="@id/game_score"
+                android:text="/" />
+
+            <TextView
+                android:id="@+id/game_credit"
+                style="@style/game.label"
+                android:layout_toRightOf="@id/game_score_separator"
+                tools:text="0" />
+
+            <TextView
+                android:id="@+id/game_brands_count"
+                style="@style/game.label"
+                android:layout_alignParentRight="true"
+                tools:text="10" />
+
+            <TextView
+                android:id="@+id/game_level_separator"
+                style="@style/game.label"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_toLeftOf="@id/game_brands_count"
+                android:text="/" />
+
+            <TextView
+                android:id="@+id/game_solved_brands_count"
+                style="@style/game.label"
+                android:layout_toLeftOf="@id/game_level_separator"
+                tools:text="0" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/black_TA0"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/game_challenge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/game_score_plus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="100dp"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_T80">
+
+            <com.kidscademy.instruments.quiz.view.NameView
+                android:id="@+id/game_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="D" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+            </com.kidscademy.instruments.quiz.view.NameView>
+        </FrameLayout>
+
+        <include
+            android:id="@+id/game_keyboard"
+            layout="@layout/compo_keyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/game_keyboard_y_margin"
+            android:layout_marginTop="@dimen/game_keyboard_y_margin" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.kidscademy.instruments.quiz.view.RandomColorFAB
+            android:id="@+id/game_fab_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:elevation="6dp"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_action_add" />
+
+        <com.kidscademy.instruments.quiz.view.RandomColorFAB
+            android:id="@+id/game_fab_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:elevation="6dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_action_menu"
+            app:useCompatPadding="true" />
+
+        <com.kidscademy.instruments.quiz.view.RandomColorFAB
+            android:id="@+id/game_fab_view_grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:elevation="6dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_action_apps"
+            app:useCompatPadding="true" />
+
+        <com.kidscademy.instruments.quiz.view.RandomColorFAB
+            android:id="@+id/game_fab_skip_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:elevation="6dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_action_skip_next"
+            app:useCompatPadding="true" />
+
+        <com.kidscademy.instruments.quiz.view.RandomColorFAB
+            android:id="@+id/game_fab_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:elevation="6dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_action_back"
+            app:useCompatPadding="true" />
+    </LinearLayout>
+
+    <js.view.DialogOverlay
+        android:id="@+id/game_unlock_level_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:closeButtonId="@id/fab_dialog_close" />
+
+</FrameLayout>

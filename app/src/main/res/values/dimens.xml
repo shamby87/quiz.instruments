@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- header with tile and icon -->
+    <dimen name="header_height">120dp</dimen>
+    <dimen name="header_icon_size">96dp</dimen>
+    <!-- magic number: top margin = header_height - half icon size = 120 - 48 = 72 -->
+    <dimen name="header_icon_margin_top">72dp</dimen>
+
+    <dimen name="sections_space">40dp</dimen>
+    <dimen name="paragraph_start_indent">40dp</dimen>
+    <dimen name="paragraph_end_indent">20dp</dimen>
+
+    <!-- no ads manifesto -->
+    <dimen name="no_ads_buttons_margin">40dp</dimen>
+
+</resources>

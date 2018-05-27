@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:js-android">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/js-android.aar/55879b077dd2cee0a2db419214ed2edb/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/js-android.aar/55879b077dd2cee0a2db419214ed2edb/jars/libs/js-android-1.0.0.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/js-android.aar/55879b077dd2cee0a2db419214ed2edb/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

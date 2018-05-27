@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    class="com.kidscademy.instruments.quiz.GameActivity$InputVerifyDialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        style="@style/page_background"
+        android:src="@drawable/page_bg1" />
+
+    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="60dp"
+            android:text="Verify response"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/black_T60">
+
+            <com.kidscademy.instruments.quiz.view.NameView
+                android:id="@+id/input_verify_response"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="D" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+            </com.kidscademy.instruments.quiz.view.NameView>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:text="BAD LETTERS"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:background="@color/white_T80">
+
+            <com.kidscademy.instruments.quiz.view.NameView
+                android:id="@+id/input_verify_suggestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="D" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+                <TextView
+                    style="@style/letter"
+                    tools:text="_" />
+
+            </com.kidscademy.instruments.quiz.view.NameView>
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.kidscademy.instruments.quiz.view.RandomColorFAB style="@style/fab_dialog_close" />
+
+</view>

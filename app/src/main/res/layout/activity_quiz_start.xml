@@ -1,0 +1,121 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz_start"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kidscademy.instruments.quiz.QuizStartActivity">
+
+    <ImageView
+        style="@style/page_background"
+        tools:src="@drawable/page_bg1" />
+
+    <View style="@style/page_background_mask" />
+
+    <TextView
+        android:id="@+id/quiz_start_message"
+        style="@style/quiz_start.message"
+        android:text="@string/quiz_start_message" />
+
+    <TextView
+        android:id="@+id/quiz_start_warning"
+        style="@style/quiz_start.warning"
+        android:text="@string/quiz_start_warning" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/quiz_start_icons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:foregroundGravity="center_horizontal">
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            app:backgroundColor="#80ff8080" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="56dp"
+            app:backgroundColor="#8040b5ff"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:iconDrawable="@drawable/ic_action_play" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginLeft="200dp"
+            app:backgroundColor="#803358be"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="114dp"
+            app:backgroundColor="#8020e8ca"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="170dp"
+            app:backgroundColor="@color/cyan_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.kidscademy.instruments.quiz.view.HexaIcon
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="228dp"
+            app:backgroundColor="@color/blue_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/quiz_start_response_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Best response time"
+            android:textColor="@color/blue_200"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/quiz_start_response_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="1234"
+            android:textColor="@color/blue_200"
+            android:textSize="48sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/quiz_start_response_time_value"
+            android:layout_marginLeft="6dp"
+            android:layout_toEndOf="@+id/quiz_start_response_time_value"
+            android:text="ms"
+            android:textColor="@color/blue_200"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <com.kidscademy.instruments.quiz.view.RandomColorFAB style="@style/fab_back" />
+
+</FrameLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pref_summary">Instruments Quiz Preferences</string>
+    <string name="pref_title">Preferences</string>
+    <string name="pref_sound_fx_key">pref.sound.fx</string>
+    <string name="pref_sound_fx_title">Play sounds effects</string>
+    <string name="pref_sound_fx_summary">Play sound effects on correct answers.</string>
+    <string name="pref_key_vibrator_key">pref.key.vibration</string>
+    <string name="pref_key_vibrator_title">Key Vibration</string>
+    <string name="pref_key_vibrator_summary">Vibrate when press keys.</string>
+    
+</resources>

@@ -1,0 +1,122 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        style="@style/page_background"
+        android:src="@drawable/page_bg1" />
+
+    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout style="@style/page_header">
+
+        <TextView
+            style="@style/header_title"
+            android:text="@string/app_logotype" />
+
+        <ImageView
+            style="@style/header_icon"
+            android:src="@drawable/app_icon_new" />
+    </FrameLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/about_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout style="@style/about_body">
+
+            <TextView
+                style="@style/paragraph"
+                android:text="@string/about_message1" />
+
+            <TextView
+                style="@style/paragraph.accent"
+                android:text="@string/about_message2" />
+
+            <TextView
+                style="@style/paragraph"
+                android:text="@string/about_message3" />
+
+            <FrameLayout style="@style/about_developer">
+
+                <js.view.IconView
+                    style="@style/about_developer_picture"
+                    android:src="@drawable/iulian_rotaru" />
+
+                <LinearLayout style="@style/about_developer_info">
+
+                    <TextView
+                        style="@style/about_developer_name"
+                        android:text="Iulian Rotaru"
+                        android:textColor="@color/cyan_300" />
+
+                    <TextView
+                        style="@style/about_developer_expertise"
+                        android:text="Senior Java, Android and Web Full Stack" />
+
+                    <TextView
+                        style="@style/about_developer_place"
+                        android:text="Romania, Jassy" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout style="@style/about_developer">
+
+                <js.view.IconView
+                    style="@style/about_developer_picture"
+                    android:src="@drawable/lucian_rotaru" />
+
+                <LinearLayout style="@style/about_developer_info">
+
+                    <TextView
+                        style="@style/about_developer_name"
+                        android:text="Lucian Rotaru"
+                        android:textColor="@color/green_300" />
+
+                    <TextView
+                        style="@style/about_developer_expertise"
+                        android:text="UX Designer, Content Management" />
+
+                    <TextView
+                        style="@style/about_developer_place"
+                        android:text="Romania, Jassy" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout style="@style/about_developer">
+
+                <js.view.IconView
+                    style="@style/about_developer_picture"
+                    android:src="@drawable/octavian_rotaru" />
+
+                <LinearLayout style="@style/about_developer_info">
+
+                    <TextView
+                        style="@style/about_developer_name"
+                        android:text="Octavian Rotaru"
+                        android:textColor="@color/yellow_300" />
+
+                    <TextView
+                        style="@style/about_developer_expertise"
+                        android:text="Music Composer, Sound Engineering" />
+
+                    <TextView
+                        style="@style/about_developer_place"
+                        android:text="Romania, Jassy" />
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.kidscademy.instruments.quiz.view.RandomColorFAB
+        style="@style/fab_back_autohide"
+        app:layout_anchor="@id/about_scroll" />
+
+</android.support.design.widget.CoordinatorLayout>
