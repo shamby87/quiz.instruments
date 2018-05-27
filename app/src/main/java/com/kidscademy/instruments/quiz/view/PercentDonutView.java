@@ -21,27 +21,68 @@ import java.util.Locale;
 import js.util.Utils;
 
 /**
- * TODO: document your custom view class.
+ * Display a percent value as donut chart.
+ *
+ * @author Iulian Rotaru
  */
 public class PercentDonutView extends View implements ValueAnimator.AnimatorUpdateListener {
     private static final int ANIM_START_DELAY = 2000;
     private static final int ANIM_DURATION = 2000;
 
+    /**
+     * Percent value set by {@link #setPercent(float)}.
+     */
     private float percent;
+    /**
+     * Donut chart background color.
+     */
     private int backgroundColor;
+    /**
+     * Donut chart stroke color. This is the color used to draw the actual percent representation.
+     */
     private int strokeColor;
+    /**
+     * Donut chart stroke width. This is the thickness of the arc representing the percent value.
+     */
     private float strokeWidth;
+    /**
+     * Color of the text displaying percent value.
+     */
     private int textColor;
+    /**
+     * Size of the percent text.
+     */
     private float textSize;
 
+    /**
+     * Drawing properties for chart background.
+     */
     private final Paint backgroundPaint = new Paint();
+    /**
+     * Stroke properties for percent arc.
+     */
     private final Paint strokePaint = new Paint();
+    /**
+     * Percent text drawing properties.
+     */
     private final TextPaint textPaint = new TextPaint();
 
+    /**
+     * Donut chart occupies entire canvas. This value is updated by {@link #onSizeChanged(int, int, int, int)}. For now padding is not taken into account.
+     */
     private final RectF donutDimension = new RectF();
+    /**
+     * Temporary storage for text bounds.
+     */
     private final RectF textDimension = new RectF();
 
+    /**
+     * Donut percent animator.
+     */
     private final ValueAnimator animator = new ValueAnimator();
+    /**
+     * Number format for percent value.
+     */
     private final NumberFormat format = NumberFormat.getPercentInstance(Locale.getDefault());
 
     public PercentDonutView(Context context) {
@@ -59,6 +100,12 @@ public class PercentDonutView extends View implements ValueAnimator.AnimatorUpda
         init(attrs, defStyle);
     }
 
+    /**
+     * Initialize this class instance fields from attributes set.
+     *
+     * @param attrs    attributes set, from layout descriptor,
+     * @param defStyle default attributes set.
+     */
     private void init(AttributeSet attrs, int defStyle) {
         final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.PercentDonutView, defStyle, 0);
 
@@ -97,24 +144,47 @@ public class PercentDonutView extends View implements ValueAnimator.AnimatorUpda
         animator.addUpdateListener(this);
     }
 
+    /**
+     * Set percent value and trigger animation.
+     *
+     * @param percent percent value, in interval [0..1].
+     */
     public void setPercent(float percent) {
         this.percent = 0;
         animator.setFloatValues(0, percent);
         animator.start();
     }
 
+    /**
+     * Callback executed periodically by animator. It saves current percent value and invlaidate this view.
+     *
+     * @param animator animator instance.
+     */
     @Override
     public void onAnimationUpdate(ValueAnimator animator) {
         percent = (float) animator.getAnimatedValue();
         invalidate();
     }
 
+    /**
+     * Callback executed when view size is changed.
+     *
+     * @param w    new width,
+     * @param h    new height,
+     * @param oldw old width,
+     * @param oldh old height.
+     */
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         float offset = strokeWidth / 2;
         donutDimension.set(offset, offset, w - offset, h - offset);
     }
 
+    /**
+     * Callback invoked whenever this view need to be updated. This method draw char background, arch representing percent value and write percent text.
+     *
+     * @param canvas drawing canvas.
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -127,6 +197,9 @@ public class PercentDonutView extends View implements ValueAnimator.AnimatorUpda
         textDimension.set(0, 0, getWidth(), getHeight());
         canvas.drawText(format.format(percent), textDimension.centerX(), textDimension.centerY() + textOffset, textPaint);
     }
+
+    // ------------------------------------------------------------------------
+    // Attributes accessros
 
     public float getDonutPercent() {
         return percent;
