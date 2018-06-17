@@ -21,7 +21,6 @@
         android:icon="@drawable/app_icon"
         android:label="@string/app_caption"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity android:name="com.kidscademy.instruments.quiz.LauncherActivity" >
             <intent-filter>
