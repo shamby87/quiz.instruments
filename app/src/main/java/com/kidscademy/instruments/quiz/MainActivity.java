@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.kidscademy.app.ExitDialog;
 import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.app.PreferencesActivity;
 import com.kidscademy.instruments.quiz.view.HexaIcon;
@@ -124,17 +123,6 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
         if (intent != null) {
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        ExitDialog dialog = new ExitDialog();
-        dialog.open(getSupportFragmentManager(), new Runnable() {
-            @Override
-            public void run() {
-                MainActivity.this.finish();
-            }
-        });
     }
 
     private Intent rate(String url) {

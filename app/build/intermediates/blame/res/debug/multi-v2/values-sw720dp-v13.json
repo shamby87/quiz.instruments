@@ -21,23 +21,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\js-android.aar\\55879b077dd2cee0a2db419214ed2edb\\res\\values-sw720dp-v13\\values-sw720dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,117",
-                        "endColumns": "61,65",
-                        "endOffsets": "112,178"
-                    },
-                    "to": {
-                        "startLines": "4,5",
-                        "startColumns": "4,4",
-                        "startOffsets": "166,228",
-                        "endColumns": "61,65",
-                        "endOffsets": "223,289"
-                    }
-                },
-                {
                     "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw720dp\\main.xml",
                     "from": {
                         "startLines": "3",
@@ -72,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\kids-cademy.aar\\ad75b78b3abfb450a298207f092b6ee9\\res\\values-sw720dp-v13\\values-sw720dp-v13.xml",
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\js-android.aar\\6b846b8ca5e1ef477bcf75bf87676145\\res\\values-sw720dp-v13\\values-sw720dp-v13.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,108,161,210,255,309,363",
-                        "endColumns": "52,52,48,44,53,53,45",
-                        "endOffsets": "103,156,205,250,304,358,404"
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,117",
+                        "endColumns": "61,65",
+                        "endOffsets": "112,178"
                     },
                     "to": {
-                        "startLines": "13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "640,693,746,795,840,894,948",
-                        "endColumns": "52,52,48,44,53,53,45",
-                        "endOffsets": "688,741,790,835,889,943,989"
+                        "startLines": "4,5",
+                        "startColumns": "4,4",
+                        "startOffsets": "166,228",
+                        "endColumns": "61,65",
+                        "endOffsets": "223,289"
                     }
                 },
                 {
@@ -103,6 +86,23 @@
                         "startOffsets": "294,347",
                         "endColumns": "52,54",
                         "endOffsets": "342,397"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\kids-cademy.aar\\e19de23c8ac0d1c09aa3d0c9f47ec5a0\\res\\values-sw720dp-v13\\values-sw720dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,108,161,210,255,309,363",
+                        "endColumns": "52,52,48,44,53,53,45",
+                        "endOffsets": "103,156,205,250,304,358,404"
+                    },
+                    "to": {
+                        "startLines": "13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "640,693,746,795,840,894,948",
+                        "endColumns": "52,52,48,44,53,53,45",
+                        "endOffsets": "688,741,790,835,889,943,989"
                     }
                 },
                 {

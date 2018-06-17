@@ -1,4 +1,13 @@
-#Sun May 27 08:25:37 EEST 2018
-base.0=D\:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\34
+#Sun Jun 17 11:13:32 EEST 2018
+path.3=classes.dex
+path.2=classes.dex
+path.1=classes.dex
 path.0=classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.3=D\:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\47
+base.2=D\:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\46
+base.1=D\:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\49
+base.0=D\:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\48

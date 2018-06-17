@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat May 26 22:11:20 EEST 2018
+#Sun Jun 17 11:12:49 EEST 2018
 60.set=ASSET
 52.set=ASSET
 53.base=D\:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\assets\\debug

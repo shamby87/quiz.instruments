@@ -4,17 +4,7 @@
             "outputFile": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\69598d6363e5f2c80572d9866657db0c\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.0.2.aar\\ab11b7c843b97c75411c97f592c37734\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.0.2.aar\\0024392e3e5c589bfb59d15ad34f2291\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "9",
                         "endColumns": "12",
                         "endOffsets": "505"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\b2c7dbdb7b1cacc0e841b77ff0fc7501\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
                     }
                 }
             ]

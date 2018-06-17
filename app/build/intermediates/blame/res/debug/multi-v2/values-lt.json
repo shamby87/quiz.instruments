@@ -4,7 +4,7 @@
             "outputFile": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lt\\values-lt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\69598d6363e5f2c80572d9866657db0c\\res\\values-lt\\values-lt.xml",
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\b2c7dbdb7b1cacc0e841b77ff0fc7501\\res\\values-lt\\values-lt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\b50d73e7319f1343cb57a1c55ff1e34d\\res\\values-lt\\values-lt.xml",
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\0b7b322aa6addff5497c9dca1f72e730\\res\\values-lt\\values-lt.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

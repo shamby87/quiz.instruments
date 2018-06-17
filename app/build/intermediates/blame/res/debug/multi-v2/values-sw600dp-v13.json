@@ -38,25 +38,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\kids-cademy.aar\\ad75b78b3abfb450a298207f092b6ee9\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,13,20",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,108,159,213,262,607,969",
-                        "endLines": "2,3,4,5,12,19,28",
-                        "endColumns": "52,50,53,48,12,12,12",
-                        "endOffsets": "103,154,208,257,602,964,1373"
-                    },
-                    "to": {
-                        "startLines": "29,30,31,51,82,89,96",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "1766,1819,1870,3006,4549,4894,5256",
-                        "endLines": "29,30,31,51,88,95,104",
-                        "endColumns": "52,50,53,48,12,12,12",
-                        "endOffsets": "1814,1865,1919,3050,4889,5251,5660"
-                    }
-                },
-                {
                     "source": "D:\\docs\\workspaces\\kids-cademy\\android\\instruments.quiz\\app\\src\\main\\res\\values-sw600dp\\slides.xml",
                     "from": {
                         "startLines": "10,14,13,16,17,15,11,12,7,8,3",
@@ -90,35 +71,6 @@
                         "startOffsets": "3198,3247,3293",
                         "endColumns": "48,45,47",
                         "endOffsets": "3242,3288,3336"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.0.2.aar\\ab11b7c843b97c75411c97f592c37734\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,115,185,256,328,386,444,550,614,677",
-                        "endLines": "2,3,4,5,6,7,8,9,10,14",
-                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
-                        "endOffsets": "110,180,251,323,381,439,545,609,672,854"
-                    },
-                    "to": {
-                        "startLines": "21,22,23,24,25,26,27,28,72,75",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1207,1267,1337,1408,1480,1538,1596,1702,4069,4233",
-                        "endLines": "21,22,23,24,25,26,27,28,72,78",
-                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
-                        "endOffsets": "1262,1332,1403,1475,1533,1591,1697,1761,4127,4410"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\69598d6363e5f2c80572d9866657db0c\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,124,193,263,337,413,472,543",
-                        "endColumns": "68,68,69,73,75,58,70,67",
-                        "endOffsets": "119,188,258,332,408,467,538,606"
                     }
                 },
                 {
@@ -173,20 +125,32 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\js-android.aar\\55879b077dd2cee0a2db419214ed2edb\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\b2c7dbdb7b1cacc0e841b77ff0fc7501\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,117",
-                        "endColumns": "61,65",
-                        "endOffsets": "112,178"
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,124,193,263,337,413,472,543",
+                        "endColumns": "68,68,69,73,75,58,70,67",
+                        "endOffsets": "119,188,258,332,408,467,538,606"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.0.2.aar\\0024392e3e5c589bfb59d15ad34f2291\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,115,185,256,328,386,444,550,614,677",
+                        "endLines": "2,3,4,5,6,7,8,9,10,14",
+                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "110,180,251,323,381,439,545,609,672,854"
                     },
                     "to": {
-                        "startLines": "33,34",
-                        "startColumns": "4,4",
-                        "startOffsets": "1978,2040",
-                        "endColumns": "61,65",
-                        "endOffsets": "2035,2101"
+                        "startLines": "21,22,23,24,25,26,27,28,72,75",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1207,1267,1337,1408,1480,1538,1596,1702,4069,4233",
+                        "endLines": "21,22,23,24,25,26,27,28,72,78",
+                        "endColumns": "59,69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "1262,1332,1403,1475,1533,1591,1697,1761,4127,4410"
                     }
                 },
                 {
@@ -204,6 +168,42 @@
                         "startOffsets": "2106,2171,2234,2301,2364",
                         "endColumns": "64,62,66,62,61",
                         "endOffsets": "2166,2229,2296,2359,2421"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\kids-cademy.aar\\e19de23c8ac0d1c09aa3d0c9f47ec5a0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,13,20",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,108,159,213,262,607,969",
+                        "endLines": "2,3,4,5,12,19,28",
+                        "endColumns": "52,50,53,48,12,12,12",
+                        "endOffsets": "103,154,208,257,602,964,1373"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,51,82,89,96",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "1766,1819,1870,3006,4549,4894,5256",
+                        "endLines": "29,30,31,51,88,95,104",
+                        "endColumns": "52,50,53,48,12,12,12",
+                        "endOffsets": "1814,1865,1919,3050,4889,5251,5660"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DEV\\.gradle\\caches\\transforms-1\\files-1.1\\js-android.aar\\6b846b8ca5e1ef477bcf75bf87676145\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,117",
+                        "endColumns": "61,65",
+                        "endOffsets": "112,178"
+                    },
+                    "to": {
+                        "startLines": "33,34",
+                        "startColumns": "4,4",
+                        "startOffsets": "1978,2040",
+                        "endColumns": "61,65",
+                        "endOffsets": "2035,2101"
                     }
                 },
                 {

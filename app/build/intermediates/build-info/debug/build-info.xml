@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86_64,x86"
-    api-level="23"
+    abi="armeabi-v7a,armeabi"
+    api-level="22"
     build-mode="FULL"
-    density="420dpi"
+    density="mdpi"
     format="10"
-    plugin-version="3.1.2"
-    timestamp="1527361873594"
+    plugin-version="3.1.3"
+    timestamp="1529223166605"
     token="-800532492623022373"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="4302" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="35" />
+        duration="7100" />
     <task
         name="verifier"
-        duration="8" />
+        duration="7533" />
 
     <artifact
         location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
@@ -30,10 +30,10 @@
         location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
         type="SPLIT" />
     <artifact
-        location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
         type="SPLIT" />
     <artifact
-        location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+        location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
         type="SPLIT" />
     <artifact
         location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
@@ -62,7 +62,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1527361873594"
+        timestamp="1529223166605"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
@@ -71,10 +71,10 @@
             location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
             location="D:\docs\workspaces\kids-cademy\android\instruments.quiz\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
