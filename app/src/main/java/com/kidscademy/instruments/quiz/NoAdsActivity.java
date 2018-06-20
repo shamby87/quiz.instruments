@@ -74,7 +74,7 @@ public class NoAdsActivity extends FullScreenActivity implements OnClickListener
     @Override
     public void onBackPressed() {
         MainActivity.start(this);
-        overridePendingTransition(com.kidscademy.instruments.quiz.R.anim.slide_enter_left, com.kidscademy.instruments.quiz.R.anim.slide_exit_left);
+        overridePendingTransition(R.anim.slide_enter_left, R.anim.slide_exit_left);
         finish();
     }
 }

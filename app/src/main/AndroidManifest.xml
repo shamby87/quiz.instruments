@@ -16,6 +16,7 @@
 
     <application
         android:name=".App"
+        android:largeHeap="true"
         android:allowBackup="false"
         android:icon="@drawable/app_icon"
         android:label="@string/app_caption"

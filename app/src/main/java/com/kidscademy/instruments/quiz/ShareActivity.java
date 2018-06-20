@@ -120,15 +120,6 @@ public class ShareActivity extends FullScreenActivity implements SharingAdapter.
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.fab_back:
-                onBackPressed();
-                break;
-        }
-    }
-
-    @Override
     public void onSharingAppSelected(SharingApp app) {
         log.trace("onSharingAppSelected(SharingApp) - %s", app.getAppName());
         AppBase.audit().shareApp(app.getAppName());
@@ -187,13 +178,6 @@ public class ShareActivity extends FullScreenActivity implements SharingAdapter.
         facebookShare.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public void onBackPressed() {
-        MainActivity.start(this);
-        overridePendingTransition(R.anim.slide_enter_left, R.anim.slide_exit_left);
-        finish();
-    }
-
     private void onFacebookShare() {
         log.trace("onFacebookShare()");
         final Uri site = Uri.parse(storeURL());
@@ -226,5 +210,21 @@ public class ShareActivity extends FullScreenActivity implements SharingAdapter.
 
     private String storeURL() {
         return "https://play.google.com/store/apps/details?id=" + getPackageName();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.fab_back:
+                onBackPressed();
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        MainActivity.start(this);
+        overridePendingTransition(R.anim.slide_enter_left, R.anim.slide_exit_left);
+        finish();
     }
 }

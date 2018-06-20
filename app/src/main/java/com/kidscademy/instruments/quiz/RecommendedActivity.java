@@ -63,15 +63,6 @@ public class RecommendedActivity extends FullScreenActivity implements Recommend
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.fab_back:
-                onBackPressed();
-                break;
-        }
-    }
-
-    @Override
     public void onRecommendedAppSelected(Recommended app) {
         String packageName = app.getPackageName();
         AppBase.audit().recommendApp(packageName);
@@ -79,6 +70,15 @@ public class RecommendedActivity extends FullScreenActivity implements Recommend
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
         } catch (android.content.ActivityNotFoundException unused) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.fab_back:
+                onBackPressed();
+                break;
         }
     }
 

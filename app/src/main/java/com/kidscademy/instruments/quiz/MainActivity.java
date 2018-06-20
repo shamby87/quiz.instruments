@@ -121,6 +121,7 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
                 break;
         }
         if (intent != null) {
+            finish();
             startActivity(intent);
         }
     }
