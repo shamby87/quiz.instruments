@@ -8,7 +8,7 @@
         style="@style/page_background"
         android:src="@drawable/page_bg1" />
 
-    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -19,7 +19,7 @@
         android:scrollbars="vertical"
         tools:listitem="@layout/item_recommended" />
 
-    <com.kidscademy.instruments.quiz.view.RandomColorFAB
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB
         style="@style/fab_back_autohide"
         app:layout_anchor="@id/recommended_list" />
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <view xmlns:android="http://schemas.android.com/apk/res/android"
-    class="com.kidscademy.instruments.quiz.GameActivity$TradeHintsDialog"
+    class="com.kidscademy.quiz.instruments.GameActivity$TradeHintsDialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +8,7 @@
         style="@style/page_background"
         android:src="@drawable/page_bg1" />
 
-    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -178,6 +178,6 @@
         </GridLayout>
     </LinearLayout>
 
-    <com.kidscademy.instruments.quiz.view.RandomColorFAB style="@style/fab_dialog_close" />
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/fab_dialog_close" />
 
 </view>

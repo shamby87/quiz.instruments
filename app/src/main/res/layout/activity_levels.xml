@@ -23,14 +23,14 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingStart="8dp"
-            tools:context="com.kidscademy.instruments.unit.com.kidscademy.instruments.quiz.LevelsActivity"
+            tools:context="com.kidscademy.quiz.unit.com.kidscademy.instruments.quiz.LevelsActivity"
             tools:listitem="@layout/compo_card_level">
 
         </android.support.v7.widget.RecyclerView>
 
     </FrameLayout>
 
-    <com.kidscademy.instruments.quiz.view.RandomColorFAB
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB
         style="@style/fab_back_autohide"
         app:layout_anchor="@id/levels" />
 

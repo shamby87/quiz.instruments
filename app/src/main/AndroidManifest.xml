@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kidscademy.instruments.quiz"
+    package="com.kidscademy.quiz.instruments"
     android:installLocation="auto"
     android:versionCode="4"
     android:versionName="1.0.4-DEBUG">
@@ -43,30 +43,27 @@
             android:noHistory="true" />
         <activity
             android:name=".QuizStartActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".GameOverActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ShareActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".RecommendedActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AboutActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NoAdsActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
-        <activity
-            android:name=".FeaturesActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity" />
+            android:parentActivityName=".MainActivity" />
 
         <!-- Activities inherited from core application library -->
         <activity
             android:name="com.kidscademy.app.PreferencesActivity"
-            android:parentActivityName="com.kidscademy.instruments.quiz.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity
             android:name="com.kidscademy.app.ErrorActivity"

@@ -4,13 +4,13 @@
     android:id="@+id/balance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kidscademy.instruments.quiz.BalanceActivity">
+    tools:context="com.kidscademy.quiz.instruments.BalanceActivity">
 
     <ImageView
         style="@style/page_background"
         tools:src="@drawable/page_bg1" />
 
-    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -139,7 +139,7 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical">
 
-        <com.kidscademy.instruments.quiz.view.PercentDonutView
+        <com.kidscademy.quiz.instruments.view.PercentDonutView
             android:id="@+id/balance_complete_percent"
             android:layout_width="160dp"
             android:layout_height="160dp"
@@ -214,6 +214,6 @@
 
     </LinearLayout>
 
-    <com.kidscademy.instruments.quiz.view.RandomColorFAB style="@style/fab_back" />
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/fab_back" />
 
 </FrameLayout>

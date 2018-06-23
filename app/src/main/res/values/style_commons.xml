@@ -5,6 +5,24 @@
     <item name="fab_close" type="id" />
     <item name="fab_dialog_close" type="id" />
 
+    <style name="app_title_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="app_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
     <style name="page_background">
         <item name="android:id">@id/page_background</item>
         <item name="android:layout_width">match_parent</item>
@@ -24,7 +42,7 @@
     <style name="page_header">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="layout_behavior">com.kidscademy.instruments.quiz.util.HeaderHideBehavior</item>
+        <item name="layout_behavior">com.kidscademy.quiz.instruments.util.HeaderHideBehavior</item>
     </style>
 
     <style name="header_title">
@@ -100,7 +118,7 @@
 
     <style name="fab_back_autohide" parent="fab_back">
         <item name="layout_anchorGravity">bottom|right</item>
-        <item name="layout_behavior">com.kidscademy.instruments.quiz.util.FABTranslateBehavior
+        <item name="layout_behavior">com.kidscademy.quiz.instruments.util.FABTranslateBehavior
         </item>
     </style>
 

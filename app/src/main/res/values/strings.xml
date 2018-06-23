@@ -70,4 +70,9 @@
     <string name="no_ads_disagree">Disagree</string>
     <string name="no_ads_agree">Agree</string>
 
+    <!-- error messages -->
+    <string name="err_no_storage">SD card not accessible. Unable to store or read Fables collection. Application abort.</string>
+    <string name="err_load_fail">Fables collection loading fails. Application abort.\n\nPlease check connection to Internet and SD card free space.</string>
+    <string name="launcher_error">There is a temporary server error that prevent Car Brands loading. Please try again after couple minutes. We apologize for inconvenience.</string>
+
 </resources>

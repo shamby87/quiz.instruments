@@ -23,7 +23,7 @@
             tools:listitem="@layout/item_level_instruments" />
     </FrameLayout>
 
-    <com.kidscademy.instruments.quiz.view.RandomColorFAB
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB
         style="@style/fab_back_autohide"
         app:layout_anchor="@id/level_preview_grid" />
 

@@ -4,13 +4,13 @@
     android:id="@+id/game_over"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kidscademy.instruments.quiz.GameOverActivity">
+    tools:context="com.kidscademy.quiz.instruments.GameOverActivity">
 
     <ImageView
         style="@style/page_background"
         android:src="@drawable/page_bg1" />
 
-    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -22,12 +22,12 @@
         android:layout_gravity="center"
         android:foregroundGravity="center_horizontal">
 
-        <com.kidscademy.instruments.quiz.view.HexaIcon
+        <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             app:backgroundColor="#80ff8080" />
 
-        <com.kidscademy.instruments.quiz.view.AnimatedIcon
+        <com.kidscademy.quiz.instruments.view.AnimatedIcon
             android:id="@+id/game_over_action"
             android:layout_width="128dp"
             android:layout_height="128dp"
@@ -38,14 +38,14 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.kidscademy.instruments.quiz.view.HexaIcon
+        <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginLeft="200dp"
             app:backgroundColor="#803358be"
             app:layout_constraintLeft_toLeftOf="parent" />
 
-        <com.kidscademy.instruments.quiz.view.HexaIcon
+        <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="200dp"
@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.kidscademy.instruments.quiz.view.HexaIcon
+        <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="100dp"
@@ -63,7 +63,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.kidscademy.instruments.quiz.view.HexaIcon
+        <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginTop="228dp"

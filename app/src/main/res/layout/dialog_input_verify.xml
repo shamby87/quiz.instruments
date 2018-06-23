@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <view xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    class="com.kidscademy.instruments.quiz.GameActivity$InputVerifyDialog"
+    class="com.kidscademy.quiz.instruments.GameActivity$InputVerifyDialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,7 +9,7 @@
         style="@style/page_background"
         android:src="@drawable/page_bg1" />
 
-    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -34,7 +34,7 @@
             android:layout_gravity="center_vertical"
             android:background="@color/black_T60">
 
-            <com.kidscademy.instruments.quiz.view.NameView
+            <com.kidscademy.quiz.instruments.view.NameView
                 android:id="@+id/input_verify_response"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                     style="@style/letter"
                     tools:text="_" />
 
-            </com.kidscademy.instruments.quiz.view.NameView>
+            </com.kidscademy.quiz.instruments.view.NameView>
         </FrameLayout>
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/white_T80">
 
-            <com.kidscademy.instruments.quiz.view.NameView
+            <com.kidscademy.quiz.instruments.view.NameView
                 android:id="@+id/input_verify_suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,10 +113,10 @@
                     style="@style/letter"
                     tools:text="_" />
 
-            </com.kidscademy.instruments.quiz.view.NameView>
+            </com.kidscademy.quiz.instruments.view.NameView>
         </FrameLayout>
     </LinearLayout>
 
-    <com.kidscademy.instruments.quiz.view.RandomColorFAB style="@style/fab_dialog_close" />
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/fab_dialog_close" />
 
 </view>

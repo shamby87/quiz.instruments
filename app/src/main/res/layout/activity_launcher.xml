@@ -4,72 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.kidscademy.instruments.quiz.LauncherActivity">
+    tools:context="com.kidscademy.quiz.instruments.LauncherActivity">
 
     <ImageView
         style="@style/page_background"
         android:src="@drawable/page_bg1" />
 
-    <com.kidscademy.instruments.quiz.view.MovingDotsBackground
+    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="120dp"
-        android:orientation="vertical">
+        style="@style/app_title_layout"
+        android:layout_marginTop="120dp">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/app_title"
             android:background="@drawable/right_border"
-            android:paddingLeft="20dp"
-            android:text="Musical"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
+            android:text="Musical" />
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            style="@style/app_title"
             android:background="@drawable/right_border2"
-            android:paddingLeft="20dp"
-            android:text="Instruments"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
+            android:text="Instruments" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            style="@style/app_title"
             android:background="@drawable/right_border3"
-            android:paddingLeft="20dp"
-            android:text="Quiz"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
+            android:text="Quiz" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/launcher_text"
-        style="@style/launcher.text"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="40dp"
         android:background="@color/black_T40"
         android:paddingBottom="20dp"
         android:paddingLeft="40dp"
         android:paddingRight="20dp"
         android:paddingTop="20dp"
         android:text="@string/app_description"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/yellow_300" />
 
 </FrameLayout>
