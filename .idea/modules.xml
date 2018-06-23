@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instruments.quiz.iml" filepath="$PROJECT_DIR$/instruments.quiz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/js-android/js-android.iml" filepath="$PROJECT_DIR$/js-android/js-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kids-cademy/kids-cademy.iml" filepath="$PROJECT_DIR$/kids-cademy/kids-cademy.iml" />
+    </modules>
+  </component>
+</project>
