@@ -29,7 +29,6 @@ public class NoAdsActivity extends FullScreenActivity implements OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppBase.audit().openNoAdsManifest();
         setContentView(R.layout.activity_no_ads);
 
         findViewById(R.id.no_ads_disagree_button).setOnClickListener(this);
