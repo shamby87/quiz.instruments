@@ -136,7 +136,7 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
     }
 
     private void updateVolumeIcon() {
-        int volumeDrawableId = App.prefs().isSoundsEffects() ? R.drawable.ic_action_volume_up : R.drawable.ic_action_volume_mute;
+        int volumeDrawableId = App.prefs().isSoundsEffects() ? R.drawable.action_sounds_enable : R.drawable.action_sounds_mute;
         volumeIcon.setIconDrawable(ContextCompat.getDrawable(this, volumeDrawableId));
     }
 }

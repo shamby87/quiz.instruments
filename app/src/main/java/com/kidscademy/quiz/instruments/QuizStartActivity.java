@@ -71,7 +71,7 @@ public class QuizStartActivity extends FullScreenActivity implements Runnable, V
             icons[i].setOnClickListener(this);
         }
         currentIconIndex = random.nextInt(icons.length);
-        icons[currentIconIndex].setIconDrawable(ContextCompat.getDrawable(this, R.drawable.ic_action_play));
+        icons[currentIconIndex].setIconDrawable(ContextCompat.getDrawable(this, R.drawable.action_play));
         // icon tag is used by UI testing
         icons[currentIconIndex].setTag("start-quiz");
 
@@ -118,7 +118,7 @@ public class QuizStartActivity extends FullScreenActivity implements Runnable, V
         }
         //icons[currentIconIndex].setIconDrawable(null);
         currentIconIndex = random.nextInt(icons.length);
-        //icons[currentIconIndex].setIconDrawable(ContextCompat.getDrawable(this, R.drawable.ic_action_play));
+        //icons[currentIconIndex].setIconDrawable(ContextCompat.getDrawable(this, R.drawable.action_play));
         handler.postDelayed(this, PERIOD);
     }
 

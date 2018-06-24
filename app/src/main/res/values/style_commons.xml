@@ -113,7 +113,7 @@
         <item name="android:layout_gravity">bottom|end</item>
         <item name="android:layout_margin">16dp</item>
         <item name="fabSize">normal</item>
-        <item name="srcCompat">@drawable/ic_action_back</item>
+        <item name="srcCompat">@drawable/action_back</item>
     </style>
 
     <style name="fab_back_autohide" parent="fab_back">
@@ -124,12 +124,12 @@
 
     <style name="fab_close" parent="fab_back">
         <item name="android:id">@id/fab_close</item>
-        <item name="srcCompat">@drawable/ic_action_close</item>
+        <item name="srcCompat">@drawable/action_close</item>
     </style>
 
     <style name="fab_dialog_close" parent="fab_back">
         <item name="android:id">@id/fab_dialog_close</item>
-        <item name="srcCompat">@drawable/ic_action_close</item>
+        <item name="srcCompat">@drawable/action_close</item>
     </style>
 
 </resources>

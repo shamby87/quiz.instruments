@@ -156,7 +156,7 @@
             android:layout_height="wrap_content"
             app:elevation="6dp"
             app:fabSize="normal"
-            app:srcCompat="@drawable/ic_action_add" />
+            app:srcCompat="@drawable/action_add" />
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
             android:id="@+id/game_fab_hint"
@@ -165,7 +165,7 @@
             android:visibility="invisible"
             app:elevation="6dp"
             app:fabSize="mini"
-            app:srcCompat="@drawable/ic_action_menu"
+            app:srcCompat="@drawable/action_menu"
             app:useCompatPadding="true" />
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
@@ -175,7 +175,7 @@
             android:visibility="invisible"
             app:elevation="6dp"
             app:fabSize="mini"
-            app:srcCompat="@drawable/ic_action_apps"
+            app:srcCompat="@drawable/action_apps"
             app:useCompatPadding="true" />
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
@@ -185,7 +185,7 @@
             android:visibility="invisible"
             app:elevation="6dp"
             app:fabSize="mini"
-            app:srcCompat="@drawable/ic_action_skip_next"
+            app:srcCompat="@drawable/action_skip_next"
             app:useCompatPadding="true" />
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
@@ -195,7 +195,7 @@
             android:visibility="invisible"
             app:elevation="6dp"
             app:fabSize="mini"
-            app:srcCompat="@drawable/ic_action_back"
+            app:srcCompat="@drawable/action_back"
             app:useCompatPadding="true" />
     </LinearLayout>
 

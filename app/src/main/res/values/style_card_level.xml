@@ -31,7 +31,7 @@
         <item name="backgroundColor">@color/red_300</item>
         <item name="borderColor">@color/grey_300</item>
         <item name="borderSize">2</item>
-        <item name="iconDrawable">@drawable/ic_action_next</item>
+        <item name="iconDrawable">@drawable/action_next</item>
     </style>
 
     <style name="card_level.name">
