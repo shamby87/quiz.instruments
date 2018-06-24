@@ -32,7 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Iulian Rotaru
  */
 public class App extends AppBase {
-    public static final String PROJECT_NAME = "instruments.quiz";
+    public static final String PROJECT_NAME = "quiz.instruments";
 
     /**
      * Application instance creation. Application is guaranteed by Android platform to be created in a single instance.

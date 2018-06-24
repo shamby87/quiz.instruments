@@ -56,8 +56,6 @@ public class ShareActivity extends FullScreenActivity implements SharingAdapter.
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-
-        AppBase.audit().openShare();
         setContentView(R.layout.activity_share);
 
         listView = findViewById(R.id.share_list);

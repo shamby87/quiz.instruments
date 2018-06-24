@@ -61,7 +61,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
     private static final Random random = new Random();
 
     private GameEngine engine;
-    private NameView nameView;
+    private NameView answerView;
     private KeyboardView keyboardView;
     private ImageView imageView;
     private TextView scoreView;
@@ -144,9 +144,9 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         levelIndex = getIntent().getIntExtra(ARG_LEVEL_INDEX, 0);
         balance = App.storage().getBalance();
 
-        nameView = findViewById(R.id.game_answer);
-        nameView.setPlayer(player);
-        nameView.setListener(this);
+        answerView = findViewById(R.id.game_answer);
+        answerView.setPlayer(player);
+        answerView.setListener(this);
 
         keyboardView = findViewById(R.id.game_keyboard);
         keyboardView.setPlayer(player);
@@ -210,7 +210,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         imageView.setImageDrawable(null);
         updateUI();
 
-        App.audit().playGame(levelIndex);
+        App.audit().playGameLevel(levelIndex);
         backgroundView.setImageResource(App.getBackgroundResId());
     }
 
@@ -242,11 +242,13 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
                 break;
 
             case R.id.game_fab_skip_next:
+                App.audit().gameSkip(challengedInstrument);
                 player.stop();
                 nextChallenge();
                 break;
 
             case R.id.game_fab_back:
+                App.audit().gameClose(challengedInstrument);
                 toggleFabMenu();
                 onBackPressed();
                 break;
@@ -263,19 +265,21 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
     }
 
     private boolean handleKeyboardChar(char c) {
-        if (nameView.hasAllCharsFilled()) {
+        if (answerView.hasAllCharsFilled()) {
             player.play("fx/negative.mp3");
             return false;
         }
-        nameView.putChar(c);
-        if (!nameView.hasAllCharsFilled()) {
+        answerView.putChar(c);
+        if (!answerView.hasAllCharsFilled()) {
             return true;
         }
 
-        if (!engine.checkAnswer(nameView.getValue())) {
+        if (!engine.checkAnswer(answerView.getValue())) {
             player.play("fx/negative.mp3");
+            App.audit().gameWrongAnswer(challengedInstrument, answerView.getValue());
             return true;
         }
+        App.audit().gameCorrectAnswer(challengedInstrument);
 
         scorePlusView.setText(String.format("+%d", Balance.getScoreIncrement(level.getIndex())));
         scorePlusView.setVisibility(View.VISIBLE);
@@ -317,7 +321,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
 
         brandsCountView.setText(Integer.toString(level.getInstrumentsCount()));
         solvedBrandsCountView.setText(Integer.toString(levelState.getSolvedInstrumentsCount()));
-        nameView.init(challengedInstrument.getName());
+        answerView.init(challengedInstrument.getName());
         keyboardView.init(challengedInstrument.getName());
 
         BitmapLoader loader = new BitmapLoader(this, challengedInstrument.getPicturePath(), imageView);
@@ -473,17 +477,20 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         public void onClick(View view) {
             boolean deductionPerformed = false;
 
+            String hintType = null;
             switch (view.getId()) {
                 case R.id.reveal_letter_action:
+                    hintType = "REVEAL_LETTER";
                     if (activity.balance.deductRevealLetter()) {
                         deductionPerformed = true;
-                        int firstMissingCharIndex = activity.nameView.getFirstMissingCharIndex();
+                        int firstMissingCharIndex = activity.answerView.getFirstMissingCharIndex();
                         assert firstMissingCharIndex != -1;
                         activity.handleKeyboardChar(activity.keyboardView.getExpectedChar(firstMissingCharIndex));
                     }
                     break;
 
                 case R.id.verify_action:
+                    hintType = "VERIFY";
                     if (activity.balance.deductVerifyInput()) {
                         deductionPerformed = true;
                         activity.handler.postDelayed(new Runnable() {
@@ -496,6 +503,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
                     break;
 
                 case R.id.hide_letters_action:
+                    hintType = "HIDE_LETTERS";
                     if (activity.balance.deductHideLettersInput()) {
                         deductionPerformed = true;
                         activity.keyboardView.hideUnusedLetters();
@@ -503,6 +511,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
                     break;
 
                 case R.id.play_sample_action:
+                    hintType = "PLAY_SAMPLE";
                     if (activity.balance.deductSayName()) {
                         deductionPerformed = true;
                         activity.handler.postDelayed(new Runnable() {
@@ -516,6 +525,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
             }
 
             if (deductionPerformed) {
+                App.audit().gameHint(activity.challengedInstrument, hintType);
                 activity.creditView.setText(Integer.toString(activity.balance.getCredit()));
             } else {
                 activity.handler.postDelayed(new Runnable() {
@@ -543,11 +553,11 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
             super.onOpen(dialog, args);
 
             responseView = findViewById(R.id.input_verify_response);
-            responseView.open(activity.nameView.getInput());
+            responseView.open(activity.answerView.getInput());
 
             suggestionView = findViewById(R.id.input_verify_suggestion);
             suggestionView.init(activity.challengedInstrument.getName());
-            suggestionView.verify(activity.nameView.getInput());
+            suggestionView.verify(activity.answerView.getInput());
         }
     }
 
@@ -564,13 +574,13 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
             this.dialog = dialog;
             activity = (GameActivity) args[0];
             activity.keyboardView.disable();
-            activity.nameView.disable();
+            activity.answerView.disable();
         }
 
         @Override
         public void onClose() {
             activity.keyboardView.enable();
-            activity.nameView.enable();
+            activity.answerView.enable();
         }
     }
 }

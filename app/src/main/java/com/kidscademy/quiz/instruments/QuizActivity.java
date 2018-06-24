@@ -154,6 +154,7 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
         }
 
         if (view.getId() == R.id.fab_close) {
+            App.audit().quizAbort(challengedInstrument);
             onBackPressed();
             return;
         }
@@ -172,6 +173,7 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
             if (App.prefs().isSoundsEffects()) {
                 player.play("fx/negative.mp3");
             }
+            App.audit().quizWrongAnswer(challengedInstrument, selectedButton.getText().toString());
             for (final Button button : optionButtons) {
                 if (button.getText().toString().equals(challengedInstrument.getDisplay())) {
                     ObjectAnimator anim = ObjectAnimator.ofInt(button, "textColor", Color.TRANSPARENT, Color.WHITE);
@@ -193,6 +195,7 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
             return;
         }
 
+        App.audit().quizCorrectAnswer(challengedInstrument);
         log.debug("Correct answer for quiz on |%s|\n", challengedInstrument);
         App.storage().getBalance().updateResponseTime(responseTime);
 
@@ -391,7 +394,7 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
             final TextView responseTimeValueView = findViewById(R.id.quiz_complete_response_time_value);
 
             int responseTime = activity.engine.getAverageResponseTime();
-            if(responseTime!=0) {
+            if (responseTime != 0) {
                 responseTimeValueView.setText(Integer.toString(responseTime));
                 responseTimeView.setVisibility(View.VISIBLE);
             }

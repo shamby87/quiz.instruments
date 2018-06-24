@@ -49,7 +49,6 @@ public class NoAdsActivity extends FullScreenActivity implements OnClickListener
 
     public void onStart() {
         super.onStart();
-        AppBase.audit().openNoAdsManifest();
     }
 
     @Override

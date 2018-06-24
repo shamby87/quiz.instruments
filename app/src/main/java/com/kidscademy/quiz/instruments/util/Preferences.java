@@ -11,6 +11,7 @@ public final class Preferences extends PreferencesBase {
 
     public void setSoundsEffects(boolean soundsEffects) {
         String key = string(App.context(), R.string.pref_sound_fx_key);
+        App.audit().preferenceChanged(key, soundsEffects);
         editor(App.context()).putBoolean(key, soundsEffects).apply();
     }
 

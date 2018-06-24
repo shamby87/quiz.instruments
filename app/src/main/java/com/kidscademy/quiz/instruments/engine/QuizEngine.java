@@ -119,6 +119,7 @@ public class QuizEngine {
     }
 
     public void onAswerTimeout() {
+        App.audit().quizTimeout(currentChallenge.instrument);
         counters.minus(currentChallenge.instrument);
         --leftTries;
     }

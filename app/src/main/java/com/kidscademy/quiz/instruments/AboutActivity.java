@@ -28,7 +28,6 @@ public class AboutActivity extends FullScreenActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        AppBase.audit().openAbout();
         setContentView(R.layout.activity_about);
 
         FloatingActionButton backFAB = findViewById(R.id.fab_back);

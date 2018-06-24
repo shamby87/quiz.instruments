@@ -43,7 +43,6 @@ public class RecommendedActivity extends FullScreenActivity implements Recommend
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppBase.audit().openRecommended();
         setContentView(R.layout.activity_recommended);
 
         listView = findViewById(R.id.recommended_list);

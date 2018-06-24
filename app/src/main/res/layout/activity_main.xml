@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.kidscademy.quiz.instruments.view.HexaIcon
-                android:id="@+id/main_score"
+                android:id="@+id/main_balance"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:layout_marginLeft="200dp"
@@ -64,7 +64,7 @@
                 app:backgroundColor="#803358be"
                 app:iconDrawable="@drawable/ic_action_volume_up"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/main_score" />
+                app:layout_constraintTop_toTopOf="@+id/main_balance" />
         </android.support.constraint.ConstraintLayout>
 
         <LinearLayout style="@style/app_title_layout">

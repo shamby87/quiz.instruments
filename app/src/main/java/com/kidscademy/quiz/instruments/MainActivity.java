@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.kidscademy.app.FullScreenActivity;
-import com.kidscademy.app.PreferencesActivity;
 import com.kidscademy.quiz.instruments.view.HexaIcon;
 
 import js.log.Log;
@@ -52,7 +51,7 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
 
         findViewById(R.id.main_play).setOnClickListener(this);
         findViewById(R.id.main_quiz).setOnClickListener(this);
-        findViewById(R.id.main_score).setOnClickListener(this);
+        findViewById(R.id.main_balance).setOnClickListener(this);
 
         volumeIcon = findViewById(R.id.main_volume);
         volumeIcon.setOnClickListener(this);
@@ -84,7 +83,8 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
             case R.id.main_quiz:
                 QuizStartActivity.start(this);
                 break;
-            case R.id.main_score:
+            case R.id.main_balance:
+                App.audit().viewBalance();
                 BalanceActivity.start(this);
                 break;
             case R.id.main_volume:
@@ -93,10 +93,20 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
                 break;
 
             case R.id.main_about:
+                App.audit().openAbout();
                 AboutActivity.start(this);
                 break;
             case R.id.main_no_ads:
+                App.audit().openNoAdsManifest();
                 NoAdsActivity.start(this);
+                break;
+            case R.id.main_recommended:
+                App.audit().openRecommended();
+                RecommendedActivity.start(this);
+                break;
+            case R.id.main_share:
+                App.audit().openShare();
+                ShareActivity.start(this);
                 break;
             case R.id.main_rate:
                 App.audit().openRate();
@@ -105,15 +115,6 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
                 } catch (ActivityNotFoundException e) {
                     startActivity(rate("http://play.google.com/store/apps/details"));
                 }
-                break;
-            case R.id.main_recommended:
-                RecommendedActivity.start(this);
-                break;
-            case R.id.main_share:
-                ShareActivity.start(this);
-                break;
-            case R.id.main_settings:
-                intent = new Intent(this, PreferencesActivity.class);
                 break;
         }
         if (intent != null) {

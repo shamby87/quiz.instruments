@@ -35,7 +35,6 @@ public class BalanceActivity extends FullScreenActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
-        App.audit().viewBalance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balance);
 

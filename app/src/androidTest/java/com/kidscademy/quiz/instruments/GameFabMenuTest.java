@@ -146,7 +146,7 @@ public class GameFabMenuTest {
         }
 
         ViewInteraction hexaIcon5 = onView(
-                allOf(withId(R.id.main_score),
+                allOf(withId(R.id.main_balance),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.RelativeLayout")),
@@ -228,7 +228,7 @@ public class GameFabMenuTest {
         randomColorFAB9.perform(click());
 
         ViewInteraction hexaIcon9 = onView(
-                allOf(withId(R.id.main_score),
+                allOf(withId(R.id.main_balance),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.RelativeLayout")),
