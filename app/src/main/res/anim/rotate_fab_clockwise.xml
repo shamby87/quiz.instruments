@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Animation to rotate FAB menu clockwise used when opening menu items. -->
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillAfter="true">
-    <scale
-        android:duration="500"
-        android:fromXScale="1.0"
-        android:fromYScale="1.0"
+    <rotate
+        android:duration="300"
+        android:fromDegrees="0"
         android:interpolator="@android:anim/linear_interpolator"
         android:pivotX="50%"
         android:pivotY="50%"
-        android:toXScale="0.0"
-        android:toYScale="0.0" />
+        android:toDegrees="315" />
 </set>

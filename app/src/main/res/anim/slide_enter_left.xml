@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Slide from left for page enter, that is, opening.  -->
 <translate xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="@android:integer/config_longAnimTime"
     android:fromXDelta="100%p"

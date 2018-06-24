@@ -78,10 +78,22 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
     private RandomColorFAB fabViewGrid;
     private RandomColorFAB fabSkipNext;
     private RandomColorFAB fabBack;
-    private Animation[] animFabOpen = new Animation[4];
-    private Animation[] animFabClose = new Animation[4];
-    private Animation animFabRotateForward;
-    private Animation animFabRotateBackward;
+    /**
+     * Animations for opening FAB menu items. Currently there are 4 menu items: open hint, grid view, skip instrument and close game.
+     */
+    private Animation[] animOpenFabMenuItem = new Animation[4];
+    /**
+     * Animations for closing FAB menu items, counterpart of {@link #animOpenFabMenuItem}.
+     */
+    private Animation[] animCloseFabMenuItem = new Animation[4];
+    /**
+     * Animation to rotate FAB menu clockwise used when opening menu items.
+     */
+    private Animation animRotateFabClockwise;
+    /**
+     * Animation for rotating FAB menu anticlockwise, used when closing menu items. This animation is paired with {@link #animRotateFabClockwise}.
+     */
+    private Animation animRotateFabAnticlockwise;
 
     /**
      * Value of level index loaded from intent.
@@ -162,16 +174,16 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         dialogOverlay = findViewById(R.id.game_unlock_level_overlay);
         backgroundView = findViewById(R.id.page_background);
 
-        for (int i = 0; i < animFabOpen.length; ++i) {
-            animFabOpen[i] = AnimationUtils.loadAnimation(this, R.anim.fab_open);
-            animFabOpen[i].setStartOffset(i * 100);
+        for (int i = 0; i < animOpenFabMenuItem.length; ++i) {
+            animOpenFabMenuItem[i] = AnimationUtils.loadAnimation(this, R.anim.open_fab_menu_item);
+            animOpenFabMenuItem[i].setStartOffset(i * 100);
         }
-        for (int i = 0; i < animFabClose.length; ++i) {
-            animFabClose[i] = AnimationUtils.loadAnimation(this, R.anim.fab_close);
-            animFabClose[i].setStartOffset(animFabClose.length - i * 100);
+        for (int i = 0; i < animCloseFabMenuItem.length; ++i) {
+            animCloseFabMenuItem[i] = AnimationUtils.loadAnimation(this, R.anim.close_fab_menu_item);
+            animCloseFabMenuItem[i].setStartOffset(animCloseFabMenuItem.length - i * 100);
         }
-        animFabRotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward);
-        animFabRotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward);
+        animRotateFabAnticlockwise = AnimationUtils.loadAnimation(this, R.anim.rotate_fab_anticlockwise);
+        animRotateFabClockwise = AnimationUtils.loadAnimation(this, R.anim.rotate_fab_clockwise);
 
         fabMenu = findViewById(R.id.game_fab_menu);
         fabHint = findViewById(R.id.game_fab_hint);
@@ -346,12 +358,12 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
 
     private void toggleFabMenu() {
         if (isFabOpen) {
-            fabMenu.startAnimation(animFabRotateBackward);
+            fabMenu.startAnimation(animRotateFabAnticlockwise);
 
-            fabHint.startAnimation(animFabClose[0]);
-            fabViewGrid.startAnimation(animFabClose[1]);
-            fabSkipNext.startAnimation(animFabClose[2]);
-            fabBack.startAnimation(animFabClose[3]);
+            fabHint.startAnimation(animCloseFabMenuItem[0]);
+            fabViewGrid.startAnimation(animCloseFabMenuItem[1]);
+            fabSkipNext.startAnimation(animCloseFabMenuItem[2]);
+            fabBack.startAnimation(animCloseFabMenuItem[3]);
 
             fabHint.setClickable(false);
             fabViewGrid.setClickable(false);
@@ -360,12 +372,12 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
 
             isFabOpen = false;
         } else {
-            fabMenu.startAnimation(animFabRotateForward);
+            fabMenu.startAnimation(animRotateFabClockwise);
 
-            fabHint.startAnimation(animFabOpen[0]);
-            fabViewGrid.startAnimation(animFabOpen[1]);
-            fabSkipNext.startAnimation(animFabOpen[2]);
-            fabBack.startAnimation(animFabOpen[3]);
+            fabHint.startAnimation(animOpenFabMenuItem[0]);
+            fabViewGrid.startAnimation(animOpenFabMenuItem[1]);
+            fabSkipNext.startAnimation(animOpenFabMenuItem[2]);
+            fabBack.startAnimation(animOpenFabMenuItem[3]);
 
             fabHint.setClickable(true);
             fabViewGrid.setClickable(true);

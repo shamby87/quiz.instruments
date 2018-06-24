@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Animations for opening FAB menu items. Currently there are 4 menu items: open hint, grid view, skip instrument and close game. -->
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillAfter="true">
     <scale

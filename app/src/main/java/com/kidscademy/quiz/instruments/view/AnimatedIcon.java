@@ -49,7 +49,7 @@ public class AnimatedIcon extends AppCompatImageView implements Runnable {
         }
 
         if (animationResId != 0) {
-            animation = AnimationUtils.loadAnimation(getContext(), R.anim.vibrate);
+            animation = AnimationUtils.loadAnimation(getContext(), R.anim.vibrate_icon);
 
             handler = new Handler();
             handler.postDelayed(this, 2000);
