@@ -50,7 +50,7 @@ public class PlayQuizTest {
     public ActivityTestRule<LauncherActivity> mActivityTestRule = new ActivityTestRule<>(LauncherActivity.class);
 
     @Test
-    public void playGame() {
+    public void play() {
         App.storage().resetLevels();
 
         int LEVEL_SIZE = 10;
@@ -70,18 +70,18 @@ public class PlayQuizTest {
         onView(withId(R.id.main_quiz)).perform(click());
         onView(withTagValue(is((Object) "start-quiz"))).perform(click());
 
+        // quiz activity displays challenge instrument picture and couple options as buttons
+        // one options has text the challenged instrument name
+        // for every quiz searches for right option and click it
+
         for (int i = 0; i < instrumentNames.length; ++i) {
-            guessInstrument(instrumentNames[i]);
+            info("Guess instrument %s", instrumentNames[i]);
+            onView(withText(instrumentNames[i])).perform(click());
             sleep(2000);
         }
 
         // close dialog for quiz complete
         onView(allOf(withResourceName("fab_dialog_close"), isDisplayed())).perform(click());
-    }
-
-    private static void guessInstrument(String instrumentName) {
-        info("Guess instrument %s", instrumentName);
-        onView(withText(instrumentName)).perform(click());
     }
 
     private static void info(String message, Object... args) {
