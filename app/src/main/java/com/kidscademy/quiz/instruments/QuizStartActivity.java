@@ -72,6 +72,8 @@ public class QuizStartActivity extends FullScreenActivity implements Runnable, V
         }
         currentIconIndex = random.nextInt(icons.length);
         icons[currentIconIndex].setIconDrawable(ContextCompat.getDrawable(this, R.drawable.ic_action_play));
+        // icon tag is used by UI testing
+        icons[currentIconIndex].setTag("start-quiz");
 
         findViewById(R.id.fab_back).setOnClickListener(this);
     }
