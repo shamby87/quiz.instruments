@@ -1,4 +1,4 @@
-# instruments.quiz
+# quiz.instruments
 
 Instruments Quiz is a trivia game that challenges you to recognize musical instruments existing all over the world, from well know guitar or piano to esoteric didgeridoo.
 
