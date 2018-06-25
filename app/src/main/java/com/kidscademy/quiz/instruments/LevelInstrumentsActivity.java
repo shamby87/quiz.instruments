@@ -48,7 +48,7 @@ public class LevelInstrumentsActivity extends FullScreenActivity implements Leve
 
         backgroundView = findViewById(R.id.page_background);
 
-        gridView = findViewById(R.id.level_preview_grid);
+        gridView = findViewById(R.id.level_instruments_grid);
 
         layoutManager = new GridLayoutManager(this, 2);
         gridView.setLayoutManager(layoutManager);

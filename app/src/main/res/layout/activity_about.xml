@@ -19,7 +19,7 @@
 
         <ImageView
             style="@style/header_icon"
-            android:src="@drawable/app_icon_new" />
+            android:src="@drawable/app_icon" />
     </FrameLayout>
 
     <android.support.v4.widget.NestedScrollView

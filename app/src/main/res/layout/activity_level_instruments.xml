@@ -1,7 +1,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/level_preview"
+    android:id="@+id/level_instruments"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +16,7 @@
         <View style="@style/page_background_mask" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/level_preview_grid"
+            android:id="@+id/level_instruments_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
@@ -25,6 +25,6 @@
 
     <com.kidscademy.quiz.instruments.view.RandomColorFAB
         style="@style/fab_back_autohide"
-        app:layout_anchor="@id/level_preview_grid" />
+        app:layout_anchor="@id/level_instruments_grid" />
 
 </android.support.design.widget.CoordinatorLayout>
