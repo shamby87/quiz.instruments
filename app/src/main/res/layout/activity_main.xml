@@ -67,24 +67,12 @@
                 app:layout_constraintTop_toTopOf="@+id/main_balance" />
         </android.support.constraint.ConstraintLayout>
 
-        <LinearLayout style="@style/app_title_layout">
-
-            <TextView
-                style="@style/app_title"
-                android:background="@drawable/right_border"
-                android:text="Musical" />
-
-            <TextView
-                style="@style/app_title"
-                android:background="@drawable/right_border2"
-                android:text="Instruments" />
-
-            <TextView
-                style="@style/app_title"
-                android:background="@drawable/right_border3"
-                android:text="Quiz" />
-
-        </LinearLayout>
+        <include
+            layout="@layout/compo_app_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp" />
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

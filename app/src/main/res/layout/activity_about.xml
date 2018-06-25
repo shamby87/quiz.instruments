@@ -30,15 +30,15 @@
         <LinearLayout style="@style/about_body">
 
             <TextView
-                style="@style/paragraph"
+                style="@style/Text.Paragraph"
                 android:text="@string/about_message1" />
 
             <TextView
-                style="@style/paragraph.accent"
+                style="@style/Text.Paragraph.Accent"
                 android:text="@string/about_message2" />
 
             <TextView
-                style="@style/paragraph"
+                style="@style/Text.Paragraph"
                 android:text="@string/about_message3" />
 
             <FrameLayout style="@style/about_developer">

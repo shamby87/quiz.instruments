@@ -32,27 +32,27 @@
             android:paddingTop="140dp">
 
             <TextView
-                style="@style/paragraph.accent"
+                style="@style/Text.Paragraph.Accent"
                 android:text="@string/no_ads_p1" />
 
             <TextView
-                style="@style/paragraph"
+                style="@style/Text.Paragraph"
                 android:text="@string/no_ads_p2" />
 
             <TextView
-                style="@style/paragraph"
+                style="@style/Text.Paragraph"
                 android:text="@string/no_ads_p3" />
 
             <TextView
-                style="@style/paragraph"
+                style="@style/Text.Paragraph"
                 android:text="@string/no_ads_p4" />
 
             <TextView
-                style="@style/paragraph"
+                style="@style/Text.Paragraph"
                 android:text="@string/no_ads_p5" />
 
             <TextView
-                style="@style/paragraph.emphasized"
+                style="@style/Text.Paragraph.Emphasized"
                 android:text="@string/no_ads_conclusion" />
 
             <LinearLayout

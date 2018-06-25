@@ -14,26 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <LinearLayout
-        style="@style/app_title_layout"
-        android:layout_marginTop="120dp">
-
-        <TextView
-            style="@style/app_title"
-            android:background="@drawable/right_border"
-            android:text="Musical" />
-
-        <TextView
-            style="@style/app_title"
-            android:background="@drawable/right_border2"
-            android:text="Instruments" />
-
-        <TextView
-            style="@style/app_title"
-            android:background="@drawable/right_border3"
-            android:text="Quiz" />
-
-    </LinearLayout>
+    <include
+        layout="@layout/compo_app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="120dp" />
 
     <TextView
         android:id="@+id/launcher_text"
