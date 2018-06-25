@@ -10,6 +10,10 @@
     <dimen name="paragraph_start_indent">40dp</dimen>
     <dimen name="paragraph_end_indent">20dp</dimen>
 
+    <dimen name="block_vertical_padding">20dp</dimen>
+    <dimen name="block_start_indent">40dp</dimen>
+    <dimen name="block_end_indent">20dp</dimen>
+
     <!-- no ads manifesto -->
     <dimen name="no_ads_buttons_margin">40dp</dimen>
 

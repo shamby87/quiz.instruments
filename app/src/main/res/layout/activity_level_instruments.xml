@@ -10,10 +10,10 @@
         android:layout_height="match_parent">
 
         <ImageView
-            style="@style/page_background"
+            style="@style/Page.Background"
             tools:src="@drawable/page_bg1" />
 
-        <View style="@style/page_background_mask" />
+        <View style="@style/Page.Background.Mask" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/level_instruments_grid"

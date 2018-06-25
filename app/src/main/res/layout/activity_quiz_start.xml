@@ -7,10 +7,10 @@
     tools:context="com.kidscademy.quiz.instruments.QuizStartActivity">
 
     <ImageView
-        style="@style/page_background"
+        style="@style/Page.Background"
         tools:src="@drawable/page_bg1" />
 
-    <View style="@style/page_background_mask" />
+    <View style="@style/Page.Background.Mask" />
 
     <TextView
         android:id="@+id/quiz_start_message"

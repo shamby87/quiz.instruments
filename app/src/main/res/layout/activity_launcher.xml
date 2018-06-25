@@ -7,7 +7,7 @@
     tools:context="com.kidscademy.quiz.instruments.LauncherActivity">
 
     <ImageView
-        style="@style/page_background"
+        style="@style/Page.Background"
         android:src="@drawable/page_bg1" />
 
     <com.kidscademy.quiz.instruments.view.MovingDotsBackground
@@ -18,22 +18,14 @@
         layout="@layout/compo_app_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="@dimen/block_start_indent"
         android:layout_marginTop="120dp" />
 
     <TextView
         android:id="@+id/launcher_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Text.Block.Accent"
         android:layout_gravity="bottom"
         android:layout_marginBottom="40dp"
-        android:background="@color/black_T40"
-        android:paddingBottom="20dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="20dp"
-        android:paddingTop="20dp"
-        android:text="@string/app_description"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/yellow_300" />
+        android:text="@string/app_description" />
 
 </FrameLayout>

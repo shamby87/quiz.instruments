@@ -20,11 +20,15 @@
         <item name="android:paddingStart">@dimen/paragraph_start_indent</item>
         <item name="android:paddingEnd">@dimen/paragraph_end_indent</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="Text.Paragraph.Mute">
+        <item name="android:textColor">@color/text_mute</item>
     </style>
 
     <style name="Text.Paragraph.Accent">
-        <item name="android:textColor">@color/yellow_300</item>
+        <item name="android:textColor">@color/text_accent</item>
     </style>
 
     <style name="Text.Paragraph.Emphasized">
@@ -34,4 +38,19 @@
         <item name="android:textColor">@color/cyan_300</item>
     </style>
 
+    <!-- A text block is a paragraph with background and padding. A block is used when a paragraph should be emphasized. For this reason its font size is medium. -->
+    <style name="Text.Block" parent="Text.Paragraph">
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:paddingTop">@dimen/block_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/block_end_indent</item>
+        <item name="android:paddingEnd">@dimen/block_end_indent</item>
+        <item name="android:paddingBottom">@dimen/block_vertical_padding</item>
+        <item name="android:paddingLeft">@dimen/block_start_indent</item>
+        <item name="android:paddingStart">@dimen/block_start_indent</item>
+        <item name="android:background">@color/black_T40</item>
+    </style>
+
+    <style name="Text.Block.Accent">
+        <item name="android:textColor">@color/text_accent</item>
+    </style>
 </resources>

@@ -7,10 +7,10 @@
     tools:context="com.kidscademy.quiz.instruments.QuizActivity">
 
     <ImageView
-        style="@style/page_background"
+        style="@style/Page.Background"
         tools:src="@drawable/page_bg1" />
 
-    <View style="@style/page_background_mask" />
+    <View style="@style/Page.Background.Mask" />
 
     <LinearLayout
         android:layout_width="match_parent"

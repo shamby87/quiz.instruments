@@ -4,14 +4,14 @@
     android:layout_height="match_parent">
 
     <ImageView
-        style="@style/page_background"
+        style="@style/Page.Background"
         android:src="@drawable/page_bg1" />
 
     <com.kidscademy.quiz.instruments.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <FrameLayout style="@style/page_header">
+    <FrameLayout style="@style/Page.Header">
 
         <TextView
             style="@style/header_title"

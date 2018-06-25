@@ -8,7 +8,7 @@
     tools:context="com.kidscademy.quiz.instruments.MainActivity">
 
     <ImageView
-        style="@style/page_background"
+        style="@style/Page.Background"
         tools:src="@drawable/page_bg1" />
 
     <com.kidscademy.quiz.instruments.view.MovingDotsBackground

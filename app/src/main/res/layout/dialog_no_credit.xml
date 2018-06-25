@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        style="@style/page_background"
+        style="@style/Page.Background"
         android:src="@drawable/page_bg1" />
 
     <com.kidscademy.quiz.instruments.view.MovingDotsBackground
