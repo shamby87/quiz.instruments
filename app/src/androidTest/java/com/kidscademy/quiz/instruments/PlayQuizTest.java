@@ -40,6 +40,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withResourceName;
 import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.kidscademy.quiz.instruments.Util.info;
+import static com.kidscademy.quiz.instruments.Util.sleep;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
@@ -50,7 +52,7 @@ public class PlayQuizTest {
     public ActivityTestRule<LauncherActivity> mActivityTestRule = new ActivityTestRule<>(LauncherActivity.class);
 
     @Test
-    public void play() {
+    public void run() {
         App.storage().resetLevels();
 
         int LEVEL_SIZE = 10;
@@ -66,9 +68,12 @@ public class PlayQuizTest {
         }
     }
 
-    private void playQuiz(String[] instrumentNames) {
+    void playQuiz(String[] instrumentNames) {
         onView(withId(R.id.main_quiz)).perform(click());
+        sleep(1000);
+
         onView(withTagValue(is((Object) "start-quiz"))).perform(click());
+        sleep(1000);
 
         // quiz activity displays challenge instrument picture and couple options as buttons
         // one options has text the challenged instrument name
@@ -82,17 +87,5 @@ public class PlayQuizTest {
 
         // close dialog for quiz complete
         onView(allOf(withResourceName("fab_dialog_close"), isDisplayed())).perform(click());
-    }
-
-    private static void info(String message, Object... args) {
-        Log.i("PlayGameTest", String.format(message, args));
-    }
-
-    private static void sleep(int milliseconds) {
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

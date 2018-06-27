@@ -5,25 +5,16 @@ import android.app.Activity;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.contrib.RecyclerViewActions;
-import android.support.test.espresso.matcher.BoundedMatcher;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
 import android.support.test.runner.lifecycle.Stage;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.view.HexaIcon;
-import com.kidscademy.quiz.instruments.view.KeyboardView;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,18 +30,20 @@ import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withResourceName;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.kidscademy.quiz.instruments.Util.info;
+import static com.kidscademy.quiz.instruments.Util.key;
+import static com.kidscademy.quiz.instruments.Util.sleep;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class PlayGameTest {
-
     @Rule
     public ActivityTestRule<LauncherActivity> mActivityTestRule = new ActivityTestRule<>(LauncherActivity.class);
 
     @Test
-    public void playGame() {
+    public void run() {
         App.storage().resetLevels();
 
         int LEVEL_SIZE = 10;
@@ -66,15 +59,17 @@ public class PlayGameTest {
         }
     }
 
-    private void playLevel(int level, String[] instrumentNames) {
+    void playLevel(int level, String[] instrumentNames) {
         info("Play level %d", level);
         onView(withId(R.id.main_play)).perform(click());
+        sleep(1000);
 
         ViewInteraction recycle = onView(withId(R.id.levels));
         recycle.perform(RecyclerViewActions.actionOnItemAtPosition(level, click()));
 
         ViewInteraction levelButton = onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withText("LEVEL " + (level + 1)))));
         levelButton.perform(click());
+        sleep(1000);
 
         for (int i = 0; i < instrumentNames.length; ++i) {
             guessInstrument(instrumentNames[i]);
@@ -106,80 +101,6 @@ public class PlayGameTest {
         info("Guess instrument %s", instrumentName);
         for (int i = 0; i < instrumentName.length(); ++i) {
             onView(key(Character.toString(instrumentName.charAt(i)))).perform(click());
-        }
-    }
-
-    private static Activity getActivity() {
-        final Activity[] currentActivity = {null};
-
-        InstrumentationRegistry.getInstrumentation().runOnMainSync(new Runnable() {
-            public void run() {
-                Collection<Activity> resumedActivity = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED);
-                Iterator<Activity> it = resumedActivity.iterator();
-                currentActivity[0] = it.next();
-            }
-        });
-
-        return currentActivity[0];
-    }
-
-    private static Matcher<View> key(String key) {
-        final Matcher<String> stringMatcher = is(key);
-        return new BoundedMatcher<View, TextView>(TextView.class) {
-            private boolean keyfound = false;
-
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("with text: ");
-                stringMatcher.describeTo(description);
-            }
-
-            @Override
-            public boolean matchesSafely(TextView textView) {
-                if (keyfound) {
-                    return false;
-                }
-                if (textView.getVisibility() != View.VISIBLE) {
-                    return false;
-                }
-                ViewParent parent = textView.getParent();
-                if (!(parent instanceof KeyboardView)) {
-                    return false;
-                }
-                if (stringMatcher.matches(textView.getText().toString())) {
-                    keyfound = true;
-                    return true;
-                }
-                return false;
-            }
-        };
-    }
-
-    private static Matcher<View> childAtPosition(final Matcher<View> parentMatcher, final int position) {
-        return new TypeSafeMatcher<View>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Child at position " + position + " in parent ");
-                parentMatcher.describeTo(description);
-            }
-
-            @Override
-            public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent) && view.equals(((ViewGroup) parent).getChildAt(position));
-            }
-        };
-    }
-
-    private static void info(String message, Object... args) {
-        Log.i("PlayGameTest", String.format(message, args));
-    }
-
-    private static void sleep(int milliseconds) {
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }
