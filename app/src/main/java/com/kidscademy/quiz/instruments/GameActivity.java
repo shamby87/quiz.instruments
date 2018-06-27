@@ -38,7 +38,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
     private static final Log log = LogFactory.getLog(GameActivity.class);
 
     private static final String ARG_LEVEL_INDEX = "levelIndex";
-    private static final String ARG_BRAND_NAME = "responseView";
+    private static final String ARG_INSTRUMENT_NAME = "responseView";
 
     public static void start(Activity activity, int levelIndex) {
         log.trace("start(Activity, int)");
@@ -49,11 +49,11 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         activity.overridePendingTransition(R.anim.pull_up_from_bottom, R.anim.pull_up_from_top);
     }
 
-    public static void start(Activity activity, int levelIndex, String brandName) {
+    public static void start(Activity activity, int levelIndex, String instrumentName) {
         log.trace("start(Context, int, String)");
         Intent intent = new Intent(activity, GameActivity.class);
         intent.putExtra(ARG_LEVEL_INDEX, levelIndex);
-        intent.putExtra(ARG_BRAND_NAME, brandName);
+        intent.putExtra(ARG_INSTRUMENT_NAME, instrumentName);
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.pull_up_from_bottom, R.anim.pull_up_from_top);
     }
@@ -215,7 +215,7 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         level = App.storage().getLevel(levelIndex);
         levelState = App.storage().getLevelState(levelIndex);
         engine = new GameEngine(App.storage(), levelState);
-        challengedInstrument = engine.initChallenge(getIntent().getStringExtra(ARG_BRAND_NAME));
+        challengedInstrument = engine.initChallenge(getIntent().getStringExtra(ARG_INSTRUMENT_NAME));
 
         setTitle(Strings.concat("LEVEL ", levelIndex + 1));
 
@@ -365,6 +365,11 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
             fabSkipNext.startAnimation(animCloseFabMenuItem[2]);
             fabBack.startAnimation(animCloseFabMenuItem[3]);
 
+            fabHint.setVisibility(View.INVISIBLE);
+            fabViewGrid.setVisibility(View.INVISIBLE);
+            fabSkipNext.setVisibility(View.INVISIBLE);
+            fabBack.setVisibility(View.INVISIBLE);
+
             fabHint.setClickable(false);
             fabViewGrid.setClickable(false);
             fabSkipNext.setClickable(false);
@@ -378,6 +383,11 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
             fabViewGrid.startAnimation(animOpenFabMenuItem[1]);
             fabSkipNext.startAnimation(animOpenFabMenuItem[2]);
             fabBack.startAnimation(animOpenFabMenuItem[3]);
+
+            fabHint.setVisibility(View.VISIBLE);
+            fabViewGrid.setVisibility(View.VISIBLE);
+            fabSkipNext.setVisibility(View.VISIBLE);
+            fabBack.setVisibility(View.VISIBLE);
 
             fabHint.setClickable(true);
             fabViewGrid.setClickable(true);
