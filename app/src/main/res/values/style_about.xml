@@ -3,13 +3,6 @@
 
     <style name="about"></style>
 
-    <style name="about_body" parent="about">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:paddingTop">140dp</item>
-    </style>
-
     <style name="about_developer" parent="about">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

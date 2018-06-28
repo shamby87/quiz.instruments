@@ -7,13 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.kidscademy.quiz.instruments.MainActivity">
 
-    <ImageView
-        style="@style/Page.Background"
-        tools:src="@drawable/page_bg1" />
-
-    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/compo_page_background" />
 
     <RelativeLayout
         android:layout_width="match_parent"

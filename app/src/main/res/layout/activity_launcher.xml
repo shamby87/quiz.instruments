@@ -6,13 +6,7 @@
     android:orientation="vertical"
     tools:context="com.kidscademy.quiz.instruments.LauncherActivity">
 
-    <ImageView
-        style="@style/Page.Background"
-        android:src="@drawable/page_bg1" />
-
-    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/compo_page_background" />
 
     <include
         layout="@layout/compo_app_title"

@@ -19,7 +19,7 @@ import js.log.Log;
 import js.log.LogFactory;
 import js.util.Player;
 
-public class LevelsActivity extends FullScreenActivity implements LevelsCardAdapter.Listener, View.OnClickListener {
+public class LevelsActivity extends AppActivity implements LevelsCardAdapter.Listener, View.OnClickListener {
     private static final Log log = LogFactory.getLog(LevelsActivity.class);
 
     public static void start(Activity activity) {
@@ -30,7 +30,6 @@ public class LevelsActivity extends FullScreenActivity implements LevelsCardAdap
         activity.overridePendingTransition(R.anim.pull_up_from_bottom, R.anim.pull_up_from_top);
     }
 
-    private ImageView backgroundView;
     private LinearLayoutManager layoutManager;
     private RecyclerView listView;
     private FloatingActionButton backFAB;
@@ -38,12 +37,15 @@ public class LevelsActivity extends FullScreenActivity implements LevelsCardAdap
     private Player player;
 
     @Override
+    protected int layout() {
+        return R.layout.activity_levels;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_levels);
 
-        backgroundView = findViewById(R.id.page_background);
         player = new Player(this);
 
         listView = findViewById(R.id.levels);
@@ -63,7 +65,6 @@ public class LevelsActivity extends FullScreenActivity implements LevelsCardAdap
     public void onStart() {
         log.trace("onStart()");
         super.onStart();
-        backgroundView.setImageResource(App.getBackgroundResId());
         player.create();
         adapter.notifyDataSetChanged();
     }

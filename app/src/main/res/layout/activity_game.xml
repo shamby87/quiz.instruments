@@ -6,11 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.kidscademy.quiz.instruments.GameActivity">
 
-    <ImageView
-        style="@style/Page.Background"
-        tools:src="@drawable/page_bg1" />
-
-    <View style="@style/Page.Background.Mask" />
+    <include layout="@layout/compo_page_background" />
 
     <LinearLayout
         android:layout_width="match_parent"

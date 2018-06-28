@@ -9,11 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            style="@style/Page.Background"
-            tools:src="@drawable/page_bg1" />
-
-        <View style="@style/Page.Background.Mask" />
+        <include layout="@layout/compo_page_background" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/levels"

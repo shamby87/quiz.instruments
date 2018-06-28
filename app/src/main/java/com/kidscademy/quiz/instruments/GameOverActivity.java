@@ -11,7 +11,7 @@ import com.kidscademy.app.FullScreenActivity;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class GameOverActivity extends FullScreenActivity implements View.OnClickListener {
+public class GameOverActivity extends AppActivity implements View.OnClickListener {
     private static final Log log = LogFactory.getLog(GameOverActivity.class);
 
     public static void start(Activity activity) {
@@ -23,10 +23,14 @@ public class GameOverActivity extends FullScreenActivity implements View.OnClick
     }
 
     @Override
+    protected int layout() {
+        return R.layout.activity_game_over;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_over);
         findViewById(R.id.game_over_action).setOnClickListener(this);
     }
 

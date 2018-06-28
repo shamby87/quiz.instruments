@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class QuizStartActivity extends FullScreenActivity implements Runnable, View.OnClickListener {
+public class QuizStartActivity extends AppActivity implements Runnable, View.OnClickListener {
     private static final Log log = LogFactory.getLog(QuizStartActivity.class);
 
     private static final int DELAY = 2500;
@@ -30,7 +30,6 @@ public class QuizStartActivity extends FullScreenActivity implements Runnable, V
 
     private static final Random random = new Random();
 
-    private ImageView backgroundView;
     private View responseTimeView;
     private TextView responseTimeValueView;
 
@@ -51,13 +50,16 @@ public class QuizStartActivity extends FullScreenActivity implements Runnable, V
     }
 
     @Override
+    protected int layout() {
+        return R.layout.activity_quiz_start;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz_start);
 
         handler = new Handler();
-        backgroundView = findViewById(R.id.page_background);
         responseTimeView = findViewById(R.id.quiz_start_response_time);
         responseTimeValueView = findViewById(R.id.quiz_start_response_time_value);
 
@@ -82,7 +84,6 @@ public class QuizStartActivity extends FullScreenActivity implements Runnable, V
     public void onStart() {
         log.trace("onStart()");
         super.onStart();
-        backgroundView.setImageResource(App.getBackgroundResId());
 
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_text_out);
         animation.setStartOffset(2000);

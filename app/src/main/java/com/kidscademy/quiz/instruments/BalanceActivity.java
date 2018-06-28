@@ -16,7 +16,7 @@ import com.kidscademy.quiz.instruments.view.PercentDonutView;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class BalanceActivity extends FullScreenActivity implements View.OnClickListener {
+public class BalanceActivity extends AppActivity implements View.OnClickListener {
     private static final Log log = LogFactory.getLog(BalanceActivity.class);
 
     public static void start(Activity activity) {
@@ -27,18 +27,18 @@ public class BalanceActivity extends FullScreenActivity implements View.OnClickL
         activity.overridePendingTransition(R.anim.pull_up_from_bottom, R.anim.pull_up_from_top);
     }
 
-
-    private ImageView backgroundView;
     private Balance balance;
     private Counters counters;
+
+    @Override
+    protected int layout() {
+        return R.layout.activity_balance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_balance);
-
-        backgroundView = findViewById(R.id.page_background);
 
         balance = App.storage().getBalance();
         counters = App.storage().getCounters();
@@ -70,8 +70,6 @@ public class BalanceActivity extends FullScreenActivity implements View.OnClickL
     }
 
     private void updateUI() {
-        backgroundView.setImageResource(App.getBackgroundResId());
-
         TextView totalLevelsView = findViewById(R.id.balance_total_levels);
         totalLevelsView.setText(Integer.toString(Level.getTotalLevels()));
 

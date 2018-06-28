@@ -32,7 +32,7 @@ import js.util.TwitterShare;
  *
  * @author Iulian Rotaru
  */
-public class ShareActivity extends FullScreenActivity implements SharingAdapter.Listener, View.OnClickListener {
+public class ShareActivity extends AppActivity implements SharingAdapter.Listener, View.OnClickListener {
     private static final Log log = LogFactory.getLog(ShareActivity.class);
 
     public static void start(Activity activity) {
@@ -53,10 +53,14 @@ public class ShareActivity extends FullScreenActivity implements SharingAdapter.
     private TwitterShare twitterShare;
 
     @Override
+    protected int layout() {
+        return R.layout.activity_share;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_share);
 
         listView = findViewById(R.id.share_list);
         listView.setHasFixedSize(true);

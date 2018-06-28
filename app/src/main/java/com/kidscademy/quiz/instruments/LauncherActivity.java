@@ -12,68 +12,64 @@ import java.io.IOException;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class LauncherActivity extends FullScreenActivity implements LoadService.Listener
-{
-  private static final Log log = LogFactory.getLog(LauncherActivity.class);
+public class LauncherActivity extends AppActivity implements LoadService.Listener {
+    private static final Log log = LogFactory.getLog(LauncherActivity.class);
 
-  public LauncherActivity()
-  {
-    log.trace("LauncherActivity()");
-  }
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState)
-  {
-    log.trace("onCreate(Bundle)");
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_launcher);
-
-    if(App.storage().isLoaded()) {
-      MainActivity.start(this);
-      finish();
-      return;
+    public LauncherActivity() {
+        log.trace("LauncherActivity()");
     }
 
-    LoadService.bind(this, this);
-    LoadService.start(this);
-  }
+    @Override
+    protected int layout() {
+        return R.layout.activity_launcher;
+    }
 
-  @Override
-  public void onLoadServiceConnected(LoadService service)
-  {
-    log.trace("onLoadServiceConnected(LoadService)");
-  }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        log.trace("onCreate(Bundle)");
+        super.onCreate(savedInstanceState);
 
-  @Override
-  public void onLoadServiceProgress(File downloadedFile, int totalFiles, int processedFiles)
-  {
-    log.debug("Application loading progress: %d / %d", processedFiles, totalFiles);
-  }
+        if (App.storage().isLoaded()) {
+            MainActivity.start(this);
+            finish();
+            return;
+        }
 
-  @Override
-  public void onLoadServiceDone()
-  {
-    log.trace("onLoadServiceDone()");
-    LoadService.unbind(this, this);
-    MainActivity.start(this);
-    finish();
-  }
+        LoadService.bind(this, this);
+        LoadService.start(this);
+    }
 
-  @Override
-  public void onLoadServiceException(IOException exception)
-  {
-    log.trace("onLoadServiceException(IOException)");
-    log.error(exception);
-    LoadService.unbind(this, this);
+    @Override
+    public void onLoadServiceConnected(LoadService service) {
+        log.trace("onLoadServiceConnected(LoadService)");
+    }
 
-    findViewById(R.id.launcher).setBackgroundResource(R.color.red_600);
-    ((TextView)findViewById(R.id.launcher_text)).setText(getString(R.string.launcher_error));
-  }
+    @Override
+    public void onLoadServiceProgress(File downloadedFile, int totalFiles, int processedFiles) {
+        log.debug("Application loading progress: %d / %d", processedFiles, totalFiles);
+    }
 
-  @Override
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-    this.finish();
-  }
+    @Override
+    public void onLoadServiceDone() {
+        log.trace("onLoadServiceDone()");
+        LoadService.unbind(this, this);
+        MainActivity.start(this);
+        finish();
+    }
+
+    @Override
+    public void onLoadServiceException(IOException exception) {
+        log.trace("onLoadServiceException(IOException)");
+        log.error(exception);
+        LoadService.unbind(this, this);
+
+        findViewById(R.id.launcher).setBackgroundResource(R.color.red_600);
+        ((TextView) findViewById(R.id.launcher_text)).setText(getString(R.string.launcher_error));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 }

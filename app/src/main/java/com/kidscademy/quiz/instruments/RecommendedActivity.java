@@ -24,7 +24,7 @@ import js.log.LogFactory;
  *
  * @author Iulian Rotaru
  */
-public class RecommendedActivity extends FullScreenActivity implements RecommendedAdapter.Listener, View.OnClickListener {
+public class RecommendedActivity extends AppActivity implements RecommendedAdapter.Listener, View.OnClickListener {
     private static final Log log = LogFactory.getLog(RecommendedActivity.class);
 
     public static void start(Activity activity) {
@@ -41,9 +41,13 @@ public class RecommendedActivity extends FullScreenActivity implements Recommend
     private FloatingActionButton backFAB;
 
     @Override
+    protected int layout() {
+        return R.layout.activity_recommended;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommended);
 
         listView = findViewById(R.id.recommended_list);
         listView.setSoundEffectsEnabled(false);

@@ -19,7 +19,7 @@ import js.log.Log;
 import js.log.LogFactory;
 import js.util.Strings;
 
-public class LevelInstrumentsActivity extends FullScreenActivity implements LevelInstrumentsAdapter.Listener, View.OnClickListener {
+public class LevelInstrumentsActivity extends AppActivity implements LevelInstrumentsAdapter.Listener, View.OnClickListener {
     private static final Log log = LogFactory.getLog(LevelInstrumentsActivity.class);
 
     private static final String ARG_LEVEL_INDEX = "levelIndex";
@@ -33,7 +33,6 @@ public class LevelInstrumentsActivity extends FullScreenActivity implements Leve
         activity.overridePendingTransition(R.anim.pull_up_from_bottom, R.anim.pull_up_from_top);
     }
 
-    private ImageView backgroundView;
     private GridLayoutManager layoutManager;
     private RecyclerView gridView;
     private LevelInstrumentsAdapter adapter;
@@ -41,12 +40,14 @@ public class LevelInstrumentsActivity extends FullScreenActivity implements Leve
     private boolean unsolved;
 
     @Override
+    protected int layout() {
+        return R.layout.activity_level_instruments;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_instruments);
-
-        backgroundView = findViewById(R.id.page_background);
 
         gridView = findViewById(R.id.level_instruments_grid);
 
@@ -68,7 +69,6 @@ public class LevelInstrumentsActivity extends FullScreenActivity implements Leve
     public void onStart() {
         log.trace("onStart()");
         super.onStart();
-        backgroundView.setImageResource(App.getBackgroundResId());
     }
 
     @Override

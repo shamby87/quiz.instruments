@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text"></style>
+
+    <style name="Text.Title">
+        <item name="android:textAppearance">@style/TextAppearance.Large</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Text.Paragraph">
+        <item name="android:textAppearance">@style/TextAppearance.Small</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/paragraph_margin_top</item>
+        <item name="android:paddingStart">@dimen/paragraph_start_indent</item>
+        <item name="android:paddingRight">@dimen/paragraph_start_indent</item>
+        <item name="android:paddingEnd">@dimen/paragraph_end_indent</item>
+        <item name="android:paddingLeft">@dimen/paragraph_end_indent</item>
+    </style>
+
+    <style name="Text.Paragraph.Accent">
+        <item name="android:textAppearance">@style/TextAppearance.Small.Accent</item>
+    </style>
+
+    <style name="Text.Paragraph.Mute">
+        <item name="android:textAppearance">@style/TextAppearance.Small.Mute</item>
+    </style>
+
+    <style name="Text.Paragraph.Emphasized">
+        <item name="android:textAppearance">@style/TextAppearance.Small.Emphasized</item>
+        <item name="android:paddingTop">@dimen/paragraph_margin_top</item>
+        <item name="android:paddingBottom">@dimen/paragraph_margin_top</item>
+        <item name="android:background">@color/black_T40</item>
+    </style>
+
+    <!-- A text block is a paragraph with background and padding. A block is used when a paragraph should be emphasized. For this reason its font size is medium. -->
+    <style name="Text.Block" parent="Text.Paragraph">
+        <item name="android:paddingTop">@dimen/block_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/block_padding_vertical</item>
+        <item name="android:paddingRight">@dimen/block_end_indent</item>
+        <item name="android:paddingEnd">@dimen/block_end_indent</item>
+        <item name="android:paddingLeft">@dimen/block_start_indent</item>
+        <item name="android:paddingStart">@dimen/block_start_indent</item>
+        <item name="android:background">@color/black_T40</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="Text.Block.Accent">
+        <item name="android:textColor">@color/text_accent</item>
+    </style>
+
+    <style name="Text.Label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/label_margin_top</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="Text.Label.Mute">
+        <item name="android:textColor">@color/text_mute</item>
+    </style>
+
+    <style name="Text.Label.Accent">
+        <item name="android:textColor">@color/text_accent</item>
+    </style>
+</resources>

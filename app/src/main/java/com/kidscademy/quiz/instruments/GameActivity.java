@@ -34,7 +34,7 @@ import js.util.Player;
 import js.util.Strings;
 import js.view.DialogOverlay;
 
-public class GameActivity extends FullScreenActivity implements OnClickListener, KeyboardView.Listener, NameView.Listener {
+public class GameActivity extends AppActivity implements OnClickListener, KeyboardView.Listener, NameView.Listener {
     private static final Log log = LogFactory.getLog(GameActivity.class);
 
     private static final String ARG_LEVEL_INDEX = "levelIndex";
@@ -139,8 +139,6 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         }
     };
 
-    private ImageView backgroundView;
-
     public GameActivity() {
         log.trace("Game()");
         player = new Player(this);
@@ -148,10 +146,14 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
     }
 
     @Override
+    protected int layout() {
+        return R.layout.activity_game;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
 
         levelIndex = getIntent().getIntExtra(ARG_LEVEL_INDEX, 0);
         balance = App.storage().getBalance();
@@ -172,7 +174,6 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         imageView = findViewById(R.id.game_challenge);
 
         dialogOverlay = findViewById(R.id.game_unlock_level_overlay);
-        backgroundView = findViewById(R.id.page_background);
 
         for (int i = 0; i < animOpenFabMenuItem.length; ++i) {
             animOpenFabMenuItem[i] = AnimationUtils.loadAnimation(this, R.anim.open_fab_menu_item);
@@ -223,7 +224,6 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
         updateUI();
 
         App.audit().playGameLevel(levelIndex);
-        backgroundView.setImageResource(App.getBackgroundResId());
     }
 
     @Override
@@ -597,6 +597,9 @@ public class GameActivity extends FullScreenActivity implements OnClickListener,
             activity = (GameActivity) args[0];
             activity.keyboardView.disable();
             activity.answerView.disable();
+
+            ImageView backgroundView = findViewById(R.id.page_background);
+            backgroundView.setImageResource(App.getBackgroundResId());
         }
 
         @Override

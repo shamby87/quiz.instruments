@@ -15,7 +15,7 @@ import js.lang.BugError;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class NoAdsActivity extends FullScreenActivity implements OnClickListener {
+public class NoAdsActivity extends AppActivity implements OnClickListener {
     private static final Log log = LogFactory.getLog(NoAdsActivity.class);
 
     public static void start(Activity activity) {
@@ -27,9 +27,13 @@ public class NoAdsActivity extends FullScreenActivity implements OnClickListener
     }
 
     @Override
+    protected int layout() {
+        return R.layout.activity_no_ads;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_no_ads);
 
         findViewById(R.id.no_ads_disagree_button).setOnClickListener(this);
         findViewById(R.id.no_ads_agree_button).setOnClickListener(this);

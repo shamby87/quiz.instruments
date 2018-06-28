@@ -42,7 +42,7 @@ import js.util.BitmapLoader;
 import js.util.Player;
 import js.view.DialogOverlay;
 
-public class QuizActivity extends FullScreenActivity implements View.OnClickListener, QuizTimeoutListener {
+public class QuizActivity extends AppActivity implements View.OnClickListener, QuizTimeoutListener {
     private static final Log log = LogFactory.getLog(QuizActivity.class);
 
     public static void start(Activity activity) {
@@ -85,7 +85,6 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
     private QuizTimeout quizTimeout;
 
     private int lastProgressPercent;
-    private ImageView backgroundView;
 
     public QuizActivity() {
         log.trace("SpellSound()");
@@ -94,9 +93,13 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
     }
 
     @Override
+    protected int layout() {
+        return R.layout.activity_quiz;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
 
         instrumentPictureView = findViewById(R.id.quiz_logo);
         instrumentNameView = findViewById(R.id.quiz_name);
@@ -119,7 +122,6 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
         solvedView = findViewById(R.id.quiz_solved);
         quizCountView = findViewById(R.id.quiz_count);
 
-        backgroundView = findViewById(R.id.page_background);
         findViewById(R.id.fab_close).setOnClickListener(this);
     }
 
@@ -132,7 +134,6 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
         engine = new QuizEngine();
         quizTimeout = new QuizTimeout(this, (ProgressBar) findViewById(R.id.quiz_timeout));
 
-        backgroundView.setImageResource(App.getBackgroundResId());
         updateUI();
         App.audit().playQuiz();
     }
@@ -340,6 +341,9 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
             this.dialog = dialog;
             activity = (QuizActivity) args[0];
             findViewById(R.id.quiz_fail_action).setOnClickListener(this);
+
+            ImageView backgroundView = findViewById(R.id.page_background);
+            backgroundView.setImageResource(App.getBackgroundResId());
         }
 
         @Override
@@ -398,6 +402,9 @@ public class QuizActivity extends FullScreenActivity implements View.OnClickList
                 responseTimeValueView.setText(Integer.toString(responseTime));
                 responseTimeView.setVisibility(View.VISIBLE);
             }
+
+            ImageView backgroundView = findViewById(R.id.page_background);
+            backgroundView.setImageResource(App.getBackgroundResId());
         }
 
         public void onClose() {

@@ -5,13 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        style="@style/Page.Background"
-        android:src="@drawable/page_bg1" />
-
-    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/compo_page_background" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/quiz_start_icons"

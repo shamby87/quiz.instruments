@@ -17,7 +17,7 @@ import com.kidscademy.quiz.instruments.view.HexaIcon;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class MainActivity extends FullScreenActivity implements View.OnClickListener {
+public class MainActivity extends AppActivity implements View.OnClickListener {
     /**
      * Class logger.
      */
@@ -34,7 +34,6 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
         context.startActivity(intent);
     }
 
-    private ImageView backgroundView;
     private HexaIcon volumeIcon;
 
     public MainActivity() {
@@ -42,12 +41,14 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
     }
 
     @Override
+    protected int layout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        backgroundView = findViewById(R.id.page_background);
 
         findViewById(R.id.main_play).setOnClickListener(this);
         findViewById(R.id.main_quiz).setOnClickListener(this);
@@ -69,7 +70,6 @@ public class MainActivity extends FullScreenActivity implements View.OnClickList
     public void onStart() {
         log.trace("onStart()");
         super.onStart();
-        backgroundView.setImageResource(App.getBackgroundResId());
         updateVolumeIcon();
     }
 

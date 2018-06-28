@@ -13,7 +13,7 @@ import com.kidscademy.app.FullScreenActivity;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class AboutActivity extends FullScreenActivity implements View.OnClickListener {
+public class AboutActivity extends AppActivity implements View.OnClickListener {
     private static final Log log = LogFactory.getLog(AboutActivity.class);
 
     public static void start(Activity activity) {
@@ -25,10 +25,14 @@ public class AboutActivity extends FullScreenActivity implements View.OnClickLis
     }
 
     @Override
+    protected int layout() {
+        return R.layout.activity_about;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
 
         FloatingActionButton backFAB = findViewById(R.id.fab_back);
         backFAB.setOnClickListener(this);

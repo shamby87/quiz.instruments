@@ -3,13 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        style="@style/Page.Background"
-        android:src="@drawable/page_bg1" />
-
-    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/compo_page_background" />
 
     <FrameLayout style="@style/Page.Header">
 
@@ -27,7 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout style="@style/about_body">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="140dp">
 
             <TextView
                 style="@style/Text.Paragraph"
@@ -55,11 +53,11 @@
                         android:textColor="@color/cyan_300" />
 
                     <TextView
-                        style="@style/about_developer_expertise"
+                        style="@style/Text.Label"
                         android:text="Senior Java, Android and Web Full Stack" />
 
                     <TextView
-                        style="@style/about_developer_place"
+                        style="@style/Text.Label.Mute"
                         android:text="Romania, Jassy" />
                 </LinearLayout>
 
@@ -79,11 +77,11 @@
                         android:textColor="@color/green_300" />
 
                     <TextView
-                        style="@style/about_developer_expertise"
+                        style="@style/Text.Label"
                         android:text="UX Designer, Content Management" />
 
                     <TextView
-                        style="@style/about_developer_place"
+                        style="@style/Text.Label.Mute"
                         android:text="Romania, Jassy" />
                 </LinearLayout>
 
@@ -103,11 +101,11 @@
                         android:textColor="@color/yellow_300" />
 
                     <TextView
-                        style="@style/about_developer_expertise"
+                        style="@style/Text.Label"
                         android:text="Music Composer, Sound Engineering" />
 
                     <TextView
-                        style="@style/about_developer_place"
+                        style="@style/Text.Label.Mute"
                         android:text="Romania, Jassy" />
 
                 </LinearLayout>
