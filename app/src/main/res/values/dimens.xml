@@ -15,7 +15,8 @@
     <dimen name="labels_group_left_margin">140dp</dimen>
     <!-- a separator is displayed between two labels and usualy is colon character; this margin values applies for bot left anf right margins -->
     <dimen name="separator_margin">10dp</dimen>
-
+    <!-- vertical margin used by game keyboard -->
+    <dimen name="keyboard_v_margin">20dp</dimen>
 
     <dimen name="paragraph_margin_top">40dp</dimen>
     <dimen name="paragraph_start_indent">40dp</dimen>

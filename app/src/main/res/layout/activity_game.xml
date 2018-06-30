@@ -13,26 +13,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- header for score, credits and current number of solved instrument -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="36dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/game_score"
-                style="@style/game.label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Text.Label.Inline.Large"
                 android:layout_alignParentLeft="true"
                 tools:text="1234" />
 
             <TextView
                 android:id="@+id/game_score_separator"
-                style="@style/game.label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Text.Label.Inline.Large"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_toRightOf="@id/game_score"
@@ -40,19 +35,19 @@
 
             <TextView
                 android:id="@+id/game_credit"
-                style="@style/game.label"
+                style="@style/Text.Label.Inline.Large"
                 android:layout_toRightOf="@id/game_score_separator"
                 tools:text="0" />
 
             <TextView
                 android:id="@+id/game_brands_count"
-                style="@style/game.label"
+                style="@style/Text.Label.Inline.Large"
                 android:layout_alignParentRight="true"
                 tools:text="10" />
 
             <TextView
                 android:id="@+id/game_level_separator"
-                style="@style/game.label"
+                style="@style/Text.Label.Inline.Large"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_toLeftOf="@id/game_brands_count"
@@ -60,11 +55,12 @@
 
             <TextView
                 android:id="@+id/game_solved_brands_count"
-                style="@style/game.label"
+                style="@style/Text.Label.Inline.Large"
                 android:layout_toLeftOf="@id/game_level_separator"
                 tools:text="0" />
         </RelativeLayout>
 
+        <!-- challenged instrument picture and accumulated points -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -90,53 +86,49 @@
                 android:visibility="invisible" />
         </FrameLayout>
 
-        <FrameLayout
+        <com.kidscademy.quiz.instruments.view.NameView
+            android:id="@+id/game_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white_T80">
+            android:background="@color/white_T80"
+            android:gravity="center">
 
-            <com.kidscademy.quiz.instruments.view.NameView
-                android:id="@+id/game_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
+            <TextView
+                style="@style/Text.Letter.Inverse"
+                tools:text="_" />
 
-                <TextView
-                    style="@style/Text.Letter.Inverse"
-                    tools:text="_" />
+            <TextView
+                style="@style/Text.Letter.Inverse"
+                tools:text="_" />
 
-                <TextView
-                    style="@style/Text.Letter.Inverse"
-                    tools:text="_" />
+            <TextView
+                style="@style/Text.Letter.Inverse"
+                tools:text="D" />
 
-                <TextView
-                    style="@style/Text.Letter.Inverse"
-                    tools:text="D" />
+            <TextView
+                style="@style/Text.Letter.Inverse"
+                tools:text="_" />
 
-                <TextView
-                    style="@style/Text.Letter.Inverse"
-                    tools:text="_" />
+            <TextView
+                style="@style/Text.Letter.Inverse"
+                tools:text="_" />
 
-                <TextView
-                    style="@style/Text.Letter.Inverse"
-                    tools:text="_" />
+            <TextView
+                style="@style/Text.Letter.Inverse"
+                tools:text="_" />
 
-                <TextView
-                    style="@style/Text.Letter.Inverse"
-                    tools:text="_" />
-
-            </com.kidscademy.quiz.instruments.view.NameView>
-        </FrameLayout>
+        </com.kidscademy.quiz.instruments.view.NameView>
 
         <include
             android:id="@+id/game_keyboard"
             layout="@layout/compo_keyboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/game_keyboard_y_margin"
-            android:layout_marginTop="@dimen/game_keyboard_y_margin" />
+            android:layout_marginBottom="@dimen/keyboard_v_margin"
+            android:layout_marginTop="@dimen/keyboard_v_margin" />
     </LinearLayout>
 
+    <!-- FAB menu -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -156,43 +148,27 @@
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
             android:id="@+id/game_fab_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:elevation="6dp"
-            app:fabSize="mini"
+            style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_menu"
-            app:useCompatPadding="true" />
+            tools:visibility="visible" />
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
             android:id="@+id/game_fab_view_grid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:elevation="6dp"
-            app:fabSize="mini"
+            style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_apps"
-            app:useCompatPadding="true" />
+            tools:visibility="visible" />
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
             android:id="@+id/game_fab_skip_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:elevation="6dp"
-            app:fabSize="mini"
+            style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_skip_next"
-            app:useCompatPadding="true" />
+            tools:visibility="visible" />
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
             android:id="@+id/game_fab_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:elevation="6dp"
-            app:fabSize="mini"
+            style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_back"
-            app:useCompatPadding="true" />
+            tools:visibility="visible" />
     </LinearLayout>
 
     <js.view.DialogOverlay

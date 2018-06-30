@@ -33,4 +33,12 @@
         <item name="srcCompat">@drawable/action_close</item>
     </style>
 
+    <style name="FAB.MenuItem">
+        <item name="android:visibility">invisible</item>
+        <item name="elevation">6dp</item>
+        <item name="fabSize">mini</item>
+        <item name="useCompatPadding">true</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
 </resources>

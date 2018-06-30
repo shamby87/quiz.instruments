@@ -112,6 +112,10 @@
         <item name="android:textColor">@color/text_accent</item>
     </style>
 
+    <style name="Text.Label.Inline.Large">
+        <item name="android:textAppearance">@style/TextAppearance.Large</item>
+    </style>
+
     <!-- a separator sits between two inline labels and currently is colon; it also has margin, both left and right -->
     <style name="Text.Label.Inline.Separator">
         <item name="android:text">:</item>
