@@ -84,6 +84,6 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/fab_dialog_close" />
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.DialogClose" />
 
 </view>

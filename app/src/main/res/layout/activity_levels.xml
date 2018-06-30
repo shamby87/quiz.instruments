@@ -27,7 +27,7 @@
     </FrameLayout>
 
     <com.kidscademy.quiz.instruments.view.RandomColorFAB
-        style="@style/fab_back_autohide"
+        style="@style/FAB.Back.Autohide"
         app:layout_anchor="@id/levels" />
 
 </android.support.design.widget.CoordinatorLayout>

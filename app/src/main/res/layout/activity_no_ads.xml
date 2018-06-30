@@ -5,13 +5,13 @@
 
     <include layout="@layout/compo_page_background" />
 
-    <FrameLayout style="@style/Page.Header">
+    <FrameLayout style="@style/Page.AutohideHeader">
 
         <TextView
-            style="@style/header_title"
+            style="@style/Page.HeaderTitle"
             android:text="@string/no_ads_title" />
 
-        <js.view.NoAdsIconView style="@style/header_icon" />
+        <TextView style="@style/Page.HeaderIcon.NoAds" />
     </FrameLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="140dp">
+            android:paddingTop="@dimen/page_body_margin_top">
 
             <TextView
                 style="@style/Text.Paragraph.Accent"
@@ -49,18 +49,16 @@
                 style="@style/Text.Paragraph.Emphasized"
                 android:text="@string/no_ads_conclusion" />
 
-            <LinearLayout
-                style="@style/buttons_section"
-                android:layout_marginTop="@dimen/no_ads_buttons_margin">
+            <LinearLayout style="@style/ButtonsGroup">
 
                 <Button
                     android:id="@+id/no_ads_disagree_button"
-                    style="@style/button.first"
+                    style="@style/Button.First"
                     android:text="@string/no_ads_disagree" />
 
                 <Button
                     android:id="@+id/no_ads_agree_button"
-                    style="@style/button"
+                    style="@style/Button"
                     android:text="@string/no_ads_agree" />
             </LinearLayout>
         </LinearLayout>
@@ -68,6 +66,6 @@
     </android.support.v4.widget.NestedScrollView>
 
     <com.kidscademy.quiz.instruments.view.RandomColorFAB
-        style="@style/fab_back_autohide"
+        style="@style/FAB.Back.Autohide"
         app:layout_anchor="@id/no_ads_scroll" />
 </android.support.design.widget.CoordinatorLayout>

@@ -55,9 +55,13 @@
     <string name="trade_hints_play_description">Play instrument sample. This enable play button from action bar.</string>
 
     <!-- about activity -->
-    <string name="about_message1">@string/app_description</string>
-    <string name="about_message2">Instruments Quiz is completely free. Free of annoying ads, no misleading in-app payment, no spy-ware.</string>
-    <string name="about_message3">Development effort is donated. It is a humble way to show gratitude to Internet community that gives us all so much.</string>
+    <string name="about_p1">@string/app_description</string>
+    <string name="about_p2">Instruments Quiz is completely free. Free of annoying ads, no misleading in-app payment, no spy-ware.</string>
+    <string name="about_p3">Development effort is donated. It is a humble way to show gratitude to Internet community that gives us all so much.</string>
+    <string name="about_dev1_skils">Senior Java, Android and Web Full Stack</string>
+    <string name="about_dev2_skils">UX Designer, Content Management</string>
+    <string name="about_dev3_skils">Music Composer, Sound Engineering</string>
+    <string name="about_place">Romania, Jassy</string>
 
     <!-- no ads manifesto -->
     <string name="no_ads_title">No Ads Manifesto</string>
@@ -73,6 +77,6 @@
     <!-- error messages -->
     <string name="err_no_storage">SD card not accessible. Unable to store or read Fables collection. Application abort.</string>
     <string name="err_load_fail">Fables collection loading fails. Application abort.\n\nPlease check connection to Internet and SD card free space.</string>
-    <string name="launcher_error">There is a temporary server error that prevent Car Brands loading. Please try again after couple minutes. We apologize for inconvenience.</string>
+    <string name="err_launcher">There is a temporary server error that prevent Car Brands loading. Please try again after couple minutes. We apologize for inconvenience.</string>
 
 </resources>

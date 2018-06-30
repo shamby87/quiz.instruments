@@ -118,7 +118,7 @@
         android:orientation="vertical">
 
         <com.kidscademy.quiz.instruments.view.RandomColorFAB
-            style="@style/fab_close"
+            style="@style/FAB.Close"
             android:layout_margin="0dp" />
     </LinearLayout>
 

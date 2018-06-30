@@ -3,7 +3,6 @@ package com.kidscademy.quiz.instruments;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.app.LoadService;
 
 import java.io.File;
@@ -64,7 +63,7 @@ public class LauncherActivity extends AppActivity implements LoadService.Listene
         LoadService.unbind(this, this);
 
         findViewById(R.id.launcher).setBackgroundResource(R.color.red_600);
-        ((TextView) findViewById(R.id.launcher_text)).setText(getString(R.string.launcher_error));
+        ((TextView) findViewById(R.id.launcher_text)).setText(getString(R.string.err_launcher));
     }
 
     @Override

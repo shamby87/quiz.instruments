@@ -55,11 +55,16 @@
     </style>
 
     <style name="Text.Label">
+        <item name="android:textAppearance">@style/TextAppearance.Small</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/label_margin_top</item>
-        <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <!-- A label title is an ordinary label that happen to be first on top and beside beeing larger it has no top margin. -->
+    <style name="Text.Label.Title">
+        <item name="android:textAppearance">@style/TextAppearance.Large</item>
+        <item name="android:layout_marginTop">0dp</item>
     </style>
 
     <style name="Text.Label.Mute">

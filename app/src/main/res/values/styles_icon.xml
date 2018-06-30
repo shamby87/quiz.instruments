@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Icon"></style>
+
+    <style name="Icon.Developer">
+        <item name="android:layout_width">@dimen/developer_icon_size</item>
+        <item name="android:layout_height">@dimen/developer_icon_size</item>
+        <item name="borderColor">@color/white</item>
+        <item name="borderWidth">2dp</item>
+        <item name="shape">circle</item>
+    </style>
+</resources>

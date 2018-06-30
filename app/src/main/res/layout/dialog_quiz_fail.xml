@@ -77,6 +77,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/cyan_300" />
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/fab_dialog_close" />
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.DialogClose" />
 
 </view>

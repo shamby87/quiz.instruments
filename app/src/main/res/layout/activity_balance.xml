@@ -208,6 +208,6 @@
 
     </LinearLayout>
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/fab_back" />
+    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.Back" />
 
 </FrameLayout>

@@ -3,10 +3,36 @@
 
     <style name="Page"></style>
 
-    <style name="Page.Header">
+    <style name="Page.AutohideHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_behavior">com.kidscademy.quiz.instruments.util.HeaderHideBehavior</item>
     </style>
 
+    <style name="Page.HeaderTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/page_header_height</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingStart">@dimen/paragraph_start_indent</item>
+        <item name="android:paddingEnd">@dimen/paragraph_end_indent</item>
+        <item name="android:textAppearance">@style/TextAppearance.Large.Emphasized</item>
+        <item name="android:background">@color/black_T40</item>
+    </style>
+
+    <style name="Page.HeaderIcon">
+        <item name="android:layout_width">@dimen/page_header_icon_size</item>
+        <item name="android:layout_height">@dimen/page_header_icon_size</item>
+        <item name="android:layout_gravity">bottom|right</item>
+        <item name="android:layout_marginTop">@dimen/page_header_icon_margin_top</item>
+        <item name="android:layout_marginEnd">@dimen/paragraph_end_indent</item>
+        <item name="android:src">@drawable/app_icon</item>
+    </style>
+
+    <style name="Page.HeaderIcon.NoAds">
+        <item name="android:text">NO ADS</item>
+        <item name="android:textSize">28dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:rotation">45</item>
+        <item name="android:background">@drawable/circle_red</item>
+    </style>
 </resources>

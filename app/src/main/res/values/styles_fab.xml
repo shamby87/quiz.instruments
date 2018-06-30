@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fab_back" type="id" />
+    <item name="fab_close" type="id" />
+    <item name="fab_dialog_close" type="id" />
+
+    <style name="FAB">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="fabSize">normal</item>
+    </style>
+
+    <style name="FAB.Back">
+        <item name="android:id">@id/fab_back</item>
+        <item name="srcCompat">@drawable/action_back</item>
+    </style>
+
+    <style name="FAB.Back.Autohide">
+        <item name="layout_anchorGravity">bottom|right</item>
+        <item name="layout_behavior">com.kidscademy.quiz.instruments.util.FABTranslateBehavior
+        </item>
+    </style>
+
+    <style name="FAB.Close">
+        <item name="android:id">@id/fab_close</item>
+        <item name="srcCompat">@drawable/action_close</item>
+    </style>
+
+    <style name="FAB.DialogClose">
+        <item name="android:id">@id/fab_dialog_close</item>
+        <item name="srcCompat">@drawable/action_close</item>
+    </style>
+
+</resources>

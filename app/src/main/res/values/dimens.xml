@@ -1,10 +1,19 @@
 <resources>
 
-    <!-- header with tile and icon -->
-    <dimen name="header_height">120dp</dimen>
-    <dimen name="header_icon_size">96dp</dimen>
+    <!-- page header with tile and icon -->
+    <dimen name="page_header_height">120dp</dimen>
+    <dimen name="page_header_icon_size">96dp</dimen>
     <!-- magic number: top margin = header_height - half icon size = 120 - 48 = 72 -->
-    <dimen name="header_icon_margin_top">72dp</dimen>
+    <dimen name="page_header_icon_margin_top">72dp</dimen>
+    <!-- on pages with autohide header, body should be displayed below header and its top position should be adjusted with this value -->
+    <!-- this value need to be adjusted when modify page header height -->
+    <dimen name="page_body_margin_top">140dp</dimen>
+
+    <!-- generic container padding; a container is a view group that contains child views -->
+    <dimen name="container_padding">20dp</dimen>
+    <!-- this dimension must be computed: @dimen/developer_icon_size + @dimen/container_padding -->
+    <dimen name="labels_group_left_margin">140dp</dimen>
+
 
     <dimen name="paragraph_margin_top">40dp</dimen>
     <dimen name="paragraph_start_indent">40dp</dimen>
@@ -20,7 +29,5 @@
     <dimen name="text_size_medium">18sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
 
-    <!-- no ads manifesto -->
-    <dimen name="no_ads_buttons_margin">40dp</dimen>
-
+    <dimen name="developer_icon_size">120dp</dimen>
 </resources>

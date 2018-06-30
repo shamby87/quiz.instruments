@@ -5,15 +5,13 @@
 
     <include layout="@layout/compo_page_background" />
 
-    <FrameLayout style="@style/Page.Header">
+    <FrameLayout style="@style/Page.AutohideHeader">
 
         <TextView
-            style="@style/header_title"
+            style="@style/Page.HeaderTitle"
             android:text="@string/app_logotype" />
 
-        <ImageView
-            style="@style/header_icon"
-            android:src="@drawable/app_icon" />
+        <ImageView style="@style/Page.HeaderIcon" />
     </FrameLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -25,88 +23,88 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="140dp">
+            android:paddingTop="@dimen/page_body_margin_top">
 
             <TextView
                 style="@style/Text.Paragraph"
-                android:text="@string/about_message1" />
+                android:text="@string/about_p1" />
 
             <TextView
                 style="@style/Text.Paragraph.Accent"
-                android:text="@string/about_message2" />
+                android:text="@string/about_p2" />
 
             <TextView
                 style="@style/Text.Paragraph"
-                android:text="@string/about_message3" />
+                android:text="@string/about_p3" />
 
-            <FrameLayout style="@style/about_developer">
+            <FrameLayout style="@style/InfoBox.Container">
 
                 <js.view.IconView
-                    style="@style/about_developer_picture"
-                    android:src="@drawable/developer_iulian_rotaru" />
+                    style="@style/Icon.Developer"
+                    android:src="@drawable/dev_iulian_rotaru" />
 
-                <LinearLayout style="@style/about_developer_info">
+                <LinearLayout style="@style/InfoBox.LabelsGroup">
 
                     <TextView
-                        style="@style/about_developer_name"
+                        style="@style/Text.Label.Title"
                         android:text="Iulian Rotaru"
                         android:textColor="@color/cyan_300" />
 
                     <TextView
                         style="@style/Text.Label"
-                        android:text="Senior Java, Android and Web Full Stack" />
+                        android:text="@string/about_dev1_skils" />
 
                     <TextView
                         style="@style/Text.Label.Mute"
-                        android:text="Romania, Jassy" />
+                        android:text="@string/about_place" />
                 </LinearLayout>
 
             </FrameLayout>
 
-            <FrameLayout style="@style/about_developer">
+            <FrameLayout style="@style/InfoBox.Container">
 
                 <js.view.IconView
-                    style="@style/about_developer_picture"
-                    android:src="@drawable/developer_lucian_rotaru" />
+                    style="@style/Icon.Developer"
+                    android:src="@drawable/dev_lucian_rotaru" />
 
-                <LinearLayout style="@style/about_developer_info">
+                <LinearLayout style="@style/InfoBox.LabelsGroup">
 
                     <TextView
-                        style="@style/about_developer_name"
+                        style="@style/Text.Label.Title"
                         android:text="Lucian Rotaru"
                         android:textColor="@color/green_300" />
 
                     <TextView
                         style="@style/Text.Label"
-                        android:text="UX Designer, Content Management" />
+                        android:text="@string/about_dev2_skils" />
 
                     <TextView
                         style="@style/Text.Label.Mute"
-                        android:text="Romania, Jassy" />
+                        android:text="@string/about_place" />
                 </LinearLayout>
 
             </FrameLayout>
 
-            <FrameLayout style="@style/about_developer">
+            <FrameLayout style="@style/InfoBox.Container.Last">
 
                 <js.view.IconView
-                    style="@style/about_developer_picture"
-                    android:src="@drawable/developer_octavian_rotaru" />
+                    style="@style/Icon.Developer"
+                    android:src="@drawable/dev_octavian_rotaru" />
 
-                <LinearLayout style="@style/about_developer_info">
+                <LinearLayout style="@style/InfoBox.LabelsGroup">
 
                     <TextView
-                        style="@style/about_developer_name"
+                        style="@style/Text.Label.Title"
                         android:text="Octavian Rotaru"
                         android:textColor="@color/yellow_300" />
 
                     <TextView
                         style="@style/Text.Label"
-                        android:text="Music Composer, Sound Engineering" />
+                        android:text="@string/about_dev3_skils" />
 
                     <TextView
                         style="@style/Text.Label.Mute"
-                        android:text="Romania, Jassy" />
+                        android:text="@string/about_place" />
 
                 </LinearLayout>
             </FrameLayout>
@@ -114,7 +112,7 @@
     </android.support.v4.widget.NestedScrollView>
 
     <com.kidscademy.quiz.instruments.view.RandomColorFAB
-        style="@style/fab_back_autohide"
+        style="@style/FAB.Back.Autohide"
         app:layout_anchor="@id/about_scroll" />
 
 </android.support.design.widget.CoordinatorLayout>

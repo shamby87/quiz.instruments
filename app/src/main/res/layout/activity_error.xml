@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_error"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kidscademy.app.ErrorActivity">
+
+    <ImageView
+        android:id="@+id/page_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/page_bg1" />
+
+    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        style="@style/ButtonsGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/activity_error_exit_button"
+            style="@style/Button"
+            android:text="@string/exit"
+            android:textAllCaps="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/compo_logo_header" />
+
+        <TextView
+            android:id="@+id/activity_error_message"
+            style="@style/Text.Block"
+            tools:text="@string/sample_text" />
+
+        <TextView
+            android:id="@+id/activity_error_exception"
+            style="@style/Text.Block"
+            android:visibility="gone"
+            tools:text="@string/sample_text"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+</FrameLayout>
