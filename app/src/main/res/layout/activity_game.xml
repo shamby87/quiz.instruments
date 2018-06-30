@@ -102,27 +102,27 @@
                 android:layout_gravity="center">
 
                 <TextView
-                    style="@style/letter"
+                    style="@style/Text.Letter.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/letter"
+                    style="@style/Text.Letter.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/letter"
+                    style="@style/Text.Letter.Inverse"
                     tools:text="D" />
 
                 <TextView
-                    style="@style/letter"
+                    style="@style/Text.Letter.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/letter"
+                    style="@style/Text.Letter.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/letter"
+                    style="@style/Text.Letter.Inverse"
                     tools:text="_" />
 
             </com.kidscademy.quiz.instruments.view.NameView>

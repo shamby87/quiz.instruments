@@ -99,4 +99,24 @@
     <style name="Text.Label.Inline.Separator.Accent">
         <item name="android:textColor">@color/text_accent</item>
     </style>
+
+    <style name="Text.Letter">
+        <item name="android:textAppearance">@style/TextAppearance.Large</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:paddingRight">@dimen/letter_h_padding</item>
+        <item name="android:paddingLeft">@dimen/letter_h_padding</item>
+        <item name="android:paddingTop">@dimen/letter_v_padding</item>
+        <item name="android:paddingBottom">@dimen/letter_v_padding</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">@dimen/letter_min_width</item>
+        <item name="android:textSize">@dimen/letter_size</item>
+        <!-- for letters that are part of a grid -->
+        <item name="layout_columnWeight">1</item>
+    </style>
+
+    <style name="Text.Letter.Inverse">
+        <item name="android:textColor">@color/text_inverse</item>
+    </style>
 </resources>

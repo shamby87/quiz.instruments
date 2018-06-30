@@ -36,7 +36,6 @@
         <activity android:name=".LevelsActivity" />
         <activity
             android:name=".LevelInstrumentsActivity"
-            android:label="@string/level_brands_caption"
             android:noHistory="true" />
         <activity
             android:name=".BalanceActivity"

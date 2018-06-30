@@ -18,23 +18,20 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
-        style="@style/ButtonsGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/activity_error_exit_button"
-            style="@style/Button"
-            android:text="@string/exit"
-            android:textAllCaps="true" />
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/compo_logo_header" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/Page.HeaderTitle"
+                android:text="@string/app_logotype" />
+
+            <ImageView style="@style/Page.HeaderIcon" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/activity_error_message"
@@ -50,4 +47,15 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        style="@style/ButtonsGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/activity_error_exit_button"
+            style="@style/Button"
+            android:text="@string/exit"
+            android:textAllCaps="true" />
+    </LinearLayout>
 </FrameLayout>

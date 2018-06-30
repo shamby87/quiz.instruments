@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <dimen name="letter_size">42dp</dimen>
-    <dimen name="letter_min_width">32dp</dimen>
-    <dimen name="letter_x_padding">10dp</dimen>
-    <dimen name="letter_y_padding">40dp</dimen>
-
-</resources>

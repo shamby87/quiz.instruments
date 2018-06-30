@@ -31,6 +31,11 @@
     <dimen name="text_size_medium">18sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
 
+    <dimen name="letter_size">26dp</dimen>
+    <dimen name="letter_min_width">22dp</dimen>
+    <dimen name="letter_h_padding">0dp</dimen>
+    <dimen name="letter_v_padding">20dp</dimen>
+
     <dimen name="developer_icon_size">120dp</dimen>
     <dimen name="level_icon_size">90dp</dimen>
 </resources>

@@ -1,75 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.kidscademy.quiz.instruments.view.KeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/keyboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_T40"
     grid:columnCount="8"
     grid:rowCount="2"
-    grid:useDefaultMargins="false" >
+    grid:useDefaultMargins="false">
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="A" />
+        style="@style/Text.Letter"
+        tools:text="A" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="B" />
+        style="@style/Text.Letter"
+        tools:text="B" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="C" />
+        style="@style/Text.Letter"
+        tools:text="C" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="D" />
+        style="@style/Text.Letter"
+        tools:text="D" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="E" />
+        style="@style/Text.Letter"
+        tools:text="E" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="F" />
+        style="@style/Text.Letter"
+        tools:text="F" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="G" />
+        style="@style/Text.Letter"
+        tools:text="G" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="H" />
+        style="@style/Text.Letter"
+        tools:text="H" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="I" />
+        style="@style/Text.Letter"
+        tools:text="I" />
 
     <TextView
-        style="@style/keyboard.key"
-        android:text="J" />
-    
+        style="@style/Text.Letter"
+        tools:text="J" />
+
     <TextView
-        style="@style/keyboard.key"
-        android:text="K" />
-    
+        style="@style/Text.Letter"
+        tools:text="K" />
+
     <TextView
-        style="@style/keyboard.key"
-        android:text="L" />
-    
+        style="@style/Text.Letter"
+        tools:text="L" />
+
     <TextView
-        style="@style/keyboard.key"
-        android:text="M" />
-    
+        style="@style/Text.Letter"
+        tools:text="M" />
+
     <TextView
-        style="@style/keyboard.key"
-        android:text="N" />
-    
+        style="@style/Text.Letter"
+        tools:text="N" />
+
     <TextView
-        style="@style/keyboard.key"
-        android:text="O" />
-    
+        style="@style/Text.Letter"
+        tools:text="O" />
+
     <TextView
-        style="@style/keyboard.key"
-        android:text="P" />
-    
+        style="@style/Text.Letter"
+        tools:text="P" />
+
 </com.kidscademy.quiz.instruments.view.KeyboardView>
