@@ -23,25 +23,30 @@
             android:progressDrawable="@drawable/level_progress_blue" />
 
         <LinearLayout
-            style="@style/quiz.toolbar"
-            android:background="@color/black_TA0">
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/black_TA0"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/quiz_credits"
-                style="@style/quiz.label" />
+                style="@style/Text.Label.Large"
+                android:textColor="@color/green_300"
+                tools:text="1234" />
 
-            <TextView
-                style="@style/quiz.label.separator"
-                android:text="/" />
+            <TextView style="@style/Text.Label.Separator" />
 
             <TextView
                 android:id="@+id/quiz_level_credits"
-                style="@style/quiz.label" />
-
+                style="@style/Text.Label.Large"
+                android:textColor="@color/green_300"
+                tools:text="56" />
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1">
 
                 <RatingBar
@@ -58,56 +63,70 @@
 
             <TextView
                 android:id="@+id/quiz_solved"
-                style="@style/quiz.label" />
+                style="@style/Text.Label.Large"
+                android:textColor="@color/blue_300"
+                tools:text="3" />
 
-            <TextView
-                style="@style/quiz.label.separator"
-                android:text="/" />
+            <TextView style="@style/Text.Label.Separator.Large" />
 
             <TextView
                 android:id="@+id/quiz_count"
-                style="@style/quiz.label" />
+                style="@style/Text.Label.Large"
+                android:textColor="@color/blue_300"
+                tools:text="10" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/quiz_logo"
-            style="@style/quiz.logo"
-            android:background="@color/black_TA0" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/black_TA0"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/piano" />
 
         <TextView
             android:id="@+id/quiz_name"
-            style="@style/quiz.name" />
+            style="@style/Text.Title.Block.Inverse"
+            tools:text="piano" />
 
         <android.support.v7.widget.GridLayout
             android:id="@+id/quiz_options"
-            style="@style/quiz.options_section">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            app:columnCount="2"
+            app:rowCount="3">
 
             <Button
-                style="@style/quiz.option"
-                android:tag="KEY" />
+                style="@style/OptionButton"
+                tools:text="GUITAR" />
 
             <Button
-                style="@style/quiz.option"
-                android:tag="KEY" />
+                style="@style/OptionButton"
+                tools:text="PIANO" />
 
             <Button
-                style="@style/quiz.option"
-                android:tag="KEY" />
+                style="@style/OptionButton"
+                tools:text="BASS CLARINET" />
 
             <Button
-                style="@style/quiz.option"
-                android:tag="KEY" />
+                style="@style/OptionButton"
+                tools:text="TAIKO" />
 
             <Button
-                style="@style/quiz.option"
-                android:tag="KEY" />
+                style="@style/OptionButton"
+                tools:text="FLUTE" />
 
             <Button
-                style="@style/quiz.option"
-                android:tag="KEY" />
+                style="@style/OptionButton"
+                tools:text="SITAR" />
         </android.support.v7.widget.GridLayout>
     </LinearLayout>
 
+    <!-- is not clear why need to wrap FAB inside linear layout  -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

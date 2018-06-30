@@ -67,36 +67,36 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        style="@style/Text.Label.Inline"
+                        style="@style/Text.Label"
                         android:text="@string/card_level_total" />
 
-                    <TextView style="@style/Text.Label.Inline.Separator" />
+                    <TextView style="@style/Text.Label.Separator" />
 
                     <TextView
                         android:id="@+id/card_level_total"
-                        style="@style/Text.Label.Inline"
+                        style="@style/Text.Label"
                         tools:text="10" />
 
                     <TextView
-                        style="@style/Text.Label.Inline"
+                        style="@style/Text.Label"
                         android:text="@string/card_level_done" />
 
-                    <TextView style="@style/Text.Label.Inline.Separator" />
+                    <TextView style="@style/Text.Label.Separator" />
 
                     <TextView
                         android:id="@+id/card_level_done"
-                        style="@style/Text.Label.Inline"
+                        style="@style/Text.Label"
                         tools:text="4" />
 
                     <TextView
-                        style="@style/Text.Label.Inline.Accent"
+                        style="@style/Text.Label.Accent"
                         android:text="@string/card_level_score" />
 
-                    <TextView style="@style/Text.Label.Inline.Separator.Accent" />
+                    <TextView style="@style/Text.Label.Separator.Accent" />
 
                     <TextView
                         android:id="@+id/card_level_score"
-                        style="@style/Text.Label.Inline.Accent"
+                        style="@style/Text.Label.Accent"
                         tools:text="20" />
                 </GridLayout>
             </RelativeLayout>

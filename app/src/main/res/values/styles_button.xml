@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -20,5 +21,22 @@
         <item name="android:layout_marginTop">@dimen/paragraph_margin_top</item>
         <item name="android:background">#808080</item>
         <item name="android:minHeight">48dip</item>
+    </style>
+
+    <!-- button for quiz option -->
+    <style name="OptionButton">
+        <item name="android:textAppearance">@style/TextAppearance.Small</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_columnWeight">1</item>
+        <item name="layout_gravity">fill</item>
+        <item name="android:background">@color/black_T40</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:lines">3</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 </resources>

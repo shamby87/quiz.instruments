@@ -35,27 +35,27 @@
                 android:layout_gravity="center">
 
                 <TextView
-                    style="@style/Text.Letter"
+                    style="@style/Text.Letter.XLarge"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter"
+                    style="@style/Text.Letter.XLarge"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter"
+                    style="@style/Text.Letter.XLarge"
                     tools:text="D" />
 
                 <TextView
-                    style="@style/Text.Letter"
+                    style="@style/Text.Letter.XLarge"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter"
+                    style="@style/Text.Letter.XLarge"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter"
+                    style="@style/Text.Letter.XLarge"
                     tools:text="_" />
 
             </com.kidscademy.quiz.instruments.view.NameView>
@@ -84,27 +84,27 @@
                 android:layout_gravity="center">
 
                 <TextView
-                    style="@style/Text.Letter.Inverse"
+                    style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter.Inverse"
+                    style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter.Inverse"
+                    style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="D" />
 
                 <TextView
-                    style="@style/Text.Letter.Inverse"
+                    style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter.Inverse"
+                    style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="_" />
 
                 <TextView
-                    style="@style/Text.Letter.Inverse"
+                    style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="_" />
 
             </com.kidscademy.quiz.instruments.view.NameView>

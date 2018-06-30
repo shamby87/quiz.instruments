@@ -10,8 +10,28 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="Text.Title.Center">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
     <style name="Text.Title.Accent">
         <item name="android:textColor">@color/text_accent</item>
+    </style>
+
+    <style name="Text.Title.Block">
+        <item name="android:paddingTop">@dimen/block_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/block_padding_vertical</item>
+        <item name="android:paddingRight">@dimen/block_end_indent</item>
+        <item name="android:paddingEnd">@dimen/block_end_indent</item>
+        <item name="android:paddingLeft">@dimen/block_start_indent</item>
+        <item name="android:paddingStart">@dimen/block_start_indent</item>
+        <item name="android:background">@color/black_T40</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="Text.Title.Block.Inverse">
+        <item name="android:background">@color/white_T80</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Text.Paragraph">
@@ -79,15 +99,43 @@
         <item name="android:textColor">@color/text_accent</item>
     </style>
 
-    <!-- a label is a block of text attached to other view; it is a block element, that is, it fills parent and has top margin -->
+    <style name="Text.Block.XLarge">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+    </style>
+
+    <style name="Text.Block.XLarge.Center">
+        <item name="android:paddingEnd">@dimen/block_start_indent</item>
+        <item name="android:paddingRight">@dimen/block_start_indent</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="Text.Block.XLarge.Center.Inverse">
+        <item name="android:background">@color/white_T80</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- a label is an inline text attached to other view -->
     <style name="Text.Label">
         <item name="android:textAppearance">@style/TextAppearance.Small</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="Text.Label.Large">
+        <item name="android:textAppearance">@style/TextAppearance.Large</item>
+    </style>
+
+    <!-- a block label fill entire parent width and has a top margin -->
+    <style name="Text.Label.Block">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginTop">@dimen/label_margin_top</item>
     </style>
 
-    android:text="@string/balance_separator"
+    <style name="Text.Label.Block.Mute">
+        <item name="android:textColor">@color/text_mute</item>
+    </style>
+
     <!-- A label title is an ordinary label that happen to be first on top and beside beeing larger it has no top margin. -->
     <style name="Text.Label.Title">
         <item name="android:textAppearance">@style/TextAppearance.Large</item>
@@ -102,33 +150,23 @@
         <item name="android:textColor">@color/text_accent</item>
     </style>
 
-    <!-- inline label is does not fill entire parent and has no margin top; it relies on container for that -->
-    <style name="Text.Label.Inline">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_marginTop">0dp</item>
-    </style>
-
-    <style name="Text.Label.Inline.Accent">
-        <item name="android:textColor">@color/text_accent</item>
-    </style>
-
-    <style name="Text.Label.Inline.Large">
-        <item name="android:textAppearance">@style/TextAppearance.Large</item>
-    </style>
-
     <!-- a separator sits between two inline labels and currently is colon; it also has margin, both left and right -->
-    <style name="Text.Label.Inline.Separator">
+    <style name="Text.Label.Separator">
         <item name="android:text">:</item>
         <item name="android:layout_marginLeft">@dimen/separator_margin</item>
         <item name="android:layout_marginRight">@dimen/separator_margin</item>
     </style>
 
-    <style name="Text.Label.Inline.Separator.Accent">
+    <style name="Text.Label.Separator.Large">
+        <item name="android:textAppearance">@style/TextAppearance.Large</item>
+    </style>
+
+    <style name="Text.Label.Separator.Accent">
         <item name="android:textColor">@color/text_accent</item>
     </style>
 
     <style name="Text.Letter">
-        <item name="android:textAppearance">@style/TextAppearance.Large</item>
+        <item name="android:textAppearance">@style/TextAppearance.Small</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">2dp</item>
@@ -143,7 +181,11 @@
         <item name="layout_columnWeight">1</item>
     </style>
 
-    <style name="Text.Letter.Inverse">
+    <style name="Text.Letter.XLarge">
+        <item name="android:textAppearance">@style/TextAppearance.XLarge</item>
+    </style>
+
+    <style name="Text.Letter.XLarge.Inverse">
         <item name="android:textColor">@color/text_inverse</item>
     </style>
 </resources>

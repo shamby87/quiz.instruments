@@ -150,6 +150,7 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
 
     @Override
     public void onClick(View view) {
+        quizTimeout.stop();
         if (dialogOverlay.isActive()) {
             return;
         }

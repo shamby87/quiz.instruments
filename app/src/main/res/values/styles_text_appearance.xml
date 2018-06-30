@@ -52,4 +52,8 @@
         <item name="android:textColor">@color/grey_300</item>
     </style>
 
+    <style name="TextAppearance.XLarge" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+    </style>
+
 </resources>
