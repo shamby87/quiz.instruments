@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/compo_response_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_margin="20dp"
+    android:visibility="invisible"
+    tools:showIn="@layout/activity_balance"
+    tools:visibility="visible">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Best response time"
+        android:textColor="@color/blue_200"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/compo_response_time_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/blue_200"
+        android:textSize="48sp"
+        tools:text="1234" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/compo_response_time_value"
+        android:layout_marginLeft="6dp"
+        android:layout_toEndOf="@+id/compo_response_time_value"
+        android:text="ms"
+        android:textColor="@color/blue_200"
+        android:textSize="24sp" />
+</RelativeLayout>
