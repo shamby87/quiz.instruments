@@ -10,9 +10,6 @@
     card:cardElevation="12dp"
     card:cardUseCompatPadding="true">
 
-    <!-- set card:cardBackgroundColor to the same color as page background; otherwise a strange border appear -->
-    <!-- need to add card:cardUseCompatPadding="true" to show shadow on lollipop -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +18,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="140dp">
 
             <ImageView
                 android:id="@+id/card_level_bg"
@@ -34,8 +31,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.4"
-                android:background="@color/black" />
+                android:background="@color/black_T40" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -44,60 +40,63 @@
 
                 <com.kidscademy.quiz.instruments.view.HexaIcon
                     android:id="@+id/card_level_action"
-                    style="@style/card_level.action" />
+                    android:layout_width="@dimen/level_icon_size"
+                    android:layout_height="@dimen/level_icon_size"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    card:backgroundColor="@color/red_300"
+                    card:borderColor="@color/grey_300"
+                    card:borderSize="2"
+                    card:iconDrawable="@drawable/action_next" />
 
                 <TextView
                     android:id="@+id/card_level_name"
-                    style="@style/card_level.name"
+                    style="@style/Text.Title.Accent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="26dp"
                     android:layout_toRightOf="@+id/card_level_action"
                     tools:text="@string/sample_level_name" />
 
                 <GridLayout
                     android:id="@+id/card_level_synopsis"
-                    style="@style/card_level.grid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/card_level_name"
-                    android:layout_below="@+id/card_level_name">
+                    android:layout_below="@+id/card_level_name"
+                    android:columnCount="3"
+                    android:orientation="horizontal">
 
                     <TextView
-                        style="@style/card_level.label"
+                        style="@style/Text.Label.Inline"
                         android:text="@string/card_level_total" />
 
-                    <TextView
-                        style="@style/card_level.separator"
-                        android:text="@string/balance_separator" />
+                    <TextView style="@style/Text.Label.Inline.Separator" />
 
                     <TextView
                         android:id="@+id/card_level_total"
-                        style="@style/card_level.value"
+                        style="@style/Text.Label.Inline"
                         tools:text="10" />
 
                     <TextView
-                        style="@style/card_level.label"
+                        style="@style/Text.Label.Inline"
                         android:text="@string/card_level_done" />
 
-                    <TextView
-                        style="@style/card_level.separator"
-                        android:text="@string/balance_separator" />
+                    <TextView style="@style/Text.Label.Inline.Separator" />
 
                     <TextView
                         android:id="@+id/card_level_done"
-                        style="@style/card_level.value"
+                        style="@style/Text.Label.Inline"
                         tools:text="4" />
 
                     <TextView
-                        style="@style/card_level.label"
-                        android:text="@string/card_level_score"
-                        android:textColor="@color/yellow_500" />
+                        style="@style/Text.Label.Inline.Accent"
+                        android:text="@string/card_level_score" />
 
-                    <TextView
-                        style="@style/card_level.separator"
-                        android:text="@string/balance_separator"
-                        android:textColor="@color/yellow_500" />
+                    <TextView style="@style/Text.Label.Inline.Separator.Accent" />
 
                     <TextView
                         android:id="@+id/card_level_score"
-                        style="@style/card_level.value"
-                        android:textColor="@color/yellow_500"
+                        style="@style/Text.Label.Inline.Accent"
                         tools:text="20" />
                 </GridLayout>
             </RelativeLayout>

@@ -13,6 +13,8 @@
     <dimen name="container_padding">20dp</dimen>
     <!-- this dimension must be computed: @dimen/developer_icon_size + @dimen/container_padding -->
     <dimen name="labels_group_left_margin">140dp</dimen>
+    <!-- a separator is displayed between two labels and usualy is colon character; this margin values applies for bot left anf right margins -->
+    <dimen name="separator_margin">10dp</dimen>
 
 
     <dimen name="paragraph_margin_top">40dp</dimen>
@@ -30,4 +32,5 @@
     <dimen name="text_size_small">14sp</dimen>
 
     <dimen name="developer_icon_size">120dp</dimen>
+    <dimen name="level_icon_size">90dp</dimen>
 </resources>

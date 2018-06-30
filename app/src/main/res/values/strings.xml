@@ -5,6 +5,10 @@
     <string name="app_caption">Instruments Quiz</string>
     <string name="app_logotype">Trivia game about musical instruments</string>
     <string name="app_description">Instruments Quiz is a trivia game that challenges you to recognize musical instruments existing all over the world, from well know guitar or piano to esoteric didgeridoo.</string>
+    <!-- application name broken in parts that can be displayed on separated rows -->
+    <string name="app_name1">Musical</string>
+    <string name="app_name2">Instruments</string>
+    <string name="app_name3">Quiz</string>
 
     <!-- global string values -->
     <string-array name="level_names">

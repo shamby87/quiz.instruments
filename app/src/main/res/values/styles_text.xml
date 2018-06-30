@@ -5,11 +5,13 @@
 
     <style name="Text.Title">
         <item name="android:textAppearance">@style/TextAppearance.Large</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">2dp</item>
-        <item name="android:paddingLeft">20dp</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Text.Title.Accent">
+        <item name="android:textColor">@color/text_accent</item>
     </style>
 
     <style name="Text.Paragraph">
@@ -54,6 +56,7 @@
         <item name="android:textColor">@color/text_accent</item>
     </style>
 
+    <!-- a label is a block of text attached to other view; it is a block element, that is, it fills parent and has top margin -->
     <style name="Text.Label">
         <item name="android:textAppearance">@style/TextAppearance.Small</item>
         <item name="android:layout_width">match_parent</item>
@@ -61,6 +64,7 @@
         <item name="android:layout_marginTop">@dimen/label_margin_top</item>
     </style>
 
+    android:text="@string/balance_separator"
     <!-- A label title is an ordinary label that happen to be first on top and beside beeing larger it has no top margin. -->
     <style name="Text.Label.Title">
         <item name="android:textAppearance">@style/TextAppearance.Large</item>
@@ -72,6 +76,27 @@
     </style>
 
     <style name="Text.Label.Accent">
+        <item name="android:textColor">@color/text_accent</item>
+    </style>
+
+    <!-- inline label is does not fill entire parent and has no margin top; it relies on container for that -->
+    <style name="Text.Label.Inline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+
+    <style name="Text.Label.Inline.Accent">
+        <item name="android:textColor">@color/text_accent</item>
+    </style>
+
+    <!-- a separator sits between two inline labels and currently is colon; it also has margin, both left and right -->
+    <style name="Text.Label.Inline.Separator">
+        <item name="android:text">:</item>
+        <item name="android:layout_marginLeft">@dimen/separator_margin</item>
+        <item name="android:layout_marginRight">@dimen/separator_margin</item>
+    </style>
+
+    <style name="Text.Label.Inline.Separator.Accent">
         <item name="android:textColor">@color/text_accent</item>
     </style>
 </resources>
