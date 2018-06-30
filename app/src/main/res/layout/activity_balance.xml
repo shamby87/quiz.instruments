@@ -91,42 +91,6 @@
         </FrameLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/balance_response_time_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="20dp"
-        android:visibility="invisible"
-        tools:visibility="visible">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Best response time"
-            android:textColor="@color/blue_200"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/balance_response_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/blue_200"
-            android:textSize="48sp"
-            tools:text="1234" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/balance_response_time"
-            android:layout_marginLeft="6dp"
-            android:layout_toEndOf="@+id/balance_response_time"
-            android:text="ms"
-            android:textColor="@color/blue_200"
-            android:textSize="24sp" />
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -207,6 +171,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <include layout="@layout/compo_response_time" />
 
     <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.Back" />
 

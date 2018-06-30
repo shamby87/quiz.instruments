@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.view.HexaIcon;
 
@@ -60,8 +58,8 @@ public class QuizStartActivity extends AppActivity implements Runnable, View.OnC
         super.onCreate(savedInstanceState);
 
         handler = new Handler();
-        responseTimeView = findViewById(R.id.quiz_start_response_time);
-        responseTimeValueView = findViewById(R.id.quiz_start_response_time_value);
+        responseTimeView = findViewById(R.id.compo_response_time);
+        responseTimeValueView = findViewById(R.id.compo_response_time_value);
 
         messsageText = findViewById(R.id.quiz_start_message);
         warningText = findViewById(R.id.quiz_start_warning);

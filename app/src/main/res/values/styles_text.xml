@@ -20,9 +20,19 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/paragraph_margin_top</item>
         <item name="android:paddingStart">@dimen/paragraph_start_indent</item>
-        <item name="android:paddingRight">@dimen/paragraph_start_indent</item>
+        <item name="android:paddingLeft">@dimen/paragraph_start_indent</item>
         <item name="android:paddingEnd">@dimen/paragraph_end_indent</item>
-        <item name="android:paddingLeft">@dimen/paragraph_end_indent</item>
+        <item name="android:paddingRight">@dimen/paragraph_end_indent</item>
+    </style>
+
+    <style name="Text.Paragraph.Center">
+        <item name="android:paddingEnd">@dimen/paragraph_start_indent</item>
+        <item name="android:paddingRight">@dimen/paragraph_start_indent</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="Text.Paragraph.Center.Accent">
+        <item name="android:textAppearance">@style/TextAppearance.Small.Accent</item>
     </style>
 
     <style name="Text.Paragraph.Accent">

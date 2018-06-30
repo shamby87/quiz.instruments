@@ -36,6 +36,6 @@
     <dimen name="letter_h_padding">0dp</dimen>
     <dimen name="letter_v_padding">20dp</dimen>
 
-    <dimen name="developer_icon_size">120dp</dimen>
     <dimen name="level_icon_size">90dp</dimen>
+    <dimen name="developer_icon_size">120dp</dimen>
 </resources>

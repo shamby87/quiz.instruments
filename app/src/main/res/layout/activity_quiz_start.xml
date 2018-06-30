@@ -10,12 +10,13 @@
 
     <TextView
         android:id="@+id/quiz_start_message"
-        style="@style/quiz_start.message"
+        style="@style/Text.Paragraph.Center"
         android:text="@string/quiz_start_message" />
 
     <TextView
         android:id="@+id/quiz_start_warning"
-        style="@style/quiz_start.warning"
+        style="@style/Text.Paragraph.Center.Accent"
+        android:layout_marginTop="90dp"
         android:text="@string/quiz_start_warning" />
 
     <android.support.constraint.ConstraintLayout
@@ -27,6 +28,7 @@
         android:layout_gravity="center"
         android:foregroundGravity="center_horizontal">
 
+        <!-- hexa icons layout is based on icon size therefore is justified to be harcaded in this layout file -->
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
@@ -76,41 +78,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
-    <RelativeLayout
-        android:id="@+id/quiz_start_response_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="20dp"
-        android:visibility="invisible"
-        tools:visibility="visible">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Best response time"
-            android:textColor="@color/blue_200"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/quiz_start_response_time_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            tools:text="1234"
-            android:textColor="@color/blue_200"
-            android:textSize="48sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/quiz_start_response_time_value"
-            android:layout_marginLeft="6dp"
-            android:layout_toEndOf="@+id/quiz_start_response_time_value"
-            android:text="ms"
-            android:textColor="@color/blue_200"
-            android:textSize="24sp" />
-    </RelativeLayout>
+    <include layout="@layout/compo_response_time" />
 
     <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.Back" />
 

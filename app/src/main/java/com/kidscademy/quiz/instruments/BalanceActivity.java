@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Counters;
 import com.kidscademy.quiz.instruments.model.Level;
@@ -89,8 +87,8 @@ public class BalanceActivity extends AppActivity implements View.OnClickListener
         creditsView.setText(String.format("+%04d", balance.getCredit()));
 
         if (balance.hasResponseTime()) {
-            findViewById(R.id.balance_response_time_layout).setVisibility(View.VISIBLE);
-            TextView responseTimeView = findViewById(R.id.balance_response_time);
+            findViewById(R.id.compo_response_time).setVisibility(View.VISIBLE);
+            TextView responseTimeView = findViewById(R.id.compo_response_time_value);
             responseTimeView.setText(Integer.toString(balance.getMinResponseTime()));
         }
     }
