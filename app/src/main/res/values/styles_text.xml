@@ -25,16 +25,6 @@
         <item name="android:paddingRight">@dimen/paragraph_end_indent</item>
     </style>
 
-    <style name="Text.Paragraph.Center">
-        <item name="android:paddingEnd">@dimen/paragraph_start_indent</item>
-        <item name="android:paddingRight">@dimen/paragraph_start_indent</item>
-        <item name="android:gravity">center_horizontal</item>
-    </style>
-
-    <style name="Text.Paragraph.Center.Accent">
-        <item name="android:textAppearance">@style/TextAppearance.Small.Accent</item>
-    </style>
-
     <style name="Text.Paragraph.Accent">
         <item name="android:textAppearance">@style/TextAppearance.Small.Accent</item>
     </style>
@@ -48,6 +38,29 @@
         <item name="android:paddingTop">@dimen/paragraph_margin_top</item>
         <item name="android:paddingBottom">@dimen/paragraph_margin_top</item>
         <item name="android:background">@color/black_T40</item>
+    </style>
+
+    <!-- center paragraph has the same value for both start and end indent -->
+    <style name="Text.Paragraph.Center">
+        <item name="android:paddingEnd">@dimen/paragraph_start_indent</item>
+        <item name="android:paddingRight">@dimen/paragraph_start_indent</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="Text.Paragraph.Center.Accent">
+        <item name="android:textAppearance">@style/TextAppearance.Small.Accent</item>
+    </style>
+
+    <!-- justified paragraph streches on entire parent width without any start or end indent -->
+    <style name="Text.Paragraph.Justify">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+    </style>
+
+    <style name="Text.Paragraph.Justify.Accent">
+        <item name="android:textAppearance">@style/TextAppearance.Small.Accent</item>
     </style>
 
     <!-- A text block is a paragraph with background and padding. A block is used when a paragraph should be emphasized. For this reason its font size is medium. -->

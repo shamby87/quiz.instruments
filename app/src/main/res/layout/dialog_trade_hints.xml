@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <view xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     class="com.kidscademy.quiz.instruments.GameActivity$TradeHintsDialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -15,7 +16,7 @@
 
         <TextView
             android:id="@+id/trade_hints_title"
-            style="@style/trade_hints.title"
+            style="@style/Text.Paragraph.Justify.Accent"
             android:text="@string/trade_hints_title" />
 
         <GridLayout
@@ -32,7 +33,7 @@
                 android:paddingRight="20dp"
                 android:text="@string/trade_hints_reveal_label"
                 android:textAllCaps="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/TextAppearance.Large" />
 
             <TextView
                 android:id="@+id/reveal_letter_deduction"
@@ -40,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingRight="20dp"
-                android:text="10"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/TextAppearance.Large"
+                tools:text="10" />
 
             <ImageView
                 android:id="@+id/reveal_letter_action"
@@ -56,7 +57,7 @@
                 android:layout_gravity="top"
                 android:paddingRight="20dp"
                 android:text="@string/trade_hints_reveal_description"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/TextAppearance.Small" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
                 android:paddingTop="20dp"
                 android:text="@string/trade_hints_verify_label"
                 android:textAllCaps="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/TextAppearance.Large" />
 
             <TextView
                 android:id="@+id/verify_deduction"
@@ -75,8 +76,8 @@
                 android:layout_gravity="center_vertical"
                 android:paddingRight="20dp"
                 android:paddingTop="20dp"
-                android:text="20"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/TextAppearance.Large"
+                tools:text="20" />
 
             <ImageView
                 android:id="@+id/verify_action"
@@ -92,7 +93,7 @@
                 android:layout_gravity="top"
                 android:paddingRight="20dp"
                 android:text="@string/trade_hints_verify_description"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/TextAppearance.Small" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -102,7 +103,7 @@
                 android:paddingTop="20dp"
                 android:text="@string/trade_hints_hide_label"
                 android:textAllCaps="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/TextAppearance.Large" />
 
             <TextView
                 android:id="@+id/hide_letters_deduction"
@@ -111,8 +112,8 @@
                 android:layout_gravity="center_vertical"
                 android:paddingRight="20dp"
                 android:paddingTop="20dp"
-                android:text="30"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/TextAppearance.Large"
+                tools:text="30" />
 
             <ImageView
                 android:id="@+id/hide_letters_action"
@@ -128,7 +129,7 @@
                 android:layout_gravity="top"
                 android:paddingRight="20dp"
                 android:text="@string/trade_hints_hide_description"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/TextAppearance.Small" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,7 +139,7 @@
                 android:paddingTop="20dp"
                 android:text="@string/trade_hints_play_label"
                 android:textAllCaps="true"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="@style/TextAppearance.Large"
                 android:visibility="gone" />
 
             <TextView
@@ -148,9 +149,9 @@
                 android:layout_gravity="center_vertical"
                 android:paddingRight="20dp"
                 android:paddingTop="20dp"
-                android:text="40"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:visibility="gone" />
+                android:textAppearance="@style/TextAppearance.Large"
+                android:visibility="gone"
+                tools:text="40" />
 
             <ImageView
                 android:id="@+id/play_sample_action"
@@ -167,7 +168,7 @@
                 android:layout_gravity="top"
                 android:paddingRight="20dp"
                 android:text="@string/trade_hints_play_description"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="@style/TextAppearance.Small"
                 android:visibility="gone" />
         </GridLayout>
     </LinearLayout>
