@@ -8,9 +8,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/paragraph_margin_top</item>
         <item name="android:background">@color/black_T40</item>
-        <item name="android:paddingBottom">@dimen/container_padding</item>
-        <item name="android:paddingLeft">@dimen/container_padding</item>
-        <item name="android:paddingTop">@dimen/container_padding</item>
+        <item name="android:padding">@dimen/container_padding</item>
     </style>
 
     <!-- all containers have margin top; the last container has also margin bottom of the same value as margin top  -->
@@ -21,7 +19,7 @@
     <style name="InfoBox.LabelsGroup">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/labels_group_left_margin</item>
+        <item name="android:layout_marginStart">@dimen/labels_group_start_margin</item>
         <item name="android:orientation">vertical</item>
     </style>
 </resources>

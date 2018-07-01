@@ -32,7 +32,8 @@
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
-            app:backgroundColor="#80ff8080" />
+            app:backgroundColor="#80ff8080"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
@@ -40,9 +41,9 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="56dp"
             app:backgroundColor="#8040b5ff"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:iconDrawable="@drawable/ic_action_play" />
+            tools:iconDrawable="@drawable/action_play" />
 
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"

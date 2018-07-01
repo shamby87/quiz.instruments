@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="40dp"
-    android:layout_marginLeft="1dp"
-    android:layout_marginRight="1dp"
+    android:layout_marginEnd="1dp"
+    android:layout_marginStart="1dp"
     android:background="@color/black_T30">
 
     <js.view.SquareImageView
-        android:id="@+id/item_level_brands_icon"
+        android:id="@+id/item_instrument_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -16,10 +17,11 @@
         android:contentDescription="@string/image_description"
         android:padding="20dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/placeholder" />
+        android:src="@drawable/placeholder"
+        tools:src="@drawable/piano" />
 
     <TextView
-        android:id="@+id/item_level_brands_name"
+        android:id="@+id/item_intrument_name"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="bottom"
@@ -27,17 +29,18 @@
         android:ellipsize="end"
         android:gravity="center"
         android:lines="1"
-        android:text="@string/about_title"
         android:textAllCaps="true"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        tools:text="piano" />
 
     <ImageView
-        android:id="@+id/item_level_brands_check"
+        android:id="@+id/item_level_instrument_check"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|start"
         android:layout_marginBottom="24dp"
         android:src="@drawable/ic_check"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        tools:visibility="visible" />
 
 </FrameLayout>

@@ -12,17 +12,18 @@
     <!-- generic container padding; a container is a view group that contains child views -->
     <dimen name="container_padding">20dp</dimen>
     <!-- this dimension must be computed: @dimen/developer_icon_size + @dimen/container_padding -->
-    <dimen name="labels_group_left_margin">140dp</dimen>
+    <dimen name="labels_group_start_margin">140dp</dimen>
     <!-- a separator is displayed between two labels and usualy is colon character; this margin values applies for bot left anf right margins -->
     <dimen name="separator_margin">10dp</dimen>
-    <!-- vertical margin used by game keyboard -->
-    <dimen name="keyboard_v_margin">20dp</dimen>
+    <!-- vertical margin used by game keyboard, both top and bottom margins -->
+    <dimen name="keyboard_vertical_margin">20dp</dimen>
 
     <dimen name="paragraph_margin_top">40dp</dimen>
     <dimen name="paragraph_start_indent">40dp</dimen>
     <dimen name="paragraph_end_indent">20dp</dimen>
 
-    <dimen name="block_padding_vertical">20dp</dimen>
+    <dimen name="block_vertical_padding">20dp</dimen>
+    <dimen name="block_horizontal_padding">20dp</dimen>
     <dimen name="block_start_indent">40dp</dimen>
     <dimen name="block_end_indent">20dp</dimen>
 
@@ -36,8 +37,8 @@
 
     <dimen name="letter_size">26dp</dimen>
     <dimen name="letter_min_width">18dp</dimen>
-    <dimen name="letter_h_padding">0dp</dimen>
-    <dimen name="letter_v_padding">20dp</dimen>
+    <dimen name="letter_horizontal_padding">0dp</dimen>
+    <dimen name="letter_vertical_padding">20dp</dimen>
 
     <dimen name="level_icon_size">90dp</dimen>
     <dimen name="developer_icon_size">120dp</dimen>

@@ -64,9 +64,9 @@ public final class LevelInstrumentsAdapter extends RecyclerView.Adapter<LevelIns
 
         public Holder(View view) {
             super(view);
-            iconView = view.findViewById(R.id.item_level_brands_icon);
-            nameView = view.findViewById(R.id.item_level_brands_name);
-            checkView = view.findViewById(R.id.item_level_brands_check);
+            iconView = view.findViewById(R.id.item_instrument_icon);
+            nameView = view.findViewById(R.id.item_intrument_name);
+            checkView = view.findViewById(R.id.item_level_instrument_check);
             iconView.setOnClickListener(this);
         }
 

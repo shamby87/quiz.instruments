@@ -18,7 +18,7 @@
     </style>
 
     <style name="FAB.Back.Autohide">
-        <item name="layout_anchorGravity">bottom|right</item>
+        <item name="layout_anchorGravity">bottom|end</item>
         <item name="layout_behavior">com.kidscademy.quiz.instruments.util.FABTranslateBehavior
         </item>
     </style>

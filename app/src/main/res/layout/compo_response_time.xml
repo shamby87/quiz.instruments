@@ -4,7 +4,7 @@
     android:id="@+id/compo_response_time"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
+    android:layout_gravity="bottom|start"
     android:layout_margin="20dp"
     android:visibility="invisible"
     tools:showIn="@layout/activity_balance"

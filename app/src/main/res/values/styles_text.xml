@@ -5,8 +5,9 @@
 
     <style name="Text.Title">
         <item name="android:textAppearance">@style/TextAppearance.Large</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
@@ -19,12 +20,11 @@
     </style>
 
     <style name="Text.Title.Block">
-        <item name="android:paddingTop">@dimen/block_padding_vertical</item>
-        <item name="android:paddingBottom">@dimen/block_padding_vertical</item>
-        <item name="android:paddingRight">@dimen/block_end_indent</item>
-        <item name="android:paddingEnd">@dimen/block_end_indent</item>
-        <item name="android:paddingLeft">@dimen/block_start_indent</item>
-        <item name="android:paddingStart">@dimen/block_start_indent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingTop">@dimen/block_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/block_vertical_padding</item>
+        <item name="android:paddingEnd">@dimen/block_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/block_horizontal_padding</item>
         <item name="android:background">@color/black_T40</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
@@ -36,13 +36,11 @@
 
     <style name="Text.Paragraph">
         <item name="android:textAppearance">@style/TextAppearance.Small</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/paragraph_margin_top</item>
         <item name="android:paddingStart">@dimen/paragraph_start_indent</item>
-        <item name="android:paddingLeft">@dimen/paragraph_start_indent</item>
         <item name="android:paddingEnd">@dimen/paragraph_end_indent</item>
-        <item name="android:paddingRight">@dimen/paragraph_end_indent</item>
     </style>
 
     <style name="Text.Paragraph.Accent">
@@ -85,8 +83,8 @@
 
     <!-- A text block is a paragraph with background and padding. A block is used when a paragraph should be emphasized. For this reason its font size is medium. -->
     <style name="Text.Block" parent="Text.Paragraph">
-        <item name="android:paddingTop">@dimen/block_padding_vertical</item>
-        <item name="android:paddingBottom">@dimen/block_padding_vertical</item>
+        <item name="android:paddingTop">@dimen/block_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/block_vertical_padding</item>
         <item name="android:paddingRight">@dimen/block_end_indent</item>
         <item name="android:paddingEnd">@dimen/block_end_indent</item>
         <item name="android:paddingLeft">@dimen/block_start_indent</item>
@@ -170,10 +168,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">2dp</item>
-        <item name="android:paddingRight">@dimen/letter_h_padding</item>
-        <item name="android:paddingLeft">@dimen/letter_h_padding</item>
-        <item name="android:paddingTop">@dimen/letter_v_padding</item>
-        <item name="android:paddingBottom">@dimen/letter_v_padding</item>
+        <item name="android:paddingRight">@dimen/letter_horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/letter_horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/letter_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/letter_vertical_padding</item>
         <item name="android:gravity">center</item>
         <item name="android:minWidth">@dimen/letter_min_width</item>
         <item name="android:textSize">@dimen/letter_size</item>

@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="@style/TextAppearance.Small"
             android:textColor="@color/cyan_300"
             tools:text="Application Name" />
 
@@ -34,16 +34,14 @@
             android:layout_marginTop="@dimen/list_item_text_top"
             android:ellipsize="end"
             android:lines="1"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="@style/TextAppearance.Small"
             tools:text="com.kidscademy.package" />
 
         <TextView
             android:id="@+id/item_sharing_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="@style/TextAppearance.Small"
             tools:text="1.2.3" />
     </LinearLayout>
 
