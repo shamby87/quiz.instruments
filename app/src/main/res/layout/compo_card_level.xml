@@ -52,16 +52,16 @@
                 <TextView
                     android:id="@+id/card_level_name"
                     style="@style/Text.Title.Accent"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="26dp"
-                    android:layout_toRightOf="@+id/card_level_action"
+                    android:layout_toEndOf="@+id/card_level_action"
                     tools:text="@string/sample_level_name" />
 
                 <GridLayout
                     android:id="@+id/card_level_synopsis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/card_level_name"
+                    android:layout_alignStart="@+id/card_level_name"
                     android:layout_below="@+id/card_level_name"
                     android:columnCount="3"
                     android:orientation="horizontal">

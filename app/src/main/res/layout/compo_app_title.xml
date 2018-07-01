@@ -9,19 +9,19 @@
     <TextView
         style="@style/Text.Title"
         android:background="@drawable/right_border"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:text="@string/app_name1" />
 
     <TextView
         style="@style/Text.Title"
         android:background="@drawable/right_border2"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:text="@string/app_name2" />
 
     <TextView
         style="@style/Text.Title"
         android:background="@drawable/right_border3"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:text="@string/app_name3" />
 
 </LinearLayout>

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kidscademy.quiz.instruments"
     android:installLocation="auto"
-    android:versionCode="4"
-    android:versionName="1.0.4-DEBUG">
+    android:versionCode="1"
+    android:versionName="1.0.1-DEBUG">
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -16,10 +16,11 @@
 
     <application
         android:name=".App"
-        android:largeHeap="true"
         android:allowBackup="false"
         android:icon="@drawable/app_icon"
         android:label="@string/app_caption"
+        android:largeHeap="true"
+        android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".LauncherActivity">
             <intent-filter>

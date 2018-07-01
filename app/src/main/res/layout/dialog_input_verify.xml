@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="60dp"
-            android:text="Verify response"
+            android:text="@string/verify_response"
             android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:text="BAD LETTERS"
+            android:text="@string/bad_letters"
             android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 

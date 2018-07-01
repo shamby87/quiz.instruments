@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
-        android:text="Quiz complete"
+        android:text="@string/quiz_complete"
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="28dp" />
@@ -36,7 +36,7 @@
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="56dp"
             app:backgroundColor="#8040b5ff"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -45,7 +45,7 @@
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="200dp"
+            android:layout_marginStart="200dp"
             app:backgroundColor="#803358be"
             app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -102,7 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Average response time"
+            android:text="@string/average_response_time"
             android:textColor="@color/blue_200"
             android:textSize="16sp" />
 
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="1234"
+            tools:text="1234"
             android:textColor="@color/blue_200"
             android:textSize="48sp" />
 
@@ -119,9 +119,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/quiz_complete_response_time_value"
-            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
             android:layout_toEndOf="@+id/quiz_complete_response_time_value"
-            android:text="ms"
+            android:text="@string/milliseconds"
             android:textColor="@color/blue_200"
             android:textSize="24sp" />
     </RelativeLayout>

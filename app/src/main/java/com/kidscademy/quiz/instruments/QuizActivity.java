@@ -87,7 +87,7 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
     private int lastProgressPercent;
 
     public QuizActivity() {
-        log.trace("SpellSound()");
+        log.trace("QuizActivity()");
         player = new Player(this);
         handler = new Handler();
     }

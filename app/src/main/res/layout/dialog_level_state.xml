@@ -37,7 +37,7 @@
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="56dp"
             app:backgroundColor="#8040b5ff"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -46,7 +46,7 @@
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="200dp"
+            android:layout_marginStart="200dp"
             app:backgroundColor="#803358be"
             app:layout_constraintLeft_toLeftOf="parent" />
 

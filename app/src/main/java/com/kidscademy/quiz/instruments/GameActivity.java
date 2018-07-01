@@ -416,10 +416,10 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             activity.player.play("fx/hooray.mp3");
 
             if (levelComplete) {
-                dialog.setText(R.id.level_state_message, "%s COMPLETE", Assets.getLevelName(activity, activity.level.getIndex()));
+                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_complete), Assets.getLevelName(activity, activity.level.getIndex()));
                 dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelCompleteBonus(activity.level.getIndex()));
             } else {
-                dialog.setText(R.id.level_state_message, "%s UNLOCKED", Assets.getLevelName(activity, activity.engine.getUnlockedLevelIndex()));
+                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_unlocked), Assets.getLevelName(activity, activity.engine.getUnlockedLevelIndex()));
                 dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelUnlockBonus(activity.level.getIndex()));
             }
         }

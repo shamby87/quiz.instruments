@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/trade_hints_reveal_label"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.Large" />
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:textAppearance="@style/TextAppearance.Large"
                 tools:text="10" />
 
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="3"
                 android:layout_gravity="top"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/trade_hints_reveal_description"
                 android:textAppearance="@style/TextAppearance.Small" />
 
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:paddingTop="20dp"
                 android:text="@string/trade_hints_verify_label"
                 android:textAllCaps="true"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:paddingTop="20dp"
                 android:textAppearance="@style/TextAppearance.Large"
                 tools:text="20" />
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="3"
                 android:layout_gravity="top"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/trade_hints_verify_description"
                 android:textAppearance="@style/TextAppearance.Small" />
 
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:paddingTop="20dp"
                 android:text="@string/trade_hints_hide_label"
                 android:textAllCaps="true"
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:paddingTop="20dp"
                 android:textAppearance="@style/TextAppearance.Large"
                 tools:text="30" />
@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="3"
                 android:layout_gravity="top"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/trade_hints_hide_description"
                 android:textAppearance="@style/TextAppearance.Small" />
 
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:paddingTop="20dp"
                 android:text="@string/trade_hints_play_label"
                 android:textAllCaps="true"
@@ -147,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:paddingTop="20dp"
                 android:textAppearance="@style/TextAppearance.Large"
                 android:visibility="gone"
@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="3"
                 android:layout_gravity="top"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/trade_hints_play_description"
                 android:textAppearance="@style/TextAppearance.Small"
                 android:visibility="gone" />

@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Best response time"
+        android:text="@string/best_response_time"
         android:textColor="@color/blue_200"
         android:textSize="16sp" />
 
@@ -30,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/compo_response_time_value"
-        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
         android:layout_toEndOf="@+id/compo_response_time_value"
-        android:text="ms"
+        android:text="@string/milliseconds"
         android:textColor="@color/blue_200"
         android:textSize="24sp" />
 </RelativeLayout>

@@ -18,13 +18,15 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingRight="30dp">
+            android:layout_weight="1"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Levels"
+                android:text="@string/balance_levels"
                 android:textAllCaps="true"
                 android:textColor="@color/blue_300" />
 
@@ -42,15 +44,16 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/thin_right_border"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:layout_weight="1"
+            android:background="@drawable/thin_left_border"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Unlocked"
+                android:text="@string/balance_unlocked"
                 android:textAllCaps="true"
                 android:textColor="@color/green_300" />
 
@@ -68,14 +71,16 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/thin_right_border"
-            android:paddingLeft="30dp">
+            android:layout_weight="1"
+            android:background="@drawable/thin_left_border"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Complete"
+                android:text="@string/balance_complete"
                 android:textAllCaps="true"
                 android:textColor="@color/cyan_300" />
 
@@ -135,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="14dp"
-                    android:text="Points"
+                    android:text="@string/balance_points"
                     android:textAllCaps="true"
                     android:textColor="@color/cyan_100" />
             </FrameLayout>
@@ -164,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="14dp"
-                    android:text="Credits"
+                    android:text="@string/balance_credits"
                     android:textAllCaps="true"
                     android:textColor="@color/amber_100" />
             </FrameLayout>

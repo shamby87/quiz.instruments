@@ -25,7 +25,7 @@
             android:id="@+id/game_over_action"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="56dp"
             android:src="@drawable/kids_cademy_icon"
             app:iconAnimation="@anim/vibrate_icon"
@@ -35,7 +35,7 @@
         <com.kidscademy.quiz.instruments.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="200dp"
+            android:layout_marginStart="200dp"
             app:backgroundColor="#803358be"
             app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -73,7 +73,7 @@
         android:layout_marginRight="40dp"
         android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
-        android:text="You are done! Go to store and pick another challenge!"
+        android:text="@string/game_over"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/cyan_300" />
 

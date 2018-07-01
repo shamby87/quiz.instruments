@@ -34,14 +34,43 @@
         <item>LEVEL 20</item>
     </string-array>
 
+    <!-- game activity -->
+    <string name="game_level_complete">%s COMPLETE</string>
+    <string name="game_level_unlocked">%s UNLOCKED</string>
+
     <!--  quiz start activity -->
     <string name="quiz_start_message">Take a quiz to earn credits. Use credits to reveal game hints.</string>
     <string name="quiz_start_warning">Response speed maters. Start when ready.</string>
+
+    <!-- balance activity -->
+    <string name="balance_levels">Levels</string>
+    <string name="balance_unlocked">Unlocked</string>
+    <string name="balance_complete">Complete</string>
+    <string name="balance_points">Points</string>
+    <string name="balance_credits">Credits</string>
+
+    <!-- game over activity -->
+    <string name="game_over">You are done! Go to store and pick another challenge!</string>
 
     <!-- card level component -->
     <string name="card_level_score">score</string>
     <string name="card_level_total">total</string>
     <string name="card_level_done">done</string>
+
+    <!-- input verify dialog -->
+    <string name="verify_response">Verify Response</string>
+    <string name="bad_letters">Bad Letters</string>
+
+    <!-- quiz complete dialog -->
+    <string name="quiz_complete">Quiz Complete</string>
+
+    <!-- compo response time  -->
+    <string name="average_response_time">Average response time</string>
+    <string name="best_response_time">Best response time</string>
+    <string name="milliseconds">ms</string>
+
+    <!-- quiz fail dialog -->
+    <string name="quiz_fail">You may want to open Musical Instruments Atlas and learn more.</string>
 
     <!-- no credit dialog -->
     <string name="no_credit_quiz">Take a quiz to earn credits.</string>
