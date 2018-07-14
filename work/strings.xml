@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="balance_complete">Completate</string>
+    <string name="balance_credits">Credite</string>
+    <string name="balance_levels">Niveluri</string>
+    <string name="balance_points">Puncte</string>
+    <string name="balance_unlocked">Deblocate</string>
+    <string name="best_response_time">Cel mai bun timp</string>
+    <string name="card_level_done">terminate</string>
+    <string name="card_level_score">puncte</string>
+    <string name="card_level_total">total</string>
+    <string name="average_response_time">Tmp mediu</string>
+    <string name="quiz_start_warning">Viteza de raspuns conteaza. Incepe cand esti gata.</string>
+    <string name="sample_level_name">Nivel 1</string>
+    <string name="trade_hints_hide_description">Ascunde literele din tastatura nefolosite</string>
+    <string name="trade_hints_hide_label">Ascunde literele</string>
+    <string name="no_ads_p1">Fără indoială Internetul a schimbat lumea și suntem cu toții de acord cu asta.</string>
+
+    <string-array name="instrument_names">
+        <item>chitară</item>
+        <item>acordion</item>
+        <item>alphorn</item>
+        <item>cimpoi</item>
+        <item>balaban</item>
+        <item>balafon</item>
+        <item>balalaică</item>
+        <item>bandoneon</item>
+        <item>bandura</item>
+        <item>banjo</item>
+        <item>bansuri</item>
+        <item>clarinet bas</item>
+        <item>tobă bas</item>
+        <item>flaut bas</item>
+        <item>chitară bas</item>
+        <item>buzuchi</item>
+        <item>bucium</item>
+        <item>goarnă</item>
+        <item>cajon</item>
+        <item>castanete</item>
+        <item>celesta</item>
+        <item>cello</item>
+        <item>harpă celtică</item>
+        <item>țambal</item>
+        <item>clapsticks</item>
+        <item>clarinet</item>
+        <item>cobză</item>
+        <item>concertina</item>
+        <item>conga</item>
+        <item>cuatro</item>
+        <item>cumbus</item>
+        <item>dabakan</item>
+        <item>daf</item>
+        <item>dan bau</item>
+        <item>dhol</item>
+        <item>didgeridoo</item>
+        <item>contrabas</item>
+        <item>tobe</item>
+        <item>duduk</item>
+        <item>dulcitone</item>
+        <item>esraj</item>
+        <item>flaut</item>
+        <item>ghatam</item>
+        <item>glockenspiel</item>
+        <item>goblet drum</item>
+        <item>guqin</item>
+        <item>gusli</item>
+        <item>guzheng</item>
+        <item>hammered dulcimer</item>
+        <item>hang</item>
+        <item>muzicuţă</item>
+        <item>harmonium</item>
+        <item>harpă</item>
+        <item>harpsichord</item>
+        <item>horagai</item>
+        <item>drâmbă</item>
+        <item>kalimba</item>
+        <item>kanjira</item>
+        <item>caval</item>
+        <item>koto</item>
+        <item>liră</item>
+        <item>mandolină</item>
+        <item>marimba</item>
+        <item>melodica</item>
+        <item>mridangam</item>
+        <item>mukkuri</item>
+        <item>oboi</item>
+        <item>ocarină</item>
+        <item>nai</item>
+        <item>pian</item>
+        <item>piccolo</item>
+        <item>orgă</item>
+        <item>pungi</item>
+        <item>saxhorn</item>
+        <item>saxofon</item>
+        <item>shakuhachi</item>
+        <item>shehnai</item>
+        <item>sitar</item>
+        <item>snare drum</item>
+        <item>suona</item>
+        <item>taiko</item>
+        <item>tamburină</item>
+        <item>taragot</item>
+        <item>orgă de teatru</item>
+        <item>tonkori</item>
+        <item>triunghi</item>
+        <item>trombon</item>
+        <item>trompetă</item>
+        <item>tubă</item>
+        <item>clopote tubulare</item>
+        <item>ukulele</item>
+        <item>vibraphone</item>
+        <item>vienna horn</item>
+        <item>viola</item>
+        <item>violin</item>
+        <item>whip</item>
+        <item>wood block</item>
+        <item>xylophone</item>
+        <item>zither</item>
+        <item>zurna</item>
+    </string-array>
+</resources>
