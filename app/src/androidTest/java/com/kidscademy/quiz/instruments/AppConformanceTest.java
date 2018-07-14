@@ -185,12 +185,12 @@ public class AppConformanceTest {
         sleep(1000);
 
         // main activit is opened: click to open recommended application activity
-        onView(withId(R.id.main_recommended)).perform(click());
-        sleep(1000);
+//        onView(withId(R.id.main_recommended)).perform(click());
+//        sleep(1000);
 
         // close recommended application activity and go back to main activity
-        onView(withResourceName("fab_back")).perform(click());
-        sleep(1000);
+//        onView(withResourceName("fab_back")).perform(click());
+//        sleep(1000);
 
         // back to main activity: end test case
         sleep(1000);

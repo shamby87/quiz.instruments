@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.kidscademy.model.StorageObject;
+import com.kidscademy.quiz.instruments.App;
+import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.util.StorageBase;
 
 import js.util.Strings;
@@ -60,6 +62,7 @@ public class Instrument implements StorageObject, Parcelable {
 
     public String getDisplay() {
         return name.replace('_', ' ');
+        // return App.context().getResources().getStringArray(R.array.instrument_names)[index];
     }
 
     public int getRank() {

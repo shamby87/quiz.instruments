@@ -57,7 +57,7 @@ public class MainActivity extends AppActivity implements View.OnClickListener {
         volumeIcon = findViewById(R.id.main_volume);
         volumeIcon.setOnClickListener(this);
 
-        findViewById(R.id.main_help).setOnClickListener(this);
+        findViewById(R.id.main_close).setOnClickListener(this);
         findViewById(R.id.main_about).setOnClickListener(this);
         findViewById(R.id.main_no_ads).setOnClickListener(this);
         findViewById(R.id.main_recommended).setOnClickListener(this);
@@ -115,6 +115,9 @@ public class MainActivity extends AppActivity implements View.OnClickListener {
                 } catch (ActivityNotFoundException e) {
                     startActivity(rate("http://play.google.com/store/apps/details"));
                 }
+                break;
+            case R.id.main_close:
+                onBackPressed();
                 break;
         }
         if (intent != null) {

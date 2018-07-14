@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- application name and description -->
-    <string name="app_name">Instruments Quiz</string>
+    <string name="app_name" translatable="false">Instruments Quiz</string>
     <string name="app_caption">Instruments Quiz</string>
     <string name="app_logotype">Trivia game about musical instruments</string>
     <string name="app_description">Instruments Quiz is a trivia game that challenges you to recognize musical instruments existing all over the world, from well know guitar or piano to esoteric didgeridoo.</string>
@@ -32,6 +32,109 @@
         <item>LEVEL 18</item>
         <item>LEVEL 19</item>
         <item>LEVEL 20</item>
+    </string-array>
+
+    <string-array name="instrument_names">
+        <item>guitar</item>
+        <item>accordion</item>
+        <item>alphorn</item>
+        <item>bagpipes</item>
+        <item>balaban</item>
+        <item>balafon</item>
+        <item>balalaika</item>
+        <item>bandoneon</item>
+        <item>bandura</item>
+        <item>banjo</item>
+        <item>bansuri</item>
+        <item>bass clarinet</item>
+        <item>bass drum</item>
+        <item>bass flute</item>
+        <item>bass guitar</item>
+        <item>bouzouki</item>
+        <item>bucium</item>
+        <item>bugle</item>
+        <item>cajon</item>
+        <item>castanets</item>
+        <item>celesta</item>
+        <item>cello</item>
+        <item>celtic harp</item>
+        <item>cimbalom</item>
+        <item>clapsticks</item>
+        <item>clarinet</item>
+        <item>cobza</item>
+        <item>concertina</item>
+        <item>conga</item>
+        <item>cuatro</item>
+        <item>cumbus</item>
+        <item>dabakan</item>
+        <item>daf</item>
+        <item>dan bau</item>
+        <item>dhol</item>
+        <item>didgeridoo</item>
+        <item>double bass</item>
+        <item>drum kit</item>
+        <item>duduk</item>
+        <item>dulcitone</item>
+        <item>esraj</item>
+        <item>flute</item>
+        <item>ghatam</item>
+        <item>glockenspiel</item>
+        <item>goblet drum</item>
+        <item>guqin</item>
+        <item>gusli</item>
+        <item>guzheng</item>
+        <item>hammered dulcimer</item>
+        <item>hang</item>
+        <item>harmonica</item>
+        <item>harmonium</item>
+        <item>harp</item>
+        <item>harpsichord</item>
+        <item>horagai</item>
+        <item>jaw harp</item>
+        <item>kalimba</item>
+        <item>kanjira</item>
+        <item>kaval</item>
+        <item>koto</item>
+        <item>lyra</item>
+        <item>mandolin</item>
+        <item>marimba</item>
+        <item>melodica</item>
+        <item>mridangam</item>
+        <item>mukkuri</item>
+        <item>oboe</item>
+        <item>ocarina</item>
+        <item>panpipe</item>
+        <item>piano</item>
+        <item>piccolo</item>
+        <item>pipe organ</item>
+        <item>pungi</item>
+        <item>saxhorn</item>
+        <item>saxophone</item>
+        <item>shakuhachi</item>
+        <item>shehnai</item>
+        <item>sitar</item>
+        <item>snare drum</item>
+        <item>suona</item>
+        <item>taiko</item>
+        <item>tambourine</item>
+        <item>tarogato</item>
+        <item>theatre organ</item>
+        <item>tonkori</item>
+        <item>triangle</item>
+        <item>trombone</item>
+        <item>trumpet</item>
+        <item>tuba</item>
+        <item>tubular bells</item>
+        <item>ukulele</item>
+        <item>vibraphone</item>
+        <item>vienna horn</item>
+        <item>viola</item>
+        <item>violin</item>
+        <item>whip</item>
+        <item>wood block</item>
+        <item>xylophone</item>
+        <item>zither</item>
+        <item>zurna</item>
     </string-array>
 
     <!-- game activity -->
@@ -108,8 +211,8 @@
     <string name="no_ads_agree">Agree</string>
 
     <!-- error messages -->
-    <string name="err_no_storage">SD card not accessible. Unable to store or read Fables collection. Application abort.</string>
-    <string name="err_load_fail">Fables collection loading fails. Application abort.\n\nPlease check connection to Internet and SD card free space.</string>
-    <string name="err_launcher">There is a temporary server error that prevent Car Brands loading. Please try again after couple minutes. We apologize for inconvenience.</string>
+    <string name="err_no_storage">SD card not accessible. Unable to initialize instruments collection. Application abort.</string>
+    <string name="err_load_fail">Instruments collection loading fails. Application abort.\n\nPlease check connection to Internet and SD card free space.</string>
+    <string name="err_launcher">There is a temporary server error that prevent application loading. Please try again after couple minutes. We apologize for inconvenience.</string>
 
 </resources>

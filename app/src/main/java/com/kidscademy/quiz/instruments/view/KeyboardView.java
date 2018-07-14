@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.App;
 import com.kidscademy.quiz.instruments.R;
+import com.kidscademy.quiz.instruments.util.Assets;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,11 +42,6 @@ public class KeyboardView extends GridLayout implements OnClickListener {
             alphabet.add(s.charAt(i));
         }
     }
-
-    private static final int[] colors = new int[]{
-            R.color.red_300, R.color.pink_300, R.color.purple_300, R.color.blue_300, R.color.cyan_300, R.color.teal_300, R.color.green_300, R.color.lime_300, R.color.yellow_300, R.color.orange_300
-    };
-    private static final Random random = new Random();
 
     private Player player;
     private Listener listener;
@@ -84,7 +80,7 @@ public class KeyboardView extends GridLayout implements OnClickListener {
             TextView view = (TextView) getChildAt(i);
             view.setVisibility(View.VISIBLE);
             view.setText(keys.get(i).toString());
-            view.setTextColor(ContextCompat.getColor(getContext(), colors[random.nextInt(colors.length)]));
+            view.setTextColor(ContextCompat.getColor(getContext(), Assets.getRandomColor()));
         }
     }
 
