@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="facebook_apikey">592040027662527</string>
+    <string name="facebook_apikey" translatable="false">592040027662527</string>
 
 </resources>

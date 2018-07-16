@@ -25,7 +25,6 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.engine.QuizEngine;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Instrument;
@@ -177,7 +176,7 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
             }
             App.audit().quizWrongAnswer(challengedInstrument, selectedButton.getText().toString());
             for (final Button button : optionButtons) {
-                if (button.getText().toString().equals(challengedInstrument.getDisplay())) {
+                if (button.getText().toString().equals(challengedInstrument.getLocaleName())) {
                     ObjectAnimator anim = ObjectAnimator.ofInt(button, "textColor", Color.TRANSPARENT, Color.WHITE);
                     anim.setDuration(500);
                     anim.setEvaluator(new ArgbEvaluator());
@@ -203,7 +202,7 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
 
         BitmapLoader loader = new BitmapLoader(this, challengedInstrument.getPicturePath(), instrumentPictureView);
         loader.start();
-        instrumentNameView.setText(challengedInstrument.getDisplay());
+        instrumentNameView.setText(challengedInstrument.getLocaleName());
 
         if (App.prefs().isSoundsEffects()) {
             player.play(String.format("fx/positive-%d.mp3", random.nextInt(5)));

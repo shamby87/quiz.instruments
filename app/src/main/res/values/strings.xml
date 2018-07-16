@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- application name and description -->
-    <string name="app_name" translatable="false">Instruments Quiz</string>
+    <string name="app_name">Instruments Quiz</string>
     <string name="app_caption">Instruments Quiz</string>
     <string name="app_logotype">Trivia game about musical instruments</string>
     <string name="app_description">Instruments Quiz is a trivia game that challenges you to recognize musical instruments existing all over the world, from well know guitar or piano to esoteric didgeridoo.</string>
@@ -10,136 +10,10 @@
     <string name="app_name2">Instruments</string>
     <string name="app_name3">Quiz</string>
 
-    <!-- global string values -->
-    <string-array name="level_names">
-        <item>LEVEL 1</item>
-        <item>LEVEL 2</item>
-        <item>LEVEL 3</item>
-        <item>LEVEL 4</item>
-        <item>LEVEL 5</item>
-        <item>LEVEL 6</item>
-        <item>LEVEL 7</item>
-        <item>LEVEL 8</item>
-        <item>LEVEL 9</item>
-        <item>LEVEL 10</item>
-        <item>LEVEL 11</item>
-        <item>LEVEL 12</item>
-        <item>LEVEL 13</item>
-        <item>LEVEL 14</item>
-        <item>LEVEL 15</item>
-        <item>LEVEL 16</item>
-        <item>LEVEL 17</item>
-        <item>LEVEL 18</item>
-        <item>LEVEL 19</item>
-        <item>LEVEL 20</item>
-    </string-array>
-
-    <string-array name="instrument_names">
-        <item>guitar</item>
-        <item>accordion</item>
-        <item>alphorn</item>
-        <item>bagpipes</item>
-        <item>balaban</item>
-        <item>balafon</item>
-        <item>balalaika</item>
-        <item>bandoneon</item>
-        <item>bandura</item>
-        <item>banjo</item>
-        <item>bansuri</item>
-        <item>bass clarinet</item>
-        <item>bass drum</item>
-        <item>bass flute</item>
-        <item>bass guitar</item>
-        <item>bouzouki</item>
-        <item>bucium</item>
-        <item>bugle</item>
-        <item>cajon</item>
-        <item>castanets</item>
-        <item>celesta</item>
-        <item>cello</item>
-        <item>celtic harp</item>
-        <item>cimbalom</item>
-        <item>clapsticks</item>
-        <item>clarinet</item>
-        <item>cobza</item>
-        <item>concertina</item>
-        <item>conga</item>
-        <item>cuatro</item>
-        <item>cumbus</item>
-        <item>dabakan</item>
-        <item>daf</item>
-        <item>dan bau</item>
-        <item>dhol</item>
-        <item>didgeridoo</item>
-        <item>double bass</item>
-        <item>drum kit</item>
-        <item>duduk</item>
-        <item>dulcitone</item>
-        <item>esraj</item>
-        <item>flute</item>
-        <item>ghatam</item>
-        <item>glockenspiel</item>
-        <item>goblet drum</item>
-        <item>guqin</item>
-        <item>gusli</item>
-        <item>guzheng</item>
-        <item>hammered dulcimer</item>
-        <item>hang</item>
-        <item>harmonica</item>
-        <item>harmonium</item>
-        <item>harp</item>
-        <item>harpsichord</item>
-        <item>horagai</item>
-        <item>jaw harp</item>
-        <item>kalimba</item>
-        <item>kanjira</item>
-        <item>kaval</item>
-        <item>koto</item>
-        <item>lyra</item>
-        <item>mandolin</item>
-        <item>marimba</item>
-        <item>melodica</item>
-        <item>mridangam</item>
-        <item>mukkuri</item>
-        <item>oboe</item>
-        <item>ocarina</item>
-        <item>panpipe</item>
-        <item>piano</item>
-        <item>piccolo</item>
-        <item>pipe organ</item>
-        <item>pungi</item>
-        <item>saxhorn</item>
-        <item>saxophone</item>
-        <item>shakuhachi</item>
-        <item>shehnai</item>
-        <item>sitar</item>
-        <item>snare drum</item>
-        <item>suona</item>
-        <item>taiko</item>
-        <item>tambourine</item>
-        <item>tarogato</item>
-        <item>theatre organ</item>
-        <item>tonkori</item>
-        <item>triangle</item>
-        <item>trombone</item>
-        <item>trumpet</item>
-        <item>tuba</item>
-        <item>tubular bells</item>
-        <item>ukulele</item>
-        <item>vibraphone</item>
-        <item>vienna horn</item>
-        <item>viola</item>
-        <item>violin</item>
-        <item>whip</item>
-        <item>wood block</item>
-        <item>xylophone</item>
-        <item>zither</item>
-        <item>zurna</item>
-    </string-array>
-
     <!-- game activity -->
-    <string name="game_level_complete">%s COMPLETE</string>
-    <string name="game_level_unlocked">%s UNLOCKED</string>
+    <string name="game_level">Level</string>
+    <string name="game_level_complete">%s complete</string>
+    <string name="game_level_unlocked">%s unlocked</string>
 
     <!--  quiz start activity -->
     <string name="quiz_start_message">Take a quiz to earn credits. Use credits to reveal game hints.</string>
@@ -170,7 +44,7 @@
     <!-- compo response time  -->
     <string name="average_response_time">Average response time</string>
     <string name="best_response_time">Best response time</string>
-    <string name="milliseconds">ms</string>
+    <string name="milliseconds" translatable="false">ms</string>
 
     <!-- quiz fail dialog -->
     <string name="quiz_fail">You may want to open Musical Instruments Atlas and learn more.</string>
@@ -188,16 +62,16 @@
     <string name="trade_hints_hide_label">Hide Letters</string>
     <string name="trade_hints_hide_description">Hide unused letters from keyboard</string>
     <string name="trade_hints_play_label">Play Sample</string>
-    <string name="trade_hints_play_description">Play instrument sample. This enable play button from action bar.</string>
+    <string name="trade_hints_play_description">Play instrument sample.</string>
 
     <!-- about activity -->
-    <string name="about_p1">@string/app_description</string>
+    <string name="about_p1" translatable="false">@string/app_description</string>
     <string name="about_p2">Instruments Quiz is completely free. Free of annoying ads, no misleading in-app payment, no spy-ware.</string>
     <string name="about_p3">Development effort is donated. It is a humble way to show gratitude to Internet community that gives us all so much.</string>
-    <string name="about_dev1_skils">Senior Java, Android and Web Full Stack</string>
-    <string name="about_dev2_skils">UX Designer, Content Management</string>
-    <string name="about_dev3_skils">Music Composer, Sound Engineering</string>
-    <string name="about_place">Romania, Jassy</string>
+    <string name="about_dev1_skils" translatable="false">Senior Java, Android and Web Full Stack</string>
+    <string name="about_dev2_skils" translatable="false">UX Designer, Content Management</string>
+    <string name="about_dev3_skils" translatable="false">Music Composer, Sound Engineering</string>
+    <string name="about_place" translatable="false">Romania, Jassy</string>
 
     <!-- no ads manifesto -->
     <string name="no_ads_title">No Ads Manifesto</string>
@@ -215,4 +89,129 @@
     <string name="err_load_fail">Instruments collection loading fails. Application abort.\n\nPlease check connection to Internet and SD card free space.</string>
     <string name="err_launcher">There is a temporary server error that prevent application loading. Please try again after couple minutes. We apologize for inconvenience.</string>
 
+    <!-- instrument names -->
+    <string name="guitar">guitar</string>
+    <string name="accordion">accordion</string>
+    <string name="alphorn">alphorn</string>
+    <string name="bagpipes">bagpipes</string>
+    <string name="balaban">balaban</string>
+    <string name="balafon">balafon</string>
+    <string name="balalaika">balalaika</string>
+    <string name="bandoneon">bandoneon</string>
+    <string name="bandura">bandura</string>
+    <string name="banjo">banjo</string>
+    <string name="bansuri">bansuri</string>
+    <string name="bass_clarinet">bass clarinet</string>
+    <string name="bass_drum">bass drum</string>
+    <string name="bass_flute">bass flute</string>
+    <string name="bass_guitar">bass guitar</string>
+    <string name="bouzouki">bouzouki</string>
+    <string name="bucium">bucium</string>
+    <string name="bugle">bugle</string>
+    <string name="cajon">cajon</string>
+    <string name="castanets">castanets</string>
+    <string name="celesta">celesta</string>
+    <string name="cello">cello</string>
+    <string name="celtic_harp">celtic harp</string>
+    <string name="cimbalom">cimbalom</string>
+    <string name="clapsticks">clapsticks</string>
+    <string name="clarinet">clarinet</string>
+    <string name="cobza">cobza</string>
+    <string name="concertina">concertina</string>
+    <string name="conga">conga</string>
+    <string name="cuatro">cuatro</string>
+    <string name="cumbus">cumbus</string>
+    <string name="dabakan">dabakan</string>
+    <string name="daf">daf</string>
+    <string name="dan_bau">dan bau</string>
+    <string name="dhol">dhol</string>
+    <string name="didgeridoo">didgeridoo</string>
+    <string name="double_bass">double bass</string>
+    <string name="drum_kit">drum kit</string>
+    <string name="duduk">duduk</string>
+    <string name="dulcitone">dulcitone</string>
+    <string name="esraj">esraj</string>
+    <string name="flute">flute</string>
+    <string name="ghatam">ghatam</string>
+    <string name="glockenspiel">glockenspiel</string>
+    <string name="goblet_drum">goblet drum</string>
+    <string name="guqin">guqin</string>
+    <string name="gusli">gusli</string>
+    <string name="guzheng">guzheng</string>
+    <string name="hammered_dulcimer">hammered dulcimer</string>
+    <string name="hang">hang</string>
+    <string name="harmonica">harmonica</string>
+    <string name="harmonium">harmonium</string>
+    <string name="harp">harp</string>
+    <string name="harpsichord">harpsichord</string>
+    <string name="horagai">horagai</string>
+    <string name="jaw_harp">jaw harp</string>
+    <string name="kalimba">kalimba</string>
+    <string name="kanjira">kanjira</string>
+    <string name="kaval">kaval</string>
+    <string name="koto">koto</string>
+    <string name="lyra">lyra</string>
+    <string name="mandolin">mandolin</string>
+    <string name="marimba">marimba</string>
+    <string name="melodica">melodica</string>
+    <string name="mridangam">mridangam</string>
+    <string name="mukkuri">mukkuri</string>
+    <string name="oboe">oboe</string>
+    <string name="ocarina">ocarina</string>
+    <string name="panpipe">panpipe</string>
+    <string name="piano">piano</string>
+    <string name="piccolo">piccolo</string>
+    <string name="pipe_organ">pipe organ</string>
+    <string name="pungi">pungi</string>
+    <string name="saxhorn">saxhorn</string>
+    <string name="saxophone">saxophone</string>
+    <string name="shakuhachi">shakuhachi</string>
+    <string name="shehnai">shehnai</string>
+    <string name="sitar">sitar</string>
+    <string name="snare_drum">snare drum</string>
+    <string name="suona">suona</string>
+    <string name="taiko">taiko</string>
+    <string name="tambourine">tambourine</string>
+    <string name="tarogato">tarogato</string>
+    <string name="theatre_organ">theatre organ</string>
+    <string name="tonkori">tonkori</string>
+    <string name="triangle">triangle</string>
+    <string name="trombone">trombone</string>
+    <string name="trumpet">trumpet</string>
+    <string name="tuba">tuba</string>
+    <string name="tubular_bells">tubular bells</string>
+    <string name="ukulele">ukulele</string>
+    <string name="vibraphone">vibraphone</string>
+    <string name="vienna_horn">vienna horn</string>
+    <string name="viola">viola</string>
+    <string name="violin">violin</string>
+    <string name="whip">whip</string>
+    <string name="wood_block">wood block</string>
+    <string name="xylophone">xylophone</string>
+    <string name="zither">zither</string>
+    <string name="zurna">zurna</string>
+
+    <!-- global string values -->
+    <string-array name="level_names">
+        <item>LEVEL 1</item>
+        <item>LEVEL 2</item>
+        <item>LEVEL 3</item>
+        <item>LEVEL 4</item>
+        <item>LEVEL 5</item>
+        <item>LEVEL 6</item>
+        <item>LEVEL 7</item>
+        <item>LEVEL 8</item>
+        <item>LEVEL 9</item>
+        <item>LEVEL 10</item>
+        <item>LEVEL 11</item>
+        <item>LEVEL 12</item>
+        <item>LEVEL 13</item>
+        <item>LEVEL 14</item>
+        <item>LEVEL 15</item>
+        <item>LEVEL 16</item>
+        <item>LEVEL 17</item>
+        <item>LEVEL 18</item>
+        <item>LEVEL 19</item>
+        <item>LEVEL 20</item>
+    </string-array>
 </resources>

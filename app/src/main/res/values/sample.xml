@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="sample_level_name">Level 1</string>
+    <string name="sample_level_name" translatable="false">Level 1</string>
 </resources>

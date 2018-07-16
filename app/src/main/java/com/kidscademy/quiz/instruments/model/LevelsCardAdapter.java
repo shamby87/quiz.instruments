@@ -102,6 +102,8 @@ public class LevelsCardAdapter extends RecyclerView.Adapter<LevelsCardAdapter.Ho
             }
 
             nameText.setText(Assets.getLevelName(context, level.getIndex()));
+            nameText.setTag("level" + level.getIndex());
+
             instrumentsCountText.setText(Integer.toString(instrumentsCount));
             solvedInstrumentsText.setText(Integer.toString(solvedInstruments));
             scoreText.setText(Integer.toString(levelState.getScore()));

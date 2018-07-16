@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -17,8 +16,6 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import js.lang.Callback;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -88,7 +85,7 @@ public class AppConformanceTest {
         sleep(1000);
 
         // levels list is opened; click on first level
-        onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withText("LEVEL 1")))).perform(click());
+        onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withTagValue(is((Object)"level0"))))).perform(click());
         sleep(1000);
 
         // game activity is opened: click on FAB menu to open its mini FAB items
@@ -201,7 +198,7 @@ public class AppConformanceTest {
         String[] instrumentNames = getInstrumentNames(new NameTransform() {
             @Override
             public String transform(String name) {
-                return name.toUpperCase().replaceAll("_", "");
+                return name.toUpperCase().replaceAll(" ", "");
             }
         });
 
@@ -211,7 +208,7 @@ public class AppConformanceTest {
         sleep(1000);
 
         // levels list is opened; click on first level
-        ViewInteraction levelButton = onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withText("LEVEL 1"))));
+        ViewInteraction levelButton = onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withTagValue(is((Object)"level0")))));
         levelButton.perform(click());
         sleep(1000);
 
@@ -246,7 +243,7 @@ public class AppConformanceTest {
         String[] instrumentNames = getInstrumentNames(new NameTransform() {
             @Override
             public String transform(String name) {
-                return name.toLowerCase().replaceAll("_", " ");
+                return name.toLowerCase();
             }
         });
 
@@ -278,7 +275,7 @@ public class AppConformanceTest {
         Instrument[] instruments = App.storage().getInstruments();
         String[] instrumentNames = new String[LEVEL_SIZE];
         for (int i = 0; i < LEVEL_SIZE; ++i) {
-            instrumentNames[i] = nameTransform.transform(instruments[i].getName());
+            instrumentNames[i] = nameTransform.transform(instruments[i].getLocaleName());
         }
         return instrumentNames;
     }

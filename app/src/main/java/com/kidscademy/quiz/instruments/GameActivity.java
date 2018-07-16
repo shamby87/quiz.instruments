@@ -14,7 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.engine.GameEngine;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Instrument;
@@ -333,8 +332,8 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
         brandsCountView.setText(Integer.toString(level.getInstrumentsCount()));
         solvedBrandsCountView.setText(Integer.toString(levelState.getSolvedInstrumentsCount()));
-        answerView.init(challengedInstrument.getName());
-        keyboardView.init(challengedInstrument.getName());
+        answerView.init(challengedInstrument.getLocaleName());
+        keyboardView.init(challengedInstrument.getLocaleName());
 
         BitmapLoader loader = new BitmapLoader(this, challengedInstrument.getPicturePath(), imageView);
         loader.setRunnable(new Runnable() {
@@ -578,7 +577,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             responseView.open(activity.answerView.getInput());
 
             suggestionView = findViewById(R.id.input_verify_suggestion);
-            suggestionView.init(activity.challengedInstrument.getName());
+            suggestionView.init(activity.challengedInstrument.getLocaleName());
             suggestionView.verify(activity.answerView.getInput());
         }
     }

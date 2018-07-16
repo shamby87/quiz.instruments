@@ -70,7 +70,7 @@ public class GameEngine {
         } else {
             for (challengedInstrumentIndex = 0; challengedInstrumentIndex < unsolvedInstruments.size(); ) {
                 challengedInstrument = instruments[unsolvedInstruments.get(challengedInstrumentIndex++)];
-                if (challengedInstrument.getName().equals(instrumentName)) {
+                if (challengedInstrument.getLocaleName().equals(instrumentName)) {
                     break;
                 }
             }
@@ -95,7 +95,7 @@ public class GameEngine {
     public boolean checkAnswer(String answer) {
         assert challengedInstrument != null;
 
-        if (!challengedInstrument.getName().equals(answer)) {
+        if (!challengedInstrument.getLocaleName().equals(answer)) {
             counters.minus(challengedInstrument);
             final int penalty = Balance.getScorePenalty();
             balance.minusScore(penalty);

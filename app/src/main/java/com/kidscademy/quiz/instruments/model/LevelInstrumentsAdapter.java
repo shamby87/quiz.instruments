@@ -78,7 +78,7 @@ public final class LevelInstrumentsAdapter extends RecyclerView.Adapter<LevelIns
             BitmapLoader loader = new BitmapLoader(context, instrument.getPicturePath(), iconView, 2);
             loader.start();
 
-            String display = isSolved ? instrument.getDisplay() : "UNSOLVED";
+            String display = isSolved ? instrument.getLocaleName() : "UNSOLVED";
             nameView.setText(display);
 
             checkView.setVisibility(isSolved ? View.VISIBLE : View.INVISIBLE);

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- application name and description -->
+    <string name="app_name">Instrumente Muzicale</string>
+    <string name="app_caption">Instrumente Muzicale</string>
+    <string name="app_logotype">Joc despre instrumente muzicale</string>
+    <string name="app_description">Instrumente Musicale te provoacă să recunoști instrumente de pe întrega planetă, de la bine cunoscuta ghitară la mai ezotericul didgeridoo.</string>
+    <!-- application name broken in parts that can be displayed on separated rows -->
+    <string name="app_name1">Joc</string>
+    <string name="app_name2">Instrumente</string>
+    <string name="app_name3">Muzicale</string>
+
+    <!-- game activity -->
+    <string name="game_level">Nivel</string>
+    <string name="game_level_complete">%s complet</string>
+    <string name="game_level_unlocked">%s deblocat</string>
+
+    <!--  quiz start activity -->
+    <string name="quiz_start_message">Alege varianta de răspuns corectă și câștigă credite. Folosește creditele ca să obții indicii în joc.</string>
+    <string name="quiz_start_warning">Viteza de răspuns contează. Incepe când ești gata.</string>
+
+    <!-- balance activity -->
+    <string name="balance_levels">Niveluri</string>
+    <string name="balance_unlocked">Deblocate</string>
+    <string name="balance_complete">Completate</string>
+    <string name="balance_points">Puncte</string>
+    <string name="balance_credits">Credite</string>
+
+    <!-- game over activity -->
+    <string name="game_over">Ai terminat! Poți alege o altă provocare.</string>
+
+    <!-- card level component -->
+    <string name="card_level_score">puncte</string>
+    <string name="card_level_total">total</string>
+    <string name="card_level_done">terminate</string>
+
+    <!-- input verify dialog -->
+    <string name="verify_response">Verifică răspunsul</string>
+    <string name="bad_letters">Litere greșite</string>
+
+    <!-- quiz complete dialog -->
+    <string name="quiz_complete">Chestionar complet</string>
+
+    <!-- compo response time  -->
+    <string name="average_response_time">Timp mediu</string>
+    <string name="best_response_time">Cel mai bun timp</string>
+
+    <!-- quiz fail dialog -->
+    <string name="quiz_fail">Ai putea alege să deschizi Atlasul de instrumente muzicale și să inveți ceva nou.</string>
+
+    <!-- no credit dialog -->
+    <string name="no_credit_quiz">Alege varianta de răspuns corectă și câștigă credite.</string>
+    <string name="no_credit_hints">Folosește creditele ca să obții indicii în joc.</string>
+
+    <!-- trade hints dialog -->
+    <string name="trade_hints_title">Folosește credite pentru a obține indicii în joc. Acum ai %d credite.</string>
+    <string name="trade_hints_reveal_label">Arată o literă</string>
+    <string name="trade_hints_reveal_description">Arată prima literă lipsă din numele instrumentului.</string>
+    <string name="trade_hints_verify_label">Verifică numele</string>
+    <string name="trade_hints_verify_description">Verifică literele deja introduse în numele instrumentului.</string>
+    <string name="trade_hints_play_label">Sunetul instrumentului</string>
+    <string name="trade_hints_play_description">Cântă o secvență sonoră.</string>
+    <string name="trade_hints_hide_description">Ascunde literele nefolosite din tastatură.</string>
+    <string name="trade_hints_hide_label">Ascunde literele</string>
+
+    <!-- about activity -->
+    <string name="about_p2">Instrumente Muzicale este complet fără costuri. Nu are reclame enervante sau plată în aplicație care poate înșela și nici nu te spionează.</string>
+    <string name="about_p3">Efortul de dezvoltare este donat. Este o modalitate smerită de a arăta mulțumiri comunității Internet care ne dă atât de mult.</string>
+
+    <!-- no ads manifesto -->
+    <string name="no_ads_title">Manifest anti-reclamă</string>
+    <string name="no_ads_p1">Fără indoială Internetul a schimbat lumea și suntem cu toții de acord cu asta.</string>
+    <string name="no_ads_p2">Dar spațiul digital a început să semene cu vechile canale media. De fapt este mai rău. Acolo cel puțin nu suntem obligați să suportăm reclame in continuu.</string>
+    <string name="no_ads_p3">"Mai mult, calitatea reclamelor este criticabilă. Majoritatea nu sunt chiar așa atrăgatoare, unele fiind de-a dreptul urâte. Și în cele mai multe cazuri distrug site-uri și aplicații bine lucrate și ruinează experineța utilizator. "</string>
+    <string name="no_ads_p4">Credem cu tărie că pot exista căi mai elegante de a susține o afacere.</string>
+    <string name="no_ads_p5">Astea fiind spuse, nu credem că reclamele sunt un rău prin sine. Dimpotrivă. O reclamă bună poate ajuta la decizie și poate fi distractiv de urmărit. Singura problemă este că nu dorim să vedem reclame în continuu.</string>
+    <string name="no_ads_conclusion">Vestea bună este că ar putea fi o soluție. Creerea unui spațiu dedicat pentru reclame. În felul acesta utilizatorul se poate bucura de conținut și să acceseze reclamele din proprie inițiativă.</string>
+    <string name="no_ads_disagree">Nu sunt de acord</string>
+    <string name="no_ads_agree">De acord</string>
+
+    <!-- error messages -->
+    <string name="err_no_storage">Cardul SD nu este accesibil. Nu putem inițializa colecția de instrumente. Aplicația nu poate continua.</string>
+    <string name="err_load_fail">Incărcarea colecției de instrumente a eșuat. Te rugăm să verifici conexiunea la Internet sau spațiul liber pe cardul SD.</string>
+    <string name="err_launcher">Există o eroare temporară pe server care impiedică incărcarea aplicației. Ne cerem scuze și te rugăm să reincerci peste câteva minute.</string>
+
+    <!-- instrument names -->
+    <string name="guitar">chitară</string>
+    <string name="accordion">acordeon</string>
+    <string name="alphorn">cornul alpilor</string>
+    <string name="bagpipes">cimpoi</string>
+    <string name="balaban">balaban</string>
+    <string name="balafon">balafon</string>
+    <string name="balalaika">balalaică</string>
+    <string name="bandoneon">bandoneon</string>
+    <string name="bandura">bandură</string>
+    <string name="banjo">banjo</string>
+    <string name="bansuri">bansuri</string>
+    <string name="bass_clarinet">clarinet bas</string>
+    <string name="bass_drum">tobă</string>
+    <string name="bass_flute">flaut bas</string>
+    <string name="bass_guitar">chitară bas</string>
+    <string name="bouzouki">buzuchi</string>
+    <string name="bucium">bucium</string>
+    <string name="bugle">goarnă</string>
+    <string name="cajon">cajon</string>
+    <string name="castanets">castanietă</string>
+    <string name="celesta">celestă</string>
+    <string name="cello">violoncel</string>
+    <string name="celtic_harp">harpă celtică</string>
+    <string name="cimbalom">țambal</string>
+    <string name="clapsticks">clapsticks</string>
+    <string name="clarinet">clarinet</string>
+    <string name="cobza">cobză</string>
+    <string name="concertina">concertină</string>
+    <string name="conga">conga</string>
+    <string name="cuatro">cuatro</string>
+    <string name="cumbus">cumbus</string>
+    <string name="dabakan">dabakan</string>
+    <string name="daf">daf</string>
+    <string name="dan_bau">dan bau</string>
+    <string name="dhol">dhol</string>
+    <string name="didgeridoo">didgeridoo</string>
+    <string name="double_bass">contrabas</string>
+    <string name="drum_kit">baterie</string>
+    <string name="duduk">duduk</string>
+    <string name="dulcitone">dulcitone</string>
+    <string name="esraj">esraj</string>
+    <string name="flute">flaut</string>
+    <string name="ghatam">ghatam</string>
+    <string name="glockenspiel">metalofon</string>
+    <string name="goblet_drum">goblet drum</string>
+    <string name="guqin">guqin</string>
+    <string name="gusli">guzlă</string>
+    <string name="guzheng">guzheng</string>
+    <string name="hammered_dulcimer">dulcimer</string>
+    <string name="hang">tobă hang</string>
+    <string name="harmonica">muzicuţă</string>
+    <string name="harmonium">harmonium</string>
+    <string name="harp">harpă</string>
+    <string name="harpsichord">clavecin</string>
+    <string name="horagai">horagai</string>
+    <string name="jaw_harp">drâmbă</string>
+    <string name="kalimba">kalimba</string>
+    <string name="kanjira">kanjira</string>
+    <string name="kaval">caval</string>
+    <string name="koto">koto</string>
+    <string name="lyra">liră</string>
+    <string name="mandolin">mandolină</string>
+    <string name="marimba">marimbă</string>
+    <string name="melodica">clavietă</string>
+    <string name="mridangam">mridangam</string>
+    <string name="mukkuri">mukkuri</string>
+    <string name="oboe">oboi</string>
+    <string name="ocarina">ocarină</string>
+    <string name="panpipe">nai</string>
+    <string name="piano">pian</string>
+    <string name="piccolo">piculină</string>
+    <string name="pipe_organ">orgă</string>
+    <string name="pungi">pungi</string>
+    <string name="saxhorn">corn</string>
+    <string name="saxophone">saxofon</string>
+    <string name="shakuhachi">shakuhachi</string>
+    <string name="shehnai">shehnai</string>
+    <string name="sitar">sitar</string>
+    <string name="snare_drum">tobă mică</string>
+    <string name="suona">suona</string>
+    <string name="taiko">taiko</string>
+    <string name="tambourine">tamburină</string>
+    <string name="tarogato">taragot</string>
+    <string name="theatre_organ">orgă teatru</string>
+    <string name="tonkori">tonkori</string>
+    <string name="triangle">triunghi</string>
+    <string name="trombone">trombon</string>
+    <string name="trumpet">trompetă</string>
+    <string name="tuba">tubă</string>
+    <string name="tubular_bells">clopote tubulare</string>
+    <string name="ukulele">chitară havaiană</string>
+    <string name="vibraphone">vibrafon</string>
+    <string name="vienna_horn">horn vienez</string>
+    <string name="viola">violă</string>
+    <string name="violin">violină</string>
+    <string name="whip">whip</string>
+    <string name="wood_block">bloc de lemn</string>
+    <string name="xylophone">xilofon</string>
+    <string name="zither">țiteră</string>
+    <string name="zurna">zurna</string>
+
+    <!-- global string values -->
+    <string-array name="level_names">
+        <item>Nivel 1</item>
+        <item>Nivel 2</item>
+        <item>Nivel 3</item>
+        <item>Nivel 4</item>
+        <item>Nivel 5</item>
+        <item>Nivel 6</item>
+        <item>Nivel 7</item>
+        <item>Nivel 8</item>
+        <item>Nivel 9</item>
+        <item>Nivel 10</item>
+        <item>Nivel 11</item>
+        <item>Nivel 12</item>
+        <item>Nivel 13</item>
+        <item>Nivel 14</item>
+        <item>Nivel 15</item>
+        <item>Nivel 16</item>
+        <item>Nivel 17</item>
+        <item>Nivel 18</item>
+        <item>Nivel 19</item>
+        <item>Nivel 20</item>
+    </string-array>
+</resources>

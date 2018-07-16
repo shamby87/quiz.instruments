@@ -34,6 +34,9 @@ public class Storage extends StorageBase {
     private static final String LEVELS_PATH = "levels.json";
     private static final String LEVEL_STATES_PATH = "level-states.json";
 
+    /**
+     * Instruments collection sorted descendant by rank. It is the order of instruments per levels.
+     */
     private static Instrument[] instruments;
     private Counters counters;
     private Balance balance;

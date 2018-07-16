@@ -48,7 +48,7 @@ public class GameEngineTest {
         Instrument instrument = engine.initChallenge("accordion");
         assertNotNull(instrument);
         assertEquals(0, instrument.getIndex());
-        assertEquals("accordion", instrument.getName());
+        assertEquals("accordion", instrument.getLocaleName());
     }
 
     @Test

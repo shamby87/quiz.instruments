@@ -46,7 +46,7 @@ public class NameView extends LinearLayout implements OnClickListener {
     }
 
     public void init(String expectedName) {
-        this.expectedName = expectedName.toUpperCase(Locale.getDefault()).replace('_', ' ');
+        this.expectedName = expectedName.toUpperCase(Locale.getDefault());
         createLeterViews(this.expectedName);
         int i = 0;
         for (; i < this.expectedName.length(); ++i) {
@@ -140,7 +140,7 @@ public class NameView extends LinearLayout implements OnClickListener {
         for (int i = 0; i < expectedName.length(); ++i) {
             builder.append(((TextView) getChildAt(i)).getText());
         }
-        return builder.toString().replace(' ', '_').toLowerCase(Locale.getDefault());
+        return builder.toString().toLowerCase(Locale.getDefault());
     }
 
     @Override

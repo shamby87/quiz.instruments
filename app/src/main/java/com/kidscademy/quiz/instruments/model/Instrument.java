@@ -5,15 +5,24 @@ import android.os.Parcelable;
 
 import com.kidscademy.model.StorageObject;
 import com.kidscademy.quiz.instruments.App;
-import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.util.StorageBase;
 
 import js.util.Strings;
 
 public class Instrument implements StorageObject, Parcelable {
+    /**
+     * Index into instruments array from storage. Note that instruments storage is sorted by rank, descendant.
+     */
     private int index;
+    /**
+     * Instrument name used internally by application logic. Is not meant to be displayed on user interface
+     * but to identify instruments and attached resources like image file from assert.
+     */
     private String name;
     private int rank;
+
+
+    private String localeName;
     /**
      * Counter incremented every time this instrument is used by a quiz challenge with correct answer.
      */
@@ -46,6 +55,11 @@ public class Instrument implements StorageObject, Parcelable {
     public void onCreate(StorageBase storage) {
         assert picturePath == null;
         picturePath = Strings.concat("image/", name, ".png");
+
+        int stringId = App.instance().getResources().getIdentifier(name, "string", App.context().getPackageName());
+        if (stringId != 0) {
+            localeName = App.instance().getResources().getString(stringId);
+        }
     }
 
     public int getIndex() {
@@ -60,9 +74,8 @@ public class Instrument implements StorageObject, Parcelable {
         return picturePath;
     }
 
-    public String getDisplay() {
-        return name.replace('_', ' ');
-        // return App.context().getResources().getStringArray(R.array.instrument_names)[index];
+    public String getLocaleName() {
+        return localeName;
     }
 
     public int getRank() {

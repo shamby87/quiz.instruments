@@ -5,12 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.model.Level;
 import com.kidscademy.quiz.instruments.model.LevelInstrumentsAdapter;
@@ -74,7 +70,7 @@ public class LevelInstrumentsActivity extends AppActivity implements LevelInstru
     @Override
     public void onInstrumentSelected(int position, Instrument instrument) {
         if (!level.getState().isSolvedInstrument(position)) {
-            GameActivity.start(this, level.getIndex(), instrument.getName());
+            GameActivity.start(this, level.getIndex(), instrument.getLocaleName());
         }
         overridePendingTransition(R.anim.slide_enter_left, R.anim.slide_exit_left);
     }

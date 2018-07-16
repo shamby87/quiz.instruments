@@ -61,7 +61,7 @@ public class KeyboardView extends GridLayout implements OnClickListener {
     }
 
     public void init(String expectedName) {
-        expectedName = expectedName.toUpperCase(Locale.getDefault()).replaceAll("_", "");
+        expectedName = expectedName.toUpperCase(Locale.getDefault()).replaceAll(" ", "");
         if (expectedName.length() > getChildCount()) {
             throw new BugError("Expected name |%s| too large.", expectedName);
         }

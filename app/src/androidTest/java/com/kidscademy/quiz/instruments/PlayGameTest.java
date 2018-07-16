@@ -1,16 +1,11 @@
 package com.kidscademy.quiz.instruments;
 
 
-import android.app.Activity;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
-import android.support.test.runner.lifecycle.Stage;
 import android.test.suitebuilder.annotation.LargeTest;
-import android.util.Log;
 
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.view.HexaIcon;
@@ -19,9 +14,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.hasSibling;
@@ -29,6 +21,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withResourceName;
+import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.kidscademy.quiz.instruments.Util.info;
 import static com.kidscademy.quiz.instruments.Util.key;
@@ -51,11 +44,13 @@ public class PlayGameTest {
         Instrument[] instruments = App.storage().getInstruments();
         String[][] instrumentNames = new String[instruments.length / LEVEL_SIZE][LEVEL_SIZE];
         for (int i = 0; i < instruments.length; ++i) {
-            instrumentNames[i / LEVEL_SIZE][i % LEVEL_SIZE] = instruments[i].getName().toUpperCase().replaceAll("_", "");
+            instrumentNames[i / LEVEL_SIZE][i % LEVEL_SIZE] = instruments[i].getLocaleName().toUpperCase().replaceAll(" ", "");
         }
 
         for (int levelIndex = 0; levelIndex < instrumentNames.length; ++levelIndex) {
             playLevel(levelIndex, instrumentNames[levelIndex]);
+            // wait for main activity to be displayed
+            sleep(1000);
         }
     }
 
@@ -67,7 +62,7 @@ public class PlayGameTest {
         ViewInteraction recycle = onView(withId(R.id.levels));
         recycle.perform(RecyclerViewActions.actionOnItemAtPosition(level, click()));
 
-        ViewInteraction levelButton = onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withText("LEVEL " + (level + 1)))));
+        ViewInteraction levelButton = onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withTagValue(is((Object) ("level" + level))))));
         levelButton.perform(click());
         sleep(1000);
 
@@ -83,7 +78,7 @@ public class PlayGameTest {
         }
 
         // level complete is signaled by opening a dialog, less last level that moves to game over activity
-        if(level == 9) {
+        if (level == 9) {
             return;
         }
 

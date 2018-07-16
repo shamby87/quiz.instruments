@@ -80,13 +80,13 @@ public class QuizEngine {
         // options list contains both positive and negative options
         // first takes care to add expected, that is challenge car
         List<String> options = new ArrayList<String>();
-        options.add(currentChallenge.instrument.getDisplay());
+        options.add(currentChallenge.instrument.getLocaleName());
 
         // create negative options list with all car options less expected car
         // takes care to not include a similar option many time; e.g. many cars can have the same country
         List<String> negativeOptions = new ArrayList<String>();
         for (Instrument instrument : App.storage().getInstruments()) {
-            final String option = instrument.getDisplay();
+            final String option = instrument.getLocaleName();
             if (options.contains(option)) {
                 continue;
             }
@@ -167,7 +167,7 @@ public class QuizEngine {
         }
 
         public boolean checkAnswer(String selectedOption) {
-            boolean correctAnswer = selectedOption.equals(instrument.getDisplay());
+            boolean correctAnswer = selectedOption.equals(instrument.getLocaleName());
             state = correctAnswer ? State.DONE : State.FAILED;
             return correctAnswer;
         }
