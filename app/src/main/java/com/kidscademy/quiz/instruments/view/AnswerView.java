@@ -19,18 +19,35 @@ import java.util.Locale;
 import js.lang.BugError;
 import js.util.Player;
 
+/**
+ * View specialized in displaying game answer. This view is initialized with expected answer value, see {@link #init(String)}.
+ * If a letter view is unset invoke {@link OnAnswerLetterUnsetListener} with letter value.
+ *
+ * @author Iulian Rotaru
+ */
 public class AnswerView extends LinearLayout implements AnswerBuilder, OnClickListener {
-    public static interface Listener {
-        void onAnswerChar(char c);
+    /**
+     * Listener invoked when a letter is unset, that is, replaced with underscore.
+     *
+     * @author Iulian Rotaru
+     */
+    public static interface OnAnswerLetterUnsetListener {
+        /**
+         * Answer letter was unset, that is, replaced with underscore.
+         *
+         * @param letter letter value that was removed from answer display.
+         */
+        void onAnswerLetterUnset(char letter);
     }
 
     private LayoutInflater inflater;
     private Player player;
-    private Listener listener;
+    private OnAnswerLetterUnsetListener listener;
     /**
-     * Upper case expected name with underscore (_) separator replaced by space.
+     * Expected answer value prepared for internal use. Answer is stored upper case with underscore (_)
+     * separator replaced by space.
      */
-    private String expectedName;
+    private String expectedAnswer;
     private boolean disabled;
 
     public AnswerView(Context context, AttributeSet attrs) {
@@ -38,97 +55,27 @@ public class AnswerView extends LinearLayout implements AnswerBuilder, OnClickLi
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    // --------------------------------------------------------------------------------------------
+    // AnswerBuilder Interface
+
     @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        for (int i = 0; i < getChildCount(); ++i) {
-            getChildAt(i).setOnClickListener(this);
-        }
-    }
+    public void addLetter(char letter) {
+        // underscore is used for missing letters
+        // scan for first underscore, i.e. missing letter, and put given letter there
 
-    public void init(String expectedName) {
-        this.expectedName = expectedName.toUpperCase(Locale.getDefault());
-        createLeterViews(this.expectedName);
-        int i = 0;
-        for (; i < this.expectedName.length(); ++i) {
-            TextView view = (TextView) getChildAt(i);
-            view.setText(getPlaceholderChar(i));
-            view.setVisibility(View.VISIBLE);
-        }
-        hideUnusedLetters(i);
-    }
-
-    public void open(String value) {
-        createLeterViews(value);
-        int i = 0;
-        for (; i < value.length(); ++i) {
-            TextView view = (TextView) getChildAt(i);
-            view.setText(Character.toString(value.charAt(i)).toUpperCase());
-            view.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-            view.setVisibility(View.VISIBLE);
-        }
-        hideUnusedLetters(i);
-    }
-
-    private void createLeterViews(String value) {
-        // ensure capacity
-        for (int i = getChildCount(); i < value.length(); ++i) {
-            View view = inflater.inflate(R.layout.compo_letter, this, false);
-            addView(view);
-            view.setOnClickListener(this);
-        }
-    }
-
-    private void hideUnusedLetters(int usedCount) {
-        for (int i = usedCount; i < getChildCount(); ++i) {
-            getChildAt(i).setVisibility(View.GONE);
-        }
-    }
-
-    public void disable() {
-        disabled = true;
-    }
-
-    public void enable() {
-        disabled = false;
-    }
-
-    public String getInput() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < expectedName.length(); ++i) {
-            builder.append(((TextView) getChildAt(i)).getText());
-        }
-        return builder.toString();
-    }
-
-    private String getPlaceholderChar(int index) {
-        return expectedName.charAt(index) == ' ' ? " " : "_";
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public void setListener(Listener listener) {
-        this.listener = listener;
-    }
-
-    public void putChar(char c) {
-        // underscore is used for missing character
-        // scan for first underscore, i.e. missing character, and put given character there
-
-        for (int i = 0; i < expectedName.length(); ++i) {
+        for (int i = 0; i < expectedAnswer.length(); ++i) {
             TextView view = (TextView) getChildAt(i);
             if (view.getText().equals("_")) {
-                view.setText(Character.toString(c));
+                view.setText(Character.toString(letter));
                 return;
             }
         }
-        throw new BugError("Attempt to put character after name complete.");
+        throw new BugError("Attempt to put letter after answer complete.");
     }
 
-    public boolean hasAllCharsFilled() {
-        for (int i = 0; i < expectedName.length(); ++i) {
+    @Override
+    public boolean hasAllLetters() {
+        for (int i = 0; i < expectedAnswer.length(); ++i) {
             if (((TextView) getChildAt(i)).getText().charAt(0) == '_') {
                 return false;
             }
@@ -136,44 +83,10 @@ public class AnswerView extends LinearLayout implements AnswerBuilder, OnClickLi
         return true;
     }
 
-    public String getValue() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < expectedName.length(); ++i) {
-            builder.append(((TextView) getChildAt(i)).getText());
-        }
-        return builder.toString().toLowerCase(Locale.getDefault());
-    }
-
     @Override
-    public void onClick(View view) {
-        if (disabled) {
-            return;
-        }
-
-        char c = ((TextView) view).getText().charAt(0);
-        if (c == ' ' || c == '_') {
-            return;
-        }
-
-        ((TextView) view).setText("_");
-        listener.onAnswerChar(c);
-
-        player.play("fx/click.mp3");
-        if (App.prefs().isKeyVibrator()) {
-            Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            vibrator.vibrate(200);
-        }
-    }
-
-    /**
-     * Get the index of first missing char, that is underscore, but skipping spaces.
-     *
-     * @return
-     */
-    @Override
-    public int getFirstMissingCharIndex() {
+    public int getFirstMissingLetterIndex() {
         int firstMissingCharIndex = 0;
-        for (int i = 0; i < expectedName.length(); ++i) {
+        for (int i = 0; i < expectedAnswer.length(); ++i) {
             TextView textView = (TextView) getChildAt(i);
             if (textView.getText().charAt(0) == '_') {
                 return firstMissingCharIndex;
@@ -185,26 +98,162 @@ public class AnswerView extends LinearLayout implements AnswerBuilder, OnClickLi
         return -1;
     }
 
+    @Override
+    public String getValue() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < expectedAnswer.length(); ++i) {
+            builder.append(((TextView) getChildAt(i)).getText());
+        }
+        return builder.toString();
+    }
+
+    // --------------------------------------------------------------------------------------------
+    // OnClickListener Interface
+
+    @Override
+    public void onClick(View view) {
+        if (disabled) {
+            return;
+        }
+
+        // quick return if letter is not set
+        char letter = ((TextView) view).getText().charAt(0);
+        if (letter == ' ' || letter == '_') {
+            return;
+        }
+
+        // unset answer letter and invoke letter unset listener
+        ((TextView) view).setText("_");
+        listener.onAnswerLetterUnset(letter);
+
+        player.play("fx/click.mp3");
+        if (App.prefs().isKeyVibrator()) {
+            Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+            vibrator.vibrate(200);
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------
+    // AnswerView Implementation
+
     /**
-     * Compare given name with internally stored expected name and mark letters accordingly.
-     *
-     * @param name
+     * Register click listeners for all existing letter views. This hook is called by framework after
+     * abswer view inflation is complete.
      */
-    public void verify(String name) {
-        for (int i = 0; i < name.length(); ++i) {
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        for (int i = 0; i < getChildCount(); ++i) {
+            getChildAt(i).setOnClickListener(this);
+        }
+    }
+
+    /**
+     * Initialize answer view with expected answer value. Takes care to init missing letter views if
+     * given answer value is larger than current letter views number. Also, hide trailing letter views
+     * if there are more that needed for expected answer.
+     * <p>
+     * Expected answer is not explicitly displayed but obfuscated, that is, replace answer characters with
+     * underscores.
+     *
+     * @param expectedAnswer expected answer value.
+     */
+    public void init(String expectedAnswer) {
+        this.expectedAnswer = expectedAnswer.toUpperCase(Locale.getDefault());
+        createMissingLeterViews(this.expectedAnswer.length());
+
+        int i = 0;
+        for (; i < this.expectedAnswer.length(); ++i) {
+            final TextView view = (TextView) getChildAt(i);
+            view.setText(expectedAnswer.charAt(i) == ' ' ? " " : "_");
+            view.setVisibility(View.VISIBLE);
+        }
+
+        hideTrailingLetters(i);
+    }
+
+    public void setListener(OnAnswerLetterUnsetListener listener) {
+        this.listener = listener;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void disable() {
+        disabled = true;
+    }
+
+    public void enable() {
+        disabled = false;
+    }
+
+    /**
+     * Set value for this answer view. This setter replace existing answer value with the newly one, promoted
+     * to upper case. Internal expected value is lost. Also takes care to reset letter views colors to default.
+     *
+     * @param value answer value.
+     */
+    public void setValue(String value) {
+        createMissingLeterViews(value.length());
+        int i = 0;
+        for (; i < value.length(); ++i) {
+            final TextView view = (TextView) getChildAt(i);
+            view.setText(Character.toString(value.charAt(i)).toUpperCase());
+            view.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+            view.setVisibility(View.VISIBLE);
+        }
+        hideTrailingLetters(i);
+    }
+
+    /**
+     * Compare given answer value with internally stored expected answer and mark this view letters accordingly.
+     *
+     * @param answerValue answer value to verify.
+     */
+    public void verify(String answerValue) {
+        for (int i = 0; i < answerValue.length(); ++i) {
             assert i < getChildCount();
-            Character c = name.charAt(i);
+            Character c = answerValue.charAt(i);
             if (c == '_') {
                 continue;
             }
             TextView textView = (TextView) getChildAt(i);
-            if (!c.equals(expectedName.charAt(i))) {
+            if (!c.equals(expectedAnswer.charAt(i))) {
                 textView.setText(c.toString());
                 textView.setTextColor(ContextCompat.getColor(getContext(), R.color.red_900));
-            }
-            else {
+            } else {
                 textView.setText("_");
             }
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------
+    // Helpers
+
+    /**
+     * Ensure there are enough letter views to display answer of requested length.
+     *
+     * @param expectedLength answer expected length.
+     */
+    private void createMissingLeterViews(int expectedLength) {
+        // ensure capacity
+        for (int i = getChildCount(); i < expectedLength; ++i) {
+            View view = inflater.inflate(R.layout.compo_letter, this, false);
+            addView(view);
+            view.setOnClickListener(this);
+        }
+    }
+
+    /**
+     * Hide letter views that are not used by current answer. Answer view does not destroy letter views not
+     * used by current answer. It hides them in order to be reused if next answer will be longer.
+     *
+     * @param currentAnswerLength current answer length.
+     */
+    private void hideTrailingLetters(int currentAnswerLength) {
+        for (int i = currentAnswerLength; i < getChildCount(); ++i) {
+            getChildAt(i).setVisibility(View.GONE);
         }
     }
 }

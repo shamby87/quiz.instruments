@@ -3,7 +3,7 @@ package com.kidscademy.quiz.instruments.util;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.util.AuditBase;
 
-public final class Audit extends AuditBase {
+public class Audit extends AuditBase {
     private static enum Event {
         PLAY_LEVEL, GAME_OK, GAME_BAD, GAME_HINT, GAME_SKIP, GAME_CLOSE, PLAY_QUIZ, QUIZ_OK, QUIZ_BAD, QUIZ_TIMEOUT, QUIZ_ABORT, VIEW_BALANCE, RESET_SCORE
     }

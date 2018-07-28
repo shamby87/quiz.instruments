@@ -19,14 +19,16 @@ public class Instrument implements StorageObject, Parcelable {
      * but to identify instruments and attached resources like image file from assert.
      */
     private String name;
-    private int rank;
-
 
     private String localeName;
+
+    private int rank;
+
     /**
      * Counter incremented every time this instrument is used by a quiz challenge with correct answer.
      */
     private int quizCounter;
+
     private String picturePath;
 
     public Instrument() {
@@ -41,11 +43,13 @@ public class Instrument implements StorageObject, Parcelable {
     public Instrument(int index, String name) {
         this.index = 0;
         this.name = name;
+        this.localeName = name;
     }
 
     public Instrument(Parcel parcel) {
         this.index = parcel.readInt();
         this.name = parcel.readString();
+        this.localeName = parcel.readString();
         this.rank = parcel.readInt();
         this.quizCounter = parcel.readInt();
         this.picturePath = parcel.readString();
@@ -56,6 +60,7 @@ public class Instrument implements StorageObject, Parcelable {
         assert picturePath == null;
         picturePath = Strings.concat("image/", name, ".png");
 
+        assert localeName == null;
         int stringId = App.instance().getResources().getIdentifier(name, "string", App.context().getPackageName());
         if (stringId != 0) {
             localeName = App.instance().getResources().getString(stringId);
@@ -124,6 +129,7 @@ public class Instrument implements StorageObject, Parcelable {
     public void writeToParcel(Parcel parcel, int flags) {
         parcel.writeInt(index);
         parcel.writeString(name);
+        parcel.writeString(localeName);
         parcel.writeInt(rank);
         parcel.writeInt(quizCounter);
         parcel.writeString(picturePath);

@@ -79,7 +79,7 @@ public class QuizEngine {
         List<String> options = new ArrayList<String>();
         options.add(currentChallenge.instrument.getLocaleName());
 
-        // create negative options list with all car options less expected car
+        // init negative options list with all car options less expected car
         // takes care to not include a similar option many time; e.g. many cars can have the same country
         List<String> negativeOptions = new ArrayList<String>();
         for (Instrument instrument : App.storage().getInstruments()) {

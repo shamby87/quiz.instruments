@@ -71,7 +71,8 @@ public class PlayGameTest {
             sleep(2000);
 
             // dialog for next level unlocked is not displayed for last level, that is, 9 since in this context level is zero based
-            if (level < 9 && i == 5) {
+            // next level unlocked dialog is displayed after 5 instruments resolved, that is, index 4
+            if (level < 9 && i == 4) {
                 onView(allOf(withResourceName("fab_dialog_close"), isDisplayed())).perform(click());
                 sleep(2000);
             }

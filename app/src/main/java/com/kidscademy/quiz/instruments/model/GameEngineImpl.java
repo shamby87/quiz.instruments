@@ -1,11 +1,10 @@
 package com.kidscademy.quiz.instruments.model;
 
-import com.kidscademy.quiz.instruments.App;
-import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.quiz.instruments.util.Audit;
 import com.kidscademy.quiz.instruments.util.Storage;
 
 import java.util.List;
+import java.util.Locale;
 
 import js.log.Log;
 import js.log.LogFactory;
@@ -15,36 +14,37 @@ public class GameEngineImpl implements GameEngine {
 
     private static final int NO_UNLOCK_LEVEL = -1;
 
+    /**
+     * Application persistent storage.
+     */
     private final Storage storage;
-
+    /**
+     * Audit utility.
+     */
     private final Audit audit;
 
     private final Counters counters;
 
     private final Balance balance;
 
+    private final KeyboardControl keyboard;
+
+    private final AnswerBuilder answer;
+
     /**
      * Reference to storage instruments list.
      */
     private final Instrument[] instruments;
 
-    private KeyboardControl keyboard;
-
-    private AnswerBuilder answer;
-
-    /**
-     * Value of level index loaded from intent.
-     */
-    private int levelIndex;
-
-    private Level level;
-
-    private LevelState levelState;
 
     /**
      * Instrument currently displayed as challenge.
      */
     private Instrument challengedInstrument;
+
+    private Level level;
+
+    private LevelState levelState;
 
     /**
      * Current challenged instrument index, relative to level not solved instruments collection.
@@ -56,86 +56,61 @@ public class GameEngineImpl implements GameEngine {
      */
     private int unlockedLevelIndex = NO_UNLOCK_LEVEL;
 
-    public GameEngineImpl(Storage storage, Audit audit) {
-        log.trace("GameEngineImpl(int)");
+    /**
+     * Create game engine instance for requested level.
+     *
+     * @param storage  persistent storage, global per application,
+     * @param audit    audit utility,
+     * @param answer   answer builder,
+     * @param keyboard keyboard control,
+     */
+    public GameEngineImpl(Storage storage, Audit audit, AnswerBuilder answer, KeyboardControl keyboard) {
+        log.trace("GameEngineImpl(Storage, Audit, AnswerBuilder, KeyboardControl)");
         this.storage = storage;
         this.audit = audit;
 
         this.counters = storage.getCounters();
         this.balance = storage.getBalance();
         this.instruments = storage.getInstruments();
+
+        this.answer = answer;
+        this.keyboard = keyboard;
     }
 
     @Override
     public void setLevelIndex(int levelIndex) {
-        this.levelIndex = levelIndex;
-
         level = storage.getLevel(levelIndex);
         levelState = storage.getLevelState(levelIndex);
     }
 
     @Override
-    public int getLevelIndex() {
-        return levelIndex;
-    }
-
-    @Override
-    public int getLevelInstrumentsCount() {
-        return level.getInstrumentsCount();
-    }
-
-    @Override
-    public int getLevelSolvedInstrumentsCount() {
-        return levelState.getSolvedInstrumentsCount();
-    }
-
-    @Override
-    public void stop() {
-    }
-
-    @Override
-    public void setAnswerBuilder(AnswerBuilder answer) {
-        this.answer = answer;
-    }
-
-    @Override
-    public void setKeyboardControl(KeyboardControl keyboard) {
-        this.keyboard = keyboard;
-    }
-
-    /**
-     * Update challenged instrument and point instrument index to next challenge.
-     *
-     * @param instrumentName instrument name or null for first one.
-     * @return current challenge instrument.
-     */
-    @Override
-    public void start(String instrumentName) {
+    public void start(String challengeName) {
         log.trace("start(String)");
-        App.audit().playGameLevel(levelIndex);
+        audit.playGameLevel(level.getIndex());
 
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
         if (unsolvedInstruments.isEmpty()) {
             return;
         }
-        if (instrumentName == null) {
+        if (challengeName == null) {
             challengedInstrument = instruments[unsolvedInstruments.get(0)];
             challengedInstrumentIndex = 1;
         } else {
             for (challengedInstrumentIndex = 0; challengedInstrumentIndex < unsolvedInstruments.size(); ) {
                 challengedInstrument = instruments[unsolvedInstruments.get(challengedInstrumentIndex++)];
-                if (challengedInstrument.getLocaleName().equals(instrumentName)) {
+                if (challengedInstrument.getLocaleName().equals(challengeName)) {
                     break;
                 }
             }
         }
     }
 
+    @Override
     public boolean nextChallenge() {
         log.trace("nextChallenge()");
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
         if (unsolvedInstruments.isEmpty()) {
-            App.audit().gameClose(challengedInstrument);
+            audit.gameClose(challengedInstrument);
             balance.plusScore(Balance.getScoreLevelCompleteBonus(levelState.getIndex()));
             challengedInstrument = null;
             return false;
@@ -147,21 +122,18 @@ public class GameEngineImpl implements GameEngine {
         return true;
     }
 
-    public Instrument getChallengedInstrument() {
+    @Override
+    public Instrument getCurrentChallenge() {
         return challengedInstrument;
     }
 
-    public void skipChallenge() {
-        audit.gameSkip(challengedInstrument);
-        nextChallenge();
-    }
-
-    public AnswerState handleKeyboardChar(char c) {
-        if (answer.hasAllCharsFilled()) {
+    @Override
+    public AnswerState handleAnswerLetter(char letter) {
+        if (answer.hasAllLetters()) {
             return AnswerState.OVERFLOW;
         }
-        answer.putChar(c);
-        if (!answer.hasAllCharsFilled()) {
+        answer.addLetter(letter);
+        if (!answer.hasAllLetters()) {
             return AnswerState.FILLING;
         }
 
@@ -173,10 +145,14 @@ public class GameEngineImpl implements GameEngine {
         return AnswerState.CORRECT;
     }
 
-    public boolean checkAnswer(String answer) {
-        assert challengedInstrument != null;
-
-        if (!challengedInstrument.getLocaleName().equals(answer)) {
+    /**
+     * Helper method, companion of the {@link #handleAnswerLetter(char)} method.
+     *
+     * @param answer answer value to check.
+     * @return true if answer is correct.
+     */
+    private boolean checkAnswer(String answer) {
+        if (!challengedInstrument.getLocaleName().equals(answer.toLowerCase(Locale.getDefault()))) {
             counters.minus(challengedInstrument);
             final int penalty = Balance.getScorePenalty();
             balance.minusScore(penalty);
@@ -195,7 +171,7 @@ public class GameEngineImpl implements GameEngine {
         // logic to unlock next level
         // store next level index for unlocking only if next level is not already enabled
 
-        LevelState nextLevel = App.storage().getNextLevel(levelState.getIndex());
+        LevelState nextLevel = storage.getNextLevel(levelState.getIndex());
         if (nextLevel != null && !nextLevel.isUnlocked() && levelState.isUnlockThreshold()) {
             nextLevel.unlock();
             unlockedLevelIndex = nextLevel.getIndex();
@@ -206,6 +182,28 @@ public class GameEngineImpl implements GameEngine {
         return true;
     }
 
+    @Override
+    public int getLevelIndex() {
+        return level.getIndex();
+    }
+
+    @Override
+    public int getLevelChallengesCount() {
+        return level.getInstrumentsCount();
+    }
+
+    @Override
+    public int getLevelSolvedChallengesCount() {
+        return levelState.getSolvedInstrumentsCount();
+    }
+
+    @Override
+    public void skipChallenge() {
+        audit.gameSkip(challengedInstrument);
+        nextChallenge();
+    }
+
+    @Override
     public boolean wasNextLevelUnlocked() {
         return unlockedLevelIndex != NO_UNLOCK_LEVEL;
     }
@@ -230,14 +228,14 @@ public class GameEngineImpl implements GameEngine {
             return false;
         }
         audit.gameHint(challengedInstrument, "REVEAL_LETTER");
-        int firstMissingCharIndex = answer.getFirstMissingCharIndex();
+        int firstMissingCharIndex = answer.getFirstMissingLetterIndex();
         assert firstMissingCharIndex != -1;
-        handleKeyboardChar(keyboard.getExpectedChar(firstMissingCharIndex));
+        handleAnswerLetter(keyboard.getExpectedChar(firstMissingCharIndex));
         return true;
     }
 
     @Override
-    public boolean verifyInput() {
+    public boolean isInputVerifyAllowed() {
         if (balance.deductVerifyInput()) {
             audit.gameHint(challengedInstrument, "VERIFY_INPUT");
             return true;

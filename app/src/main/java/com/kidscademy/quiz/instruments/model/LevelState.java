@@ -21,6 +21,9 @@ public class LevelState {
     private int score;
     private boolean unlocked;
 
+    /**
+     * Default constructor for storage serialization.
+     */
     public LevelState() {
     }
 
@@ -80,7 +83,7 @@ public class LevelState {
     }
 
     public boolean isUnlockThreshold() {
-        return (float) solvedInstruments.size() / (float) size > UNLOCK_TRESHOLD;
+        return (float) solvedInstruments.size() / (float) size >= UNLOCK_TRESHOLD;
     }
 
     public void unlock() {

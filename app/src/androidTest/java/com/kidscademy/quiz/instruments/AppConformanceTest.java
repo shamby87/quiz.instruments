@@ -221,8 +221,8 @@ public class AppConformanceTest {
             }
             sleep(2000);
 
-            // level 2 unlocked dialog is displayed after 5 instruments resolved
-            if (n == 5) {
+            // next level unlocked dialog is displayed after 5 instruments resolved, that is, index 4
+            if (n == 4) {
                 // close dialog for level 2 unlocked
                 onView(allOf(withResourceName("fab_dialog_close"), isDisplayed())).perform(click());
                 sleep(2000);

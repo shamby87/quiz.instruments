@@ -69,7 +69,7 @@ public class LevelInstrumentsActivity extends AppActivity implements LevelInstru
 
     @Override
     public void onInstrumentSelected(int position, Instrument instrument) {
-        if (!level.getState().isSolvedInstrument(position)) {
+        if (!App.storage().getLevelState(level.getIndex()).isSolvedInstrument(position)) {
             GameActivity.start(this, level.getIndex(), instrument.getLocaleName());
         }
         overridePendingTransition(R.anim.slide_enter_left, R.anim.slide_exit_left);

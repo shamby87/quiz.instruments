@@ -73,7 +73,7 @@ public final class LevelInstrumentsAdapter extends RecyclerView.Adapter<LevelIns
         public void bindPosition(int position) {
             this.position = position;
             instrument = App.storage().getInstrument(instrumentIndices.get(position));
-            boolean isSolved = level.getState().isSolvedInstrument(position);
+            boolean isSolved = App.storage().getLevelState(level.getIndex()).isSolvedInstrument(position);
 
             BitmapLoader loader = new BitmapLoader(context, instrument.getPicturePath(), iconView, 2);
             loader.start();

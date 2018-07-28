@@ -18,9 +18,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * An Android process is created when an activity should be activated; a process is just a run-time container for an
  * activity instance. The ultimate goal is to start an activity but before that Android creates application singleton
- * and invoke {@link #onCreate()}. After on create callback returns Android continue with activity creation. This is
- * true even if callback starts another activity; Android will still create activity requested by platform then will
- * create that requested by callback.
+ * and invoke {@link #onCreate()}. After on init callback returns Android continue with activity creation. This is
+ * true even if callback starts another activity; Android will still init activity requested by platform then will
+ * init that requested by callback.
  * <p>
  * Now, which activity is created when application starts depends on Android platform and external applications. For
  * example, if application is started from home launcher main activity will be created; if application is recreated from
@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * flags.
  * <p>
  * To sum-up, there is no way to route application start-up to different activity. Platform chosen activity will be
- * created anyway, even if on create callback requests another activity start.
+ * created anyway, even if on init callback requests another activity start.
  *
  * @author Iulian Rotaru
  */
@@ -40,9 +40,9 @@ public class App extends AppBase {
      * Application instance creation. Application is guaranteed by Android platform to be created in a single instance.
      * <p>
      * Initialization occurs in two steps: first is this callback invoked by Android. The second is
-     * {@link #onPostCreate()}; if storage is loaded post-create is invoked immediately by this method. If storage is not
+     * {@link #onPostCreate()}; if storage is loaded post-init is invoked immediately by this method. If storage is not
      * loaded, {@link MainActivity} will route application start-up logic to storage loading asynchronous task that, when
-     * done, will invoke post-create. This way post-create is guaranteed to be called when storage is loaded.
+     * done, will invoke post-init. This way post-init is guaranteed to be called when storage is loaded.
      */
     @Override
     public void onAppCreate() {
@@ -111,9 +111,6 @@ public class App extends AppBase {
         return (Audit) AppBase.audit();
     }
 
-    public static GameEngine gameEngine() {
-        return new GameEngineImpl(storage(), audit());
-    }
     // TODO: remove after moving to Assets utility class
 
     private final static int[] backgroundResIds = new int[]

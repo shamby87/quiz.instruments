@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Counters;
 import com.kidscademy.quiz.instruments.model.Level;
+import com.kidscademy.quiz.instruments.util.LevelsUtil;
 import com.kidscademy.quiz.instruments.view.PercentDonutView;
 
 import js.log.Log;
@@ -25,6 +26,7 @@ public class BalanceActivity extends AppActivity implements View.OnClickListener
         activity.overridePendingTransition(R.anim.pull_up_from_bottom, R.anim.pull_up_from_top);
     }
 
+    private LevelsUtil levels;
     private Balance balance;
     private Counters counters;
 
@@ -38,6 +40,7 @@ public class BalanceActivity extends AppActivity implements View.OnClickListener
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
 
+        levels = new LevelsUtil(App.storage());
         balance = App.storage().getBalance();
         counters = App.storage().getCounters();
 
@@ -69,16 +72,16 @@ public class BalanceActivity extends AppActivity implements View.OnClickListener
 
     private void updateUI() {
         TextView totalLevelsView = findViewById(R.id.balance_total_levels);
-        totalLevelsView.setText(Integer.toString(Level.getTotalLevels()));
+        totalLevelsView.setText(Integer.toString(levels.getTotalLevels()));
 
         TextView unlockedLevelsView = findViewById(R.id.balance_unlocked_levels);
-        unlockedLevelsView.setText(Integer.toString(Level.getUnlockedLevels()));
+        unlockedLevelsView.setText(Integer.toString(levels.getUnlockedLevels()));
 
         TextView completedLevelsView = findViewById(R.id.balance_completed_levels);
-        completedLevelsView.setText(Integer.toString(Level.getCompletedLevels()));
+        completedLevelsView.setText(Integer.toString(levels.getCompletedLevels()));
 
         PercentDonutView completPercentView = findViewById(R.id.balance_complete_percent);
-        completPercentView.setPercent(((float)Level.getSolvedInstruments()) / ((float)Level.getTotalInstruments()));
+        completPercentView.setPercent(((float) levels.getSolvedInstruments()) / ((float) levels.getTotalInstruments()));
 
         TextView pointsView = findViewById(R.id.balance_points);
         pointsView.setText(String.format("+%04d", balance.getScore()));
