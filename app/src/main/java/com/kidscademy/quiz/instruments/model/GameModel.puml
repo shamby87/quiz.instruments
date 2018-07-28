@@ -1,0 +1,106 @@
+@startuml
+
+class App {
+    static GameEngine gameEngine()
+}
+
+class GameActivity {
+    GameEngine engine
+
+    onCreate()
+    onStart()
+    onStop()
+
+    onKeyboardChar(char)
+    onAnswerChar(char)
+}
+
+interface GameEngine {
+    start(instrumentName)
+    stop()
+
+    setAnswerBuilder(answer)
+
+    setLevelIndex(levelIndex)
+    getLevelIndex()
+    getLevelInstrumentsCount()
+    getLevelSolvedInstrumentsCount()
+    getUnlockedLevelIndex()
+
+    nextChallenge()
+    skipChallenge()
+    getChallengedInstrument()
+
+    handleKeyboardChar(c)
+    wasNextLevelUnlocked()
+
+    revealLetter()
+    verifyInput()
+    hideLetters()
+    playSample()
+
+    getScore()
+    getCredit()
+    hasCredit()
+}
+
+interface AnswerBuilder {
+    putChar(c)
+    hasAllCharsFilled()
+    getValue()
+    getFirstMissingCharIndex()
+}
+
+enum AnswerState {
+    FILLING
+    CORRECT
+    WRONG
+}
+
+interface KeyboardControl {
+    getExpectedChar(index)
+    hideUnusedLetters()
+}
+
+class Storage {
+}
+
+class Audit {
+}
+
+class Counters {
+}
+
+class Balance {
+}
+
+class Instrument {
+}
+
+class GameEngineImpl {
+    Storage storage
+    Audit audit
+    Counters counters
+    Balance balance
+    AnswerBuilder answer
+    KeyboardControl keyboard
+    Instrument[] instruments
+}
+
+App .> GameEngineImpl
+
+Storage --> Counters
+Storage --> Balance
+Storage --> Instrument
+
+GameActivity -> GameEngine
+
+GameEngineImpl --|> GameEngine
+GameEngineImpl --> Storage
+GameEngineImpl -> Audit
+GameEngineImpl -> AnswerBuilder
+GameEngineImpl -> KeyboardControl
+
+AnswerBuilder ..> AnswerState
+
+@enduml

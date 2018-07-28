@@ -28,7 +28,7 @@
             android:layout_gravity="center_vertical"
             android:background="@color/black_T60">
 
-            <com.kidscademy.quiz.instruments.view.NameView
+            <com.kidscademy.quiz.instruments.view.AnswerView
                 android:id="@+id/input_verify_response"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                     style="@style/Text.Letter.XLarge"
                     tools:text="_" />
 
-            </com.kidscademy.quiz.instruments.view.NameView>
+            </com.kidscademy.quiz.instruments.view.AnswerView>
         </FrameLayout>
 
         <TextView
@@ -77,7 +77,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/white_T80">
 
-            <com.kidscademy.quiz.instruments.view.NameView
+            <com.kidscademy.quiz.instruments.view.AnswerView
                 android:id="@+id/input_verify_suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                     style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="_" />
 
-            </com.kidscademy.quiz.instruments.view.NameView>
+            </com.kidscademy.quiz.instruments.view.AnswerView>
         </FrameLayout>
     </LinearLayout>
 

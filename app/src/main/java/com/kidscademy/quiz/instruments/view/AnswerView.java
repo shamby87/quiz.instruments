@@ -12,15 +12,16 @@ import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.App;
 import com.kidscademy.quiz.instruments.R;
+import com.kidscademy.quiz.instruments.model.AnswerBuilder;
 
 import java.util.Locale;
 
 import js.lang.BugError;
 import js.util.Player;
 
-public class NameView extends LinearLayout implements OnClickListener {
+public class AnswerView extends LinearLayout implements AnswerBuilder, OnClickListener {
     public static interface Listener {
-        void onNameChar(char c);
+        void onAnswerChar(char c);
     }
 
     private LayoutInflater inflater;
@@ -32,7 +33,7 @@ public class NameView extends LinearLayout implements OnClickListener {
     private String expectedName;
     private boolean disabled;
 
-    public NameView(Context context, AttributeSet attrs) {
+    public AnswerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -155,7 +156,7 @@ public class NameView extends LinearLayout implements OnClickListener {
         }
 
         ((TextView) view).setText("_");
-        listener.onNameChar(c);
+        listener.onAnswerChar(c);
 
         player.play("fx/click.mp3");
         if (App.prefs().isKeyVibrator()) {
@@ -169,6 +170,7 @@ public class NameView extends LinearLayout implements OnClickListener {
      *
      * @return
      */
+    @Override
     public int getFirstMissingCharIndex() {
         int firstMissingCharIndex = 0;
         for (int i = 0; i < expectedName.length(); ++i) {

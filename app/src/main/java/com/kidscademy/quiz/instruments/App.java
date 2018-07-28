@@ -1,6 +1,8 @@
 package com.kidscademy.quiz.instruments;
 
 import com.kidscademy.app.AppBase;
+import com.kidscademy.quiz.instruments.model.GameEngine;
+import com.kidscademy.quiz.instruments.model.GameEngineImpl;
 import com.kidscademy.quiz.instruments.util.Audit;
 import com.kidscademy.quiz.instruments.util.Preferences;
 import com.kidscademy.quiz.instruments.util.Repository;
@@ -109,6 +111,9 @@ public class App extends AppBase {
         return (Audit) AppBase.audit();
     }
 
+    public static GameEngine gameEngine() {
+        return new GameEngineImpl(storage(), audit());
+    }
     // TODO: remove after moving to Assets utility class
 
     private final static int[] backgroundResIds = new int[]

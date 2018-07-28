@@ -1,10 +1,8 @@
-package com.kidscademy.quiz.instruments.engine;
+package com.kidscademy.quiz.instruments.model;
 
 import com.kidscademy.quiz.instruments.App;
-import com.kidscademy.quiz.instruments.model.Balance;
-import com.kidscademy.quiz.instruments.model.Counters;
-import com.kidscademy.quiz.instruments.model.Instrument;
-import com.kidscademy.quiz.instruments.model.LevelState;
+import com.kidscademy.quiz.instruments.R;
+import com.kidscademy.quiz.instruments.util.Audit;
 import com.kidscademy.quiz.instruments.util.Storage;
 
 import java.util.List;
@@ -12,19 +10,36 @@ import java.util.List;
 import js.log.Log;
 import js.log.LogFactory;
 
-public class GameEngine {
-    private static final Log log = LogFactory.getLog(GameEngine.class);
+public class GameEngineImpl implements GameEngine {
+    private static final Log log = LogFactory.getLog(GameEngineImpl.class);
 
     private static final int NO_UNLOCK_LEVEL = -1;
 
     private final Storage storage;
+
+    private final Audit audit;
+
+    private final Counters counters;
+
+    private final Balance balance;
+
     /**
      * Reference to storage instruments list.
      */
     private final Instrument[] instruments;
 
+    private KeyboardControl keyboard;
+
+    private AnswerBuilder answer;
+
+    /**
+     * Value of level index loaded from intent.
+     */
+    private int levelIndex;
+
+    private Level level;
+
     private LevelState levelState;
-    private Counters counters;
 
     /**
      * Instrument currently displayed as challenge.
@@ -41,15 +56,51 @@ public class GameEngine {
      */
     private int unlockedLevelIndex = NO_UNLOCK_LEVEL;
 
-    private Balance balance;
-
-    public GameEngine(Storage storage, LevelState levelState) {
-        log.trace("GameEngine(int)");
+    public GameEngineImpl(Storage storage, Audit audit) {
+        log.trace("GameEngineImpl(int)");
         this.storage = storage;
-        this.instruments = storage.getInstruments();
-        this.levelState = levelState;
+        this.audit = audit;
+
         this.counters = storage.getCounters();
         this.balance = storage.getBalance();
+        this.instruments = storage.getInstruments();
+    }
+
+    @Override
+    public void setLevelIndex(int levelIndex) {
+        this.levelIndex = levelIndex;
+
+        level = storage.getLevel(levelIndex);
+        levelState = storage.getLevelState(levelIndex);
+    }
+
+    @Override
+    public int getLevelIndex() {
+        return levelIndex;
+    }
+
+    @Override
+    public int getLevelInstrumentsCount() {
+        return level.getInstrumentsCount();
+    }
+
+    @Override
+    public int getLevelSolvedInstrumentsCount() {
+        return levelState.getSolvedInstrumentsCount();
+    }
+
+    @Override
+    public void stop() {
+    }
+
+    @Override
+    public void setAnswerBuilder(AnswerBuilder answer) {
+        this.answer = answer;
+    }
+
+    @Override
+    public void setKeyboardControl(KeyboardControl keyboard) {
+        this.keyboard = keyboard;
     }
 
     /**
@@ -58,11 +109,14 @@ public class GameEngine {
      * @param instrumentName instrument name or null for first one.
      * @return current challenge instrument.
      */
-    public Instrument initChallenge(String instrumentName) {
-        log.trace("initChallenge(String)");
+    @Override
+    public void start(String instrumentName) {
+        log.trace("start(String)");
+        App.audit().playGameLevel(levelIndex);
+
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
         if (unsolvedInstruments.isEmpty()) {
-            return null;
+            return;
         }
         if (instrumentName == null) {
             challengedInstrument = instruments[unsolvedInstruments.get(0)];
@@ -75,21 +129,48 @@ public class GameEngine {
                 }
             }
         }
-        return challengedInstrument;
     }
 
-    public Instrument nextChallenge() {
+    public boolean nextChallenge() {
         log.trace("nextChallenge()");
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
         if (unsolvedInstruments.isEmpty()) {
+            App.audit().gameClose(challengedInstrument);
             balance.plusScore(Balance.getScoreLevelCompleteBonus(levelState.getIndex()));
-            return null;
+            challengedInstrument = null;
+            return false;
         }
         if (challengedInstrumentIndex >= unsolvedInstruments.size()) {
             challengedInstrumentIndex = 0;
         }
         challengedInstrument = instruments[unsolvedInstruments.get(challengedInstrumentIndex++)];
+        return true;
+    }
+
+    public Instrument getChallengedInstrument() {
         return challengedInstrument;
+    }
+
+    public void skipChallenge() {
+        audit.gameSkip(challengedInstrument);
+        nextChallenge();
+    }
+
+    public AnswerState handleKeyboardChar(char c) {
+        if (answer.hasAllCharsFilled()) {
+            return AnswerState.OVERFLOW;
+        }
+        answer.putChar(c);
+        if (!answer.hasAllCharsFilled()) {
+            return AnswerState.FILLING;
+        }
+
+        if (!checkAnswer(answer.getValue())) {
+            audit.gameWrongAnswer(challengedInstrument, answer.getValue());
+            return AnswerState.WRONG;
+        }
+        audit.gameCorrectAnswer(challengedInstrument);
+        return AnswerState.CORRECT;
     }
 
     public boolean checkAnswer(String answer) {
@@ -141,5 +222,59 @@ public class GameEngine {
         int i = unlockedLevelIndex;
         unlockedLevelIndex = NO_UNLOCK_LEVEL;
         return i;
+    }
+
+    @Override
+    public boolean revealLetter() {
+        if (!balance.deductRevealLetter()) {
+            return false;
+        }
+        audit.gameHint(challengedInstrument, "REVEAL_LETTER");
+        int firstMissingCharIndex = answer.getFirstMissingCharIndex();
+        assert firstMissingCharIndex != -1;
+        handleKeyboardChar(keyboard.getExpectedChar(firstMissingCharIndex));
+        return true;
+    }
+
+    @Override
+    public boolean verifyInput() {
+        if (balance.deductVerifyInput()) {
+            audit.gameHint(challengedInstrument, "VERIFY_INPUT");
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hideLetters() {
+        if (balance.deductHideLettersInput()) {
+            audit.gameHint(challengedInstrument, "HIDE_LETTERS");
+            keyboard.hideUnusedLetters();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean playSample() {
+        if (balance.deductSayName()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasCredit() {
+        return balance.hasCredit();
+    }
+
+    @Override
+    public int getScore() {
+        return balance.getScore();
+    }
+
+    @Override
+    public int getCredit() {
+        return balance.getCredit();
     }
 }

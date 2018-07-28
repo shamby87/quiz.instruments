@@ -14,14 +14,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kidscademy.quiz.instruments.engine.GameEngine;
+import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.model.Level;
-import com.kidscademy.quiz.instruments.model.LevelState;
 import com.kidscademy.quiz.instruments.util.Assets;
 import com.kidscademy.quiz.instruments.view.KeyboardView;
-import com.kidscademy.quiz.instruments.view.NameView;
+import com.kidscademy.quiz.instruments.view.AnswerView;
 import com.kidscademy.quiz.instruments.view.RandomColorFAB;
 
 import java.util.Random;
@@ -30,10 +29,9 @@ import js.log.Log;
 import js.log.LogFactory;
 import js.util.BitmapLoader;
 import js.util.Player;
-import js.util.Strings;
 import js.view.DialogOverlay;
 
-public class GameActivity extends AppActivity implements OnClickListener, KeyboardView.Listener, NameView.Listener {
+public class GameActivity extends AppActivity implements OnClickListener, KeyboardView.Listener, AnswerView.Listener {
     private static final Log log = LogFactory.getLog(GameActivity.class);
 
     private static final String ARG_LEVEL_INDEX = "levelIndex";
@@ -60,7 +58,8 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
     private static final Random random = new Random();
 
     private GameEngine engine;
-    private NameView answerView;
+
+    private AnswerView answerView;
     private KeyboardView keyboardView;
     private ImageView imageView;
     private TextView scoreView;
@@ -95,35 +94,22 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
     private Animation animRotateFabAnticlockwise;
 
     /**
-     * Value of level index loaded from intent.
-     */
-    private int levelIndex;
-
-    /**
-     * The level currently played.
-     */
-    private Level level;
-    private LevelState levelState;
-
-    /**
      * Overlay revealed to notify about next level being unlocked.
      */
     private DialogOverlay dialogOverlay;
 
     /**
-     * Instrument currently displayed as challenge.
-     */
-    private Instrument challengedInstrument;
-
-    private Balance balance;
-
-    /**
-     * Run {@link #nextChallenge()}.
+     * Ask {@link GameEngine} to prepare next challenge then update this activity user interface.
      */
     private Runnable nextChallenge = new Runnable() {
         @Override
         public void run() {
-            nextChallenge();
+            if(!engine.nextChallenge()) {
+                // if no more challenges level is complete
+                dialogOverlay.open(R.layout.dialog_level_state, GameActivity.this, true);
+                return;
+            }
+            updateUI();
         }
     };
 
@@ -154,9 +140,6 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         log.trace("onCreate(Bundle)");
         super.onCreate(savedInstanceState);
 
-        levelIndex = getIntent().getIntExtra(ARG_LEVEL_INDEX, 0);
-        balance = App.storage().getBalance();
-
         answerView = findViewById(R.id.game_answer);
         answerView.setPlayer(player);
         answerView.setListener(this);
@@ -164,6 +147,11 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         keyboardView = findViewById(R.id.game_keyboard);
         keyboardView.setPlayer(player);
         keyboardView.setListener(this);
+
+        engine = App.gameEngine();
+        engine.setLevelIndex(getIntent().getIntExtra(ARG_LEVEL_INDEX, 0));
+        engine.setAnswerBuilder(answerView);
+        engine.setKeyboardControl(keyboardView);
 
         scoreView = findViewById(R.id.game_score);
         creditView = findViewById(R.id.game_credit);
@@ -203,7 +191,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         log.trace("onNewIntent(Intent)");
         super.onNewIntent(intent);
         setIntent(intent);
-        levelIndex = getIntent().getIntExtra(ARG_LEVEL_INDEX, 0);
+        engine.setLevelIndex(getIntent().getIntExtra(ARG_LEVEL_INDEX, 0));
     }
 
     @Override
@@ -212,22 +200,16 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         super.onStart();
         player.create();
 
-        level = App.storage().getLevel(levelIndex);
-        levelState = App.storage().getLevelState(levelIndex);
-        engine = new GameEngine(App.storage(), levelState);
-        challengedInstrument = engine.initChallenge(getIntent().getStringExtra(ARG_INSTRUMENT_NAME));
-
-        setTitle(Strings.concat("LEVEL ", levelIndex + 1));
+        engine.start(getIntent().getStringExtra(ARG_INSTRUMENT_NAME));
 
         imageView.setImageDrawable(null);
         updateUI();
-
-        App.audit().playGameLevel(levelIndex);
     }
 
     @Override
     public void onStop() {
         log.trace("onStop()");
+        engine.stop();
         player.destroy();
         handler.removeCallbacks(nextChallenge);
         super.onStop();
@@ -241,7 +223,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
                 break;
 
             case R.id.game_fab_hint:
-                if (!balance.hasCredit()) {
+                if (!engine.hasCredit()) {
                     dialogOverlay.open(R.layout.dialog_no_credit, this);
                 } else {
                     dialogOverlay.open(R.layout.dialog_trade_hints, this);
@@ -249,17 +231,16 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
                 break;
 
             case R.id.game_fab_view_grid:
-                LevelInstrumentsActivity.start(this, level.getIndex());
+                LevelInstrumentsActivity.start(this, engine.getLevelIndex());
                 break;
 
             case R.id.game_fab_skip_next:
-                App.audit().gameSkip(challengedInstrument);
+                engine.skipChallenge();
                 player.stop();
-                nextChallenge();
+                nextChallenge.run();
                 break;
 
             case R.id.game_fab_back:
-                App.audit().gameClose(challengedInstrument);
                 toggleFabMenu();
                 onBackPressed();
                 break;
@@ -272,32 +253,29 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
     @Override
     public boolean onKeyboardChar(char c) {
-        return handleKeyboardChar(c);
-    }
+        switch (engine.handleKeyboardChar(c)) {
+            case FILLING:
+                // returns true to signal keyboard to accept more user input
+                return true;
 
-    private boolean handleKeyboardChar(char c) {
-        if (answerView.hasAllCharsFilled()) {
-            player.play("fx/negative.mp3");
-            return false;
-        }
-        answerView.putChar(c);
-        if (!answerView.hasAllCharsFilled()) {
-            return true;
+            // answer builder overflow and wrong answer are handled the same, i.e. with negative signal
+            case OVERFLOW:
+            case WRONG:
+                player.play("fx/negative.mp3");
+                return false;
+
+            case CORRECT:
+                break;
         }
 
-        if (!engine.checkAnswer(answerView.getValue())) {
-            player.play("fx/negative.mp3");
-            App.audit().gameWrongAnswer(challengedInstrument, answerView.getValue());
-            return true;
-        }
-        App.audit().gameCorrectAnswer(challengedInstrument);
+        // handle correct answer here
 
-        scorePlusView.setText(String.format("+%d", Balance.getScoreIncrement(level.getIndex())));
+        scorePlusView.setText(String.format("+%d", Balance.getScoreIncrement(engine.getLevelIndex())));
         scorePlusView.setVisibility(View.VISIBLE);
         imageView.setVisibility(View.INVISIBLE);
 
         player.play(String.format("fx/positive-%d.mp3", random.nextInt(5)));
-        BitmapLoader loader = new BitmapLoader(this, challengedInstrument.getPicturePath(), imageView);
+        BitmapLoader loader = new BitmapLoader(this, engine.getChallengedInstrument().getPicturePath(), imageView);
         loader.start();
 
         // engine check answer takes care to unlock next level if current level threshold was reached
@@ -307,31 +285,27 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             handler.postDelayed(nextChallenge, 2000);
         }
 
-        return true;
+        return false;
     }
 
     @Override
-    public void onNameChar(char c) {
+    public void onAnswerChar(char c) {
         keyboardView.ungetChar(c);
     }
 
-    private void nextChallenge() {
-        challengedInstrument = engine.nextChallenge();
-        updateUI();
-    }
-
     private void updateUI() {
+        final Instrument challengedInstrument = engine.getChallengedInstrument();
         if (challengedInstrument == null) {
             // last argument is true to signal level complete
             dialogOverlay.open(R.layout.dialog_level_state, GameActivity.this, true);
             return;
         }
 
-        scoreView.setText(Integer.toString(balance.getScore()));
-        creditView.setText(Integer.toString(balance.getCredit()));
+        scoreView.setText(Integer.toString(engine.getScore()));
+        creditView.setText(Integer.toString(engine.getCredit()));
 
-        brandsCountView.setText(Integer.toString(level.getInstrumentsCount()));
-        solvedBrandsCountView.setText(Integer.toString(levelState.getSolvedInstrumentsCount()));
+        brandsCountView.setText(Integer.toString(engine.getLevelInstrumentsCount()));
+        solvedBrandsCountView.setText(Integer.toString(engine.getLevelSolvedInstrumentsCount()));
         answerView.init(challengedInstrument.getLocaleName());
         keyboardView.init(challengedInstrument.getLocaleName());
 
@@ -414,12 +388,13 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             levelComplete = (Boolean) args[1];
             activity.player.play("fx/hooray.mp3");
 
+            final int levelIndex = activity.engine.getLevelIndex();
             if (levelComplete) {
-                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_complete), Assets.getLevelName(activity, activity.level.getIndex()));
-                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelCompleteBonus(activity.level.getIndex()));
+                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_complete), Assets.getLevelName(activity, levelIndex));
+                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelCompleteBonus(levelIndex));
             } else {
                 dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_unlocked), Assets.getLevelName(activity, activity.engine.getUnlockedLevelIndex()));
-                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelUnlockBonus(activity.level.getIndex()));
+                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelUnlockBonus(levelIndex));
             }
         }
 
@@ -482,7 +457,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         public void onOpen(DialogOverlay dialog, Object... args) {
             super.onOpen(dialog, args);
 
-            dialog.setText(R.id.trade_hints_title, activity.getString(R.string.trade_hints_title), activity.balance.getCredit());
+            dialog.setText(R.id.trade_hints_title, activity.getString(R.string.trade_hints_title), activity.engine.getCredit());
             dialog.setText(R.id.reveal_letter_deduction, "%d", Balance.getRevealLetterDeduction());
             dialog.setText(R.id.verify_deduction, "%d", Balance.getVerifyInputDeduction());
             dialog.setText(R.id.hide_letters_deduction, "%d", Balance.getHideLettersDeduction());
@@ -498,21 +473,15 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         public void onClick(View view) {
             boolean deductionPerformed = false;
 
-            String hintType = null;
             switch (view.getId()) {
                 case R.id.reveal_letter_action:
-                    hintType = "REVEAL_LETTER";
-                    if (activity.balance.deductRevealLetter()) {
+                    if (activity.engine.revealLetter()) {
                         deductionPerformed = true;
-                        int firstMissingCharIndex = activity.answerView.getFirstMissingCharIndex();
-                        assert firstMissingCharIndex != -1;
-                        activity.handleKeyboardChar(activity.keyboardView.getExpectedChar(firstMissingCharIndex));
                     }
                     break;
 
                 case R.id.verify_action:
-                    hintType = "VERIFY";
-                    if (activity.balance.deductVerifyInput()) {
+                    if (activity.engine.verifyInput()) {
                         deductionPerformed = true;
                         activity.handler.postDelayed(new Runnable() {
                             @Override
@@ -524,16 +493,13 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
                     break;
 
                 case R.id.hide_letters_action:
-                    hintType = "HIDE_LETTERS";
-                    if (activity.balance.deductHideLettersInput()) {
+                    if (activity.engine.hideLetters()) {
                         deductionPerformed = true;
-                        activity.keyboardView.hideUnusedLetters();
                     }
                     break;
 
                 case R.id.play_sample_action:
-                    hintType = "PLAY_SAMPLE";
-                    if (activity.balance.deductSayName()) {
+                    if (activity.engine.playSample()) {
                         deductionPerformed = true;
                         activity.handler.postDelayed(new Runnable() {
                             @Override
@@ -546,8 +512,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             }
 
             if (deductionPerformed) {
-                App.audit().gameHint(activity.challengedInstrument, hintType);
-                activity.creditView.setText(Integer.toString(activity.balance.getCredit()));
+                activity.creditView.setText(Integer.toString(activity.engine.getCredit()));
             } else {
                 activity.handler.postDelayed(new Runnable() {
                     @Override
@@ -562,8 +527,8 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
     @SuppressWarnings("unused")
     private static class InputVerifyDialog extends GameDialog {
-        private NameView responseView;
-        private NameView suggestionView;
+        private AnswerView responseView;
+        private AnswerView suggestionView;
 
         public InputVerifyDialog(Context context, AttributeSet attrs) {
             super(context, attrs);
@@ -577,7 +542,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             responseView.open(activity.answerView.getInput());
 
             suggestionView = findViewById(R.id.input_verify_suggestion);
-            suggestionView.init(activity.challengedInstrument.getLocaleName());
+            suggestionView.init(activity.engine.getChallengedInstrument().getLocaleName());
             suggestionView.verify(activity.answerView.getInput());
         }
     }

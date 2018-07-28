@@ -1,9 +1,6 @@
-package com.kidscademy.quiz.instruments.engine;
+package com.kidscademy.quiz.instruments.model;
 
 import com.kidscademy.quiz.instruments.App;
-import com.kidscademy.quiz.instruments.model.Balance;
-import com.kidscademy.quiz.instruments.model.Counters;
-import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.util.Storage;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.kidscademy.quiz.instruments;
 
-import com.kidscademy.quiz.instruments.engine.GameEngine;
+import com.kidscademy.quiz.instruments.model.GameEngineImpl;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Counters;
 import com.kidscademy.quiz.instruments.model.Instrument;
@@ -29,7 +29,7 @@ public class GameEngineTest {
     @Mock
     private Storage storage;
 
-    private GameEngine engine;
+    private GameEngineImpl engine;
 
     @Before
     public void beforeTest() {
@@ -37,7 +37,7 @@ public class GameEngineTest {
         when(storage.getCounters()).thenReturn(new Counters());
         when(storage.getBalance()).thenReturn(new Balance());
 
-        engine = new GameEngine(storage, new LevelState(0, 10));
+        engine = new GameEngineImpl(storage, new LevelState(0, 10));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class GameEngineTest {
         List<Integer> instruments = new ArrayList<>(Arrays.asList(0, 1));
         when(storage.getLevelInstruments(0)).thenReturn(instruments);
 
-        Instrument instrument = engine.initChallenge("accordion");
+        Instrument instrument = engine.start("accordion");
         assertNotNull(instrument);
         assertEquals(0, instrument.getIndex());
         assertEquals("accordion", instrument.getLocaleName());

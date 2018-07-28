@@ -25,7 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.kidscademy.quiz.instruments.engine.QuizEngine;
+import com.kidscademy.quiz.instruments.model.QuizEngine;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.util.QuizTimeoutListener;
