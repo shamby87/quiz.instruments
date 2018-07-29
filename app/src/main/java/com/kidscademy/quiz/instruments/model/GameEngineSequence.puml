@@ -1,0 +1,38 @@
+@startuml
+autonumber
+
+actor User
+participant GameActivity
+participant GameEngine
+
+User -> GameActivity: start
+
+GameActivity -> GameEngine: new
+GameActivity -> GameEngine: setLevel
+GameActivity -> GameEngine: start
+GameEngine -> GameEngine: create challenge
+
+== for each challenge ==
+GameActivity -> GameEngine: getCurrentChallenge
+GameEngine --> GameActivity: challenge
+
+GameActivity --> User: display challenge
+
+User -> GameActivity: enter answer letter
+GameActivity -> GameEngine: handleAnswerLetter
+GameEngine -> GameEngine: add letter to answer
+GameEngine -> GameEngine: checkAnswer
+GameEngine --> GameActivity: AnswerState
+GameActivity -> GameActivity: repeat from 9
+note left: till enter all answer letters
+
+GameActivity --> User: hooray
+note right: if answer is correct
+
+GameActivity -> GameEngine: nextChallenge
+GameEngine -> GameEngine: create challenge
+GameActivity -> GameActivity: repeat from 6
+note left: till all challenges complete
+== ==
+
+@enduml

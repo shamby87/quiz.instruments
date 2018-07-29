@@ -9,9 +9,20 @@ import java.util.Locale;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Game engine implementation.
+ *
+ * @author Iulian Rotaru
+ */
 public class GameEngineImpl implements GameEngine {
+    /**
+     * Class logger.
+     */
     private static final Log log = LogFactory.getLog(GameEngineImpl.class);
 
+    /**
+     * Mark value for level not unlocked.
+     */
     private static final int NO_UNLOCK_LEVEL = -1;
 
     /**
@@ -22,35 +33,38 @@ public class GameEngineImpl implements GameEngine {
      * Audit utility.
      */
     private final Audit audit;
-
-    private final Counters counters;
-
-    private final Balance balance;
-
-    private final KeyboardControl keyboard;
-
-    private final AnswerBuilder answer;
-
     /**
-     * Reference to storage instruments list.
+     * User balance keeps score points and earned credits.
+     */
+    private final Balance balance;
+    /**
+     * Keyboard control.
+     */
+    private final KeyboardControl keyboard;
+    /**
+     * Answer builder.
+     */
+    private final AnswerBuilder answer;
+    /**
+     * Reference to storage instruments.
      */
     private final Instrument[] instruments;
-
-
+    /**
+     * Engine instance level.
+     */
+    private Level level;
+    /**
+     * Associated level state.
+     */
+    private LevelState levelState;
     /**
      * Instrument currently displayed as challenge.
      */
     private Instrument challengedInstrument;
-
-    private Level level;
-
-    private LevelState levelState;
-
     /**
      * Current challenged instrument index, relative to level not solved instruments collection.
      */
     private int challengedInstrumentIndex;
-
     /**
      * If current level unlock threshold was reached this field contains the index of the next level.
      */
@@ -65,11 +79,10 @@ public class GameEngineImpl implements GameEngine {
      * @param keyboard keyboard control,
      */
     public GameEngineImpl(Storage storage, Audit audit, AnswerBuilder answer, KeyboardControl keyboard) {
-        log.trace("GameEngineImpl(Storage, Audit, AnswerBuilder, KeyboardControl)");
+        log.trace("GameEngineImpl(Storage, Audit, AnswerBuilder, KeyboardControl)"); //NON-NLS
         this.storage = storage;
         this.audit = audit;
 
-        this.counters = storage.getCounters();
         this.balance = storage.getBalance();
         this.instruments = storage.getInstruments();
 
@@ -85,7 +98,7 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public void start(String challengeName) {
-        log.trace("start(String)");
+        log.trace("start(String)"); //NON-NLS
         audit.playGameLevel(level.getIndex());
 
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
@@ -107,7 +120,7 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public boolean nextChallenge() {
-        log.trace("nextChallenge()");
+        log.trace("nextChallenge()"); //NON-NLS
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
         if (unsolvedInstruments.isEmpty()) {
             audit.gameClose(challengedInstrument);
@@ -123,8 +136,9 @@ public class GameEngineImpl implements GameEngine {
     }
 
     @Override
-    public Instrument getCurrentChallenge() {
-        return challengedInstrument;
+    public <T> T getCurrentChallenge() {
+        // noinspection unchecked
+        return (T) challengedInstrument;
     }
 
     @Override
@@ -153,14 +167,12 @@ public class GameEngineImpl implements GameEngine {
      */
     private boolean checkAnswer(String answer) {
         if (!challengedInstrument.getLocaleName().equals(answer.toLowerCase(Locale.getDefault()))) {
-            counters.minus(challengedInstrument);
             final int penalty = Balance.getScorePenalty();
             balance.minusScore(penalty);
             levelState.minusScore(penalty);
             return false;
         }
 
-        counters.plus(challengedInstrument);
         final int points = Balance.getScoreIncrement(levelState.getIndex());
         balance.plusScore(points);
         levelState.plusScore(points);
@@ -216,7 +228,6 @@ public class GameEngineImpl implements GameEngine {
      * @return unlocked level index.
      */
     public int getUnlockedLevelIndex() {
-        assert unlockedLevelIndex != NO_UNLOCK_LEVEL;
         int i = unlockedLevelIndex;
         unlockedLevelIndex = NO_UNLOCK_LEVEL;
         return i;
@@ -227,9 +238,8 @@ public class GameEngineImpl implements GameEngine {
         if (!balance.deductRevealLetter()) {
             return false;
         }
-        audit.gameHint(challengedInstrument, "REVEAL_LETTER");
+        audit.gameHint(challengedInstrument, "REVEAL_LETTER"); //NON-NLS
         int firstMissingCharIndex = answer.getFirstMissingLetterIndex();
-        assert firstMissingCharIndex != -1;
         handleAnswerLetter(keyboard.getExpectedChar(firstMissingCharIndex));
         return true;
     }
@@ -237,7 +247,7 @@ public class GameEngineImpl implements GameEngine {
     @Override
     public boolean isInputVerifyAllowed() {
         if (balance.deductVerifyInput()) {
-            audit.gameHint(challengedInstrument, "VERIFY_INPUT");
+            audit.gameHint(challengedInstrument, "VERIFY_INPUT"); //NON-NLS
             return true;
         }
         return false;
@@ -246,7 +256,7 @@ public class GameEngineImpl implements GameEngine {
     @Override
     public boolean hideLetters() {
         if (balance.deductHideLettersInput()) {
-            audit.gameHint(challengedInstrument, "HIDE_LETTERS");
+            audit.gameHint(challengedInstrument, "HIDE_LETTERS"); //NON-NLS
             keyboard.hideUnusedLetters();
             return true;
         }
@@ -255,10 +265,7 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public boolean playSample() {
-        if (balance.deductSayName()) {
-            return true;
-        }
-        return false;
+        return balance.deductSayName();
     }
 
     @Override

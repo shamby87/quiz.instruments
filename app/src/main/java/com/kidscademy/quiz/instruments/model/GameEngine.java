@@ -5,12 +5,14 @@ package com.kidscademy.quiz.instruments.model;
  * challenges till level complete or user exit. After game engine instance creation, is mandatory to call
  * {@link #setLevelIndex(int)} and initialize the level.
  * <p>
- * After game engine creation and level initialization we are ready to start it. We can start from first
+ * After game engine creation and level initialization we are ready to start. We can start from first
  * available challenge or we can start with a particular one, identified by its name, see {@link #start(String)}.
  * Engine start prepares internal challenge so that {@link #getCurrentChallenge()} can return it.
  * <p>
- * Once current challenge initialized, engine is prepared to process answer letters - see {@link #handleAnswerLetter(char)}.
+ * Once current challenge initialized, engine is prepared to process answer - see {@link #handleAnswerLetter(char)}.
  * Answer is processed letter by letter till engine detects correct answer or answer builder is filled.
+ * When answer is complete engine check if correct and if so is ready to prepare next challenge, see {@link #nextChallenge()}.
+ * Process is repeated till no more challenges in which case next challenge returns false.
  *
  * @author Iulian Rotaru
  */
