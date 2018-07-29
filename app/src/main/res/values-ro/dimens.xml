@@ -1,0 +1,4 @@
+<resources>
+    <!-- overlay dialogs -->
+    <dimen name="dialog_horizontal_padding">30dp</dimen>
+</resources>

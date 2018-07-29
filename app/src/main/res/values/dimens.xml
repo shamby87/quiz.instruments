@@ -42,4 +42,7 @@
 
     <dimen name="level_icon_size">90dp</dimen>
     <dimen name="developer_icon_size">120dp</dimen>
+
+    <!-- overlay dialogs -->
+    <dimen name="dialog_horizontal_padding">40dp</dimen>
 </resources>
