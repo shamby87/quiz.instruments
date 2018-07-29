@@ -15,6 +15,11 @@ import js.log.Log;
 import js.log.LogFactory;
 import js.util.Strings;
 
+/**
+ * Display all instruments from a level in a grid.
+ *
+ * @author Iulian Rotaru
+ */
 public class LevelInstrumentsActivity extends AppActivity implements LevelInstrumentsAdapter.Listener, View.OnClickListener {
     private static final Log log = LogFactory.getLog(LevelInstrumentsActivity.class);
 

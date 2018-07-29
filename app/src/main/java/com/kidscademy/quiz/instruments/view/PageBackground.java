@@ -28,7 +28,9 @@ import java.util.Random;
 import js.util.Utils;
 
 /**
- * TODO: document your custom view class.
+ * Page background.
+ *
+ * @author Iulian Rotaru
  */
 public class PageBackground extends View implements ValueAnimator.AnimatorUpdateListener {
     private static final Random random = new Random();

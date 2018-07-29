@@ -20,6 +20,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Display quiz start message and wait for user start.
+ *
+ * @author Iulian Rotaru
+ */
 public class QuizStartActivity extends AppActivity implements Runnable, View.OnClickListener {
     private static final Log log = LogFactory.getLog(QuizStartActivity.class);
 

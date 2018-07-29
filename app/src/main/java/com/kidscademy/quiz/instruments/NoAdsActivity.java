@@ -15,6 +15,11 @@ import js.lang.BugError;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * No Ads Manifesto.
+ *
+ * @author Iulian Rotaru
+ */
 public class NoAdsActivity extends AppActivity implements OnClickListener {
     private static final Log log = LogFactory.getLog(NoAdsActivity.class);
 

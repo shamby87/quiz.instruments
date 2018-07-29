@@ -11,6 +11,11 @@ import java.io.IOException;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Ensure storage is properly loaded then launch {@link MainActivity}.
+ *
+ * @author Iulian Rotaru
+ */
 public class LauncherActivity extends AppActivity implements LoadService.Listener {
     private static final Log log = LogFactory.getLog(LauncherActivity.class);
 

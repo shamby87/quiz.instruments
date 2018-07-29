@@ -13,7 +13,11 @@ import com.kidscademy.quiz.instruments.R;
 
 import java.util.Random;
 
-
+/**
+ * Animated icon.
+ *
+ * @author Iulian Rotaru
+ */
 public class AnimatedIcon extends AppCompatImageView implements Runnable {
     private static final Random random = new Random();
 

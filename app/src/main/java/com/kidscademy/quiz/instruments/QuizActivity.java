@@ -41,6 +41,11 @@ import js.util.BitmapLoader;
 import js.util.Player;
 import js.view.DialogOverlay;
 
+/**
+ * Run a set of questions with options to select.
+ *
+ * @author Iulian Rotaru
+ */
 public class QuizActivity extends AppActivity implements View.OnClickListener, QuizTimeoutListener {
     private static final Log log = LogFactory.getLog(QuizActivity.class);
 

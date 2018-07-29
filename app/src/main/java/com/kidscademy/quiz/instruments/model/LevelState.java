@@ -6,6 +6,11 @@ import com.kidscademy.quiz.instruments.util.Storage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Level mutable state.
+ *
+ * @author Iulian Rotaru
+ */
 public class LevelState {
     private static final float UNLOCK_TRESHOLD = 0.5F;
 

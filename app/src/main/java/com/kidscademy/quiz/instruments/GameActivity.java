@@ -32,6 +32,11 @@ import js.util.BitmapLoader;
 import js.util.Player;
 import js.view.DialogOverlay;
 
+/**
+ * Play game level.
+ *
+ * @author Iulian Rotaru
+ */
 public class GameActivity extends AppActivity implements OnClickListener, KeyboardView.Listener, AnswerView.OnAnswerLetterUnsetListener {
     private static final Log log = LogFactory.getLog(GameActivity.class);
 

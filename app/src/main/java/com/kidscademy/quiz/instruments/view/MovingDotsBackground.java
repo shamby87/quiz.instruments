@@ -26,7 +26,9 @@ import java.util.Random;
 import js.util.Utils;
 
 /**
- * TODO: document your custom view class.
+ * Animated background with two crossing dots.
+ *
+ * @author Iulian Rotaru
  */
 public class MovingDotsBackground extends View implements ValueAnimator.AnimatorUpdateListener {
     private static final Random random = new Random();

@@ -17,6 +17,11 @@ import js.log.Log;
 import js.log.LogFactory;
 import js.util.BitmapLoader;
 
+/**
+ * Recycle view adapter for level instruments grid view.
+ *
+ * @author Iulian Rotaru
+ */
 public final class LevelInstrumentsAdapter extends RecyclerView.Adapter<LevelInstrumentsAdapter.Holder> {
     private static final Log log = LogFactory.getLog(LevelInstrumentsAdapter.class);
 

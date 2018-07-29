@@ -7,6 +7,11 @@ import android.util.AttributeSet;
 
 import com.kidscademy.quiz.instruments.util.Assets;
 
+/**
+ * Floating button with random background color.
+ *
+ * @author Iulian Rotaru
+ */
 public class RandomColorFAB extends android.support.design.widget.FloatingActionButton {
     public RandomColorFAB(Context context, AttributeSet attrs) {
         super(context, attrs);

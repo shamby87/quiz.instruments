@@ -23,6 +23,11 @@ import java.util.Random;
 import js.lang.BugError;
 import js.util.Player;
 
+/**
+ * Game keyboard.
+ *
+ * @author Iulian Rotaru
+ */
 public class KeyboardView extends GridLayout implements KeyboardControl, OnClickListener {
     public static interface Listener {
         /**

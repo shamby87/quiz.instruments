@@ -1,9 +1,10 @@
 package com.kidscademy.quiz.instruments.util;
 
 /**
- * Created by Iulian Rotaru on 2/17/2018.
+ * Event fired when no response for a quiz in certain time.
+ *
+ * @author Iulian Rotaru
  */
-
 public interface QuizTimeoutListener {
     void onQuizTimeout();
 }

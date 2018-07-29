@@ -20,6 +20,11 @@ import android.view.View;
 import com.kidscademy.quiz.instruments.App;
 import com.kidscademy.quiz.instruments.R;
 
+/**
+ * Hexagonal icon.
+ *
+ * @author Iulian Rotaru
+ */
 public class HexaIcon extends View implements ValueAnimator.AnimatorUpdateListener, View.OnClickListener {
     private static final float DEF_ICON_RELATIVE_SIZE = 0.6F;
     private static final int ANIMATION_DURATION = 300;
@@ -120,7 +125,7 @@ public class HexaIcon extends View implements ValueAnimator.AnimatorUpdateListen
         float[][] hexaVertices = getHexaVertices(contentDimension);
         canvas.drawPath(path(hexaVertices), backgroundPaint);
         if (borderPaint != null) {
-            float scaleFactor = (float)(contentDimension - borderSize) / contentDimension;
+            float scaleFactor = (float) (contentDimension - borderSize) / contentDimension;
             canvas.drawPath(path(scale(hexaVertices, contentDimension, scaleFactor)), borderPaint);
         }
 

@@ -17,6 +17,11 @@ import com.kidscademy.quiz.instruments.view.HexaIcon;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Display main actions and wait for user input.
+ *
+ * @author Iulian Rotaru
+ */
 public class MainActivity extends AppActivity implements View.OnClickListener {
     /**
      * Class logger.

@@ -13,6 +13,11 @@ import com.kidscademy.app.FullScreenActivity;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * About activity.
+ *
+ * @author Iulian Rotaru
+ */
 public class AboutActivity extends AppActivity implements View.OnClickListener {
     private static final Log log = LogFactory.getLog(AboutActivity.class);
 

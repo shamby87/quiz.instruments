@@ -12,6 +12,11 @@ import java.util.List;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Quiz engine implementation.
+ *
+ * @author Iulian Rotaru
+ */
 public class QuizEngine {
     private static final Log log = LogFactory.getLog(QuizEngine.class);
 
@@ -26,7 +31,6 @@ public class QuizEngine {
     private long currentChallengeTimestamp;
     private int nextChallengeIndex;
 
-    private Counters counters;
     private Balance balance;
     private int leftTries;
     private int collectedCredits;
@@ -51,7 +55,6 @@ public class QuizEngine {
             challenges[i] = new Challenge(instruments.get(i));
         }
 
-        this.counters = storage.getCounters();
         this.balance = storage.getBalance();
         this.leftTries = MAX_TRIES;
     }
@@ -106,18 +109,15 @@ public class QuizEngine {
             currentChallenge.responseTime = (int) (System.currentTimeMillis() - currentChallengeTimestamp);
             int credits = (int) (Balance.getQuizDifficultyFactor() * Balance.getQuizIncrement() * speedFactor);
             collectedCredits += credits;
-            counters.plus(currentChallenge.instrument);
             currentChallenge.instrument.incrementQuizCounter();
             return true;
         }
-        counters.minus(currentChallenge.instrument);
         --leftTries;
         return false;
     }
 
     public void onAswerTimeout() {
         App.audit().quizTimeout(currentChallenge.instrument);
-        counters.minus(currentChallenge.instrument);
         --leftTries;
     }
 

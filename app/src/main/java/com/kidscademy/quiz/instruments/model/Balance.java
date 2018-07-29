@@ -1,5 +1,10 @@
 package com.kidscademy.quiz.instruments.model;
 
+/**
+ * Balance class keeps user score points and earned credits.
+ *
+ * @author Iulian Rotaru
+ */
 public class Balance {
     private static final int SCORE_INCREMENT_BASE = 10;
     private static final int SCORE_PENALTY = 1;

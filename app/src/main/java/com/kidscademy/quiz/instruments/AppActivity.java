@@ -8,6 +8,11 @@ import com.kidscademy.app.FullScreenActivity;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Application base activity.
+ *
+ * @author Iulian Rotaru
+ */
 public abstract class AppActivity extends FullScreenActivity {
     private static final Log log = LogFactory.getLog(AppActivity.class);
 

@@ -8,6 +8,11 @@ import com.kidscademy.quiz.instruments.R;
 
 import java.util.Random;
 
+/**
+ * Utility class for application media assets.
+ *
+ * @author Iulian Rotaru
+ */
 public class Assets {
     private static Random random = new Random();
 

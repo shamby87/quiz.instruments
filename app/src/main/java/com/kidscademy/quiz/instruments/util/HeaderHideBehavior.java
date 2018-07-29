@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
 
+/**
+ * Hide page header when outer scroller starts moving up.
+ *
+ * @author Iulian Rotaru
+ */
 public class HeaderHideBehavior extends CoordinatorLayout.Behavior<FrameLayout> {
     private boolean headerVisible = true;
 

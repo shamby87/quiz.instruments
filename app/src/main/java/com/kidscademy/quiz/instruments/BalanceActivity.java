@@ -7,14 +7,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.model.Balance;
-import com.kidscademy.quiz.instruments.model.Counters;
-import com.kidscademy.quiz.instruments.model.Level;
 import com.kidscademy.quiz.instruments.util.LevelsUtil;
 import com.kidscademy.quiz.instruments.view.PercentDonutView;
 
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Balance activity.
+ *
+ * @author Iulian Rotaru
+ */
 public class BalanceActivity extends AppActivity implements View.OnClickListener {
     private static final Log log = LogFactory.getLog(BalanceActivity.class);
 
@@ -28,7 +31,6 @@ public class BalanceActivity extends AppActivity implements View.OnClickListener
 
     private LevelsUtil levels;
     private Balance balance;
-    private Counters counters;
 
     @Override
     protected int layout() {
@@ -42,7 +44,6 @@ public class BalanceActivity extends AppActivity implements View.OnClickListener
 
         levels = new LevelsUtil(App.storage());
         balance = App.storage().getBalance();
-        counters = App.storage().getCounters();
 
         findViewById(R.id.fab_back).setOnClickListener(this);
     }

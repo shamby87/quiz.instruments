@@ -15,23 +15,31 @@ import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.quiz.instruments.util.Assets;
 import com.kidscademy.quiz.instruments.view.HexaIcon;
 
+import java.util.Locale;
+
 import js.log.Log;
 import js.log.LogFactory;
 import js.util.BitmapLoader;
+import js.util.Params;
 
+/**
+ * Recycle view adapter for level card from levels list activity.
+ *
+ * @author Iulian Rotaru
+ */
 public class LevelsCardAdapter extends RecyclerView.Adapter<LevelsCardAdapter.Holder> {
     private static final Log log = LogFactory.getLog(LevelsCardAdapter.class);
 
-    private Context context;
-    private Listener listener;
-    private LayoutInflater inflater;
-    private Level[] levels;
+    private final Context context;
+    private final Listener listener;
+    private final LayoutInflater inflater;
+    private final Level[] levels;
 
     public LevelsCardAdapter(Context context, Level[] levels) {
         super();
-        log.trace("InstrumentsCardAdapter(Context, Level[])");
+        log.trace("InstrumentsCardAdapter(Context, Level[])"); // NON-NLS
+        //Params.notNull(levels, "Levels"); // NON-NLS
         this.context = context;
-        assert context instanceof Listener;
         this.listener = (Listener) context;
         this.inflater = LayoutInflater.from(context);
         this.levels = levels;
@@ -39,15 +47,14 @@ public class LevelsCardAdapter extends RecyclerView.Adapter<LevelsCardAdapter.Ho
 
     @Override
     public Holder onCreateViewHolder(ViewGroup viewGroup, int position) {
-        log.trace("onCreateViewHolder(ViewGroup, int)");
+        log.trace("onCreateViewHolder(ViewGroup, int)"); // NON-NLS
         View view = inflater.inflate(R.layout.compo_card_level, viewGroup, false);
-        Holder holder = new Holder(view);
-        return holder;
+        return new Holder(view);
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        log.trace("onBindViewHolder(ViewHolder, int)");
+        log.trace("onBindViewHolder(ViewHolder, int)"); // NON-NLS
         holder.bindPosition(position);
     }
 
@@ -57,17 +64,17 @@ public class LevelsCardAdapter extends RecyclerView.Adapter<LevelsCardAdapter.Ho
     }
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView backgroundView;
-        private TextView nameText;
-        private TextView scoreText;
-        private TextView instrumentsCountText;
-        private TextView solvedInstrumentsText;
-        private HexaIcon actionView;
-        private ProgressBar progressBar;
+        private final ImageView backgroundView;
+        private final TextView nameText;
+        private final TextView scoreText;
+        private final TextView instrumentsCountText;
+        private final TextView solvedInstrumentsText;
+        private final HexaIcon actionView;
+        private final ProgressBar progressBar;
 
         private Level level;
 
-        public Holder(View view) {
+        Holder(View view) {
             super(view);
 
             backgroundView = view.findViewById(R.id.card_level_bg);
@@ -80,10 +87,10 @@ public class LevelsCardAdapter extends RecyclerView.Adapter<LevelsCardAdapter.Ho
             actionView = view.findViewById(R.id.card_level_action);
             actionView.setOnClickListener(this);
 
-            progressBar = (ProgressBar) view.findViewById(R.id.card_level_progress);
+            progressBar = view.findViewById(R.id.card_level_progress);
         }
 
-        public void bindPosition(int position) {
+        void bindPosition(int position) {
             level = levels[position];
             final LevelState levelState = App.storage().getLevelState(level.getIndex());
 
@@ -102,11 +109,11 @@ public class LevelsCardAdapter extends RecyclerView.Adapter<LevelsCardAdapter.Ho
             }
 
             nameText.setText(Assets.getLevelName(context, level.getIndex()));
-            nameText.setTag("level" + level.getIndex());
+            nameText.setTag("level" + level.getIndex()); // NON-NLS
 
-            instrumentsCountText.setText(Integer.toString(instrumentsCount));
-            solvedInstrumentsText.setText(Integer.toString(solvedInstruments));
-            scoreText.setText(Integer.toString(levelState.getScore()));
+            instrumentsCountText.setText(String.format(Locale.getDefault(), "%d", instrumentsCount)); //NON-NLS
+            solvedInstrumentsText.setText(String.format(Locale.getDefault(), "%d", solvedInstruments)); //NON-NLS
+            scoreText.setText(String.format(Locale.getDefault(), "%d", levelState.getScore())); //NON-NLS
 
             progressBar.setProgressDrawable(Assets.getProgressDrawable(context, position));
             progressBar.setProgress(progress);
@@ -118,7 +125,7 @@ public class LevelsCardAdapter extends RecyclerView.Adapter<LevelsCardAdapter.Ho
         }
     }
 
-    public static interface Listener {
+    public interface Listener {
         void onLevelSelected(Level level);
     }
 }

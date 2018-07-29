@@ -6,6 +6,11 @@ import com.kidscademy.quiz.instruments.model.LevelState;
 
 import java.util.List;
 
+/**
+ * Statistics about all levels.
+ *
+ * @author Iulian Rotaru
+ */
 public class LevelsUtil {
     private final Storage storage;
 

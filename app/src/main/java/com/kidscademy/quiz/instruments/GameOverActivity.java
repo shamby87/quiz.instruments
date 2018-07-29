@@ -11,6 +11,11 @@ import com.kidscademy.app.FullScreenActivity;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Activity displayed on game over.
+ *
+ * @author Iulian Rotaru
+ */
 public class GameOverActivity extends AppActivity implements View.OnClickListener {
     private static final Log log = LogFactory.getLog(GameOverActivity.class);
 

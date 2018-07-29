@@ -5,7 +5,6 @@ import com.kidscademy.quiz.instruments.model.AnswerState;
 import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.GameEngineImpl;
 import com.kidscademy.quiz.instruments.model.Balance;
-import com.kidscademy.quiz.instruments.model.Counters;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.model.KeyboardControl;
 import com.kidscademy.quiz.instruments.model.Level;

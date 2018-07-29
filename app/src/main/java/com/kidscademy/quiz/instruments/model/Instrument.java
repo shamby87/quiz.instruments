@@ -9,6 +9,11 @@ import com.kidscademy.util.StorageBase;
 
 import js.util.Strings;
 
+/**
+ * Model class for musical instrument.
+ *
+ * @author Iulian Rotaru
+ */
 public class Instrument implements StorageObject, Parcelable {
     /**
      * Index into instruments array from storage. Note that instruments storage is sorted by rank, descendant.

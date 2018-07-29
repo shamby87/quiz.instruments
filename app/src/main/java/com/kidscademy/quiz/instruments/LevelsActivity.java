@@ -19,6 +19,11 @@ import js.log.Log;
 import js.log.LogFactory;
 import js.util.Player;
 
+/**
+ * Display all levels as cards in a vertical list.
+ *
+ * @author Iulian Rotaru
+ */
 public class LevelsActivity extends AppActivity implements LevelsCardAdapter.Listener, View.OnClickListener {
     private static final Log log = LogFactory.getLog(LevelsActivity.class);
 

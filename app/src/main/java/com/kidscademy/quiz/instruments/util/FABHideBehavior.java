@@ -8,6 +8,11 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
+/**
+ * Hide floating button when outer scroller starts moving up.
+ *
+ * @author Iulian Rotaru
+ */
 public class FABHideBehavior extends Behavior {
     public FABHideBehavior(Context context, AttributeSet attrs) {
         super();

@@ -5,7 +5,6 @@ import android.content.Context;
 import com.kidscademy.quiz.instruments.App;
 import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.model.Config;
-import com.kidscademy.quiz.instruments.model.Counters;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.model.Level;
 import com.kidscademy.quiz.instruments.model.LevelState;
@@ -22,36 +21,53 @@ import js.lang.BugError;
 import js.log.Log;
 import js.log.LogFactory;
 
+/**
+ * Application persistent storage.
+ *
+ * @author Iulian Rotaru
+ */
 public class Storage extends StorageBase {
     /**
      * Class logger.
      */
     private static final Log log = LogFactory.getLog(Storage.class);
 
-    private static final String INSTRUMENTS_PATH = "instruments.json";
-    private static final String COUNTERS_PATH = "counters.json";
-    private static final String BALANCE_PATH = "balance.json";
-    private static final String LEVELS_PATH = "levels.json";
-    private static final String LEVEL_STATES_PATH = "level-states.json";
+    private static final String INSTRUMENTS_PATH = "instruments.json"; // NON-NLS
+    private static final String BALANCE_PATH = "balance.json"; // NON-NLS
+    private static final String LEVELS_PATH = "levels.json"; // NON-NLS
+    private static final String LEVEL_STATES_PATH = "level-states.json"; // NON-NLS
 
     /**
      * Instruments collection sorted descendant by rank. It is the order of instruments per levels.
      */
     private static Instrument[] instruments;
-    private Counters counters;
+    /**
+     * User balance keeps score points and earned credits.
+     */
     private Balance balance;
+    /**
+     * Immutable game levels. Level mutable state is held by level state class.
+     */
     private Level[] levels;
+    /**
+     * Game level states keeps level mutable state.
+     */
     private LevelState[] levelStates;
 
+    /**
+     * Create storage instance.
+     *
+     * @param context runtime context provided by framework.
+     */
     public Storage(Context context) {
         super(context);
     }
 
     @Override
     public void onAppCreate() {
-        log.trace("onAppCreate()");
+        log.trace("onAppCreate()"); // NON-NLS
+
         config = loadObject(getConfigFile(), Config.class);
-        counters = loadObject(getCountersFile(), Counters.class);
         balance = loadObject(getBalanceFile(), Balance.class);
         instruments = loadObject(getInstrumentsFile(), Instrument[].class);
         levels = loadObject(getLevelsFile(), Level[].class);
@@ -62,30 +78,28 @@ public class Storage extends StorageBase {
         }
     }
 
-    public boolean isStorageValid() {
-        if (instruments.length < 80) {
+    private boolean isStorageValid() {
+        if (instruments.length < 100) {
             return false;
         }
-        for (int i = 0; i < instruments.length; ++i) {
-            if (instruments[i] == null) {
+        for (Instrument instrument : instruments) {
+            if (instrument == null) {
                 return false;
             }
         }
-
-        if (levels.length < 8) {
+        if (levels.length < 10) {
             return false;
         }
-        for (int i = 0; i < levels.length; ++i) {
-            if (levels[i] == null) {
+        for (Level level : levels) {
+            if (level == null) {
                 return false;
             }
         }
-
-        if (levelStates.length < 8) {
+        if (levelStates.length < 10) {
             return false;
         }
-        for (int i = 0; i < levelStates.length; ++i) {
-            if (levelStates[i] == null) {
+        for (LevelState levelState : levelStates) {
+            if (levelState == null) {
                 return false;
             }
         }
@@ -98,9 +112,8 @@ public class Storage extends StorageBase {
 
         // levels are immutable and need not to be saved
 
-        saveObject(instruments, getInstrumentsFile());
-        saveObject(counters, getCountersFile());
         saveObject(balance, getBalanceFile());
+        saveObject(instruments, getInstrumentsFile());
         saveObject(levelStates, getLevelStatesFile());
     }
 
@@ -110,10 +123,6 @@ public class Storage extends StorageBase {
 
     public Instrument getInstrument(int index) {
         return instruments[index];
-    }
-
-    public Counters getCounters() {
-        return counters;
     }
 
     public Balance getBalance() {
@@ -135,7 +144,6 @@ public class Storage extends StorageBase {
     public void resetLevels() {
         initLevels();
         try {
-            saveObject(counters, getCountersFile());
             saveObject(levels, getLevelsFile());
             saveObject(balance, getBalanceFile());
             saveObject(levelStates, getLevelStatesFile());
@@ -166,10 +174,6 @@ public class Storage extends StorageBase {
         return new File(directory, INSTRUMENTS_PATH);
     }
 
-    private File getCountersFile() {
-        return new File(directory, COUNTERS_PATH);
-    }
-
     private File getBalanceFile() {
         return new File(directory, BALANCE_PATH);
     }
@@ -188,7 +192,7 @@ public class Storage extends StorageBase {
 
     private void initLevels() {
         try {
-            Reader reader = new InputStreamReader(App.context().getAssets().open("instruments.json"));
+            Reader reader = new InputStreamReader(App.context().getAssets().open(INSTRUMENTS_PATH));
             instruments = loadObject(reader, Instrument[].class);
         } catch (IOException e) {
             throw new BugError(e);
@@ -201,7 +205,7 @@ public class Storage extends StorageBase {
         levels = new Level[instruments.length / INSTRUMENTS_PER_LEVEL];
 
         for (int levelIndex = 0, instrumentIndex = 0; levelIndex < levels.length; ++levelIndex) {
-            final List<Integer> levelInstruments = new ArrayList<Integer>(INSTRUMENTS_PER_LEVEL);
+            final List<Integer> levelInstruments = new ArrayList<>(INSTRUMENTS_PER_LEVEL);
             for (int i = 0; i < INSTRUMENTS_PER_LEVEL; ++i, ++instrumentIndex) {
                 levelInstruments.add(instruments[instrumentIndex].getIndex());
             }
