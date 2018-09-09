@@ -1,39 +1,29 @@
 package com.kidscademy.quiz.instruments;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Vibrator;
-import android.support.v7.widget.GridLayout;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.kidscademy.quiz.instruments.model.QuizChallenge;
 import com.kidscademy.quiz.instruments.model.QuizEngine;
 import com.kidscademy.quiz.instruments.model.Balance;
-import com.kidscademy.quiz.instruments.model.Instrument;
-import com.kidscademy.quiz.instruments.util.QuizTimeoutListener;
+import com.kidscademy.quiz.instruments.model.QuizEngineImpl;
+import com.kidscademy.quiz.instruments.util.Strings;
+import com.kidscademy.quiz.instruments.view.QuizOptionsView;
 
-import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import js.log.Log;
 import js.log.LogFactory;
@@ -42,56 +32,61 @@ import js.util.Player;
 import js.view.DialogOverlay;
 
 /**
- * Run a set of questions with options to select.
+ * Run a set of challenges with options to select the right answer.
  *
  * @author Iulian Rotaru
  */
-public class QuizActivity extends AppActivity implements View.OnClickListener, QuizTimeoutListener {
+public class QuizActivity extends AppActivity implements View.OnClickListener, QuizOptionsView.Listener, QuizEngine.Listener {
     private static final Log log = LogFactory.getLog(QuizActivity.class);
 
     public static void start(Activity activity) {
-        log.trace("start(Activity)");
+        log.trace("start(Activity)"); // NON-NLS
         Intent intent = new Intent(activity, QuizActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.pull_up_from_bottom, R.anim.pull_up_from_top);
     }
 
-    private static final float CLOCK_TICK_THRESHOLD = 0.5F;
-
     private static final Random random = new Random();
 
-    private int levelIndex;
-    private QuizEngine engine;
+    private final QuizEngine engine;
+    /**
+     * Mutex for UI updates. When a new challenge is displayed it can end in two ways: user select and option - correct or bad,
+     * or quiz engine timeout. Both events trigger UI update but they comes from different threads. At limit is possible to
+     * have both event triggered so we need a mechanism to ensure UI update happens only once per quiz session.
+     * <p>
+     * To ensure UI is updated only once per quiz session uses this mutex. Mutex become active when first update trigger
+     * comes - be it user selected option or timeout. Mutex state is reset to inactive after new challenge is displayed.
+     */
+    private final AtomicBoolean uiUpdateMutex;
+    private final Player player;
+    private final Handler handler;
+
     private ImageView instrumentPictureView;
     private TextView instrumentNameView;
-    private Instrument challengedInstrument;
-    private Button[] optionButtons;
-    private int buttonTextColor;
+    private QuizChallenge challenge;
 
-    private RatingBar leftTriesStars;
-    private TextView creditsView;
-    private TextView levelCreditsView;
-    private TextView solvedView;
-    private TextView quizCountView;
-
-    private Player player;
-    private Handler handler;
+    private ProgressBar progressBar;
+    private QuizOptionsView optionsView;
     private DialogOverlay dialogOverlay;
 
-    private Runnable update = new Runnable() {
+    private RatingBar leftTriesStars;
+    private TextView totalCreditsView;
+    private TextView quizSessionCreditsView;
+    private TextView totalChallengesCountView;
+    private TextView solvedChallengesCountView;
+
+    private Runnable updateUiRunnable = new Runnable() {
         @Override
         public void run() {
             updateUI();
         }
     };
 
-    private QuizTimeout quizTimeout;
-
-    private int lastProgressPercent;
-
     public QuizActivity() {
-        log.trace("QuizActivity()");
+        log.trace("QuizActivity()"); // NON-NLS
+        engine = new QuizEngineImpl(this);
+        uiUpdateMutex = new AtomicBoolean();
         player = new Player(this);
         handler = new Handler();
     }
@@ -105,160 +100,157 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        instrumentPictureView = findViewById(R.id.quiz_logo);
+        progressBar = findViewById(R.id.quiz_timeout);
+        instrumentPictureView = findViewById(R.id.quiz_picture);
         instrumentNameView = findViewById(R.id.quiz_name);
 
-        GridLayout optionsGrid = findViewById(R.id.quiz_options);
-        optionButtons = new Button[optionsGrid.getChildCount()];
-        for (int i = 0; i < optionButtons.length; ++i) {
-            optionButtons[i] = (Button) optionsGrid.getChildAt(i);
-            optionButtons[i].setOnClickListener(this);
-        }
-
-        ColorStateList buttonsColorStateList = optionButtons[0].getTextColors();
-        buttonTextColor = buttonsColorStateList.getDefaultColor();
+        optionsView = findViewById(R.id.quiz_options);
+        optionsView.setListener(this);
 
         leftTriesStars = findViewById(R.id.quiz_left_tries);
         dialogOverlay = findViewById(R.id.quiz_dialog_overlay);
 
-        creditsView = findViewById(R.id.quiz_credits);
-        levelCreditsView = findViewById(R.id.quiz_level_credits);
-        solvedView = findViewById(R.id.quiz_solved);
-        quizCountView = findViewById(R.id.quiz_count);
+        totalCreditsView = findViewById(R.id.quiz_credits);
+        quizSessionCreditsView = findViewById(R.id.quiz_level_credits);
+        solvedChallengesCountView = findViewById(R.id.quiz_solved);
+        totalChallengesCountView = findViewById(R.id.quiz_count);
 
         findViewById(R.id.fab_close).setOnClickListener(this);
     }
 
     @Override
     public void onStart() {
-        log.trace("onStart()");
+        log.trace("onStart()"); // NON-NLS
         super.onStart();
         player.create();
-
-        engine = new QuizEngine();
-        quizTimeout = new QuizTimeout(this, (ProgressBar) findViewById(R.id.quiz_timeout));
-
-        updateUI();
         App.audit().playQuiz();
+        updateUI();
     }
 
     @Override
     public void onStop() {
-        log.trace("onStop()");
-        player.destroy();
-        quizTimeout.stop();
+        log.trace("stop()"); // NON-NLS
+        engine.cancelChallenge();
         dialogOverlay.close();
-        handler.removeCallbacks(update);
+        handler.removeCallbacks(updateUiRunnable);
+        player.destroy();
         super.onStop();
     }
 
     @Override
     public void onClick(View view) {
-        quizTimeout.stop();
+        switch (view.getId()) {
+            case R.id.fab_close:
+                App.audit().quizAbort(challenge);
+                onBackPressed();
+                break;
+        }
+    }
+
+    @Override
+    public void onQuizOptionSelected(String option) {
+        log.trace("onQuizOptionSelected(String)"); // NON-NLS
+        player.setVolume(1);
+
+        // abort processing if UI update mutex is signaled, since UI is already updated from timeout event
+        if (uiUpdateMutex.getAndSet(true)) {
+            log.debug("Timeout occurred. Ignore quiz option selected event."); // NON-NLS
+            return;
+        }
+
         if (dialogOverlay.isActive()) {
             return;
         }
 
-        if (view.getId() == R.id.fab_close) {
-            App.audit().quizAbort(challengedInstrument);
-            onBackPressed();
-            return;
-        }
-
-        final Button selectedButton = (Button) view;
-        int responseTime = quizTimeout.stop();
-
-        if (App.prefs().isKeyVibrator()) {
-            Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            vibrator.vibrate(200);
-        }
-
-        // selected option text is generated and also checked by quiz engine
-        // since display language is not an issue we can use user interface text
-        if (!engine.checkAnswer(selectedButton.getText().toString(), quizTimeout.getSpeedFactor())) {
+        if (!engine.checkAnswer(option)) {
             if (App.prefs().isSoundsEffects()) {
-                player.play("fx/negative.mp3");
+                player.play("fx/negative.mp3"); // NON-NLS
             }
-            App.audit().quizWrongAnswer(challengedInstrument, selectedButton.getText().toString());
-            for (final Button button : optionButtons) {
-                if (button.getText().toString().equals(challengedInstrument.getLocaleName())) {
-                    ObjectAnimator anim = ObjectAnimator.ofInt(button, "textColor", Color.TRANSPARENT, Color.WHITE);
-                    anim.setDuration(500);
-                    anim.setEvaluator(new ArgbEvaluator());
-                    anim.setRepeatMode(ValueAnimator.REVERSE);
-                    anim.setRepeatCount(4);
-                    anim.start();
-
-                    anim.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            handler.postDelayed(update, 500);
-                        }
-                    });
-                    break;
-                }
-            }
+            App.audit().quizWrongAnswer(challenge, option);
+            optionsView.highlightOption(challenge.getLocaleName(), updateUiRunnable);
             return;
         }
 
-        App.audit().quizCorrectAnswer(challengedInstrument);
-        log.debug("Correct answer for quiz on |%s|\n", challengedInstrument);
-        App.storage().getBalance().updateResponseTime(responseTime);
+        App.audit().quizCorrectAnswer(challenge);
+        log.debug("Correct answer for quiz on |%s|\n", challenge); // NON-NLS
+        App.storage().getBalance().updateResponseTime(engine.getResponseTime());
 
-        BitmapLoader loader = new BitmapLoader(this, challengedInstrument.getPicturePath(), instrumentPictureView);
-        loader.start();
-        instrumentNameView.setText(challengedInstrument.getLocaleName());
-
+        instrumentNameView.setText(challenge.getLocaleName());
         if (App.prefs().isSoundsEffects()) {
-            player.play(String.format("fx/positive-%d.mp3", random.nextInt(5)));
-            handler.postDelayed(update, 2000);
+            player.play(Strings.format("fx/positive-%d.mp3", random.nextInt(5))); //NON-NLS
+            updateUI(2000);
         } else {
-            handler.postDelayed(update, 500);
+            updateUI(500);
+        }
+    }
+
+    @Override
+    public void onQuizProgress(int progress) {
+        // although quiz progress event is executed on non UI thread we can safely use progress.setProgress()
+        progressBar.setProgress(progress);
+        if (App.prefs().isSoundsEffects()) {
+            float volume = (float) Math.min(0.3, Math.max(0, (double) progressBar.getProgress() / progressBar.getMax() - 0.5));
+            player.setVolume(volume);
         }
     }
 
     @Override
     public void onQuizTimeout() {
-        engine.onAswerTimeout();
-        handler.postDelayed(update, 1000);
+        log.trace("onQuizTimeout()"); // NON-NLS
+        // ignores quiz timeout event if UI was updated by option selected event
+        if (uiUpdateMutex.getAndSet(true)) {
+            log.debug("Option selected event occured. Ignore timeout event."); // NON-NLS
+            return;
+        }
+
+        App.audit().quizTimeout(challenge);
+        player.stop();
+        // update UI via handler even if no delay because quiz timeout is invoked from non UI thread
+        updateUI(0);
+    }
+
+    private void updateUI(int delay) {
+        handler.postDelayed(updateUiRunnable, delay);
     }
 
     private void updateUI() {
-        for (Button button : optionButtons) {
-            button.setTextColor(buttonTextColor);
-        }
+        log.trace("updateUI()"); // NON-NLS
+        optionsView.clear();
+        leftTriesStars.setRating(engine.getLeftTries());
 
-        if (leftTriesStars != null) {
-            leftTriesStars.setRating(engine.getLeftTries());
-        }
+        Balance balance = App.storage().getBalance();
+        totalCreditsView.setText(Strings.toString(balance.getCredit()));
+        quizSessionCreditsView.setText(Strings.toString(engine.getCollectedCredits()));
+        solvedChallengesCountView.setText(Strings.toString(engine.getSolvedChallengesCount()));
+        totalChallengesCountView.setText(Strings.toString(engine.getTotalChallengesCount()));
 
-        if (engine.noMoreTries()) {
+        if (engine.getLeftTries() == 0) {
+            log.debug("No more tries. Open quiz fail dialog."); // NON-NLS
             dialogOverlay.open(R.layout.dialog_quiz_fail, this);
             return;
         }
-        challengedInstrument = engine.nextChallenge();
-        if (challengedInstrument == null) {
+
+        challenge = engine.nextChallenge();
+        if (challenge == null) {
+            log.debug("No more challenges. Open quiz complete dialog."); // NON-NLS
             dialogOverlay.open(R.layout.dialog_quiz_complete, this);
             return;
         }
 
-        Balance balance = App.storage().getBalance();
-        creditsView.setText(Integer.toString(balance.getCredit()));
-        levelCreditsView.setText(Integer.toString(engine.getCollectedCredits()));
-        solvedView.setText(Integer.toString(engine.getSolvedCount()));
-        quizCountView.setText(Integer.toString(engine.getQuizCount()));
-
-        BitmapLoader loader = new BitmapLoader(this, challengedInstrument.getPicturePath(), instrumentPictureView);
+        BitmapLoader loader = new BitmapLoader(this, challenge.getPicturePath(), instrumentPictureView);
         loader.start();
+        instrumentPictureView.setTag(challenge.getPicturePath());
         instrumentNameView.setText(null);
 
-        List<String> options = engine.getOptions(optionButtons.length);
-        for (int i = 0; i < optionButtons.length; ++i) {
-            final String option = options.get(i);
-            optionButtons[i].setText(option);
+        optionsView.init(challenge.getOptions());
+
+        if (App.prefs().isSoundsEffects()) {
+            player.setVolume(0);
+            player.play("fx/clock-tick.mp3"); // NON-NLS
         }
 
-        quizTimeout.start();
+        // reset UI updates mutex after new challenge was displayed
+        uiUpdateMutex.set(false);
     }
 
     @Override
@@ -269,70 +261,11 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
     }
 
     // ------------------------------------------------------
-    // QUIZ TIMER
-
-    private class QuizTimeout {
-        private final QuizTimeoutListener listener;
-        private final ProgressBar progress;
-        private final Timer timer;
-
-        private TimerTask task;
-        private long startTimestamp;
-
-        public QuizTimeout(QuizTimeoutListener listener, ProgressBar progress) {
-            this.listener = listener;
-            this.progress = progress;
-            this.timer = new Timer();
-        }
-
-        public void start() {
-            task = new TimerTask() {
-                @Override
-                public void run() {
-                    progress.setProgress((int) (System.currentTimeMillis() - startTimestamp));
-                    if (App.prefs().isSoundsEffects()) {
-                        float volume = (float) Math.min(0.3, Math.max(0, (double) progress.getProgress() / progress.getMax() - 0.5));
-                        player.setVolume(volume);
-                    }
-                    if (progress.getProgress() >= progress.getMax()) {
-                        stop();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                listener.onQuizTimeout();
-                            }
-                        });
-                    }
-                }
-            };
-            startTimestamp = System.currentTimeMillis();
-            if (App.prefs().isSoundsEffects()) {
-                player.setVolume(0);
-                player.play("fx/clock-tick.mp3");
-            }
-            timer.schedule(task, 0, 40);
-        }
-
-        public int stop() {
-            if (task != null) {
-                task.cancel();
-            }
-            player.stop();
-            return (int) (System.currentTimeMillis() - startTimestamp);
-        }
-
-        public double getSpeedFactor() {
-            long elapsedTime = System.currentTimeMillis() - startTimestamp;
-            return 3 - (2 * elapsedTime / progress.getMax());
-        }
-    }
-
-    // ------------------------------------------------------
     // DIALOG OVERLAYS
 
     @SuppressWarnings("unused")
     private static class QuizFailDialog extends FrameLayout implements DialogOverlay.Content, View.OnClickListener {
-        private static final String packageName = "com.kidscademy.instruments";
+        private static final String packageName = "com.kidscademy.instruments"; // NON-NLS
 
         private DialogOverlay dialog;
         private QuizActivity activity;
@@ -371,9 +304,9 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
                             }
 
                             try {
-                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName))); // NON-NLS
                             } catch (android.content.ActivityNotFoundException unused) {
-                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
+                                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageName))); // NON-NLS
                             }
                         }
                     });
@@ -395,16 +328,16 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
         public void onOpen(DialogOverlay dialog, Object... args) {
             activity = (QuizActivity) args[0];
             if (App.prefs().isSoundsEffects()) {
-                activity.player.play("fx/hooray.mp3");
+                activity.player.play("fx/hooray.mp3"); // NON-NLS
             }
-            dialog.setText(R.id.quiz_complete_credits, "+%d", activity.engine.getCollectedCredits());
+            dialog.setText(R.id.quiz_complete_credits, "+%d", activity.engine.getCollectedCredits()); // NON-NLS
 
             final View responseTimeView = findViewById(R.id.quiz_complete_response_time);
             final TextView responseTimeValueView = findViewById(R.id.quiz_complete_response_time_value);
 
             int responseTime = activity.engine.getAverageResponseTime();
             if (responseTime != 0) {
-                responseTimeValueView.setText(Integer.toString(responseTime));
+                responseTimeValueView.setText(Strings.toString(responseTime));
                 responseTimeView.setVisibility(View.VISIBLE);
             }
 

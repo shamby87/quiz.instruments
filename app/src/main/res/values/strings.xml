@@ -27,7 +27,7 @@
     <string name="balance_credits">Credits</string>
 
     <!-- game over activity -->
-    <string name="game_over">You are done! Go to store and pick another challenge!</string>
+    <string name="game_over">You are done! Go to store and pick another quizChallenge!</string>
 
     <!-- card level component -->
     <string name="card_level_score">score</string>

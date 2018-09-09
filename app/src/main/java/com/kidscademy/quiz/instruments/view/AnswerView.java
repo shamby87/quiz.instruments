@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.App;
 import com.kidscademy.quiz.instruments.R;
-import com.kidscademy.quiz.instruments.model.AnswerBuilder;
+import com.kidscademy.quiz.instruments.model.GameAnswerBuilder;
 
 import java.util.Locale;
 
@@ -25,7 +25,7 @@ import js.util.Player;
  *
  * @author Iulian Rotaru
  */
-public class AnswerView extends LinearLayout implements AnswerBuilder, OnClickListener {
+public class AnswerView extends LinearLayout implements GameAnswerBuilder, OnClickListener {
     /**
      * Listener invoked when a letter is unset, that is, replaced with underscore.
      *
@@ -56,7 +56,7 @@ public class AnswerView extends LinearLayout implements AnswerBuilder, OnClickLi
     }
 
     // --------------------------------------------------------------------------------------------
-    // AnswerBuilder Interface
+    // GameAnswerBuilder Interface
 
     @Override
     public void addLetter(char letter) {

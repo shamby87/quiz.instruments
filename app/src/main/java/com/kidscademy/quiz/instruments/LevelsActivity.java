@@ -76,7 +76,7 @@ public class LevelsActivity extends AppActivity implements LevelsCardAdapter.Lis
 
     @Override
     public void onStop() {
-        log.trace("onStop()");
+        log.trace("stop()");
         super.onStop();
         player.destroy();
     }

@@ -1,0 +1,41 @@
+@startuml
+autonumber
+
+actor User
+participant QuizActivity
+participant QuizEngine
+participant App
+
+User -> QuizActivity: start
+QuizActivity -> App: getQuizEngine
+
+== for each quiz challenge ==
+QuizEngine --> QuizActivity: nextChallenge
+note left: null when no more challenges
+QuizEngine -> QuizEngine: timeout.start
+QuizActivity -> QuizActivity: break loop if null challenge
+QuizActivity -> QuizActivity: updateUI
+
+QuizActivity --> User: display challenge and options
+
+QuizEngine -> QuizActivity: onQuizProgress
+QuizActivity -> QuizActivity: update progress bar
+QuizEngine -> QuizActivity: onQuizTimeout
+
+User -> QuizActivity: select option
+QuizActivity -> QuizActivity: onQuizOptionSelected
+QuizActivity -> QuizEngine: checkAnswer
+QuizEngine -> QuizEngine: timeout.stop
+QuizEngine --> QuizActivity: answer state
+
+QuizActivity --> User: hooray
+note right: if answer is correct
+
+QuizActivity -> QuizActivity: repeat from 3
+note left: till no more challenges
+== ==
+
+QuizActivity --> User: display quiz end dialog
+User -> QuizActivity: close
+
+@enduml

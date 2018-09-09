@@ -5,7 +5,7 @@ package com.kidscademy.quiz.instruments.model;
  *
  * @author Iulian Rotaru
  */
-public enum AnswerState {
+public enum GameAnswerState {
     /**
      * Keyboard characters are adding. Answer builder capacity is not reached yet.
      */

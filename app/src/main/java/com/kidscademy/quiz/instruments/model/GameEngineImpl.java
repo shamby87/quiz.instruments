@@ -44,7 +44,7 @@ public class GameEngineImpl implements GameEngine {
     /**
      * Answer builder.
      */
-    private final AnswerBuilder answer;
+    private final GameAnswerBuilder answer;
     /**
      * Reference to storage instruments.
      */
@@ -78,8 +78,8 @@ public class GameEngineImpl implements GameEngine {
      * @param answer   answer builder,
      * @param keyboard keyboard control,
      */
-    public GameEngineImpl(Storage storage, Audit audit, AnswerBuilder answer, KeyboardControl keyboard) {
-        log.trace("GameEngineImpl(Storage, Audit, AnswerBuilder, KeyboardControl)"); //NON-NLS
+    public GameEngineImpl(Storage storage, Audit audit, GameAnswerBuilder answer, KeyboardControl keyboard) {
+        log.trace("GameEngineImpl(Storage, Audit, GameAnswerBuilder, KeyboardControl)"); //NON-NLS
         this.storage = storage;
         this.audit = audit;
 
@@ -142,21 +142,21 @@ public class GameEngineImpl implements GameEngine {
     }
 
     @Override
-    public AnswerState handleAnswerLetter(char letter) {
+    public GameAnswerState handleAnswerLetter(char letter) {
         if (answer.hasAllLetters()) {
-            return AnswerState.OVERFLOW;
+            return GameAnswerState.OVERFLOW;
         }
         answer.addLetter(letter);
         if (!answer.hasAllLetters()) {
-            return AnswerState.FILLING;
+            return GameAnswerState.FILLING;
         }
 
         if (!checkAnswer(answer.getValue())) {
             audit.gameWrongAnswer(challengedInstrument, answer.getValue());
-            return AnswerState.WRONG;
+            return GameAnswerState.WRONG;
         }
         audit.gameCorrectAnswer(challengedInstrument);
-        return AnswerState.CORRECT;
+        return GameAnswerState.CORRECT;
     }
 
     /**

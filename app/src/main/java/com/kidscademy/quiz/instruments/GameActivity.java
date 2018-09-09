@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.Balance;
-import com.kidscademy.quiz.instruments.model.GameEngineImpl;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.util.Assets;
 import com.kidscademy.quiz.instruments.util.LevelsUtil;
+import com.kidscademy.quiz.instruments.util.Strings;
 import com.kidscademy.quiz.instruments.view.KeyboardView;
 import com.kidscademy.quiz.instruments.view.AnswerView;
 import com.kidscademy.quiz.instruments.view.RandomColorFAB;
@@ -40,11 +40,11 @@ import js.view.DialogOverlay;
 public class GameActivity extends AppActivity implements OnClickListener, KeyboardView.Listener, AnswerView.OnAnswerLetterUnsetListener {
     private static final Log log = LogFactory.getLog(GameActivity.class);
 
-    private static final String ARG_LEVEL_INDEX = "levelIndex";
-    private static final String ARG_INSTRUMENT_NAME = "responseView";
+    private static final String ARG_LEVEL_INDEX = "levelIndex"; // NON-NLS
+    private static final String ARG_INSTRUMENT_NAME = "responseView"; // NON-NLS
 
     public static void start(Activity activity, int levelIndex) {
-        log.trace("start(Activity, int)");
+        log.trace("start(Activity, int)"); // NON-NLS
         Intent intent = new Intent(activity, GameActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.putExtra(ARG_LEVEL_INDEX, levelIndex);
@@ -53,7 +53,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
     }
 
     public static void start(Activity activity, int levelIndex, String instrumentName) {
-        log.trace("start(Context, int, String)");
+        log.trace("start(Context, int, String)"); // NON-NLS
         Intent intent = new Intent(activity, GameActivity.class);
         intent.putExtra(ARG_LEVEL_INDEX, levelIndex);
         intent.putExtra(ARG_INSTRUMENT_NAME, instrumentName);
@@ -131,7 +131,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
     };
 
     public GameActivity() {
-        log.trace("Game()");
+        log.trace("Game()"); // NON-NLS
         player = new Player(this);
         handler = new Handler();
     }
@@ -143,7 +143,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        log.trace("onCreate(Bundle)");
+        log.trace("onCreate(Bundle)"); //NON-NLS
         super.onCreate(savedInstanceState);
 
         answerView = findViewById(R.id.game_answer);
@@ -154,7 +154,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         keyboardView.setPlayer(player);
         keyboardView.setListener(this);
 
-        engine = new GameEngineImpl(App.storage(), App.audit(), answerView, keyboardView);
+        engine = App.getGameEngine(answerView, keyboardView);
         int levelIndex = getIntent().getIntExtra(ARG_LEVEL_INDEX, -1);
         if (levelIndex != -1) {
             engine.setLevelIndex(levelIndex);
@@ -195,7 +195,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
     @Override
     protected void onNewIntent(Intent intent) {
-        log.trace("onNewIntent(Intent)");
+        log.trace("onNewIntent(Intent)"); // NON-NLS
         super.onNewIntent(intent);
         setIntent(intent);
         engine.setLevelIndex(getIntent().getIntExtra(ARG_LEVEL_INDEX, 0));
@@ -203,7 +203,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
     @Override
     public void onStart() {
-        log.trace("onStart()");
+        log.trace("onStart()"); // NON-NLS
         super.onStart();
         player.create();
 
@@ -215,7 +215,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
     @Override
     public void onStop() {
-        log.trace("onStop()");
+        log.trace("stop()"); // NON-NLS
         player.destroy();
         handler.removeCallbacks(nextChallenge);
         super.onStop();
@@ -253,7 +253,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
             default:
                 view.setVisibility(View.INVISIBLE);
-                player.play("fx/click.mp3");
+                player.play("fx/click.mp3"); // NON-NLS
         }
     }
 
@@ -267,7 +267,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             // answer builder overflow and wrong answer are handled the same, i.e. with negative signal
             case OVERFLOW:
             case WRONG:
-                player.play("fx/negative.mp3");
+                player.play("fx/negative.mp3"); // NON-NLS
                 return false;
 
             case CORRECT:
@@ -276,14 +276,15 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
 
         // handle correct answer here
 
-        scorePlusView.setText(String.format("+%d", Balance.getScoreIncrement(engine.getLevelIndex())));
+        scorePlusView.setText(Strings.format("+%d", Balance.getScoreIncrement(engine.getLevelIndex()))); // NON-NLS
         scorePlusView.setVisibility(View.VISIBLE);
         imageView.setVisibility(View.INVISIBLE);
 
-        player.play(String.format("fx/positive-%d.mp3", random.nextInt(5)));
+        player.play(Strings.format("fx/positive-%d.mp3", random.nextInt(5))); // NON-NLS
         final Instrument instrument = engine.getCurrentChallenge();
         BitmapLoader loader = new BitmapLoader(this, instrument.getPicturePath(), imageView);
         loader.start();
+        imageView.setTag(instrument.getPicturePath());
 
         // engine check answer takes care to unlock next level if current level threshold was reached
         if (engine.wasNextLevelUnlocked()) {
@@ -308,11 +309,11 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             return;
         }
 
-        scoreView.setText(Integer.toString(engine.getScore()));
-        creditView.setText(Integer.toString(engine.getCredit()));
+        scoreView.setText(Strings.toString(engine.getScore()));
+        creditView.setText(Strings.toString(engine.getCredit()));
 
-        brandsCountView.setText(Integer.toString(engine.getLevelChallengesCount()));
-        solvedBrandsCountView.setText(Integer.toString(engine.getLevelSolvedChallengesCount()));
+        brandsCountView.setText(Strings.toString(engine.getLevelChallengesCount()));
+        solvedBrandsCountView.setText(Strings.toString(engine.getLevelSolvedChallengesCount()));
         answerView.init(challengedInstrument.getLocaleName());
         keyboardView.init(challengedInstrument.getLocaleName());
 
@@ -325,6 +326,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             }
         });
         loader.start();
+        imageView.setTag(challengedInstrument.getPicturePath());
     }
 
     @Override
@@ -393,15 +395,15 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
         public void onOpen(DialogOverlay dialog, Object... args) {
             super.onOpen(dialog, args);
             levelComplete = (Boolean) args[1];
-            activity.player.play("fx/hooray.mp3");
+            activity.player.play("fx/hooray.mp3"); // NON-NLS
 
             final int levelIndex = activity.engine.getLevelIndex();
             if (levelComplete) {
-                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_complete), Assets.getLevelName(activity, levelIndex));
-                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelCompleteBonus(levelIndex));
+                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_complete), Assets.getLevelName(activity, levelIndex)); // NON-NLS
+                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelCompleteBonus(levelIndex)); // NON-NLS
             } else {
-                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_unlocked), Assets.getLevelName(activity, activity.engine.getUnlockedLevelIndex()));
-                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelUnlockBonus(levelIndex));
+                dialog.setText(R.id.level_state_message, activity.getString(R.string.game_level_unlocked), Assets.getLevelName(activity, activity.engine.getUnlockedLevelIndex())); // NON-NLS
+                dialog.setText(R.id.level_state_bonus, "+%d", Balance.getScoreLevelUnlockBonus(levelIndex)); // NON-NLS
             }
         }
 
@@ -466,10 +468,10 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             super.onOpen(dialog, args);
 
             dialog.setText(R.id.trade_hints_title, activity.getString(R.string.trade_hints_title), activity.engine.getCredit());
-            dialog.setText(R.id.reveal_letter_deduction, "%d", Balance.getRevealLetterDeduction());
-            dialog.setText(R.id.verify_deduction, "%d", Balance.getVerifyInputDeduction());
-            dialog.setText(R.id.hide_letters_deduction, "%d", Balance.getHideLettersDeduction());
-            dialog.setText(R.id.play_sample_deduction, "%d", Balance.getSayNameDeduction());
+            dialog.setText(R.id.reveal_letter_deduction, "%d", Balance.getRevealLetterDeduction()); // NON-NLS
+            dialog.setText(R.id.verify_deduction, "%d", Balance.getVerifyInputDeduction()); // NON-NLS
+            dialog.setText(R.id.hide_letters_deduction, "%d", Balance.getHideLettersDeduction()); // NON-NLS
+            dialog.setText(R.id.play_sample_deduction, "%d", Balance.getSayNameDeduction()); // NON-NLS
 
             dialog.findViewById(R.id.reveal_letter_action).setOnClickListener(this);
             dialog.findViewById(R.id.verify_action).setOnClickListener(this);
@@ -520,7 +522,7 @@ public class GameActivity extends AppActivity implements OnClickListener, Keyboa
             }
 
             if (deductionPerformed) {
-                activity.creditView.setText(Integer.toString(activity.engine.getCredit()));
+                activity.creditView.setText(Strings.toString(activity.engine.getCredit()));
             } else {
                 activity.handler.postDelayed(new Runnable() {
                     @Override

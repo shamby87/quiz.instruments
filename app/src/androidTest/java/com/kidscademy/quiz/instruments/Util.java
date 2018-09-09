@@ -1,5 +1,6 @@
 package com.kidscademy.quiz.instruments;
 
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.matcher.BoundedMatcher;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +14,13 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.Matchers.is;
 
-public class Util {
-    public static Matcher<View> key(String key) {
+class Util {
+    static Matcher<View> key(String key) {
         final Matcher<String> stringMatcher = is(key);
         return new BoundedMatcher<View, TextView>(TextView.class) {
             private boolean keyfound = false;
@@ -48,7 +52,7 @@ public class Util {
         };
     }
 
-    public static Matcher<View> childAtPosition(final Matcher<View> parentMatcher, final int position) {
+    static Matcher<View> childAtPosition(final Matcher<View> parentMatcher, final int position) {
         return new TypeSafeMatcher<View>() {
             @Override
             public void describeTo(Description description) {
@@ -64,11 +68,43 @@ public class Util {
         };
     }
 
-    public static void info(String message, Object... args) {
+    static Matcher<View> firstOf(final Matcher<View> parentMatcher) {
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("with first child view of type parentMatcher");
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                if (!(view.getParent() instanceof ViewGroup)) {
+                    return parentMatcher.matches(view.getParent());
+                }
+                ViewGroup group = (ViewGroup) view.getParent();
+                return parentMatcher.matches(view.getParent()) && group.getChildAt(0).equals(view);
+
+            }
+        };
+    }
+
+    static ViewInteraction waitView(Matcher<View> matcher) {
+        for (int j = 0; ; j++) {
+            if (j == 200) {
+                throw new AssertionError("View not loaded: " + matcher.toString());
+            }
+            try {
+                return onView(matcher).check(matches(isDisplayed()));
+            } catch (Throwable ignore) {
+            }
+            sleep(40);
+        }
+    }
+
+    static void info(String message, Object... args) {
         Log.i("PlayGameTest", String.format(message, args));
     }
 
-    public static void sleep(int milliseconds) {
+    static void sleep(int milliseconds) {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {

@@ -1,0 +1,92 @@
+@startuml
+
+class QuizActivity {
+    QuizEngine engine
+    AtomicBoolean uiUpdateMutex
+    QuizOptionsView optionsView
+    QuizChallenge challenge
+
+    onCreate()
+    onStart()
+    onStop()
+
+    onQuizOptionSelected()
+    onQuizProgress()
+    onQuizTimeout()
+
+    updateUI()
+}
+
+class QuizOptionsView {
+    getOptionsCount()
+    clear()
+    init(options)
+    highlightOption()
+}
+
+interface QuizEngine {
+    nextChallenge()
+    checkAnswer()
+    cancelChallenge()
+    getResponseTime()
+
+    getTotalChallengesCount()
+    getSolvedChallengesCount()
+    getCollectedCredits()
+    getAverageResponseTime()
+
+    getLeftTries()
+}
+
+interface QuizEngine.Listener {
+    onQuizProgress(progress)
+    onQuizTimeout()
+}
+
+class Storage {
+}
+
+class Audit {
+}
+
+class Balance {
+}
+
+class Instrument {
+}
+
+class QuizChallenge {
+    Instrument instrument
+    State state
+    int responseTime
+
+    checkAnswer(option)
+}
+
+class QuizEngineImpl {
+    QuizCallenge[] challenges
+    QuizChallenge currentChallenge
+    long currentChallengeTimestamp
+    int nextChallengeIndex
+
+    Balance balance;
+    int leftTries;
+    int collectedCredits;
+}
+
+QuizActivity --|> QuizEngine.Listener
+QuizActivity -> QuizEngine
+QuizActivity -> QuizChallenge
+QuizActivity --> QuizOptionsView
+QuizActivity ..> Audit
+
+QuizEngineImpl --|> QuizEngine
+QuizEngineImpl --> QuizChallenge
+QuizEngineImpl --> Storage
+
+Storage --> Balance
+Storage --> Instrument
+
+QuizChallenge --> Instrument
+
+@enduml

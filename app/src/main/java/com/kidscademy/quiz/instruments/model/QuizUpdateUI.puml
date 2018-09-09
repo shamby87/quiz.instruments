@@ -1,0 +1,37 @@
+@startuml
+autonumber
+
+actor User
+participant QuizActivity
+participant AtomicBoolean
+participant QuizOptionsView
+participant QuizEngine
+
+User --> QuizActivity: start
+QuizActivity -> QuizActivity: onStart
+QuizActivity -> QuizActivity: updateUI
+QuizEngine --> QuizActivity: nextChallenge
+QuizEngine -> QuizEngine: timeout.start
+QuizActivity -> AtomicBoolean: set(false)
+note left: at limit is possible to have\nboth timeout and option select\nevents. use atomic boolean mutex\n to mutual exclude
+
+== option selected event ==
+
+User -> QuizOptionsView: select option
+QuizOptionsView -> QuizActivity: onQuizOptionSelected
+QuizActivity -> AtomicBoolean: getAndSet(true)
+note left: abort option select processing\nif UI update mutex is set
+
+QuizActivity -> QuizEngine: checkAnswer
+QuizEngine -> QuizEngine: timeout.stop
+QuizActivity -> QuizActivity: updateUI
+
+== quiz timeout event ==
+
+QuizEngine -> QuizActivity: onQuizTimeout
+QuizActivity -> AtomicBoolean: getAndSet(true)
+note left: abort quiz timeout processing\nif UI update mutex is set
+QuizActivity -> QuizActivity: setTimeout
+QuizActivity -> QuizActivity: updateUI
+
+@enduml

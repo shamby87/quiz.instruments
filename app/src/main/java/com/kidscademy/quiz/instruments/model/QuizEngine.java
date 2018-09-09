@@ -1,176 +1,98 @@
 package com.kidscademy.quiz.instruments.model;
 
-import com.kidscademy.quiz.instruments.App;
-import com.kidscademy.quiz.instruments.util.Storage;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-import js.log.Log;
-import js.log.LogFactory;
-
 /**
- * Quiz engine implementation.
+ * Quiz engine generates challenges and check the answer. Also provides means to cancel current challenge
+ * when user close quiz activity prematurely.
  *
  * @author Iulian Rotaru
  */
-public class QuizEngine {
-    private static final Log log = LogFactory.getLog(QuizEngine.class);
-
-    public static final int WRONG_ANSWER_TIMEOUT = 3000;
-
-    private static final int QUIZ_COUNT = 10;
-    private static final int MAX_TRIES = 3;
-
-    private final Storage storage;
-    private final Challenge[] challenges;
-    private Challenge currentChallenge;
-    private long currentChallengeTimestamp;
-    private int nextChallengeIndex;
-
-    private Balance balance;
-    private int leftTries;
-    private int collectedCredits;
-
-    public QuizEngine() {
-        log.trace("QuizEngine()");
-        this.storage = App.storage();
-
-        List<Instrument> instruments = new ArrayList<>(Arrays.asList(this.storage.getInstruments()));
-        Collections.sort(instruments, new Comparator<Instrument>() {
-            @Override
-            public int compare(Instrument left, Instrument right) {
-                if (left.getQuizCounter() == right.getQuizCounter()) {
-                    return ((Integer) right.getRank()).compareTo(left.getRank());
-                }
-                return ((Integer) left.getQuizCounter()).compareTo(right.getQuizCounter());
-            }
-        });
-
-        challenges = new Challenge[Math.min(QUIZ_COUNT, instruments.size())];
-        for (int i = 0; i < challenges.length; ++i) {
-            challenges[i] = new Challenge(instruments.get(i));
-        }
-
-        this.balance = storage.getBalance();
-        this.leftTries = MAX_TRIES;
-    }
-
-    public Instrument nextChallenge() {
-        if (nextChallengeIndex == challenges.length) {
-            balance.plusCredit(collectedCredits);
-            return null;
-        }
-        currentChallenge = challenges[nextChallengeIndex++];
-        currentChallengeTimestamp = System.currentTimeMillis();
-        return currentChallenge.instrument;
-    }
+public interface QuizEngine {
+    /**
+     * Generate next challenge. A challenge has both the puzzle that need to be solved and options list,
+     * from which user need to peek the right one.
+     *
+     * @return next challenge.
+     */
+    QuizChallenge nextChallenge();
 
     /**
-     * This method assume it is called after {@link #nextChallenge()} that proper initialize {@link #currentChallenge}
-     * instance field.
+     * Check if user selected options is the right one.
      *
-     * @param optionsCount
-     * @return
+     * @param option user selected option.
+     * @return true if user selected option is the right one.
      */
-    public List<String> getOptions(int optionsCount) {
-        // options list contains both positive and negative options
-        // first takes care to add expected, that is challenge car
-        List<String> options = new ArrayList<String>();
-        options.add(currentChallenge.instrument.getLocaleName());
+    boolean checkAnswer(String option);
 
-        // init negative options list with all car options less expected car
-        // takes care to not include a similar option many time; e.g. many cars can have the same country
-        List<String> negativeOptions = new ArrayList<String>();
-        for (Instrument instrument : App.storage().getInstruments()) {
-            final String option = instrument.getLocaleName();
-            if (options.contains(option)) {
-                continue;
-            }
-            if (negativeOptions.contains(option)) {
-                continue;
-            }
-            negativeOptions.add(option);
-        }
-        Collections.shuffle(negativeOptions);
+    /**
+     * Cancel current challenge when user leaves quiz activity prematurely.
+     */
+    void cancelChallenge();
 
-        // add negative options till options list is full, i.e. reaches requested options counter argument
-        options.addAll(negativeOptions.subList(0, optionsCount - 1));
+    /**
+     * Get last response time in milliseconds. This method is about last answer and should be invoked after answer check,
+     * see {@link #checkAnswer(String)}, otherwise response time is not computed and this method returns 0.
+     *
+     * @return last response time, in milliseconds or zero.
+     */
+    int getResponseTime();
 
-        Collections.shuffle(options);
-        return options;
-    }
+    /**
+     * This method returns the total number of challenges this quiz session has.
+     *
+     * @return total number of challenges current quiz session has.
+     */
+    int getTotalChallengesCount();
 
-    public boolean checkAnswer(String selectedOption, double speedFactor) {
-        if (currentChallenge.checkAnswer(selectedOption)) {
-            currentChallenge.responseTime = (int) (System.currentTimeMillis() - currentChallengeTimestamp);
-            int credits = (int) (Balance.getQuizDifficultyFactor() * Balance.getQuizIncrement() * speedFactor);
-            collectedCredits += credits;
-            currentChallenge.instrument.incrementQuizCounter();
-            return true;
-        }
-        --leftTries;
-        return false;
-    }
+    /**
+     * Return the number of challenges actually solved in current quiz session.
+     *
+     * @return number of solved challenges.
+     */
+    int getSolvedChallengesCount();
 
-    public void onAswerTimeout() {
-        App.audit().quizTimeout(currentChallenge.instrument);
-        --leftTries;
-    }
+    /**
+     * Get credits collected in current quiz session. Collected credits value is updated by {@link #checkAnswer(String)},
+     * when answer is correct.
+     *
+     * @return collected credits.
+     */
+    int getCollectedCredits();
 
-    public int getLeftTries() {
-        return leftTries;
-    }
+    /**
+     * Get average response time for challenges already solved in current quiz session.
+     *
+     * @return average response time.
+     */
+    int getAverageResponseTime();
 
-    public boolean noMoreTries() {
-        return leftTries <= 0;
-    }
+    /**
+     * Get the number of errors still acceptable on current quiz session.
+     *
+     * @return left tries on current quiz session.
+     */
+    int getLeftTries();
 
-    public int getCollectedCredits() {
-        return collectedCredits;
-    }
+    /**
+     * Event listener for events generated by quiz engine. Current implementation fires only time related
+     * events: progress event fired periodically and quiz timeout.
+     * <p>
+     * All events are triggered from non UI thread.
+     *
+     * @author Iulian Rotaru
+     */
+    interface Listener {
+        /**
+         * Invoked periodically by quiz engine to signal quiz challenge progress.
+         *
+         * @param progress normalized progress value in range [0..100].
+         */
+        void onQuizProgress(int progress);
 
-    public int getSolvedCount() {
-        return nextChallengeIndex;
-    }
-
-    public int getQuizCount() {
-        return QUIZ_COUNT;
-    }
-
-    public int getAverageResponseTime() {
-        long totalResponsesTime = 0;
-        int totalDone = 0;
-        for (Challenge challenge : challenges) {
-            if (challenge.state == Challenge.State.DONE) {
-                totalDone += 1;
-                totalResponsesTime += challenge.responseTime;
-            }
-        }
-        return (int) (totalResponsesTime / totalDone);
-    }
-
-    private static class Challenge {
-        private Instrument instrument;
-        private State state;
-        private int responseTime;
-
-        public Challenge(Instrument instrument) {
-            this.instrument = instrument;
-            this.state = State.NONE;
-        }
-
-        public boolean checkAnswer(String selectedOption) {
-            boolean correctAnswer = selectedOption.equals(instrument.getLocaleName());
-            state = correctAnswer ? State.DONE : State.FAILED;
-            return correctAnswer;
-        }
-
-        private enum State {
-            NONE, FAILED, DONE
-        }
+        /**
+         * There is no answer and quiz challenge ends in timeout.
+         */
+        void onQuizTimeout();
     }
 }

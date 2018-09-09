@@ -3,10 +3,14 @@ package com.kidscademy.quiz.instruments;
 import com.kidscademy.app.AppBase;
 import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.GameEngineImpl;
+import com.kidscademy.quiz.instruments.model.KeyboardControl;
+import com.kidscademy.quiz.instruments.model.QuizEngine;
+import com.kidscademy.quiz.instruments.model.QuizEngineImpl;
 import com.kidscademy.quiz.instruments.util.Audit;
 import com.kidscademy.quiz.instruments.util.Preferences;
 import com.kidscademy.quiz.instruments.util.Repository;
 import com.kidscademy.quiz.instruments.util.Storage;
+import com.kidscademy.quiz.instruments.view.AnswerView;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -99,6 +103,10 @@ public class App extends AppBase {
      */
     public static Repository repository() {
         return (Repository) AppBase.repository();
+    }
+
+    public static GameEngine getGameEngine(AnswerView answerView, KeyboardControl keyboardView) {
+        return new GameEngineImpl(App.storage(), App.audit(), answerView, keyboardView);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.kidscademy.quiz.instruments.util;
 
 import com.kidscademy.quiz.instruments.model.Instrument;
+import com.kidscademy.quiz.instruments.model.QuizChallenge;
 import com.kidscademy.util.AuditBase;
 
 /**
@@ -55,27 +56,27 @@ public class Audit extends AuditBase {
         }
     }
 
-    public void quizCorrectAnswer(Instrument instrument) {
+    public void quizCorrectAnswer(QuizChallenge challenge) {
         if (enabled) {
-            send(Event.QUIZ_OK, instrument.getName());
+            send(Event.QUIZ_OK, challenge.getInstrument().getName());
         }
     }
 
-    public void quizWrongAnswer(Instrument instrument, String answer) {
+    public void quizWrongAnswer(QuizChallenge challenge, String answer) {
         if (enabled) {
-            send(Event.QUIZ_BAD, instrument.getName(), answer);
+            send(Event.QUIZ_BAD, challenge.getInstrument().getName(), answer);
         }
     }
 
-    public void quizTimeout(Instrument instrument) {
+    public void quizTimeout(QuizChallenge challenge) {
         if (enabled) {
-            send(Event.QUIZ_TIMEOUT, instrument.getName());
+            send(Event.QUIZ_TIMEOUT, challenge.getInstrument().getName());
         }
     }
 
-    public void quizAbort(Instrument instrument) {
+    public void quizAbort(QuizChallenge challenge) {
         if (enabled) {
-            send(Event.QUIZ_ABORT, instrument.getName());
+            send(Event.QUIZ_ABORT, challenge.getInstrument().getName());
         }
     }
 

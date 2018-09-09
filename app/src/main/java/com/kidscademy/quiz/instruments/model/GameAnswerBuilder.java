@@ -5,7 +5,7 @@ package com.kidscademy.quiz.instruments.model;
  *
  * @author Iulian Rotaru
  */
-public interface AnswerBuilder {
+public interface GameAnswerBuilder {
     /**
      * Add letter to this answer builder.
      *

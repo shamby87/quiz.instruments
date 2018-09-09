@@ -18,9 +18,8 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="8000"
-            android:progress="2000"
-            android:progressDrawable="@drawable/level_progress_blue" />
+            android:progressDrawable="@drawable/level_progress_blue"
+            tools:progress="40" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,7 +76,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/quiz_logo"
+            android:id="@+id/quiz_picture"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -92,38 +91,7 @@
             style="@style/Text.Title.Block.Inverse"
             tools:text="piano" />
 
-        <android.support.v7.widget.GridLayout
-            android:id="@+id/quiz_options"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="1dp"
-            app:columnCount="2"
-            app:rowCount="3">
-
-            <Button
-                style="@style/OptionButton"
-                tools:text="GUITAR" />
-
-            <Button
-                style="@style/OptionButton"
-                tools:text="PIANO" />
-
-            <Button
-                style="@style/OptionButton"
-                tools:text="BASS CLARINET" />
-
-            <Button
-                style="@style/OptionButton"
-                tools:text="TAIKO" />
-
-            <Button
-                style="@style/OptionButton"
-                tools:text="FLUTE" />
-
-            <Button
-                style="@style/OptionButton"
-                tools:text="SITAR" />
-        </android.support.v7.widget.GridLayout>
+        <include layout="@layout/compo_quiz_options" />
     </LinearLayout>
 
     <!-- is not clear why need to wrap FAB inside linear layout  -->

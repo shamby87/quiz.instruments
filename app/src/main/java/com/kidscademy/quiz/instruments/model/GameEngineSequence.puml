@@ -10,13 +10,13 @@ User -> GameActivity: start
 GameActivity -> GameEngine: new
 GameActivity -> GameEngine: setLevel
 GameActivity -> GameEngine: start
-GameEngine -> GameEngine: create challenge
+GameEngine -> GameEngine: create quizChallenge
 
-== for each challenge ==
+== for each quizChallenge ==
 GameActivity -> GameEngine: getCurrentChallenge
-GameEngine --> GameActivity: challenge
+GameEngine --> GameActivity: quizChallenge
 
-GameActivity --> User: display challenge
+GameActivity --> User: display quizChallenge
 
 User -> GameActivity: enter answer letter
 GameActivity -> GameEngine: handleAnswerLetter
@@ -30,7 +30,7 @@ GameActivity --> User: hooray
 note right: if answer is correct
 
 GameActivity -> GameEngine: nextChallenge
-GameEngine -> GameEngine: create challenge
+GameEngine -> GameEngine: create quizChallenge
 GameActivity -> GameActivity: repeat from 6
 note left: till all challenges complete
 == ==

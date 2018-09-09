@@ -1,7 +1,7 @@
 @startuml
 
 class App {
-    static GameEngine gameEngine()
+    GameEngine getGameEngine()
 }
 
 class GameActivity {

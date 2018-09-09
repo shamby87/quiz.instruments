@@ -1,7 +1,7 @@
 package com.kidscademy.quiz.instruments;
 
-import com.kidscademy.quiz.instruments.model.AnswerBuilder;
-import com.kidscademy.quiz.instruments.model.AnswerState;
+import com.kidscademy.quiz.instruments.model.GameAnswerBuilder;
+import com.kidscademy.quiz.instruments.model.GameAnswerState;
 import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.GameEngineImpl;
 import com.kidscademy.quiz.instruments.model.Balance;
@@ -46,7 +46,7 @@ public class GameEngineTest {
     @Mock
     private Audit audit;
     @Mock
-    private AnswerBuilder answer;
+    private GameAnswerBuilder answer;
     @Mock
     private KeyboardControl keyboard;
 
@@ -60,7 +60,6 @@ public class GameEngineTest {
         when(storage.getLevelInstruments(0)).thenReturn(LEVEL_INSTRUMENTS);
         when(storage.getInstruments()).thenReturn(INSTRUMENTS);
 
-        when(storage.getCounters()).thenReturn(new Counters());
         when(storage.getBalance()).thenReturn(new Balance());
 
         engine = new GameEngineImpl(storage, audit, answer, keyboard);
@@ -126,9 +125,9 @@ public class GameEngineTest {
         String instrumentName = instrument.getName();
         int i = 0;
         for (int length = instrumentName.length() - 1; i < length; ++i) {
-            assertEquals(AnswerState.FILLING, engine.handleAnswerLetter(instrumentName.charAt(i)));
+            assertEquals(GameAnswerState.FILLING, engine.handleAnswerLetter(instrumentName.charAt(i)));
         }
-        assertEquals(AnswerState.CORRECT, engine.handleAnswerLetter(instrumentName.charAt(i)));
+        assertEquals(GameAnswerState.CORRECT, engine.handleAnswerLetter(instrumentName.charAt(i)));
 
         assertEquals(1, engine.getUnlockedLevelIndex());
         assertEquals(1, engine.getLevelSolvedChallengesCount());

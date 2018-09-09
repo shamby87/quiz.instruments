@@ -25,7 +25,7 @@ import js.log.LogFactory;
  *
  * @author Iulian Rotaru
  */
-public class QuizStartActivity extends AppActivity implements Runnable, View.OnClickListener {
+public class QuizStartActivity extends AppActivity implements View.OnClickListener {
     private static final Log log = LogFactory.getLog(QuizStartActivity.class);
 
     private static final int DELAY = 2500;
@@ -40,7 +40,6 @@ public class QuizStartActivity extends AppActivity implements Runnable, View.OnC
     private TextView warningText;
 
     private Handler handler;
-    private final AtomicBoolean running = new AtomicBoolean();
     private HexaIcon[] icons;
     private int currentIconIndex;
 
@@ -101,29 +100,6 @@ public class QuizStartActivity extends AppActivity implements Runnable, View.OnC
             responseTimeView.setVisibility(View.VISIBLE);
             responseTimeValueView.setText(Integer.toString(balance.getMinResponseTime()));
         }
-        handler.postDelayed(this, DELAY);
-        running.set(true);
-    }
-
-    @Override
-    protected void onStop() {
-        log.trace("onStop()");
-        super.onStop();
-
-        handler.removeCallbacks(this);
-        running.set(false);
-    }
-
-    @Override
-    public void run() {
-        log.trace("run()");
-        if (!running.get()) {
-            return;
-        }
-        //icons[currentIconIndex].setIconDrawable(null);
-        currentIconIndex = random.nextInt(icons.length);
-        //icons[currentIconIndex].setIconDrawable(ContextCompat.getDrawable(this, R.drawable.action_play));
-        handler.postDelayed(this, PERIOD);
     }
 
     @Override

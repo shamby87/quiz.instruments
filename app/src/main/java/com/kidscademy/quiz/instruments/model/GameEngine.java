@@ -56,7 +56,7 @@ public interface GameEngine {
      * @param letter answer letter.
      * @return current challenge answer state.
      */
-    AnswerState handleAnswerLetter(char letter);
+    GameAnswerState handleAnswerLetter(char letter);
 
     /**
      * Get zero based index of level wrapped by this engine instance.

@@ -22,6 +22,7 @@ import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.quiz.instruments.util.Assets;
 
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import js.util.Utils;
 
@@ -32,6 +33,8 @@ import js.util.Utils;
  */
 public class MovingDotsBackground extends View implements ValueAnimator.AnimatorUpdateListener {
     private static final Random random = new Random();
+
+    private boolean disabled;
 
     private int maskColor;
     private int dotsSize;
@@ -46,6 +49,25 @@ public class MovingDotsBackground extends View implements ValueAnimator.Animator
     private ValueAnimator animator;
     private float slowOffset = random.nextFloat();
     private float quickOffset;
+
+    private static AtomicBoolean isRunningTest;
+
+    public static synchronized boolean isRunningTest() {
+        if (null == isRunningTest) {
+            boolean istest;
+
+            try {
+                Class.forName("android.support.test.espresso.Espresso");
+                istest = true;
+            } catch (ClassNotFoundException e) {
+                istest = false;
+            }
+
+            isRunningTest = new AtomicBoolean(istest);
+        }
+
+        return isRunningTest.get();
+    }
 
     public MovingDotsBackground(Context context) {
         super(context);
@@ -103,11 +125,18 @@ public class MovingDotsBackground extends View implements ValueAnimator.Animator
                 }
             }
         });
-        animator.start();
+        if (!isRunningTest()) {
+            animator.start();
+        }
     }
 
     private int dp2px(int dp) {
         return (int) Utils.dp2px(getContext(), dp);
+    }
+
+    public void disable() {
+        disabled = true;
+        animator.cancel();
     }
 
     @Override
