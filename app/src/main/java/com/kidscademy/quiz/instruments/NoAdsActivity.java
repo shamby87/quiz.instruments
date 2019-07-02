@@ -8,9 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.kidscademy.app.AppBase;
-import com.kidscademy.app.FullScreenActivity;
-
 import js.lang.BugError;
 import js.log.Log;
 import js.log.LogFactory;

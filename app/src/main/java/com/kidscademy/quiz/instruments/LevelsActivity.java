@@ -7,9 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.model.Level;
 import com.kidscademy.quiz.instruments.model.LevelState;
 import com.kidscademy.quiz.instruments.model.LevelsCardAdapter;

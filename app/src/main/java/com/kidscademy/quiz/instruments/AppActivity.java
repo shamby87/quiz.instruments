@@ -3,8 +3,6 @@ package com.kidscademy.quiz.instruments;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.kidscademy.app.FullScreenActivity;
-
 import js.log.Log;
 import js.log.LogFactory;
 

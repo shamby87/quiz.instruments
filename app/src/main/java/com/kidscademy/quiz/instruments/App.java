@@ -10,21 +10,16 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.facebook.FacebookSdk;
-import com.kidscademy.app.AppBase;
-import com.kidscademy.app.ErrorActivity;
-import com.kidscademy.app.SyncService;
-import com.kidscademy.client.ServiceController;
-import com.kidscademy.model.Device;
-import com.kidscademy.model.Model;
+import com.kidscademy.quiz.instruments.model.Device;
 import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.GameEngineImpl;
 import com.kidscademy.quiz.instruments.model.KeyboardControl;
+import com.kidscademy.quiz.instruments.model.Model;
 import com.kidscademy.quiz.instruments.util.Audit;
 import com.kidscademy.quiz.instruments.util.Flags;
 import com.kidscademy.quiz.instruments.util.Preferences;
 import com.kidscademy.quiz.instruments.util.Storage;
 import com.kidscademy.quiz.instruments.view.AnswerView;
-import com.kidscademy.util.RepositoryBase;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -32,7 +27,6 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import js.core.Factory;
 import js.log.Log;
 import js.log.LogFactory;
 import js.log.LogLevel;
@@ -63,7 +57,7 @@ import js.log.LogManager;
 public class App extends Application implements Thread.UncaughtExceptionHandler, Application.ActivityLifecycleCallbacks {
     public static final String PROJECT_NAME = "quiz.instruments";
 
-    private static Log log = LogFactory.getLog(AppBase.class);
+    private static Log log = LogFactory.getLog(App.class);
 
     private static App instance;
     private static boolean DEBUG;
@@ -72,7 +66,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
     private Storage storage;
     private Audit audit;
 
-    protected ServiceController controller;
+    private RemoteLogger remoteLogger;
     protected Device device;
 
     /**
@@ -94,8 +88,8 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
             log.error(e);
         }
 
-        LogManager.activateInAppLogging(this, AppBase.debug() ? LogLevel.TRACE : LogLevel.OFF, DEBUG);
-        log = LogFactory.getLog(AppBase.class);
+        LogManager.activateInAppLogging(this, DEBUG ? LogLevel.TRACE : LogLevel.OFF, DEBUG);
+        log = LogFactory.getLog(App.class);
         log.debug("Create application instance in %s mode.", DEBUG ? "DEBUG" : "RELEASE");
         log.trace("onCreate()");
 
@@ -105,7 +99,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
         Thread.setDefaultUncaughtExceptionHandler(this);
 
         try {
-            controller = Factory.getRemoteInstance(RepositoryBase.SERVER_URL, ServiceController.class);
+            remoteLogger = new RemoteLogger();
             instance = this;
 
             // register activity life cycle here in order to catch first MainActivity start
@@ -125,7 +119,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
 
             preferences = new Preferences();
             storage = new Storage(getApplicationContext());
-            audit = new Audit();
+            audit = new Audit(remoteLogger);
 
             if (storage.isValid()) {
                 storage.onAppCreate();
@@ -135,7 +129,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
         } catch (Throwable throwable) {
             log.dump("App start fatal error: ", throwable);
             dumpStackStrace(throwable);
-            ErrorActivity.start(getApplicationContext(), com.kidscademy.R.string.app_exception);
+            ErrorActivity.start(getApplicationContext(), R.string.app_exception);
         }
     }
 
@@ -176,6 +170,10 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
      */
     public static Storage storage() {
         return instance.storage;
+    }
+
+    public static Device device() {
+        return instance.device;
     }
 
     public static GameEngine getGameEngine(AnswerView answerView, KeyboardControl keyboardView) {
@@ -219,12 +217,12 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
         // not very sure is necessary since error activity is configured to run in separated process
 
         if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
-            ErrorActivity.start(getApplicationContext(), com.kidscademy.R.string.app_exception);
+            ErrorActivity.start(getApplicationContext(), R.string.app_exception);
         } else {
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
-                    ErrorActivity.start(getApplicationContext(), com.kidscademy.R.string.app_exception);
+                    ErrorActivity.start(getApplicationContext(), R.string.app_exception);
                 }
             });
         }
@@ -236,7 +234,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
     public void dumpStackStrace(Throwable throwable) {
         StringWriter stackTrace = new StringWriter();
         throwable.printStackTrace(new PrintWriter(stackTrace));
-        controller.dumpStackTrace(AppBase.name(), device, stackTrace.toString());
+        remoteLogger.dumpStackTrace(PROJECT_NAME, device, stackTrace.toString());
     }
 
     public void dumpStackStrace(String message, Throwable throwable) {
@@ -244,7 +242,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
         stackTrace.append(message);
         stackTrace.append("\n");
         throwable.printStackTrace(new PrintWriter(stackTrace));
-        controller.dumpStackTrace(AppBase.name(), device, stackTrace.toString());
+        remoteLogger.dumpStackTrace(PROJECT_NAME, device, stackTrace.toString());
     }
 
     // ------------------------------------------------------

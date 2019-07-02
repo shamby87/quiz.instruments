@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 
-import com.kidscademy.app.AppBase;
-import com.kidscademy.app.FullScreenActivity;
-
 import js.log.Log;
 import js.log.LogFactory;
 

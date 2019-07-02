@@ -45,4 +45,11 @@
 
     <!-- overlay dialogs -->
     <dimen name="dialog_horizontal_padding">40dp</dimen>
+
+    <dimen name="list_item_padding">10dp</dimen>
+    <dimen name="list_item_text_top">6dp</dimen>
+    <dimen name="list_item_icon_right">20dp</dimen>
+    <dimen name="icon_size">64dp</dimen>
+    <dimen name="icon_large_size">100dp</dimen>
+
 </resources>

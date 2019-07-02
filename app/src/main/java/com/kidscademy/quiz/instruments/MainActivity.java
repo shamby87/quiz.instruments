@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.view.HexaIcon;
 
 import js.log.Log;
@@ -104,10 +102,6 @@ public class MainActivity extends AppActivity implements View.OnClickListener {
             case R.id.main_no_ads:
                 App.audit().openNoAdsManifest();
                 NoAdsActivity.start(this);
-                break;
-            case R.id.main_recommended:
-                App.audit().openRecommended();
-                RecommendedActivity.start(this);
                 break;
             case R.id.main_share:
                 App.audit().openShare();

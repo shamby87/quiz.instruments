@@ -10,7 +10,6 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.App;
-import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.quiz.instruments.model.KeyboardControl;
 import com.kidscademy.quiz.instruments.util.Assets;
 
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 
 import js.lang.BugError;
 import js.util.Player;

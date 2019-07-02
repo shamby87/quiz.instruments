@@ -1,7 +1,6 @@
 package com.kidscademy.quiz.instruments.model;
 
 import com.kidscademy.quiz.instruments.util.Storage;
-import com.kidscademy.util.StorageBase;
 
 
 /**

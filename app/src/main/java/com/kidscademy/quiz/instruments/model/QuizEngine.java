@@ -1,7 +1,5 @@
 package com.kidscademy.quiz.instruments.model;
 
-import java.util.List;
-
 /**
  * Quiz engine generates challenges and check the answer. Also provides means to cancel current challenge
  * when user close quiz activity prematurely.

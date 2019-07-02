@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="40dp"
-    android:layout_marginEnd="1dp"
     android:layout_marginStart="1dp"
+    android:layout_marginEnd="1dp"
+    android:layout_marginBottom="40dp"
     android:background="@color/black_T30">
 
     <js.view.SquareImageView
@@ -39,8 +40,9 @@
         android:layout_height="48dp"
         android:layout_gravity="bottom|start"
         android:layout_marginBottom="24dp"
-        android:src="@drawable/ic_check"
+        android:tint="@color/white"
         android:visibility="invisible"
+        app:srcCompat="@drawable/action_check"
         tools:visibility="visible" />
 
 </FrameLayout>

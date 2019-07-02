@@ -4,6 +4,7 @@
     <string name="app_name">Instruments Quiz</string>
     <string name="app_caption">Instruments Quiz</string>
     <string name="app_logotype">Trivia game about musical instruments</string>
+    <string name="app_publisher">Published by kids (a)cademy</string>
     <string name="app_description">Instruments Quiz is a trivia game that challenges you to recognize musical instruments existing all over the world, from well know guitar or piano to esoteric didgeridoo.</string>
     <!-- application name broken in parts that can be displayed on separated rows -->
     <string name="app_name1">Musical</string>
@@ -85,9 +86,13 @@
     <string name="no_ads_agree">Agree</string>
 
     <!-- error messages -->
+    <string name="app_exception">There are some problems running this app. Please try to stop and launch it again.\n\nEnsure app is updated. As final resort you can reinstall it.\n\nIf still not working please fill a bad comment on store.</string>
     <string name="err_no_storage">SD card not accessible. Unable to initialize instruments collection. Application abort.</string>
     <string name="err_load_fail">Instruments collection loading fails. Application abort.\n\nPlease check connection to Internet and SD card free space.</string>
     <string name="err_launcher">There is a temporary server error that prevent application loading. Please try again after couple minutes. We apologize for inconvenience.</string>
+
+    <!-- error activity -->
+    <string name="exit">Exit</string>
 
     <!-- instrument names -->
     <string name="guitar">guitar</string>
@@ -214,4 +219,7 @@
         <item>LEVEL 19</item>
         <item>LEVEL 20</item>
     </string-array>
+
+    <string name="slash" translatable="false">/</string>
+
 </resources>

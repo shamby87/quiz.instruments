@@ -14,14 +14,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.Balance;
+import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.util.Assets;
 import com.kidscademy.quiz.instruments.util.LevelsUtil;
 import com.kidscademy.quiz.instruments.util.Strings;
-import com.kidscademy.quiz.instruments.view.KeyboardView;
 import com.kidscademy.quiz.instruments.view.AnswerView;
+import com.kidscademy.quiz.instruments.view.KeyboardView;
 import com.kidscademy.quiz.instruments.view.RandomColorFAB;
 
 import java.util.Random;

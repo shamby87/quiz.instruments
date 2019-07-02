@@ -70,6 +70,7 @@ public class AppConformanceTest {
         onView(withId(R.id.main_play)).perform(click());
 
         // go back to main activity directly from levels list, that is, abort game
+        sleep(200);
         onView(withId(R.id.fab_back)).perform(click());
 
         // open levels list in order to go to game activity
@@ -88,9 +89,11 @@ public class AppConformanceTest {
         onView(withId(R.id.fab_dialog_close)).perform(click());
 
         // FAB menu items are opend: click to open instruments grid activity
+        sleep(200);
         onView(withId(R.id.game_fab_view_grid)).perform(click());
 
         // close instruments grid and go back to game activity
+        sleep(200); // grid activity takes longer to display
         onView(withId(R.id.fab_back)).perform(click());
 
         // FAB menu items are opend: skip to next instrument; FAB menu remains opened

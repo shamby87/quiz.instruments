@@ -20,7 +20,6 @@ import java.util.Locale;
 import js.log.Log;
 import js.log.LogFactory;
 import js.util.BitmapLoader;
-import js.util.Params;
 
 /**
  * Recycle view adapter for level card from levels list activity.

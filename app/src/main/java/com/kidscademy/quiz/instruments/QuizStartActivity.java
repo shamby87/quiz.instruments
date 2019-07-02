@@ -15,7 +15,6 @@ import com.kidscademy.quiz.instruments.model.Balance;
 import com.kidscademy.quiz.instruments.view.HexaIcon;
 
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import js.log.Log;
 import js.log.LogFactory;

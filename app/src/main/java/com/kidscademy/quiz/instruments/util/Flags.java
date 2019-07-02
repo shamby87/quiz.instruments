@@ -3,8 +3,6 @@ package com.kidscademy.quiz.instruments.util;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.kidscademy.app.AppBase;
-import com.kidscademy.app.FlagsBase;
 import com.kidscademy.quiz.instruments.App;
 
 /**

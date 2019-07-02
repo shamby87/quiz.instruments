@@ -6,8 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import com.kidscademy.app.FullScreenActivity;
-
 import js.log.Log;
 import js.log.LogFactory;
 

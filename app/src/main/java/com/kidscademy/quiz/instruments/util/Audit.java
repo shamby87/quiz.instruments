@@ -1,9 +1,12 @@
 package com.kidscademy.quiz.instruments.util;
 
-import com.kidscademy.app.AppBase;
+import com.kidscademy.quiz.instruments.App;
+import com.kidscademy.quiz.instruments.R;
+import com.kidscademy.quiz.instruments.RemoteLogger;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.model.QuizChallenge;
-import com.kidscademy.util.AuditBase;
+
+import java.util.Locale;
 
 import js.converter.Converter;
 import js.converter.ConverterRegistry;
@@ -16,15 +19,17 @@ import js.util.Net;
  */
 public class Audit {
     private enum Event {
-        APP_LOAD, APP_ACTIVE, PREF_CHANGE, OPEN_MARKET, OPEN_RATE, OPEN_RECOMMENDED, OPEN_SHARE, OPEN_ABOUT, OPEN_NO_ADS, PLAY_LEVEL, GAME_OK, GAME_BAD, GAME_HINT, GAME_SKIP, GAME_CLOSE, PLAY_QUIZ, QUIZ_OK, QUIZ_BAD, QUIZ_TIMEOUT, QUIZ_ABORT, VIEW_BALANCE, RESET_SCORE
+        APP_LOAD, APP_ACTIVE, PREF_CHANGE, OPEN_MARKET, OPEN_RATE, OPEN_RECOMMENDED, OPEN_SHARE, OPEN_ABOUT, OPEN_NO_ADS, APP_SHARE, PLAY_LEVEL, GAME_OK, GAME_BAD, GAME_HINT, GAME_SKIP, GAME_CLOSE, PLAY_QUIZ, QUIZ_OK, QUIZ_BAD, QUIZ_TIMEOUT, QUIZ_ABORT, VIEW_BALANCE, RESET_SCORE
     }
 
     private final Converter converter;
+    private final RemoteLogger remoteLogger;
     private boolean enabled;
     private long timestamp;
 
-    public Audit() {
-        converter = ConverterRegistry.getConverter();
+    public Audit(RemoteLogger remoteLogger) {
+        this.converter = ConverterRegistry.getConverter();
+        this.remoteLogger = remoteLogger;
     }
 
     public void openApplication() {
@@ -42,7 +47,7 @@ public class Audit {
     public void preferenceChanged(String key, Object valueObject) {
         String value = valueObject instanceof String ? (String) valueObject : valueObject.toString();
 
-        if (AppBase.context().getString(com.kidscademy.R.string.pref_developer_data_key).equals(key)) {
+        if (App.context().getString(R.string.pref_developer_data_key).equals(key)) {
             if ((boolean) valueObject) {
                 enabled = true;
             }
@@ -91,6 +96,12 @@ public class Audit {
     public void openNoAdsManifest() {
         if (enabled) {
             send(Event.OPEN_NO_ADS);
+        }
+    }
+
+    public void shareApp(String sharingMedia) {
+        if (enabled) {
+            send(Event.APP_SHARE, sharingMedia.toLowerCase(Locale.getDefault()));
         }
     }
 
@@ -173,7 +184,7 @@ public class Audit {
     }
 
     protected void send(Enum<?> event, Object... args) {
-        switch (Net.getConnectionType(AppBase.context())) {
+        switch (Net.getConnectionType(App.context())) {
             case WIFI:
                 break;
 
@@ -186,7 +197,7 @@ public class Audit {
             default:
                 return;
         }
-        AppBase.instance().controller().recordAuditEvent(AppBase.name(), AppBase.instance().device(), event.name(), parameter(args, 0), parameter(args, 1));
+        remoteLogger.recordAuditEvent(App.PROJECT_NAME, App.instance().device(), event.name(), parameter(args, 0), parameter(args, 1));
     }
 
     /**

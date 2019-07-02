@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kidscademy.quiz.instruments.R;
-import com.kidscademy.model.SharingApp;
 
 import java.util.List;
 

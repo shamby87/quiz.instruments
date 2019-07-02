@@ -4,4 +4,8 @@
     <color name="text_inverse">@color/black</color>
     <color name="text_mute">@color/grey_300</color>
     <color name="text_accent">@color/yellow_300</color>
+
+    <color name="button_pressed">#008839</color>
+    <color name="button_focused">#444444</color>
+    <color name="button_active">#404040</color>
 </resources>

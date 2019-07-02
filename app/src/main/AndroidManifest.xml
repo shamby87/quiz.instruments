@@ -46,9 +46,6 @@
             android:name=".ShareActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".RecommendedActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".AboutActivity"
             android:parentActivityName=".MainActivity" />
         <activity

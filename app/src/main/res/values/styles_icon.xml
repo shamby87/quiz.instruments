@@ -10,4 +10,16 @@
         <item name="borderWidth">2dp</item>
         <item name="shape">circle</item>
     </style>
+
+
+    <style name="icon_view">
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+        <item name="android:contentDescription">@string/image_description</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_marginEnd">@dimen/list_item_icon_right</item>
+        <item name="android:layout_marginRight">@dimen/list_item_icon_right</item>
+        <item name="android:src">@drawable/transparent</item>
+    </style>
+
 </resources>

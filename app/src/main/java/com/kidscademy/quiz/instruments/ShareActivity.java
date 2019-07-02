@@ -12,10 +12,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.kidscademy.app.AppBase;
-import com.kidscademy.app.FullScreenActivity;
 import com.kidscademy.quiz.instruments.model.SharingAdapter;
-import com.kidscademy.model.SharingApp;
+import com.kidscademy.quiz.instruments.model.SharingApp;
 
 import java.util.ArrayList;
 import java.util.SortedSet;
@@ -124,13 +122,9 @@ public class ShareActivity extends AppActivity implements SharingAdapter.Listene
     @Override
     public void onSharingAppSelected(SharingApp app) {
         log.trace("onSharingAppSelected(SharingApp) - %s", app.getAppName());
-        AppBase.audit().shareApp(app.getAppName());
+        App.audit().shareApp(app.getAppName());
 
         switch (app.getType()) {
-            case FACEBOOK:
-                onFacebookShare();
-                return;
-
             case TWITTER:
                 onTwitterShare();
                 return;
@@ -178,14 +172,6 @@ public class ShareActivity extends AppActivity implements SharingAdapter.Listene
         log.trace("onActivityResult(int, int, Intent)");
         super.onActivityResult(requestCode, resultCode, data);
         facebookShare.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void onFacebookShare() {
-        log.trace("onFacebookShare()");
-        final Uri site = Uri.parse(storeURL());
-        final Uri image = Uri.parse(AppBase.repository().getFacebookShaingImageURL());
-
-        facebookShare.post(getString(R.string.app_name), getString(R.string.app_description), site, image);
     }
 
     private void onTwitterShare() {

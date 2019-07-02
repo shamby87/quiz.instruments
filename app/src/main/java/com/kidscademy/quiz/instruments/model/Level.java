@@ -1,10 +1,6 @@
 package com.kidscademy.quiz.instruments.model;
 
-import com.kidscademy.quiz.instruments.App;
-
 import java.util.List;
-
-import js.lang.BugError;
 
 /**
  * Level has a zero based index and a list of indices for child instruments.

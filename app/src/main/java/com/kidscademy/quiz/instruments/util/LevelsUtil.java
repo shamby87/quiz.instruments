@@ -1,10 +1,7 @@
 package com.kidscademy.quiz.instruments.util;
 
-import com.kidscademy.quiz.instruments.App;
 import com.kidscademy.quiz.instruments.model.Level;
 import com.kidscademy.quiz.instruments.model.LevelState;
-
-import java.util.List;
 
 /**
  * Statistics about all levels.
