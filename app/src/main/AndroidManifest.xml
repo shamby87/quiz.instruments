@@ -2,12 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kidscademy.quiz.instruments"
     android:installLocation="auto"
-    android:versionCode="6"
-    android:versionName="2.1.2">
-
-    <uses-sdk
-        android:minSdkVersion="17"
-        android:targetSdkVersion="27" />
+    android:versionCode="8"
+    android:versionName="2.1.3_DEBUG">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -22,16 +18,15 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".LauncherActivity">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:launchMode="singleTask" />
         <activity android:name=".GameActivity" />
         <activity android:name=".QuizActivity" />
         <activity android:name=".LevelsActivity" />

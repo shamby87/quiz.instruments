@@ -1,19 +1,42 @@
 package com.kidscademy.quiz.instruments;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+
+import com.facebook.FacebookSdk;
 import com.kidscademy.app.AppBase;
+import com.kidscademy.app.ErrorActivity;
+import com.kidscademy.app.SyncService;
+import com.kidscademy.client.ServiceController;
+import com.kidscademy.model.Device;
+import com.kidscademy.model.Model;
 import com.kidscademy.quiz.instruments.model.GameEngine;
 import com.kidscademy.quiz.instruments.model.GameEngineImpl;
 import com.kidscademy.quiz.instruments.model.KeyboardControl;
-import com.kidscademy.quiz.instruments.model.QuizEngine;
-import com.kidscademy.quiz.instruments.model.QuizEngineImpl;
 import com.kidscademy.quiz.instruments.util.Audit;
+import com.kidscademy.quiz.instruments.util.Flags;
 import com.kidscademy.quiz.instruments.util.Preferences;
-import com.kidscademy.quiz.instruments.util.Repository;
 import com.kidscademy.quiz.instruments.util.Storage;
 import com.kidscademy.quiz.instruments.view.AnswerView;
+import com.kidscademy.util.RepositoryBase;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import js.core.Factory;
+import js.log.Log;
+import js.log.LogFactory;
+import js.log.LogLevel;
+import js.log.LogManager;
 
 /**
  * Application singleton holds global states, generates crash report and implements application active detection logic.
@@ -37,31 +60,91 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author Iulian Rotaru
  */
-public class App extends AppBase {
+public class App extends Application implements Thread.UncaughtExceptionHandler, Application.ActivityLifecycleCallbacks {
     public static final String PROJECT_NAME = "quiz.instruments";
+
+    private static Log log = LogFactory.getLog(AppBase.class);
+
+    private static App instance;
+    private static boolean DEBUG;
+
+    private Preferences preferences;
+    private Storage storage;
+    private Audit audit;
+
+    protected ServiceController controller;
+    protected Device device;
 
     /**
      * Application instance creation. Application is guaranteed by Android platform to be created in a single instance.
      * <p>
      * Initialization occurs in two steps: first is this callback invoked by Android. The second is
-     * {@link #onPostCreate()}; if storage is loaded post-init is invoked immediately by this method. If storage is not
+     * onPostCreate(); if storage is loaded post-init is invoked immediately by this method. If storage is not
      * loaded, {@link MainActivity} will route application start-up logic to storage loading asynchronous task that, when
      * done, will invoke post-init. This way post-init is guaranteed to be called when storage is loaded.
      */
     @Override
-    public void onAppCreate() {
-        preferences = new Preferences();
-        repository = new Repository();
-        storage = new Storage(getApplicationContext());
-        audit = new Audit();
+    public void onCreate() {
+        super.onCreate();
 
-        if (storage().isValid() && storage().isLoaded()) {
-            onPostCreate();
+        try {
+            String versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            DEBUG = versionName.endsWith("DEBUG");
+        } catch (PackageManager.NameNotFoundException e) {
+            log.error(e);
+        }
+
+        LogManager.activateInAppLogging(this, AppBase.debug() ? LogLevel.TRACE : LogLevel.OFF, DEBUG);
+        log = LogFactory.getLog(AppBase.class);
+        log.debug("Create application instance in %s mode.", DEBUG ? "DEBUG" : "RELEASE");
+        log.trace("onCreate()");
+
+        // initial solution was to add exception handler on AppActivity base class in order to catch information about
+        // activity in error, but generates memory leaks
+        // exceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+        Thread.setDefaultUncaughtExceptionHandler(this);
+
+        try {
+            controller = Factory.getRemoteInstance(RepositoryBase.SERVER_URL, ServiceController.class);
+            instance = this;
+
+            // register activity life cycle here in order to catch first MainActivity start
+            registerActivityLifecycleCallbacks(this);
+
+            super.onCreate();
+
+            Model model = new Model();
+            model.setManufacturer(Build.MANUFACTURER.toUpperCase(Locale.getDefault()));
+            model.setModel(Build.MODEL.toUpperCase(Locale.getDefault()));
+            model.setApiLevel(Build.VERSION.SDK_INT);
+            model.setVersion(Build.VERSION.RELEASE);
+
+            device = new Device();
+            device.setModel(model);
+            device.setSerial(Build.SERIAL.toUpperCase(Locale.getDefault()));
+
+            preferences = new Preferences();
+            storage = new Storage(getApplicationContext());
+            audit = new Audit();
+
+            if (storage.isValid()) {
+                storage.onAppCreate();
+                FacebookSdk.sdkInitialize(getApplicationContext());
+            }
+
+        } catch (Throwable throwable) {
+            log.dump("App start fatal error: ", throwable);
+            dumpStackStrace(throwable);
+            ErrorActivity.start(getApplicationContext(), com.kidscademy.R.string.app_exception);
         }
     }
 
     public static App instance() {
-        return (App) instance;
+        return instance;
+    }
+
+    public static Context context() {
+        return instance.getApplicationContext();
     }
 
     /**
@@ -82,7 +165,7 @@ public class App extends AppBase {
     }
 
     public static Preferences prefs() {
-        return (Preferences) AppBase.prefs();
+        return instance.preferences;
     }
 
     /**
@@ -92,17 +175,7 @@ public class App extends AppBase {
      * @see #storage
      */
     public static Storage storage() {
-        return (Storage) AppBase.storage();
-    }
-
-    /**
-     * Get application storage singleton instance.
-     *
-     * @return application storage.
-     * @see #storage
-     */
-    public static Repository repository() {
-        return (Repository) AppBase.repository();
+        return instance.storage;
     }
 
     public static GameEngine getGameEngine(AnswerView answerView, KeyboardControl keyboardView) {
@@ -116,7 +189,7 @@ public class App extends AppBase {
      * @see #audit
      */
     public static Audit audit() {
-        return (Audit) AppBase.audit();
+        return instance.audit;
     }
 
     // TODO: remove after moving to Assets utility class
@@ -131,5 +204,124 @@ public class App extends AppBase {
 
     public static int getBackgroundResId() {
         return backgroundResIds[random.nextInt(backgroundResIds.length)];
+    }
+
+    /**
+     * Dump uncaught exception to application logger and generates crash report, is user preferences allows.
+     */
+    @Override
+    public void uncaughtException(Thread thread, final Throwable throwable) {
+        log.dump("Uncaught exception on: ", throwable);
+        dumpStackStrace(throwable);
+
+        // if in UI thread just launch error activity; otherwise uses a handler
+        // source: http://stackoverflow.com/questions/19897628/need-to-handle-uncaught-exception-and-send-log-file
+        // not very sure is necessary since error activity is configured to run in separated process
+
+        if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
+            ErrorActivity.start(getApplicationContext(), com.kidscademy.R.string.app_exception);
+        } else {
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    ErrorActivity.start(getApplicationContext(), com.kidscademy.R.string.app_exception);
+                }
+            });
+        }
+
+        // do not use default handler in order to avoid system dialog about app crash
+        System.exit(0);
+    }
+
+    public void dumpStackStrace(Throwable throwable) {
+        StringWriter stackTrace = new StringWriter();
+        throwable.printStackTrace(new PrintWriter(stackTrace));
+        controller.dumpStackTrace(AppBase.name(), device, stackTrace.toString());
+    }
+
+    public void dumpStackStrace(String message, Throwable throwable) {
+        StringWriter stackTrace = new StringWriter();
+        stackTrace.append(message);
+        stackTrace.append("\n");
+        throwable.printStackTrace(new PrintWriter(stackTrace));
+        controller.dumpStackTrace(AppBase.name(), device, stackTrace.toString());
+    }
+
+    // ------------------------------------------------------
+    // application active detection logic
+
+    // for application foreground / background detection, activities life cycle is critical
+    // in particular, if A starts B, B.start() should occurs BEFORE a.stop()
+    // this condition seems to be guaranteed to APIDOC, see:
+    // http://developer.android.com/guide/components/activities.html#Coordinating activities
+
+    /**
+     * Open activities index used by application active detection logic. This index is incremented at every activity start
+     * and decremented on stop.
+     */
+    private int startIndex;
+
+    /**
+     * Increment open activities index, triggering open application event if index was zero.
+     */
+    @Override
+    public void onActivityStarted(Activity activity) {
+        log.trace("onActivityStarted(Activity) - %s %d", activity.getClass().getName(), startIndex);
+        if (startIndex++ == 0) {
+            audit.openApplication();
+        }
+    }
+
+    /**
+     * Decrement open activities index, triggering close application event if index become zero.
+     */
+    @Override
+    public void onActivityStopped(Activity activity) {
+        --startIndex;
+        log.trace("onActivityStopped(Activity) - %s %d", activity.getClass().getName(), startIndex);
+        if (startIndex == 0) {
+            audit.closeApplication();
+
+            try {
+                storage.onAppClose();
+            } catch (Exception e) {
+                log.error(e);
+            }
+        }
+    }
+
+    /**
+     * Unused.
+     */
+    @Override
+    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+    }
+
+    /**
+     * Unused.
+     */
+    @Override
+    public void onActivityResumed(Activity activity) {
+    }
+
+    /**
+     * Unused.
+     */
+    @Override
+    public void onActivityPaused(Activity activity) {
+    }
+
+    /**
+     * Unused.
+     */
+    @Override
+    public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+    }
+
+    /**
+     * Unused.
+     */
+    @Override
+    public void onActivityDestroyed(Activity activity) {
     }
 }

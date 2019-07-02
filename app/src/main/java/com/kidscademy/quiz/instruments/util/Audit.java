@@ -1,17 +1,97 @@
 package com.kidscademy.quiz.instruments.util;
 
+import com.kidscademy.app.AppBase;
 import com.kidscademy.quiz.instruments.model.Instrument;
 import com.kidscademy.quiz.instruments.model.QuizChallenge;
 import com.kidscademy.util.AuditBase;
+
+import js.converter.Converter;
+import js.converter.ConverterRegistry;
+import js.util.Net;
 
 /**
  * Record application events.
  *
  * @author Iulian Rotaru
  */
-public class Audit extends AuditBase {
-    private static enum Event {
-        PLAY_LEVEL, GAME_OK, GAME_BAD, GAME_HINT, GAME_SKIP, GAME_CLOSE, PLAY_QUIZ, QUIZ_OK, QUIZ_BAD, QUIZ_TIMEOUT, QUIZ_ABORT, VIEW_BALANCE, RESET_SCORE
+public class Audit {
+    private enum Event {
+        APP_LOAD, APP_ACTIVE, PREF_CHANGE, OPEN_MARKET, OPEN_RATE, OPEN_RECOMMENDED, OPEN_SHARE, OPEN_ABOUT, OPEN_NO_ADS, PLAY_LEVEL, GAME_OK, GAME_BAD, GAME_HINT, GAME_SKIP, GAME_CLOSE, PLAY_QUIZ, QUIZ_OK, QUIZ_BAD, QUIZ_TIMEOUT, QUIZ_ABORT, VIEW_BALANCE, RESET_SCORE
+    }
+
+    private final Converter converter;
+    private boolean enabled;
+    private long timestamp;
+
+    public Audit() {
+        converter = ConverterRegistry.getConverter();
+    }
+
+    public void openApplication() {
+        if (enabled) {
+            timestamp = System.currentTimeMillis();
+        }
+    }
+
+    public void closeApplication() {
+        if (enabled) {
+            send(Event.APP_ACTIVE, System.currentTimeMillis() - timestamp);
+        }
+    }
+
+    public void preferenceChanged(String key, Object valueObject) {
+        String value = valueObject instanceof String ? (String) valueObject : valueObject.toString();
+
+        if (AppBase.context().getString(com.kidscademy.R.string.pref_developer_data_key).equals(key)) {
+            if ((boolean) valueObject) {
+                enabled = true;
+            }
+            send(Event.PREF_CHANGE, key, value);
+            if (!(boolean) valueObject) {
+                enabled = false;
+            }
+            return;
+        }
+
+        if (enabled) {
+            send(Event.PREF_CHANGE, key, value);
+        }
+    }
+
+    public void openMarket() {
+        if (enabled) {
+            send(Event.OPEN_MARKET);
+        }
+    }
+
+    public void openRate() {
+        if (enabled) {
+            send(Event.OPEN_RATE);
+        }
+    }
+
+    public void openRecommended() {
+        if (enabled) {
+            send(Event.OPEN_RECOMMENDED);
+        }
+    }
+
+    public void openShare() {
+        if (enabled) {
+            send(Event.OPEN_SHARE);
+        }
+    }
+
+    public void openAbout() {
+        if (enabled) {
+            send(Event.OPEN_ABOUT);
+        }
+    }
+
+    public void openNoAdsManifest() {
+        if (enabled) {
+            send(Event.OPEN_NO_ADS);
+        }
     }
 
     public void playGameLevel(int levelIndex) {
@@ -90,5 +170,33 @@ public class Audit extends AuditBase {
         if (enabled) {
             send(Event.RESET_SCORE);
         }
+    }
+
+    protected void send(Enum<?> event, Object... args) {
+        switch (Net.getConnectionType(AppBase.context())) {
+            case WIFI:
+                break;
+
+            case MOBILE:
+                if (event.name().equals(Event.APP_LOAD.name())) {
+                    break;
+                }
+                // fall trough default
+
+            default:
+                return;
+        }
+        AppBase.instance().controller().recordAuditEvent(AppBase.name(), AppBase.instance().device(), event.name(), parameter(args, 0), parameter(args, 1));
+    }
+
+    /**
+     * Stringify argument identified by index.
+     *
+     * @param args  arguments list,
+     * @param index desired argument index.
+     * @return string representation of indexed argument or null if missing.
+     */
+    private String parameter(Object[] args, int index) {
+        return args.length > index ? converter.asString(args[index]) : null;
     }
 }

@@ -3,9 +3,8 @@ package com.kidscademy.quiz.instruments.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.kidscademy.model.StorageObject;
 import com.kidscademy.quiz.instruments.App;
-import com.kidscademy.util.StorageBase;
+import com.kidscademy.quiz.instruments.util.Storage;
 
 import js.util.Strings;
 
@@ -61,7 +60,7 @@ public class Instrument implements StorageObject, Parcelable {
     }
 
     @Override
-    public void onCreate(StorageBase storage) {
+    public void onCreate(Storage storage) {
         assert picturePath == null;
         picturePath = Strings.concat("image/", name, ".png");
 
