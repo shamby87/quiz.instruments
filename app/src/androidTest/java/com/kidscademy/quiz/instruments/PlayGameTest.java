@@ -3,12 +3,14 @@ package com.kidscademy.quiz.instruments;
 
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.contrib.RecyclerViewActions;
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
 
-import com.kidscademy.quiz.instruments.model.Instrument;
-import com.kidscademy.quiz.instruments.view.HexaIcon;
+import com.kidscademy.quiz.activity.MainActivity;
+import com.kidscademy.quiz.app.App;
+import com.kidscademy.quiz.app.Storage;
+import com.kidscademy.quiz.view.HexaIcon;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -37,11 +39,12 @@ public class PlayGameTest {
 
     @Test
     public void run() {
-        App.storage().resetLevels();
+        Storage storage = App.instance().storage();
+        storage.resetLevels();
 
         int LEVEL_SIZE = 10;
 
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         String[][] instrumentNames = new String[instruments.length / LEVEL_SIZE][LEVEL_SIZE];
         for (int i = 0; i < instruments.length; ++i) {
             instrumentNames[i / LEVEL_SIZE][i % LEVEL_SIZE] = instruments[i].getLocaleName().toUpperCase().replaceAll(" ", "");

@@ -5,7 +5,7 @@
     android:id="@+id/level_state"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    class="com.kidscademy.quiz.instruments.GameActivity$LevelStateDialog">
+    class="com.kidscademy.quiz.activity.GameActivity$LevelStateDialog">
 
     <include layout="@layout/compo_page_background" />
 
@@ -29,13 +29,13 @@
         android:layout_gravity="center"
         android:foregroundGravity="center_horizontal">
 
-        <com.kidscademy.quiz.instruments.view.HexaIcon
+        <com.kidscademy.quiz.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             app:layout_constraintStart_toStartOf="parent"
             app:backgroundColor="#80ff8080" />
 
-        <com.kidscademy.quiz.instruments.view.HexaIcon
+        <com.kidscademy.quiz.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="100dp"
@@ -44,14 +44,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.kidscademy.quiz.instruments.view.HexaIcon
+        <com.kidscademy.quiz.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="200dp"
             app:backgroundColor="#803358be"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <com.kidscademy.quiz.instruments.view.HexaIcon
+        <com.kidscademy.quiz.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="200dp"
@@ -60,7 +60,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.kidscademy.quiz.instruments.view.HexaIcon
+        <com.kidscademy.quiz.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="100dp"
@@ -69,7 +69,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.kidscademy.quiz.instruments.view.HexaIcon
+        <com.kidscademy.quiz.view.HexaIcon
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginTop="228dp"
@@ -92,6 +92,6 @@
             tools:text="+199" />
     </android.support.constraint.ConstraintLayout>
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.DialogClose" />
+    <com.kidscademy.quiz.view.RandomColorFAB style="@style/FAB.DialogClose" />
 
 </view>

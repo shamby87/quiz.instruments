@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <view xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    class="com.kidscademy.quiz.instruments.GameActivity$InputVerifyDialog"
+    class="com.kidscademy.quiz.activity.GameActivity$InputVerifyDialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -28,7 +28,7 @@
             android:layout_gravity="center_vertical"
             android:background="@color/black_T60">
 
-            <com.kidscademy.quiz.instruments.view.AnswerView
+            <com.kidscademy.quiz.view.AnswerView
                 android:id="@+id/input_verify_response"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                     style="@style/Text.Letter.XLarge"
                     tools:text="_" />
 
-            </com.kidscademy.quiz.instruments.view.AnswerView>
+            </com.kidscademy.quiz.view.AnswerView>
         </FrameLayout>
 
         <TextView
@@ -77,7 +77,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/white_T80">
 
-            <com.kidscademy.quiz.instruments.view.AnswerView
+            <com.kidscademy.quiz.view.AnswerView
                 android:id="@+id/input_verify_suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,10 +107,10 @@
                     style="@style/Text.Letter.XLarge.Inverse"
                     tools:text="_" />
 
-            </com.kidscademy.quiz.instruments.view.AnswerView>
+            </com.kidscademy.quiz.view.AnswerView>
         </FrameLayout>
     </LinearLayout>
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.DialogClose" />
+    <com.kidscademy.quiz.view.RandomColorFAB style="@style/FAB.DialogClose" />
 
 </view>

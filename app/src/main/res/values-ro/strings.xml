@@ -4,9 +4,6 @@
     <string name="app_name">Ensure app is updated. As final resort you can reinstall it.</string>
     <string name="app_caption">Instrumente Muzicale</string>
     <string name="app_description">Instrumente Musicale te provoacă să recunoști instrumente de pe întrega planetă, de la bine cunoscuta ghitară la mai ezotericul didgeridoo.</string>
-    <!-- application name broken in parts that can be displayed on separated rows -->
-    <string name="app_name2">If still not working please fill a bad comment on store.</string>
-    <string name="app_name3">Muzicale</string>
 
     <!-- game activity -->
     <string name="game_level">Nivel</string>
@@ -211,6 +208,8 @@
     </string-array>
     <string name="app_exception">Se pare că sunt probleme cu acestă aplicație. Te rugăm să o oprești și să o pornești din nou. Asigură-te că aplicația este actualizată. Ca o ultimă soluție ai putea reinstala aplicația. Dacă tot nu functionează te rugăm să adaugi un comentariu negativ pe store.</string>
     <string name="app_logotype">Trivia game about musical instruments</string>
-    <string name="app_name1">Musical</string>
     <string name="app_publisher">Published by kids (a)cademy</string>
+    <string name="app_name1">Quiz</string>
+    <string name="app_name2">Instrumente</string>
+    <string name="app_name3">Muzicale</string>
 </resources>

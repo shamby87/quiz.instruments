@@ -38,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:paddingStart="20dp">
 
-                <com.kidscademy.quiz.instruments.view.HexaIcon
+                <com.kidscademy.quiz.view.HexaIcon
                     android:id="@+id/card_level_action"
                     android:layout_width="@dimen/level_icon_size"
                     android:layout_height="@dimen/level_icon_size"

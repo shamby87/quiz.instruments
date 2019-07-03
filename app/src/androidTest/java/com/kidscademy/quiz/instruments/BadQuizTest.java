@@ -1,17 +1,16 @@
 package com.kidscademy.quiz.instruments;
 
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
-import com.kidscademy.quiz.instruments.model.Instrument;
-import com.kidscademy.quiz.instruments.view.MovingDotsBackground;
+import com.kidscademy.quiz.activity.MainActivity;
+import com.kidscademy.quiz.app.App;
+import com.kidscademy.quiz.app.Storage;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -25,13 +24,11 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withResourceName;
 import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.kidscademy.quiz.instruments.Util.sleep;
 import static com.kidscademy.quiz.instruments.Util.waitView;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
@@ -52,9 +49,12 @@ public class BadQuizTest {
     @Rule
     public ActivityTestRule<MainActivity> activity = new ActivityTestRule<>(MainActivity.class);
 
+    private Storage storage;
+
     @Before
     public void beforeTest() {
-        App.storage().resetLevels();
+        storage = App.instance().storage();
+        storage.resetLevels();
 
         // allow some time for main activity to start and click on quiz play button
         onView(withId(R.id.main_quiz)).perform(click());
@@ -76,7 +76,7 @@ public class BadQuizTest {
         // one options has as text the challenged instrument name
         // for every quiz searches for first button that has not the correct option name
 
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < 3; ++i) {
             final Instrument instrument = instruments[i];
             waitView(withTagValue(is((Object) instrument.getPicturePath())));
@@ -86,7 +86,7 @@ public class BadQuizTest {
 
     @Test
     public void multipleBadQuizOptionClicks() {
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < 3; ++i) {
             final Instrument instrument = instruments[i];
             waitView(withTagValue(is((Object) instrument.getPicturePath())));
@@ -99,7 +99,7 @@ public class BadQuizTest {
 
     @Test
     public void multipleCorrectQuizOptionClicks() {
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < 10; ++i) {
             final Instrument instrument = instruments[i];
             waitView(withTagValue(is((Object) instrument.getPicturePath())));
@@ -111,7 +111,7 @@ public class BadQuizTest {
 
     @Test
     public void timeoutOnMissingAnswer() {
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < 3; ++i) {
             final Instrument instrument = instruments[i];
             waitView(withTagValue(is((Object) instrument.getPicturePath())));
@@ -125,7 +125,7 @@ public class BadQuizTest {
      */
     @Test
     public void timeoutRaceCondition() {
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < 10; ++i) {
             final Instrument instrument = instruments[i];
             waitView(withTagValue(is((Object) instrument.getPicturePath())));
@@ -137,7 +137,7 @@ public class BadQuizTest {
 
     @Test
     public void timeoutRaceConditionOnBadResponse() {
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < 3; ++i) {
             final Instrument instrument = instruments[i];
             waitView(withTagValue(is((Object) instrument.getPicturePath())));
@@ -167,7 +167,7 @@ public class BadQuizTest {
     }
 
     private static String[] getInstrumentNames() {
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = App.instance().storage().getInstruments();
         String[] instrumentNames = new String[LEVEL_SIZE];
         for (int i = 0; i < LEVEL_SIZE; ++i) {
             instrumentNames[i] = instruments[i].getLocaleName().toLowerCase();

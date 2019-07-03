@@ -4,7 +4,7 @@
     android:id="@+id/game"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kidscademy.quiz.instruments.GameActivity">
+    tools:context="com.kidscademy.quiz.activity.GameActivity">
 
     <include layout="@layout/compo_page_background" />
 
@@ -85,7 +85,7 @@
                 android:visibility="invisible" />
         </FrameLayout>
 
-        <com.kidscademy.quiz.instruments.view.AnswerView
+        <com.kidscademy.quiz.view.AnswerView
             android:id="@+id/game_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                 style="@style/Text.Letter.XLarge.Inverse"
                 tools:text="_" />
 
-        </com.kidscademy.quiz.instruments.view.AnswerView>
+        </com.kidscademy.quiz.view.AnswerView>
 
         <include
             android:id="@+id/game_keyboard"
@@ -137,7 +137,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.kidscademy.quiz.instruments.view.RandomColorFAB
+        <com.kidscademy.quiz.view.RandomColorFAB
             android:id="@+id/game_fab_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,25 +145,25 @@
             app:fabSize="normal"
             app:srcCompat="@drawable/action_add" />
 
-        <com.kidscademy.quiz.instruments.view.RandomColorFAB
+        <com.kidscademy.quiz.view.RandomColorFAB
             android:id="@+id/game_fab_hint"
             style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_menu"
             tools:visibility="visible" />
 
-        <com.kidscademy.quiz.instruments.view.RandomColorFAB
+        <com.kidscademy.quiz.view.RandomColorFAB
             android:id="@+id/game_fab_view_grid"
             style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_apps"
             tools:visibility="visible" />
 
-        <com.kidscademy.quiz.instruments.view.RandomColorFAB
+        <com.kidscademy.quiz.view.RandomColorFAB
             android:id="@+id/game_fab_skip_next"
             style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_skip_next"
             tools:visibility="visible" />
 
-        <com.kidscademy.quiz.instruments.view.RandomColorFAB
+        <com.kidscademy.quiz.view.RandomColorFAB
             android:id="@+id/game_fab_back"
             style="@style/FAB.MenuItem"
             app:srcCompat="@drawable/action_back"

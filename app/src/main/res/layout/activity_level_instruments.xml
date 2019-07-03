@@ -21,7 +21,7 @@
             tools:spanCount="2" />
     </FrameLayout>
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB
+    <com.kidscademy.quiz.view.RandomColorFAB
         style="@style/FAB.Back.Autohide"
         app:layout_anchor="@id/level_instruments_grid" />
 

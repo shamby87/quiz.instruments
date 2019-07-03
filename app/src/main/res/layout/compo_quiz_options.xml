@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.kidscademy.quiz.instruments.view.QuizOptionsView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kidscademy.quiz.view.QuizOptionsView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/quiz_options"
@@ -32,4 +32,4 @@
     <Button
         style="@style/OptionButton"
         tools:text="SITAR" />
-</com.kidscademy.quiz.instruments.view.QuizOptionsView>
+</com.kidscademy.quiz.view.QuizOptionsView>

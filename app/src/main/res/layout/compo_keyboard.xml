@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.kidscademy.quiz.instruments.view.KeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kidscademy.quiz.view.KeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/keyboard"
@@ -74,4 +74,4 @@
         style="@style/Text.Letter"
         tools:text="P" />
 
-</com.kidscademy.quiz.instruments.view.KeyboardView>
+</com.kidscademy.quiz.view.KeyboardView>

@@ -4,7 +4,7 @@
     android:id="@+id/balance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kidscademy.quiz.instruments.BalanceActivity">
+    tools:context="com.kidscademy.quiz.activity.BalanceActivity">
 
     <include layout="@layout/compo_page_background" />
 
@@ -110,7 +110,7 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical">
 
-        <com.kidscademy.quiz.instruments.view.PercentDonutView
+        <com.kidscademy.quiz.view.PercentDonutView
             android:id="@+id/balance_complete_percent"
             android:layout_width="160dp"
             android:layout_height="160dp"
@@ -187,6 +187,6 @@
 
     <include layout="@layout/compo_response_time" />
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB style="@style/FAB.Back" />
+    <com.kidscademy.quiz.view.RandomColorFAB style="@style/FAB.Back" />
 
 </FrameLayout>

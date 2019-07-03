@@ -13,7 +13,7 @@
         android:scrollbars="vertical"
         tools:listitem="@layout/item_sharing" />
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB
+    <com.kidscademy.quiz.view.RandomColorFAB
         style="@style/FAB.Back.Autohide"
         app:layout_anchor="@id/share_list" />
 

@@ -1,12 +1,13 @@
 package com.kidscademy.quiz.instruments;
 
 
-import android.support.test.espresso.ViewInteraction;
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
 
-import com.kidscademy.quiz.instruments.model.Instrument;
+import com.kidscademy.quiz.activity.MainActivity;
+import com.kidscademy.quiz.app.App;
+import com.kidscademy.quiz.app.Storage;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,9 +37,10 @@ public class PlayQuizTest {
 
     @Test
     public void run() {
-        App.storage().resetLevels();
-        Instrument[] instruments = App.storage().getInstruments();
+        Storage storage = App.instance().storage();
+        storage.resetLevels();
 
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < instruments.length; i += 10) {
             playQuiz(Arrays.copyOfRange(instruments, i, i + 10, Instrument[].class));
             sleep(1000);

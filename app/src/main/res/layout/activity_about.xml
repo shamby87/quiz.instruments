@@ -41,7 +41,7 @@
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-    <com.kidscademy.quiz.instruments.view.RandomColorFAB
+    <com.kidscademy.quiz.view.RandomColorFAB
         style="@style/FAB.Back.Autohide"
         app:layout_anchor="@id/about_scroll" />
 

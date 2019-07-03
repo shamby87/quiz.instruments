@@ -3,7 +3,7 @@
     android:id="@+id/activity_error"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kidscademy.app.ErrorActivity">
+    tools:context="com.kidscademy.quiz.activity.ErrorActivity">
 
     <ImageView
         android:id="@+id/page_background"
@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/page_bg1" />
 
-    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
+    <com.kidscademy.quiz.view.MovingDotsBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

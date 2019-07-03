@@ -1,18 +1,15 @@
 package com.kidscademy.quiz.instruments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.ViewInteraction;
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
 
-import com.kidscademy.quiz.instruments.model.Instrument;
-import com.kidscademy.quiz.instruments.view.HexaIcon;
+import com.kidscademy.quiz.activity.MainActivity;
+import com.kidscademy.quiz.app.App;
+import com.kidscademy.quiz.app.Storage;
+import com.kidscademy.quiz.view.HexaIcon;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +23,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withResourceName;
 import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.kidscademy.quiz.instruments.Util.info;
 import static com.kidscademy.quiz.instruments.Util.key;
 import static com.kidscademy.quiz.instruments.Util.sleep;
 import static com.kidscademy.quiz.instruments.Util.waitView;
@@ -45,20 +41,15 @@ public class AppConformanceTest {
     private static final int LEVEL_SIZE = 10;
 
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class) {
-        @Override
-        protected Intent getActivityIntent() {
-            Context context = InstrumentationRegistry.getContext();
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            return intent;
-        }
-    };
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+
+    private Storage storage;
 
     @Before
     public void beforeTest() {
         // ensure that always start with the first level
-        App.storage().resetLevels();
+        storage = App.instance().storage();
+        storage.resetLevels();
     }
 
     @Test
@@ -168,7 +159,7 @@ public class AppConformanceTest {
         onView(allOf(withId(R.id.main_play), isDisplayed())).perform(click());
         onView(allOf(withClassName(is(HexaIcon.class.getName())), hasSibling(withTagValue(is((Object) "level0"))))).perform(click());
 
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int n = 0; n < LEVEL_SIZE; ++n) {
             final Instrument instrument = instruments[n];
 
@@ -203,7 +194,7 @@ public class AppConformanceTest {
         // one options has text the challenged instrument name
         // for every quiz searches for right option and click it
 
-        Instrument[] instruments = App.storage().getInstruments();
+        Instrument[] instruments = storage.getInstruments();
         for (int i = 0; i < LEVEL_SIZE; ++i) {
             final Instrument instrument = instruments[i];
             waitView(withTagValue(is((Object) instrument.getPicturePath())));

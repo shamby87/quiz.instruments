@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.TextView;
 
-import com.kidscademy.quiz.instruments.view.KeyboardView;
+
+import com.kidscademy.quiz.view.KeyboardView;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

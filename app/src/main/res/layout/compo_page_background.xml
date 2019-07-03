@@ -10,7 +10,7 @@
         android:scaleType="centerCrop"
         tools:src="@drawable/page_bg1" />
 
-    <com.kidscademy.quiz.instruments.view.MovingDotsBackground
+    <com.kidscademy.quiz.view.MovingDotsBackground
         android:id="@+id/page_animation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
