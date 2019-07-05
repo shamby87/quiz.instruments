@@ -3,7 +3,6 @@ package com.kidscademy.quiz.app;
 import android.app.Activity;
 import android.app.Application;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,17 +10,14 @@ import android.os.Looper;
 import com.kidscademy.quiz.activity.ErrorActivity;
 import com.kidscademy.quiz.activity.MainActivity;
 import com.kidscademy.quiz.instruments.R;
-import com.kidscademy.quiz.model.Device;
 import com.kidscademy.quiz.model.GameEngine;
 import com.kidscademy.quiz.model.GameEngineImpl;
 import com.kidscademy.quiz.model.KeyboardControl;
-import com.kidscademy.quiz.model.Model;
 import com.kidscademy.quiz.util.Preferences;
 import com.kidscademy.quiz.view.AnswerView;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -62,10 +58,8 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
 
     private Preferences preferences;
     private Storage storage;
-    private Audit audit;
 
     private RemoteLogger remoteLogger;
-    private Device device;
 
     /**
      * Application instance creation. Application is guaranteed by Android platform to be created in a single instance.
@@ -105,20 +99,8 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
 
             super.onCreate();
 
-            Model model = new Model();
-            model.setManufacturer(Build.MANUFACTURER.toUpperCase(Locale.getDefault()));
-            model.setModel(Build.MODEL.toUpperCase(Locale.getDefault()));
-            model.setApiLevel(Build.VERSION.SDK_INT);
-            model.setVersion(Build.VERSION.RELEASE);
-
-            device = new Device();
-            device.setModel(model);
-            device.setSerial(Build.SERIAL.toUpperCase(Locale.getDefault()));
-
-            audit = new Audit(getApplicationContext(), device, remoteLogger);
-            preferences = new Preferences(getApplicationContext(), audit);
+            preferences = new Preferences(getApplicationContext());
             storage = new Storage(getApplicationContext());
-
             if (storage.isValid()) {
                 storage.onAppCreate();
             }
@@ -166,17 +148,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
     }
 
     public static GameEngine getGameEngine(AnswerView answerView, KeyboardControl keyboardView) {
-        return new GameEngineImpl(instance.storage, instance.audit, answerView, keyboardView);
-    }
-
-    /**
-     * Get audit singleton instance.
-     *
-     * @return audit instance.
-     * @see #audit
-     */
-    public Audit audit() {
-        return audit;
+        return new GameEngineImpl(instance.storage, answerView, keyboardView);
     }
 
     // TODO: remove after moving to Assets utility class
@@ -223,7 +195,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
     public void dumpStackStrace(Throwable throwable) {
         StringWriter stackTrace = new StringWriter();
         throwable.printStackTrace(new PrintWriter(stackTrace));
-        remoteLogger.dumpStackTrace(PROJECT_NAME, device, stackTrace.toString());
+        remoteLogger.dumpStackTrace(PROJECT_NAME, stackTrace.toString());
     }
 
     // ------------------------------------------------------
@@ -247,7 +219,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
     public void onActivityStarted(Activity activity) {
         log.trace("onActivityStarted(Activity) - %s %d", activity.getClass().getName(), startIndex);
         if (startIndex++ == 0) {
-            audit.openApplication();
+            log.debug("Start application.");
         }
     }
 
@@ -259,7 +231,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
         --startIndex;
         log.trace("onActivityStopped(Activity) - %s %d", activity.getClass().getName(), startIndex);
         if (startIndex == 0) {
-            audit.closeApplication();
+            log.debug("Stop application");
 
             try {
                 storage.onAppClose();

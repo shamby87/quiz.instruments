@@ -119,7 +119,6 @@ public class ShareActivity extends AppActivity implements SharingAdapter.Listene
     @Override
     public void onSharingAppSelected(SharingApp app) {
         log.trace("onSharingAppSelected(SharingApp) - %s", app.getAppName());
-        App.instance().audit().shareApp(app.getAppName());
 
         switch (app.getType()) {
             case TWITTER:

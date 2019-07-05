@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.kidscademy.quiz.app.App;
-import com.kidscademy.quiz.app.Audit;
 import com.kidscademy.quiz.instruments.R;
 
 /**
@@ -15,11 +13,9 @@ import com.kidscademy.quiz.instruments.R;
  */
 public final class Preferences {
     private final Context context;
-    private final Audit audit;
 
-    public Preferences(Context context, Audit audit) {
+    public Preferences(Context context) {
         this.context = context;
-        this.audit = audit;
     }
 
     public boolean isSoundsEffects() {
@@ -29,7 +25,6 @@ public final class Preferences {
     public void toggleSoundsEffects() {
         String key = string(R.string.pref_sound_fx_key);
         boolean soundsEffects = !isSoundsEffects();
-        audit.preferenceChanged(key, soundsEffects);
         editor().putBoolean(key, soundsEffects).apply();
     }
 

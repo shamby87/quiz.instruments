@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
 import com.kidscademy.quiz.app.App;
-import com.kidscademy.quiz.app.Audit;
 import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.quiz.util.Preferences;
 import com.kidscademy.quiz.view.HexaIcon;
@@ -42,13 +41,11 @@ public class MainActivity extends AppActivity implements View.OnClickListener {
     }
 
     private final Preferences preferences;
-    private final Audit audit;
     private HexaIcon volumeIcon;
 
     public MainActivity() {
         log.trace("MainActivity()");
         this.preferences = App.instance().preferences();
-        this.audit = App.instance().audit();
     }
 
     @Override
@@ -95,7 +92,6 @@ public class MainActivity extends AppActivity implements View.OnClickListener {
                 QuizStartActivity.start(this);
                 break;
             case R.id.main_balance:
-                audit.viewBalance();
                 BalanceActivity.start(this);
                 break;
             case R.id.main_volume:
@@ -104,19 +100,15 @@ public class MainActivity extends AppActivity implements View.OnClickListener {
                 break;
 
             case R.id.main_about:
-                audit.openAbout();
                 AboutActivity.start(this);
                 break;
             case R.id.main_no_ads:
-                audit.openNoAdsManifest();
                 NoAdsActivity.start(this);
                 break;
             case R.id.main_share:
-                audit.openShare();
                 ShareActivity.start(this);
                 break;
             case R.id.main_rate:
-                audit.openRate();
                 try {
                     startActivity(rate("market://details"));
                 } catch (ActivityNotFoundException e) {

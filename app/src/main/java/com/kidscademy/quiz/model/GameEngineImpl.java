@@ -1,8 +1,7 @@
 package com.kidscademy.quiz.model;
 
-import com.kidscademy.quiz.app.Audit;
-import com.kidscademy.quiz.instruments.Instrument;
 import com.kidscademy.quiz.app.Storage;
+import com.kidscademy.quiz.instruments.Instrument;
 
 import java.util.List;
 import java.util.Locale;
@@ -30,10 +29,6 @@ public class GameEngineImpl implements GameEngine {
      * Application persistent storage.
      */
     private final Storage storage;
-    /**
-     * Audit utility.
-     */
-    private final Audit audit;
     /**
      * User balance keeps score points and earned credits.
      */
@@ -75,14 +70,12 @@ public class GameEngineImpl implements GameEngine {
      * Create game engine instance for requested level.
      *
      * @param storage  persistent storage, global per application,
-     * @param audit    audit utility,
      * @param answer   answer builder,
      * @param keyboard keyboard control,
      */
-    public GameEngineImpl(Storage storage, Audit audit, GameAnswerBuilder answer, KeyboardControl keyboard) {
-        log.trace("GameEngineImpl(Storage, Audit, GameAnswerBuilder, KeyboardControl)"); //NON-NLS
+    public GameEngineImpl(Storage storage, GameAnswerBuilder answer, KeyboardControl keyboard) {
+        log.trace("GameEngineImpl(Storage, GameAnswerBuilder, KeyboardControl)"); //NON-NLS
         this.storage = storage;
-        this.audit = audit;
 
         this.balance = storage.getBalance();
         this.instruments = storage.getInstruments();
@@ -100,7 +93,6 @@ public class GameEngineImpl implements GameEngine {
     @Override
     public void start(String challengeName) {
         log.trace("start(String)"); //NON-NLS
-        audit.playGameLevel(level.getIndex());
 
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
         if (unsolvedInstruments.isEmpty()) {
@@ -124,7 +116,6 @@ public class GameEngineImpl implements GameEngine {
         log.trace("nextChallenge()"); //NON-NLS
         List<Integer> unsolvedInstruments = levelState.getUnsolvedInstruments(storage);
         if (unsolvedInstruments.isEmpty()) {
-            audit.gameClose(challengedInstrument);
             balance.plusScore(Balance.getScoreLevelCompleteBonus(levelState.getIndex()));
             challengedInstrument = null;
             return false;
@@ -153,10 +144,8 @@ public class GameEngineImpl implements GameEngine {
         }
 
         if (!checkAnswer(answer.getValue())) {
-            audit.gameWrongAnswer(challengedInstrument, answer.getValue());
             return GameAnswerState.WRONG;
         }
-        audit.gameCorrectAnswer(challengedInstrument);
         return GameAnswerState.CORRECT;
     }
 
@@ -212,7 +201,6 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public void skipChallenge() {
-        audit.gameSkip(challengedInstrument);
         nextChallenge();
     }
 
@@ -239,7 +227,6 @@ public class GameEngineImpl implements GameEngine {
         if (!balance.deductRevealLetter()) {
             return false;
         }
-        audit.gameHint(challengedInstrument, "REVEAL_LETTER"); //NON-NLS
         int firstMissingCharIndex = answer.getFirstMissingLetterIndex();
         handleAnswerLetter(keyboard.getExpectedChar(firstMissingCharIndex));
         return true;
@@ -247,17 +234,12 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public boolean isInputVerifyAllowed() {
-        if (balance.deductVerifyInput()) {
-            audit.gameHint(challengedInstrument, "VERIFY_INPUT"); //NON-NLS
-            return true;
-        }
-        return false;
+        return balance.deductVerifyInput();
     }
 
     @Override
     public boolean hideLetters() {
         if (balance.deductHideLettersInput()) {
-            audit.gameHint(challengedInstrument, "HIDE_LETTERS"); //NON-NLS
             keyboard.hideUnusedLetters();
             return true;
         }

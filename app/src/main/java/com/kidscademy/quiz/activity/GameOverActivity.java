@@ -44,7 +44,6 @@ public class GameOverActivity extends AppActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.game_over_action:
-                App.instance().audit().openMarket();
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:" + getString(R.string.app_publisher))));
                 } catch (android.content.ActivityNotFoundException unused) {

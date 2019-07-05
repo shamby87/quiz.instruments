@@ -1,16 +1,15 @@
 package com.kidscademy.quiz.instruments;
 
-import com.kidscademy.quiz.instruments.model.GameAnswerBuilder;
-import com.kidscademy.quiz.instruments.model.GameAnswerState;
-import com.kidscademy.quiz.instruments.model.GameEngine;
-import com.kidscademy.quiz.instruments.model.GameEngineImpl;
-import com.kidscademy.quiz.instruments.model.Balance;
-import com.kidscademy.quiz.instruments.model.Instrument;
-import com.kidscademy.quiz.instruments.model.KeyboardControl;
-import com.kidscademy.quiz.instruments.model.Level;
-import com.kidscademy.quiz.instruments.model.LevelState;
-import com.kidscademy.quiz.instruments.util.Audit;
-import com.kidscademy.quiz.instruments.util.Storage;
+import com.kidscademy.quiz.model.GameAnswerBuilder;
+import com.kidscademy.quiz.model.GameAnswerState;
+import com.kidscademy.quiz.model.GameEngine;
+import com.kidscademy.quiz.model.GameEngineImpl;
+import com.kidscademy.quiz.model.Balance;
+import com.kidscademy.quiz.instruments.Instrument;
+import com.kidscademy.quiz.model.KeyboardControl;
+import com.kidscademy.quiz.model.Level;
+import com.kidscademy.quiz.model.LevelState;
+import com.kidscademy.quiz.app.Storage;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,8 +43,6 @@ public class GameEngineTest {
     @Mock
     private Storage storage;
     @Mock
-    private Audit audit;
-    @Mock
     private GameAnswerBuilder answer;
     @Mock
     private KeyboardControl keyboard;
@@ -62,7 +59,7 @@ public class GameEngineTest {
 
         when(storage.getBalance()).thenReturn(new Balance());
 
-        engine = new GameEngineImpl(storage, audit, answer, keyboard);
+        engine = new GameEngineImpl(storage, answer, keyboard);
         engine.setLevelIndex(0);
     }
 

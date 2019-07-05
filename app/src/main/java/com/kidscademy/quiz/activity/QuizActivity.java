@@ -16,7 +16,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.kidscademy.quiz.app.App;
-import com.kidscademy.quiz.app.Audit;
 import com.kidscademy.quiz.app.Storage;
 import com.kidscademy.quiz.instruments.R;
 import com.kidscademy.quiz.model.Balance;
@@ -56,7 +55,6 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
 
     private final Storage storage;
     private final Preferences preferences;
-    private final Audit audit;
     private final QuizEngine engine;
     /**
      * Mutex for UI updates. When a new challenge is displayed it can end in two ways: user select and option - correct or bad,
@@ -96,7 +94,6 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
 
         this.storage = App.instance().storage();
         this.preferences = App.instance().preferences();
-        this.audit = App.instance().audit();
 
         this.engine = new QuizEngineImpl(storage, this);
         this.uiMutex = new AtomicBoolean();
@@ -136,7 +133,6 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
         log.trace("onStart()"); // NON-NLS
         super.onStart();
         player.create();
-        audit.playQuiz();
         updateUI();
     }
 
@@ -154,7 +150,6 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fab_close:
-                audit.quizAbort(challenge);
                 onBackPressed();
                 break;
         }
@@ -179,12 +174,10 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
             if (preferences.isSoundsEffects()) {
                 player.play("fx/negative.mp3"); // NON-NLS
             }
-            audit.quizWrongAnswer(challenge, option);
             optionsView.highlightOption(challenge.getLocaleName(), updateUI_Runnable);
             return;
         }
 
-        audit.quizCorrectAnswer(challenge);
         log.debug("Correct answer for quiz on |%s|\n", challenge); // NON-NLS
         storage.getBalance().updateResponseTime(engine.getResponseTime());
 
@@ -216,7 +209,6 @@ public class QuizActivity extends AppActivity implements View.OnClickListener, Q
             return;
         }
 
-        audit.quizTimeout(challenge);
         player.stop();
         // update UI via handler even if no delay because quiz timeout is invoked from non UI thread
         updateUI(0);
