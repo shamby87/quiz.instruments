@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/compo_page_background" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heading_size"
+        android:background="#9F2196F3"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/app_rate_caption"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.Medium" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_rate_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/rate_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_solid_circle"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="@string/rate_on_store"
+            android:textAppearance="@style/TextAppearance.Medium"
+            app:backgroundTint="#CB009688"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.22"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_solid_circle"
+            android:gravity="center"
+            android:padding="30dp"
+            android:text="@string/rate_review"
+            android:textAppearance="@style/TextAppearance.Small"
+            app:backgroundTint="#7C03A9F4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45"
+            app:layout_constraintWidth_percent="0.6" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rate_suggestion"
+            android:textAppearance="@style/TextAppearance.Medium.Accent"
+            app:backgroundTint="#603F51B5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintWidth_percent="0.7" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <com.kidscademy.quiz.view.RandomColorFAB
+        style="@style/FAB.Back.Autohide"
+        app:layout_anchor="@id/activity_rate_content" />
+
+</android.support.design.widget.CoordinatorLayout>

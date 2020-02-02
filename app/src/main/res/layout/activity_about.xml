@@ -6,43 +6,82 @@
 
     <include layout="@layout/compo_page_background" />
 
-    <FrameLayout style="@style/Page.AutohideHeader">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            style="@style/Page.HeaderTitle"
-            android:text="@string/app_logotype" />
-
-        <ImageView style="@style/Page.HeaderIcon" />
-    </FrameLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/about_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+            android:id="@+id/about_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/page_body_margin_top">
+            android:layout_height="@dimen/heading_size"
+            android:background="#61E91E63"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/app_logotype"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                style="@style/Text.Paragraph"
-                android:text="@string/about_p1" />
+        <TextView
+            android:id="@+id/about_p1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_solid_circle"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@string/about_p1"
+            android:textAppearance="@style/TextAppearance.Small.Accent"
+            app:backgroundTint="#CB009688"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/about_header"
+            app:layout_constraintWidth_percent="0.66"
+            tools:layout_constraintHorizontal_bias="0.75" />
 
-            <TextView
-                style="@style/Text.Paragraph.Accent"
-                android:text="@string/about_p2" />
+        <TextView
+            android:id="@+id/about_p2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_solid_circle"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@string/about_p2"
+            android:textAppearance="@style/TextAppearance.Small"
+            app:backgroundTint="#8D2196F3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/about_header"
+            app:layout_constraintVertical_bias="0.44"
+            app:layout_constraintWidth_percent="0.5" />
 
-            <TextView
-                style="@style/Text.Paragraph"
-                android:text="@string/about_p3" />
+        <TextView
+            android:id="@+id/about_p3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_solid_circle"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@string/about_p3"
+            android:textAppearance="@style/TextAppearance.Small"
+            app:backgroundTint="#7EE91E63"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_p2"
+            app:layout_constraintWidth_percent="0.55" />
 
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </android.support.constraint.ConstraintLayout>
 
-    <com.kidscademy.quiz.view.RandomColorFAB
-        style="@style/FAB.Back.Autohide"
-        app:layout_anchor="@id/about_scroll" />
+    <com.kidscademy.quiz.view.RandomColorFAB style="@style/FAB.Back" />
 
 </android.support.design.widget.CoordinatorLayout>

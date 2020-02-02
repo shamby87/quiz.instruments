@@ -132,23 +132,11 @@ public class AppConformanceTest {
         // close about activity and go back to main activity
         waitView(withResourceName("fab_back")).perform(click());
 
-        // main activit is opened: click to open no ads activity
-        onView(withId(R.id.main_no_ads)).perform(click());
-
-        // close no ads activity and go back to main activity
-        waitView(withResourceName("fab_back")).perform(click());
-
         // main activit is opened: click to open share activity
         onView(withId(R.id.main_share)).perform(click());
 
         // close share activity and go back to main activity
         waitView(withResourceName("fab_back")).perform(click());
-
-        // main activity is opened: click to open recommended application activity
-//        onView(withId(R.id.main_recommended)).perform(click());
-
-        // close recommended application activity and go back to main activity
-//        waitView(withResourceName("fab_back")).perform(click());
 
         // back to main activity: end test case
     }

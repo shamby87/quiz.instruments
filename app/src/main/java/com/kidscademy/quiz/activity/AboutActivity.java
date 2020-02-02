@@ -40,13 +40,6 @@ public class AboutActivity extends AppActivity implements View.OnClickListener {
 
         FloatingActionButton backFAB = findViewById(R.id.fab_back);
         backFAB.setOnClickListener(this);
-
-        // developer pictures uses icon view from library that needs software layer
-        // there is a bug on lollipop 5.0 that draw black background around circle icon if set software layer on icon view
-        // solution is to set software layer on parent, that is, here
-        if (Build.VERSION.SDK_INT < 22) {
-            findViewById(R.id.about_scroll).setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        }
     }
 
     @Override

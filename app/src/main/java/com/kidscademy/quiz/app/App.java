@@ -16,8 +16,6 @@ import com.kidscademy.quiz.model.KeyboardControl;
 import com.kidscademy.quiz.util.Preferences;
 import com.kidscademy.quiz.view.AnswerView;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -49,8 +47,6 @@ import js.log.LogManager;
  * @author Iulian Rotaru
  */
 public class App extends Application implements Thread.UncaughtExceptionHandler, Application.ActivityLifecycleCallbacks {
-    public static final String PROJECT_NAME = "quiz.instruments";
-
     private static Log log = LogFactory.getLog(App.class);
 
     private static App instance;
@@ -58,8 +54,6 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
 
     private Preferences preferences;
     private Storage storage;
-
-    private RemoteLogger remoteLogger;
 
     /**
      * Application instance creation. Application is guaranteed by Android platform to be created in a single instance.
@@ -91,7 +85,6 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
         Thread.setDefaultUncaughtExceptionHandler(this);
 
         try {
-            remoteLogger = new RemoteLogger();
             instance = this;
 
             // register activity life cycle here in order to catch first MainActivity start
@@ -107,7 +100,6 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
 
         } catch (Throwable throwable) {
             log.dump("App start fatal error: ", throwable);
-            dumpStackStrace(throwable);
             ErrorActivity.start(getApplicationContext(), R.string.app_exception);
         }
     }
@@ -171,7 +163,6 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
     @Override
     public void uncaughtException(Thread thread, final Throwable throwable) {
         log.dump("Uncaught exception on: ", throwable);
-        dumpStackStrace(throwable);
 
         // if in UI thread just launch error activity; otherwise uses a handler
         // source: http://stackoverflow.com/questions/19897628/need-to-handle-uncaught-exception-and-send-log-file
@@ -190,12 +181,6 @@ public class App extends Application implements Thread.UncaughtExceptionHandler,
 
         // do not use default handler in order to avoid system dialog about app crash
         System.exit(0);
-    }
-
-    public void dumpStackStrace(Throwable throwable) {
-        StringWriter stackTrace = new StringWriter();
-        throwable.printStackTrace(new PrintWriter(stackTrace));
-        remoteLogger.dumpStackTrace(PROJECT_NAME, stackTrace.toString());
     }
 
     // ------------------------------------------------------

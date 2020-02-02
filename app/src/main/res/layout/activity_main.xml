@@ -93,7 +93,6 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="36dp"
                 app:backgroundColor="#8040b5ff"
-                app:iconDrawable="@drawable/action_no_ads"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

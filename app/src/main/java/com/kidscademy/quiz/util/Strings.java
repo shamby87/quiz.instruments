@@ -1,5 +1,7 @@
 package com.kidscademy.quiz.util;
 
+import org.jetbrains.annotations.NonNls;
+
 import java.util.Locale;
 
 public class Strings extends js.util.Strings {
@@ -8,7 +10,7 @@ public class Strings extends js.util.Strings {
         return String.format(Locale.getDefault(), "%d", value); //NON-NLS
     }
 
-    public static String format(String format, Object... args) {
+    public static String format(@NonNls String format, Object... args) {
         return String.format(Locale.getDefault(), format, args);
     }
 }

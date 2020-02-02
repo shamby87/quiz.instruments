@@ -9,6 +9,8 @@
     <!-- this value need to be adjusted when modify page header height -->
     <dimen name="page_body_margin_top">140dp</dimen>
 
+    <dimen name="heading_size">80dp</dimen>
+
     <!-- generic container padding; a container is a view group that contains child views -->
     <dimen name="container_padding">20dp</dimen>
     <!-- this dimension must be computed: @dimen/developer_icon_size + @dimen/container_padding -->

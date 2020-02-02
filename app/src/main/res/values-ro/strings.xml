@@ -62,6 +62,13 @@
     <string name="about_p2">Instrumente Muzicale este complet fără costuri. Nu are reclame enervante sau plată în aplicație care poate înșela și nici nu te spionează.</string>
     <string name="about_p3">Efortul de dezvoltare este donat. Este o modalitate smerită de a arăta mulțumiri comunității Internet care ne dă atât de mult.</string>
 
+    <!-- rate activity -->
+    <string name="app_rate_caption">Evaluează Instrumente Muzicale</string>
+    <string name="rate_on_store">Faceți clic aici pentru a evalua pe Google Play Store!</string>
+    <string name="rate_review">Clasamentul Google folosește recenziile.\n\n Exprimați-vă părerea despre aplicație și ajutați la creșterea vizibiltăți!</string>
+    <string name="rate_improving">Investim eforturi substanțiale pentru a asigura calitatea aplicației, dar totuși pot exista erori.\n\nAjutați-ne să o imbunatățim!</string>
+    <string name="rate_suggestion">Dacă descoperiți ceva în neregulă, vă rugăm să folosiți\ncontact@kids-cademy.com\npentru a trimite corecții.\n\nDe asemeni, sugestiile pentru înbunătățiri sunt bine venite.</string>
+
     <!-- no ads manifesto -->
     <string name="no_ads_title">Manifest anti-reclamă</string>
     <string name="no_ads_p1">Fără indoială Internetul a schimbat lumea și suntem cu toții de acord cu asta.</string>

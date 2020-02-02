@@ -74,6 +74,13 @@
     <string name="about_dev3_skils" translatable="false">Music Composer, Sound Engineering</string>
     <string name="about_place" translatable="false">Romania, Jassy</string>
 
+    <!-- rate activity -->
+    <string name="app_rate_caption">Rate Atlas</string>
+    <string name="rate_on_store">Click here to rate on Google Play Store!</string>
+    <string name="rate_review">Google ranking uses reviews.\n\nHelp increasing atlas visibility by writing reviews!</string>
+    <string name="rate_improving">We invest substantial effort to ensure atlas quality, but still there may be mistakes.\n\nHelp us improving and spread the word!</string>
+    <string name="rate_suggestion">If found something not reasonable please use\ncontact@kids-cademy.com\nto send us corrections.\n\nSuggestions for improvement are also welcomed.</string>
+
     <!-- no ads manifesto -->
     <string name="no_ads_title">No Ads Manifesto</string>
     <string name="no_ads_p1">Arguable Internet did change the world and we all agree on that. But aggressive advertisement campaigns lead to myriad of sites specialized on content farming and applications created only for advertisement. Digital space becomes an immense advertising machine with poor quality and multiplicate content.</string>
