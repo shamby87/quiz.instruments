@@ -7,6 +7,8 @@ android {
         applicationId "com.kidscademy.quiz.instruments"
         minSdkVersion 17
         targetSdkVersion 28
+        versionCode 12
+        versionName "2.2.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
