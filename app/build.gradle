@@ -1,11 +1,42 @@
 apply plugin: 'com.android.application'
 
+// Load Jacoco Only if needed
+if (jacocoEnabled.toBoolean()) {
+    project.logger.lifecycle('Applying jacoco build file: jacoco.gradle')
+    apply from: rootProject.file("jacoco.gradle")
+}
+
+def carvedTestSrcDir = "src/allCarvedTest"
+
+
+if (carvedTests.toBoolean()){
+    if (project.hasProperty('testName')){
+        def testName = project.getProperty('testName')
+        println ""
+        println "* Processing Carved Test ${testName}"
+        println ""
+        
+        carvedTestSrcDir = "src/carvedTest/${testName}"
+        testReportPrefix = "${buildDir}/carvedTest/${testName}/testExecution"
+        coverageReportPrefix = "${buildDir}/carvedTest/${testName}/coverage"
+    }
+}
+
 android {
+    // Change the src folder for carved tests
+    sourceSets {
+        test {
+            if (carvedTests.toBoolean()) {
+                java.srcDirs = ["$carvedTestSrcDir"]
+            }
+        }
+    }
+
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.kidscademy.quiz.instruments"
-        minSdkVersion 17
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode 12
         versionName "2.2.0"
@@ -17,6 +48,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        debug {
+            testCoverageEnabled jacocoEnabled.toBoolean()
+        }
     }
     productFlavors {
     }
@@ -25,7 +59,42 @@ android {
     }
     testOptions {
         animationsDisabled true
-    }
+
+        unitTests {
+            includeAndroidResources = true
+        }
+
+        unitTests.all {
+
+            // Nices output on the console/logs
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen {false}
+                showStandardStreams = true
+            }
+
+            test {
+                ignoreFailures = true
+
+                //Get last path of default set path.
+                def junitXmlTestTaskName = file("$reports.junitXml.destination").name
+                def htmlTestTaskName = file("$reports.html.destination").name
+
+                if ( carvedTests.toBoolean() ) {
+                    // Just use the same?
+                    reports.junitXml.destination = file("$testReportPrefix/$junitXmlTestTaskName")
+                    reports.html.destination = file("$testReportPrefix/$junitXmlTestTaskName")
+                } 
+                
+                filter {
+                    //specific test method
+                    if (project.hasProperty('carvedTestsFilter')){
+                        includeTestsMatching project.carvedTestsFilter
+                    }
+                }
+            }
+        }
+    } 
 }
 
 dependencies {
@@ -49,4 +118,7 @@ dependencies {
         exclude module: 'recyclerview-v7'
     }
     implementation 'org.jetbrains:annotations-java5:15.0'
+    testImplementation 'androidx.test:core:1.4.0'
+    // testImplementation 'androidx.test:content:1.4.0'
+    testImplementation 'org.robolectric:robolectric:4.2'
 }

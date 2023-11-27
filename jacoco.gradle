@@ -1,0 +1,69 @@
+// Enable collecting coverage also for unit tests
+apply plugin: 'jacoco'
+
+jacoco {
+    // This should match the one inside build.gradle
+    toolVersion = '0.8.6'
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    // This will break JDK 9 otherwise
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+task jacocoUnitTestCoverage(type : JacocoReport, dependsOn : ['testDebugUnitTest']) {
+    group       = 'Reporting'
+    description = 'Generate JaCoCo coverage report for unit tests'
+    reports {
+        xml.enabled  = true
+        html.enabled = true
+        if ( carvedTests.toBoolean() ) {
+                html.destination file("$coverageReportPrefix/html")
+                xml.destination file("$coverageReportPrefix/xml")
+        }
+        println "\n\n\n"
+        println " jacocoUnitTestCoverage: Reporting to -- " + html.destination
+        println "\n\n\n"
+         
+    }
+    def fileFilter = ['**/R.class', '**/BuildConfig.class','**/R.class','**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def coverageSourceDirs = ["${project.projectDir}/src/main/java"]
+    getClassDirectories().setFrom(fileTree(dir:"${buildDir}/intermediates/javac/debug/classes", excludes: fileFilter))
+    getSourceDirectories().setFrom(files(coverageSourceDirs))
+
+    getExecutionData().setFrom(fileTree(
+            dir     : "${buildDir}",
+            include : ['jacoco/testDebugUnitTest.exec']
+    ))
+}
+
+task jacocoGUITestCoverage(type : JacocoReport, dependsOn : ['connectedDebugAndroidTest']) {
+    group       = 'Reporting'
+    description = 'Generate JaCoCo coverage report for GUI tests'
+    reports {
+
+        // if ( carvedTests.toBoolean() ) {
+        //     throw new GradleException("carvedTests cannot be True for GUI tests")
+        // }
+
+        xml.enabled  = true
+        html.enabled = true
+
+        println "\n\n\n"
+        println " jacocoGUITestCoverage: Reporting to -- " + html.destination
+        println "\n\n\n"
+    }
+
+    
+
+    def fileFilter = ['**/R.class', '**/BuildConfig.class','**/R.class','**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def coverageSourceDirs = ["${project.projectDir}/src/main/java"]
+    getClassDirectories().setFrom(fileTree(dir:"${buildDir}/intermediates/javac/debug/classes", excludes: fileFilter))
+    getSourceDirectories().setFrom(files(coverageSourceDirs))
+
+    getExecutionData().setFrom(fileTree(
+            dir     : "${buildDir}",
+            include : ['outputs/code_coverage/debugAndroidTest/connected/*coverage.ec']
+    ))
+}
